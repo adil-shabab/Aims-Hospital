@@ -1,0 +1,204 @@
+{% extends 'frontend/inner-base.html' %}
+
+{% load static %}
+
+
+{% block title %}
+    <title>International Patient | AH Hospital</title>
+{% endblock title %}
+    
+
+
+{% block head %}
+    <style>
+        .subpage-header{
+            position: relative;
+        }
+        .subpage-header::after{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            content: ''; 
+            left: 0;
+            top: 0;
+            background-color: rgba(0, 0, 0, 0.432); 
+        }
+        .subpage-header-box ol{
+            justify-content: flex-start !important;
+        }
+        .subpage-header-box {
+            max-width: unset !important;
+            margin: unset !important;
+            text-align: unset !important;
+        }
+    </style>
+    
+{% endblock head %}
+
+
+{% block content %}
+    
+
+
+        <!-- Subpage Header Start -->
+        <div class="subpage-header" 
+        style="background: url('../../static/frontend/images/appointment-banner.jpg'); 
+               padding: 85px 0px; 
+               background-size: cover; 
+               background-position: center; 
+               background-repeat: no-repeat;">
+    
+           <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Sub page Header start -->
+                        <div class="subpage-header-box d-flex justify-content-center align-items-center flex-column">
+                            <h1 class="text-anime-style-1 text-center">Documentation for Fit to Fly</h1>
+                            <ol class="breadcrumb wow fadeInUp mt-3">
+                                <li><a href="{% url 'homepage' %}">Home</a></li>
+                                <li>International Patient</li>
+                            </ol>
+                        </div>
+                        <!-- Sub page Header End -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Subpage Header End -->
+
+
+    <div class="privacy_policy">
+        <div class="container">
+            <h4 class="text-anime-style-1">Documentation For Fit To Fly: Ensuring Smooth Travel for International Patients</h4>
+
+
+
+            <h6 class="text-anime-style-3">Your Ticket to Safe Travel</h6>
+            <p>Preparing for medical travel involves more than just booking flights and accommodations. At VSH Hospital, we understand the importance of ensuring that international patients have all the necessary documentation for a safe and hassle-free journey. Our International Patient Services team is here to assist you every step of the way, ensuring that you have the documentation you need to fly with confidence.</p>
+        
+            <h6 class="text-anime-style-3">Why Choose VSH Hospital?</h6>
+        
+            <h6 class="text-anime-style-3">Expert Guidance</h6>
+            <p>Navigating the requirements for international travel can be overwhelming, especially when you’re dealing with medical concerns. Our experienced consultants are here to provide you with expert guidance on the documentation needed for fit-to-fly status. From medical certificates to COVID-19 test results, we’ll ensure that you have all the necessary paperwork in order.</p>
+        
+            <h6 class="text-anime-style-3">Timely Assistance</h6>
+            <p>We understand that time is of the essence when it comes to medical travel. That’s why our team is dedicated to providing timely assistance in obtaining the required documentation. Whether you need assistance scheduling medical appointments or obtaining test results, we’ll work quickly and efficiently to ensure that you have everything you need before your departure.</p>
+        
+            <h6 class="text-anime-style-3">Comprehensive Support</h6>
+            <p>Our support doesn’t end once you have your documentation in hand. Our team is available to provide ongoing support and assistance throughout your journey, from pre-travel preparations to post-arrival arrangements. We’ll ensure that you have everything you need to travel safely and comfortably to VSH Hospital for your medical treatment.</p>
+        
+            <h6 class="text-anime-style-3">Peace of Mind</h6>
+            <p>Traveling for medical treatment can be stressful, but with VSH Hospital by your side, you can have peace of mind knowing that your documentation needs are taken care of. Our team will handle all the details so that you can focus on your health and well-being, knowing that you’re in good hands every step of the way.</p>
+        
+            <h6 class="text-anime-style-3">Your Journey Starts Here</h6>
+            <p>Don’t let documentation requirements stand in the way of accessing the medical care you need. Contact our International Patient Services team today to learn more about how we can assist you in obtaining the documentation for fit-to-fly status and ensure a smooth and stress-free journey to VSH Hospital.</p>
+        
+        </div>
+    </div>
+    
+
+    
+    <div class="career_application">
+        <div class="container">
+            <form id="applicationForm" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row">
+                    <h5>Fill the details for further assistance</h5>
+                    <div class="col-md-12">
+                        <input type="text" name="name" placeholder="Full Name" required>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="email" name="email" placeholder="Email" required>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="tel" name="number" placeholder="Phone Number including country code" required>
+                    </div>
+                    <div class="col-md-12">
+                        <textarea name="message" placeholder="Message (Optional)"></textarea>
+                    </div>
+                    <div class="col-md-12">
+                        <span>Passport</span>
+                        <input type="file" name="passport" id="resume" required>
+                    </div>
+                    <div class="col-md-12">
+                        <span>Visa (Optional)</span>
+                        <input type="file" name="visa" id="visa">
+                    </div>
+                    <div class="col-md-12">
+                        <span>Medical Documents (Optional)</span>
+                        <input type="file" name="medical_documents" id="medical-documents">
+                    </div>
+                    <div class="col-md-12">
+                        <button type="submit">Submit Application</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+
+    
+    {% include 'frontend/include/cta.html' %}
+
+    {% include 'frontend/include/blogs.html' %}
+
+
+    
+{% endblock content %}
+    
+
+
+{% block script %}
+<script>
+    document.getElementById('international_patient').classList.add('active')
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<script>
+    document.getElementById('applicationForm').addEventListener('submit', function(event) {
+        event.preventDefault();  // Prevent the default form submission
+        
+        // Prepare form data
+        let formData = new FormData(this);
+        
+        // Send AJAX request
+        fetch("{% url 'api_create_message' %}", {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        })
+        .then(response => {
+            if (!response.ok) throw response;
+            return response.json();
+        })
+        .then(data => {
+            if (data.message) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success!',
+                    text: data.message
+                }).then(() => {
+                    document.getElementById('applicationForm').reset();  // Clear the form
+                });
+            }
+        })
+        .catch(async (errorResponse) => {
+            let errorText = "An error occurred. Please check your inputs.";
+            if (errorResponse.status === 400) {
+                const errorData = await errorResponse.json();
+                errorText = Object.values(errorData).flat().join("\n");
+            }
+            Swal.fire({
+                icon: 'error',
+                title: 'Error!',
+                text: errorText
+            });
+        });
+    });
+</script>
+{% endblock script %}
+    

@@ -1,0 +1,204 @@
+{% extends 'frontend/inner-base.html' %}
+
+{% load static %}
+
+
+{% block title %}
+    <title>International Patient | AH Hospital</title>
+{% endblock title %}
+    
+
+{% block head %}
+    <style>
+        .subpage-header{
+            position: relative;
+        }
+        .subpage-header::after{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            content: ''; 
+            left: 0;
+            top: 0;
+            background-color: rgba(0, 0, 0, 0.432); 
+        }
+        .subpage-header-box ol{
+            justify-content: flex-start !important;
+        }
+        .subpage-header-box {
+            max-width: unset !important;
+            margin: unset !important;
+            text-align: unset !important;
+        }
+    </style>
+    
+{% endblock head %}
+
+
+{% block content %}
+    
+
+        <!-- Subpage Header Start -->
+        <div class="subpage-header" 
+        style="background: url('../../static/frontend/images/appointment-banner.jpg'); 
+               padding: 85px 0px; 
+               background-size: cover; 
+               background-position: center; 
+               background-repeat: no-repeat;">
+    
+           <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Sub page Header start -->
+                        <div class="subpage-header-box d-flex justify-content-center align-items-center flex-column">
+                            <h1 class="text-anime-style-1 text-center">Assistance With Medical Visa Invitation Letter</h1>
+                            <ol class="breadcrumb wow fadeInUp mt-3">
+                                <li><a href="{% url 'homepage' %}">Home</a></li>
+                                <li>International Patient</li>
+                            </ol>
+                        </div>
+                        <!-- Sub page Header End -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Subpage Header End -->
+
+
+
+
+    <div class="privacy_policy">
+        <div class="container">
+            <h4 class="text-anime-style-1">Assistance With Medical VISA Invitation Letter: Simplifying the Visa Application Process for Patients</h4>
+
+
+
+            <h6 class="text-anime-style-3">Streamlined Visa Application Support</h6>
+            <p>Obtaining a medical visa can be a daunting task, but at VSH Hospital, we’re here to help. Our International Patient Services team offers comprehensive assistance with obtaining a medical visa invitation letter, streamlining the visa application process, and ensuring that you have everything you need to travel to VSH Hospital for your medical treatment.</p>
+
+            <h6 class="text-anime-style-3">Why Choose VSH Hospital?</h6>
+
+            <h6 class="text-anime-style-3">Expert Guidance</h6>
+            <p>Navigating the medical visa application process can be complex, especially when you’re dealing with health concerns. Our experienced consultants specialize in assisting international patients with obtaining medical visa invitation letters. They’ll provide you with expert guidance and support every step of the way, ensuring that your application is handled efficiently and accurately.</p>
+
+            <h6 class="text-anime-style-3">Timely Assistance</h6>
+            <p>We understand the urgency of your medical needs, which is why we prioritize efficiency and timeliness in our services. Our team will work quickly to assist you in obtaining your medical visa invitation letter, ensuring that you have everything you need to travel to VSH Hospital for your treatment without unnecessary delays.</p>
+
+            <h6 class="text-anime-style-3">Personalized Support</h6>
+            <p>Every patient is unique, and we understand that your visa application needs may vary. Whether you require expedited processing or assistance with special circumstances, our team is here to provide personalized support tailored to your specific requirements. We’ll work closely with you to ensure that your visa application process is as smooth and stress-free as possible.</p>
+
+            <h6 class="text-anime-style-3">Peace of Mind</h6>
+            <p>Traveling for medical treatment can be stressful, but with VSH Hospital by your side, you can have peace of mind knowing that your visa application needs are taken care of. Our team will handle all the details for you, allowing you to focus on your health and well-being, knowing that you’re in good hands every step of the way.</p>
+
+            <h6 class="text-anime-style-3">Your Journey Starts Here</h6>
+            <p>Don’t let visa application concerns stand in the way of accessing the medical care you need. Contact our International Patient Services team today to learn more about how we can assist you in obtaining your medical visa invitation letter and traveling to VSH Hospital for your treatment.</p>
+
+        </div>
+    </div>
+
+
+    
+    <div class="career_application">
+        <div class="container">
+            <form id="applicationForm" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row">
+                    <h5>Fill the details for further assistance</h5>
+                    <div class="col-md-12">
+                        <input type="text" name="name" placeholder="Full Name" required>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="email" name="email" placeholder="Email" required>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="tel" name="number" placeholder="Phone Number including country code" required>
+                    </div>
+                    <div class="col-md-12">
+                        <textarea name="message" placeholder="Message (Optional)"></textarea>
+                    </div>
+                    <div class="col-md-12">
+                        <span>Passport</span>
+                        <input type="file" name="passport" id="resume" required>
+                    </div>
+                    <div class="col-md-12">
+                        <span>Visa (Optional)</span>
+                        <input type="file" name="visa" id="visa">
+                    </div>
+                    <div class="col-md-12">
+                        <span>Medical Documents (Optional)</span>
+                        <input type="file" name="medical_documents" id="medical-documents">
+                    </div>
+                    <div class="col-md-12">
+                        <button type="submit">Submit Application</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    
+    {% include 'frontend/include/cta.html' %}
+
+    {% include 'frontend/include/blogs.html' %}
+
+
+    
+{% endblock content %}
+    
+
+
+{% block script %}
+<script>
+    document.getElementById('international_patient').classList.add('active')
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<script>
+    document.getElementById('applicationForm').addEventListener('submit', function(event) {
+        event.preventDefault();  // Prevent the default form submission
+        
+        // Prepare form data
+        let formData = new FormData(this);
+        
+        // Send AJAX request
+        fetch("{% url 'api_create_message' %}", {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        })
+        .then(response => {
+            if (!response.ok) throw response;
+            return response.json();
+        })
+        .then(data => {
+            if (data.message) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success!',
+                    text: data.message
+                }).then(() => {
+                    document.getElementById('applicationForm').reset();  // Clear the form
+                });
+            }
+        })
+        .catch(async (errorResponse) => {
+            let errorText = "An error occurred. Please check your inputs.";
+            if (errorResponse.status === 400) {
+                const errorData = await errorResponse.json();
+                errorText = Object.values(errorData).flat().join("\n");
+            }
+            Swal.fire({
+                icon: 'error',
+                title: 'Error!',
+                text: errorText
+            });
+        });
+    });
+</script>
+{% endblock script %}
+    

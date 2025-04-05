@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+{% load static %}
+
+
+<html lang="zxx">
+<head>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Best Heart Checkup in Banglore | Book Your Heart Health Screening at VSH  
+    </title>
+    <meta name="title" content="Best Heart Checkup in Banglore | Book Your Heart Health Screening at VSH " />
+    <meta name="description" content="Ensure your heart's health with our expert heart checkup services in Bangalore. Book your appointment online now & get a timely diagnosis from top specialists" />
+
+    <!-- Favicon Icon -->
+    <link rel="icon" href="{% static 'images/favicon.png' %}">
+
+
+    <!-- Google Fonts css-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Syne:wght@400..800&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap Css -->
+    <link href="{% static 'frontend/css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
+    <!-- SlickNav Css -->
+    <link href="{% static 'frontend/css/slicknav.min.css' %}" rel="stylesheet">
+    <!-- Swiper Css -->
+    <link rel="stylesheet" href="{% static 'frontend/css/swiper-bundle.min.css' %}">
+    <!-- Font Awesome Icon Css-->
+    <link href="{% static 'frontend/css/all.css' %}" rel="stylesheet" media="screen">
+    <!-- Animated Css -->
+    <link href="{% static 'frontend/css/animate.css' %}" rel="stylesheet">
+    <!-- Magnific Popup core CSS file -->
+    <link rel="stylesheet" href="{% static 'frontend/css/magnific-popup.css' %}">
+    <!-- Main custom Css -->
+    <link href="{% static 'frontend/css/custom.css' %}" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="{% static 'css/frontend.css' %}">
+    <link rel="stylesheet" href="{% static 'frontend/css/new.css' %}">
+    <link rel="stylesheet" href="{% static 'css/new.css' %}">
+
+    <!-- google font  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Syne:wght@400..800&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=DM Sans&display=swap" rel="stylesheet">
+    
+    <!-- slick css  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            
+
+    <link rel="stylesheet" href="{% static 'css/frontend.css' %}">
+    <link rel="stylesheet" href="{% static 'frontend/css/new.css' %}">
+    <link rel="stylesheet" href="{% static 'css/new.css' %}">
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
+
+    
+    <link rel="canonical" href="{{ request.build_absolute_uri }}" />
+
+    <!-- Meta Tag Manager -->
+    <meta name="keywords" content="Superspeciality hospital in bangalore india, best hospital in bangalore, Best hospital near me, Best Healthcare Bangalore, Multispecialty Hospital in Bangalore, Best Trauma and Accident hospital, Best Emergency Hospital Bangalore, Specialist doctors Bangalore, Trauma care center bangalore, Vydehi Superspeciality hospital" />
+    <!-- / Meta Tag Manager -->
+    <meta name="description" content="VSH is the best Emergency Superspeciality Hospital in Bangalore, India with the best healthcare facilities, specialist doctors &amp; the best trauma care center." />
+    <link rel="canonical" href="{{ request.build_absolute_uri }}" />
+
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-KKT87T6G');</script>
+        <!-- End Google Tag Manager -->
+
+
+
+    <style>
+        .fixedRightSideBar{
+            display: none !important;
+        }
+        /* Keyframes for blinking */
+        @keyframes blink {
+            0% {
+                opacity: 1;
+                scale: 1;
+            }
+            50% {
+                opacity: 0.3;
+                scale: 1.2;
+            }
+            100% {
+                opacity: 1;
+                scale: 1;
+            }
+        }
+        select{
+            border: 0.5px solid #80808059;
+            width: 100%;
+            padding: 10px 15px;
+            font-size: 15px;
+            font-family: 'DM Sans', sans-serif;
+            margin-bottom: 15px;
+            outline: none;
+            border-radius: 5px;
+        }
+        footer{
+            padding: 0px 0px 14px 0px;
+            border-top: 2px solid #0066a1;
+        }
+        footer::after{
+            content: unset;
+        }
+        footer .container .copy_right span{
+            color: black;
+            font-weight: 600;
+        }
+        footer .container .copy_right{
+            margin-top: 0px;
+        }
+        footer .container .copy_right span{
+            color: black;
+            font-weight: 600;
+        }
+        footer .container .copy_right span a{
+            color: black;
+            font-weight: 600;
+        }
+        .head___desc__txt{
+            background: #00a6c8;
+            color: white;
+            padding: 7px 10px;
+            font-size: 12px;
+            border-radius: 3px;
+        }
+    </style>
+        
+
+
+
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Best Emergency Super Speciality Hospital in Bangalore India | AH Hospital" />
+    <meta property="og:description" content="VSH is the best Emergency Super Speciality Hospital in Bangalore, India with the best healthcare facilities, specialist doctors &amp; the best trauma care centre." />
+    <meta property="og:url" content="https://vshhospital.com/" />
+    <meta property="og:site_name" content="Vydehi Super Speciality hospital" />
+    <meta property="article:publisher" content="https://www.facebook.com/vshhospital" />
+    <meta property="og:image" content="https://vshhospital.com/static/images/favicon.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Best Emergency Super Speciality Hospital in Bangalore India | AH Hospital" />
+    <meta name="twitter:description" content="VSH is the best Emergency Super Speciality Hospital in Bangalore, India with the best healthcare facilities, specialist doctors &amp; the best trauma care centre." />
+    <meta name="twitter:image" content="https://vshhospital.com/static/images/favicon.png" />
+    <meta name="twitter:site" content="@VSH_Hospital" />
+
+    
+</head>
+
+
+<body class="tt-magic-cursor">
+    <!-- Your content here -->
+
+
+    <header class="d-md-block d-none">
+        <div class="top_header" style="border: 1px solid #e2e2e2; padding: 14px 0px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <a href="{% url 'homepage' %}" class="logo">
+                            <img src="{% static 'images/logo.png' %}" alt="" class="navbar_logo">
+                        </a>
+                    </div>
+                    <div class="col-md-8 d-md-flex justify-content-md-end align-items-md-center">
+                        <div class="links">
+                            <div class="emergency">
+                                <dotlottie-player src="https://lottie.host/56b7136f-fb78-42dd-aac0-cadb6f365260/VlytNQsU59.json" background="transparent" speed="3" class="lottie_icon" loop autoplay></dotlottie-player>
+                                <div>
+                                    <a href="tel:18003091001">
+                                        <span class="bold">Emergency : 18003091001</span>
+                                    </a>
+                                    <a href="tel:08068697999">
+                                        <span>VSH Lifeline : 080-68697999</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+
+
+
+    <header class="d-md-none d-block">
+        <div class="navbar__mobile">
+            <div class="container">
+                <div class="navbar_logo">
+                    <a href="{% url 'homepage' %}">
+                        <img class="logo" src="{% static 'images/logo.png' %}" alt="">
+                    </a>
+                    
+                    <a href="tel:18003091001">
+                        <span class="head___desc__txt">Emergency</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+
+
+    <!-- Preloader Start -->
+    <div class="preloader">
+        <div class="loading-container">
+            <img src="{% static 'images/favicon.png' %}" alt="" class="img-fluid">
+            <div class="loading">
+            </div>
+        </div>
+    </div>
+    <!-- Preloader End -->
+
+    <!-- Magic Cursor Start -->
+    <div id="magic-cursor">
+        <div id="ball"></div>
+    </div>
+    <!-- Magic Cursor End -->
+
+
+
+
+    <div class="hero_section_parent d-md-flex d-none">
+        <div class="hero_carousel">
+            <div class="home_banner" style="height: 77vh; background: url('../../static/frontend/images/heart-day.jpg');">
+                
+            </div>
+        </div>
+    </div>
+    
+    <div class="hero_section_parent d-md-none d-flex"> 
+        <div class="hero_carousel ">
+            <div class="d-md-none d-flex home_banner" style="background: url('../../static/frontend/images/mobile-heart-day.jpg');">
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="heart_day_checkup_pages" style="background-color: #f3f3f39c;">
+        <div class="container">
+          <h3 data-aos="fade-up" data-aos-anchor-placement="center-bottom" class="heading">VSH World Heart Day Packages</h3>
+          <p data-aos="fade-up" data-aos-anchor-placement="center-bottom" class="description">Choose from our heart checkup packages, offering thorough assessments to monitor heart health and support your overall wellness.</p>
+
+          <div class="row mt-4 d-flex justify-content-center align-items-center">
+
+            
+            {% for plan in health_checkup_plans %}    
+                <div class="d-flex flex-column justify-content-center align-items-center mb-5 col-lg-4 col-md-6 col-12">
+                    <div class="checkup__box">
+                        <div class="heading_box">
+                            <h4>{{plan.plan.title}}</h4>
+                        </div>
+                        <div class="points">
+                            
+                            {% for x in plan.descriptions %}
+                                <p>{{x.description}}</p>
+                            {% endfor %}
+                                
+                        </div>
+
+                        <button class="book__btn" data-bs-toggle="modal" data-bs-target="#booking-modal" data-plan-id="{{ plan.plan.id }}" data-plan-title="{{ plan.plan.title }}" data-plan-price="{{ plan.plan.price|floatformat:"0" }}">
+                            <span class="org_price">₹{{ plan.plan.original_price|floatformat:"0" }}/</span>
+                            <span>₹{{ plan.plan.price|floatformat:"0" }} Only</span>
+                        </button>
+
+                        
+                    </div>
+                    <button class="book_______now" data-bs-toggle="modal" data-bs-target="#booking-modal" data-plan-id="{{ plan.plan.id }}" data-plan-title="{{ plan.plan.title }}" data-plan-price="{{ plan.plan.price|floatformat:"0" }}">Book Now</button>
+                </div>
+            {% endfor %}
+                
+
+          </div>
+        </div>
+    </div>
+
+
+    <div class="about_____section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2 class="about_title mb-3">About World Heart Day</h2>
+                    <p>World Heart Day is a global initiative dedicated to raising awareness about heart health and inspiring people to take proactive steps toward a healthier heart. As the lifeblood of our existence, the heart is a remarkable organ that sustains us. Yet, heart disease remains one of the leading causes of death worldwide. This makes it essential for everyone to prioritize their heart health and take preventive action.</p>
+                    
+                    <div id="" class="">
+                        <p>World Heart Day is an ideal opportunity to raise awareness about heart health and motivate people to take action. With heart disease being a leading cause of death globally, it's crucial to focus on heart health to lower the risk of heart-related conditions. This year, World Heart Day is on September 29th, making it the perfect time to reflect on your heart’s well-being and commit to prioritizing it.</p>
+                        <p>At VSH, we understand the critical importance of heart health. That’s why we provide a variety of health check packages aimed at detecting potential heart issues early. Our packages are both affordable and accessible, empowering everyone to take proactive steps toward maintaining a healthy heart.</p>
+                    </div>
+                    
+                </div>
+                <div class="col-md-6">
+                    <img src="{% static 'frontend/images/heart-day-about.jpg' %}" alt="" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="heart__day__content">
+        <div class="container">
+            <h4>Take Charge of Your Heart Health This World Heart Day!</h4>
+            <p>
+                Heart disease is one of the leading causes of death worldwide, but the good news is that with regular checkups and early detection, it’s possible to prevent and manage heart issues. At VSH, we offer comprehensive heart checkup packages designed to catch potential problems early, helping you stay healthy and proactive about your heart.
+            </p>
+
+            <div class="list">
+                <h6>Why Choose VSH Heart Checkup Packages?</h6>
+                <ul>
+                    <li><span>Early Detection : </span> Our tests help identify heart issues before they become serious.</li>
+                    <li><span>Affordable Packages : </span> We’ve made our checkups accessible to everyone with discounted rates for World Heart Day.</li>
+                    <li><span>Comprehensive Assessments : </span> Each package covers key health markers, giving you a complete picture of your heart’s health.</li>
+                    <li><span>Expert Guidance : </span> Consultations with our cardiologists ensure you understand your results and the steps to improve your heart health.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Modal -->
+    <div class="modal fade pe-0 health_checkup_modal" id="booking-modal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="bookingModalLabel">Book Health Checkup</h5>
+                </div>
+                <div class="modal-body">
+                    <form id="booking-form">
+                        {% csrf_token %}
+                        <input type="hidden" name="plan_id" id="modal-plan-id">
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="number" placeholder="Your Phone Number" required>
+                        </div>
+                        <div class="form-group">
+                            <select name="payment_method" id="payment_method">
+                                <option value="ONLINE_PAY_NOW" >Pay Now</option>
+                                <option value="PAY_AT_HOSPITAL">Pay At The Hospital</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" name="message" placeholder="Your Message (Optional)"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" id="checkout-button">Checkout</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    {% load static %}
+
+    <footer style="background: unset;">
+        <div class="container">
+            <div class="copy_right">
+                <span>&#169; 2025 VSH Hospital. All Rights Reserved</span>
+                <span> <a target="_blank" href="https://thinkb.agency">Designed & Developed by thinkB</a></span>
+            </div>
+        </div>
+    </footer>
+
+
+
+            
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+
+
+    
+    <style>
+        .collapse {
+            display: none;
+        }
+    </style>
+
+    
+    <script>
+        document.getElementById('pulse_of_life').classList.add('active')
+    </script>
+    <script>
+        $(document).ready(function () {
+            // Open modal when "Book Now" button is clicked
+            $('.book__btn').click(function () {
+                console.log("Hello Clicking")
+                const planId = $(this).data('plan-id');
+    
+                $('#modal-plan-id').val(planId);
+    
+                // Show the modal
+                $('#booking-modal').modal('show');
+            });
+            $('.book_______now').click(function () {
+                console.log("Hello Clicking")
+                const planId = $(this).data('plan-id');
+    
+                $('#modal-plan-id').val(planId);
+    
+                // Show the modal
+                $('#booking-modal').modal('show');
+            });
+            
+    
+            // Handle form submission and initiate Razorpay checkout
+            $('#booking-form').submit(function (event) {
+                event.preventDefault();
+    
+                const formData = new FormData(this);
+                const data = Object.fromEntries(formData.entries());
+    
+                console.log("Data", data);
+    
+                const phoneNumber = data.number;
+                const phoneRegex = /^\d{10}$/;
+                if (!phoneRegex.test(phoneNumber)) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Invalid Phone Number',
+                        text: 'Please enter a valid 10-digit phone number.',
+                    });
+                    return;
+                }
+    
+                $('#checkout-button').prop('disabled', true).html('<span class="spinner-border spinner-border-sm"></span> Processing...');
+    
+                fetch('/api/heart-day/create-health-checkup-booking/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}',
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => {
+                    console.log("Full Response:", response);
+                    if (!response.ok) {
+                        return response.text().then(errorMessage => {
+                            console.error("Error message:", errorMessage);
+                            throw new Error(errorMessage);
+                        });
+                    }
+                    return response.json();
+                })
+                .then(order => {
+                    console.log("Parsed Order:", order);
+                    // Check if 'redirect_url' is provided in the response
+                    if (order.redirect_url) {
+                        window.location.href = order.redirect_url;  // Redirect for "Pay at Hospital"
+                    } else if (order.hdfc_payment_url) {
+                        // Handle Razorpay Payment URL
+                        window.location.href = order.hdfc_payment_url;
+                    } else {
+                        throw new Error('Invalid response from server: No payment URL received');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error.message);
+                    Swal.fire({
+                        title: "Error",
+                        text: error.message,
+                        icon: "error",
+                        confirmButtonText: "OK"
+                    });
+                });
+            });
+    
+            });
+    </script>
+
+
+    <script>
+        
+        document.addEventListener('DOMContentLoaded', function () {
+            // Select the elements
+            const rightSideBar = document.querySelector('.fixedRightSideBar');
+            const headOne = document.getElementById('headOne');
+            const sideBarClose = document.getElementById('rightSideBarClose');
+
+            // Toggle the sidebar visibility
+            headOne.addEventListener('click', function () {
+                rightSideBar.classList.toggle('active');
+            });
+
+            // Close the sidebar
+            sideBarClose.addEventListener('click', function () {
+                rightSideBar.classList.toggle('active');
+            });
+
+            // Optionally, you can toggle the arrow direction based on the sidebar state
+            const icon = sideBarClose.querySelector('.icon');
+
+            rightSideBar.addEventListener('transitionend', function () {
+                if (rightSideBar.classList.contains('active')) {
+                    icon.classList.add('fa-arrow-right');
+                    icon.classList.remove('fa-arrow-left');
+                } else {
+                    icon.classList.add('fa-arrow-left');
+                    icon.classList.remove('fa-arrow-right');
+                }
+            });
+        });
+
+
+    </script>
+        
+
+
+
+    <!-- jquery cdn  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+
+    <!-- Bootstrap js file -->
+    <script src="{% static 'frontend/js/bootstrap.min.js' %}"></script>
+    <!-- Validator js file -->
+    <script src="{% static 'frontend/js/validator.min.js' %}"></script>
+    <!-- SlickNav js file -->
+    <script src="{% static 'frontend/js/jquery.slicknav.js' %}"></script>
+    <!-- Swiper js file -->
+    <script src="{% static 'frontend/js/swiper-bundle.min.js' %}"></script>
+    <!-- Counter js file -->
+    <script src="{% static 'frontend/js/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'frontend/js/jquery.counterup.min.js' %}"></script>
+    <!-- Magnific js file -->
+    <script src="{% static 'frontend/js/jquery.magnific-popup.min.js' %}"></script>
+    <!-- SmoothScroll -->
+    <script src="{% static 'frontend/js/SmoothScroll.js' %}"></script>
+    <!-- Parallax js -->
+    <script src="{% static 'frontend/js/parallaxie.js' %}"></script>
+    <!-- MagicCursor js file -->
+    <script src="{% static 'frontend/js/gsap.min.js' %}"></script>
+    <script src="{% static 'frontend/js/magiccursor.js' %}"></script>
+    <!-- Text Effect js file -->
+    <script src="{% static 'frontend/js/SplitText.js' %}"></script>
+    <script src="{% static 'frontend/js/ScrollTrigger.min.js' %}"></script>
+    <!-- Wow js file -->
+    <script src="{% static 'frontend/js/wow.js' %}"></script>
+    <!-- Main Custom js file -->
+    <script src="{% static 'frontend/js/function.js' %}"></script>
+
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+
+    <!-- slick cdn  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="{% static 'js/frontend.js' %}"></script>
+    <script src="{% static 'frontend/js/frontend.js' %}"></script>
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,68 @@
+
+
+
+{% extends 'frontend/inner-base.html' %}
+
+{% load static %}
+
+
+{% block title %}
+    <title>Error | AH Hospital</title>
+{% endblock title %}
+    
+
+
+{% block head %}
+    <style>
+        .error__section{
+            min-height: 50vh;
+            display: flex;
+            justify-content: center;
+            border-top: 1px solid rgb(223, 223, 223);
+            align-items: center;
+            flex-direction: column;
+        }
+        .error__section img{
+            width: 200px;
+        }
+        .error__section h1{
+            font-size: 35px;
+            font-family: 'DM Sans', Arial, Helvetica, sans-serif;
+            margin-bottom: 15px;
+        }
+        .error__section p{
+            font-size: 18px;
+        }
+        .error__section button{
+            padding: 10px 30px;
+            background-color: #00a6c8;
+            border: none;
+            color: white;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+    </style>
+    
+{% endblock head %}
+
+
+{% block content %}
+    
+    <div class="error__section">
+        <img src="{% static 'img/empty-appointment.jpg' %}" alt="" class="img-fluid">
+        <p>{{ error }}</p>
+        <a href="{% url 'online_consultation' %}">
+            <button>Back to Video Consultation</button>
+        </a>
+    </div>
+
+    
+    
+{% endblock content %}
+    
+
+
+{% block script %}
+
+{% endblock script %}
+

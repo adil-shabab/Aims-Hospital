@@ -1,0 +1,146 @@
+{% extends 'backend/base.html' %}
+{% load static %}
+
+{% block title %}
+    Update Heart Day Checkup Plans | AH Hospital
+{% endblock title %}
+
+{% block content %}
+<div class="content">
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'health_checkup_plans' %}">Health Checkup </a></li>
+                    <li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
+                    <li class="breadcrumb-item active">Update Health Checkup Plan</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data" id="checkupForm">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-heading">
+                                    <h4>Update Heart Day Checkup Plan </h4>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="input-block local-forms">
+                                    <label>Plan Title <span class="login-danger">*</span></label>
+                                    <input type="text" name="title" class="form-control" value="{{ checkup.title }}" required>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-6">
+                                <div class="input-block local-forms">
+                                    <label>Plan Price <span class="login-danger">*</span></label>
+                                    <input type="number" name="price" class="form-control" value="{{ checkup.price }}" required>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="input-block local-forms">
+                                    <label>Original Price <span class="login-danger">*</span></label>
+                                    <input type="number" name="original_price" class="form-control" value="{{ checkup.original_price }}" required>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-heading">
+                                    <h4>Update Descriptions</h4>
+                                </div>
+                            </div>
+                            
+                            <div id="description-formset">
+                                <!-- Existing Descriptions -->
+                                {% for desc in descriptions %}
+                                    <div class="description-item" id="existing-description-{{ forloop.counter0 }}">
+                                        <div class="row">
+                                            <div class="col-md-10">
+                                                <div class="input-block local-forms">
+                                                    <input type="text" name="description" class="form-control" value="{{ desc.description }}" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2 d-flex align-items-start">
+                                                <button type="button" class="btn btn-danger remove-btn" onclick="removeForm(this)">Remove</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+                            <div class="col-12 mt-3">
+                                <button type="button" class="btn btn-secondary" id="add-more">Add More Description</button>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="doctor-submit text-end mt-3">
+                                    <button type="submit" class="btn btn-primary submit-form me-2">Update</button>
+                                    <a href="{% url 'heart_day_health_checkup_plans' %}" class="btn btn-secondary cancel-form">Cancel</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Hidden template for cloning -->
+                    <div id="empty-form-template" style="display: none;">
+                        <div class="description-item">
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <div class="input-block local-forms">
+                                        <input type="text" name="description" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 d-flex align-items-start">
+                                    <button type="button" class="btn btn-danger remove-btn" onclick="removeForm(this)">Remove</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block script %}
+<script>
+    document.querySelector('.offer_sidebar').classList.add('active')
+    document.querySelector('.add_offer_txt').classList.add('active')
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Handle the 'Add More' button click
+        document.getElementById('add-more').addEventListener('click', function() {
+            const formsetContainer = document.getElementById('description-formset');
+            const emptyFormTemplate = document.getElementById('empty-form-template').children[0].cloneNode(true);
+
+            // Show the cloned form
+            emptyFormTemplate.style.display = 'block';
+
+            // Append the new form to the container
+            formsetContainer.appendChild(emptyFormTemplate);
+
+            // Bind the remove button for the new form
+            emptyFormTemplate.querySelector('.remove-btn').addEventListener('click', function() {
+                emptyFormTemplate.remove();
+            });
+        });
+
+        // Function to remove a form
+        window.removeForm = function(button) {
+            const form = button.closest('.description-item');
+            form.remove();
+        }
+    });
+</script>
+{% endblock script %}

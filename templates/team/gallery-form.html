@@ -1,0 +1,105 @@
+{% extends 'team/base.html' %}
+{% load static %}
+
+
+{% block title %}
+    Upload Gallery Image | AH Hospital
+{% endblock title %}
+    
+
+    
+
+{% block content %}
+<div class="content">
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'media_gallery_list' %}">GAllery </a></li>
+                    <li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
+                    <li class="breadcrumb-item active">Add Gallery</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-heading">
+                                    <h4>Upload Gallery Image</h4>
+                                </div>
+                            </div>
+                        
+
+                            <div class="col-md-6 col-lg-4 mb-3 col-12">
+                                <label class="label__banner">Gallery Image <span class="login-danger">*</span></label>
+                                <img class="img__preview" id="img-preview" src="{% static 'img/icons/upload.png' %}"/>
+                                <div>
+                                    {{form.image}}
+                                </div>
+                            </div>
+
+
+                            
+                            <div class="col-12">
+                                <div class="doctor-submit text-end">
+                                    <button type="submit" class="btn btn-primary submit-form me-2">Upload Gallery Image</button>
+                                    <a href="{% url 'media_gallery_list' %}"><button class="btn btn-primary cancel-form">Cancel</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+    
+{% block script %}
+    <script>
+        document.querySelector('.gallery_sidebar').classList.add('active')
+        document.querySelector('.add_gallery_txt').classList.add('active')
+    </script>
+
+
+    <script>
+        //Change this to your no-image file
+        let noimage =
+        "{% static 'img/icons/upload.png' %}";
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $("#img-preview").attr("src", e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+
+
+            } else {
+                $("#img-preview").attr("src", noimage);
+            }
+        }
+
+        var imgElement = document.getElementById('img-preview');
+        imgElement.classList.add('object-contain');
+
+
+
+    </script>
+
+
+
+
+{% endblock script %}
+    
+    

@@ -1,0 +1,84 @@
+{% extends 'backend/base.html' %}
+{% load static %}
+
+{% block title %}
+    Add Patient | AH Hospital
+{% endblock title %}
+
+{% block content %}
+<div class="content">
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'patients' %}">Patients </a></li>
+                    <li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
+                    <li class="breadcrumb-item active">Add Patient</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-heading">
+                                    <h4>Add Patient Details</h4>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-xl-6">
+                                <div class="input-block local-forms">
+                                    <label>Full Name <span class="login-danger">*</span></label>
+                                    {{ form.name }}
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-xl-6">
+                                <div class="input-block local-forms">
+                                    <label>Email <span class="login-danger">*</span></label>
+                                    {{ form.email }}
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-xl-6">
+                                <div class="input-block local-forms">
+                                    <label>Phone Number <span class="login-danger">*</span></label>
+                                    {{ form.phone_number }}
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-xl-6">
+                                <div class="input-block local-forms">
+                                    <label>Disease <span class="login-danger">*</span></label>
+                                    {{ form.disease }}
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-xl-3">
+                                <div class="input-block local-forms">
+                                    <label>Gender <span class="login-danger">*</span></label>
+                                    {{ form.gender }}
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="doctor-submit text-end">
+                                    <button type="submit" class="btn btn-primary submit-form me-2">Submit</button>
+                                    <a href="{% url 'patients' %}" class="btn btn-secondary cancel-form">Cancel</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block script %}
+    <script>
+        document.querySelector('.patients_sidebar').classList.add('active')
+        document.querySelector('.add_patients_txt').classList.add('active')
+    </script>
+{% endblock script %}

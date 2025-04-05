@@ -1,0 +1,306 @@
+{% extends 'backend/base.html' %}
+{% load static %}
+
+{% block title %}
+    Add Doctor | AH Hospital
+{% endblock title %}
+
+
+
+{% block head %}
+    <style>
+        .texta__rea textarea {
+            width: 100%;
+            height: 120px;
+            border-radius: 4px;
+            outline: none;
+            box-shadow: none !important;
+            font-size: 15px;
+            padding: 10px;
+            transition: 0.5s ease;
+        }
+        .texta__rea textarea:focus {
+            border: 1px solid #00a6c8;
+            box-shadow: none !important;
+        }
+    </style>
+{% endblock head %}
+    
+    
+
+
+{% block content %}
+<div class="content">
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'doctors' %}">Doctors </a></li>
+                    <li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
+                    <li class="breadcrumb-item active">Add Doctor</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <form method="post" id="create_doctor_form" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-heading">
+                                    <h4>Add Doctor Details</h4>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-xl-6">
+                                <div class="input-block local-forms">
+                                    <label>Full Name <span class="login-danger">*</span></label>
+                                    {{form.name}}
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-xl-6">
+                                <div class="input-block local-forms">
+                                    <label>Designation <span class="login-danger">*</span></label>
+                                    {{form.designation}}
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-xl-4">
+                                <div class="input-block local-forms">
+                                    <label>Department <span class="login-danger">*</span></label>
+                                    {{form.department}}
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-xl-4">
+                                <div class="input-block local-forms">
+                                    <label>Experience in Years <span class="login-danger">*</span></label>
+                                    {{form.experience_years}}
+                                </div>
+                            </div>
+
+                            
+
+                            <div class="col-12 col-md-6 col-xl-4">
+                                <div class="input-block local-forms">
+                                    <label>Priority</label>
+                                    {{form.priority}}
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-6 col-xl-6">
+                                <div class="input-block local-forms">
+                                    <label>Email <span class="login-danger">*</span></label>
+                                    {{form.email}}
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-xl-6">
+                                <div class="input-block local-forms">
+                                    <label>Phone Number <span class="login-danger">*</span></label>
+                                    {{form.number}}
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-xl-3">
+                                <div class="input-block local-forms">
+                                    <label>Gender <span class="login-danger">*</span></label>
+                                    {{form.gender}}
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-xl-3">
+                                <div class="input-block local-forms">
+                                    <label>City <span class="login-danger">*</span></label>
+                                    {{form.city}}
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="col-12 col-md-12 col-xl-6">
+                                <div class="input-block local-forms">
+                                    <label>Education <span class="login-danger">*</span></label>
+                                    {{form.education}}
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-lg-4 col-xlg-4 mb-3 col-12">
+                                <label class="label__banner">Profile Image <span class="login-danger">*</span></label>
+                                <img class="img__preview" id="img-preview" src="{% static 'img/icons/upload.png' %}"/>
+                                <div>
+                                    {{form.photo}}
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label class="label__banner">Detailed description about doctor <span class="login-danger">*</span></label>
+                                <div>
+                                    {{form.description}}
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-12 col-xl-12 mt-3">
+                                <div class="input-block local-forms">
+                                    {{form.show_on_homepage}}
+                                    <span style="font-size: 12px; margin-left: 5px;">Show On Home Page</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-12 col-md-12 col-xl-12">
+                                <div class="input-block select-gender">
+                                    <label class="gen-label">Status <span class="login-danger">*</span></label>
+                                    <div class="form-check form-check-inline">
+                                        <label class="form-check-label">
+                                            <input type="radio" name="status" id="id_status" required value="True" class="form-check-input mt-0"
+                                                {% if form.status.value == 'True' %}checked{% endif %}/> Active
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <label class="form-check-label">
+                                            <input type="radio" name="status" id="id_status" required value="False" class="form-check-input mt-0"
+                                                {% if form.status.value == 'False' %}checked{% endif %}/> Inactive
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-12 col-md-12 col-xl-12">
+                                <div class="input-block local-forms texta__rea">
+                                    <label>Meta Title</label>
+                                    {{form.meta_title}}
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-12 col-xl-12">
+                                <div class="input-block local-forms texta__rea">
+                                    <label>Meta Description</label>
+                                    {{form.meta_description}}
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-12 col-xl-12">
+                                <div class="input-block local-forms texta__rea">
+                                    <label>Meta Keywords</label>
+                                    {{form.meta_keyword}}
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-12">
+                                <div class="input-block local-forms">
+                                    <label>Slug <span class="login-danger">*</span></label>
+                                    {{form.slug}}
+                                </div>
+                            </div>
+
+
+                            <div class="col-12">
+                                <div class="doctor-submit text-end">
+                                    <button type="submit" class="btn btn-primary submit-form me-2">Submit</button>
+                                    <a href="{% url 'doctors' %}" class="btn btn-secondary cancel-form">Cancel</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+    
+
+
+{% block script %}
+    <script>
+        document.querySelector('.doctor_sidebar').classList.add('active')
+        document.querySelector('.add_doctor_txt').classList.add('active')
+
+        document.getElementById("id_fee").setAttribute('placeholder', 'Eg: ₹ 800');
+    </script>
+
+    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var textareas = document.querySelectorAll('textarea#id_description');
+            for (var i = 0; i < textareas.length; ++i) {
+                CKEDITOR.replace(textareas[i].id);          
+            }
+            var textareas = document.querySelectorAll('textarea#id_experience_description');
+            for (var i = 0; i < textareas.length; ++i) {
+                CKEDITOR.replace(textareas[i].id);
+            }
+
+            var textareas = document.querySelectorAll('textarea#id_education_description');
+            for (var i = 0; i < textareas.length; ++i) {
+                CKEDITOR.replace(textareas[i].id);
+                document.querySelectorAll('.cke_notifications_area').forEach((item)=>{
+                    item.classList.add('d-none')
+                })            
+            }
+
+
+            var textareas = document.querySelectorAll('textarea#id_area_of_expertise_description');
+            for (var i = 0; i < textareas.length; ++i) {
+                CKEDITOR.replace(textareas[i].id);
+            }
+
+
+
+            var textareas = document.querySelectorAll('textarea#id_award_description');
+            for (var i = 0; i < textareas.length; ++i) {
+                CKEDITOR.replace(textareas[i].id);
+                document.querySelectorAll('.cke_notifications_area').forEach((item)=>{
+                    item.classList.add('d-none')
+                })            
+            }
+
+
+        });
+    </script>
+
+
+    <script>
+        document.getElementById('create_doctor_form').addEventListener('submit', function(event) {
+            const passwordInput = document.getElementById('id_password').value; // Adjust 'id_password' based on your field name
+            const confirmPasswordInput = document.getElementById('id_confirm_password').value; // Adjust 'id_confirm_password' based on your field name
+
+            if (passwordInput !== confirmPasswordInput) {
+                event.preventDefault();
+                Swal.fire({
+                    title: "Error",
+                    text: "Passowrd do not match",
+                    icon: "error",
+                    confirmButtonText: "OK"
+                });
+            }
+        })
+    </script>
+
+    <script>
+        let noimage =
+        "{% static 'img/icons/upload.png' %}";
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                $("#img-preview").attr("src", e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+
+
+            } else {
+                $("#img-preview").attr("src", noimage);
+            }
+        }
+
+        var imgElement = document.getElementById('img-preview');
+        imgElement.classList.add('object-contain');
+
+
+
+    </script>
+{% endblock script %}

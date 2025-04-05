@@ -1,0 +1,688 @@
+{% extends 'frontend/inner-base.html' %}
+
+{% load static %}
+
+
+{% block title %}
+<title>VSH Hospital: Online Consultation</title>
+{% endblock title %}
+    
+
+{% block head %}
+	<meta name="keywords" content="Hospital overview, Mission and vision, Leadership team, Awards and recognition, Accreditation, Quality standards  Facilities," />
+	<meta name="description" content="Visit VSH Hospital Bangalore for Excellence in Healthcare. Learn more about award-winning care, renowned specialists, &amp; advanced technology." />
+	<link rel="canonical" href="https://vshhospital.com/about" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+
+{% endblock head %}
+    
+
+
+  
+
+{% block content %}
+<div class="online_consultation_banner">
+    <div class="container">
+        <div class="content" style="display: flex ; justify-content: center; align-items: center; flex-direction: column;">
+            <h1>Access Expert Healthcare Anytime, Anywhere with VSH Hospital’s Secure and Convenient Video Consultation Services.</h1>
+            <p>VSH Hospital’s video consultation service lets you connect with expert doctors from home. Enjoy convenient, secure, and private consultations for routine check-ups, follow-ups, or specialized care, ensuring you receive quality medical advice and prescriptions without leaving your home.</p>
+            <img src="{% static 'frontend/images/video-consultation.png' %}" alt="" class="img-fluid">
+        </div>
+
+
+
+        <div class="video__tabs">
+            <!-- Tabs -->
+            <ul class="nav nav-tabs" id="appointmentTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button
+                        class="nav-link active"
+                        id="book-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#book"
+                        type="button"
+                        role="tab"
+                        aria-controls="book"
+                        aria-selected="true"
+                    >
+                    Book Video Consultation
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button
+                        class="nav-link"
+                        id="view-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#view"
+                        type="button"
+                        role="tab"
+                        aria-controls="view"
+                        aria-selected="false"
+                    >
+                        View My Appointments
+                    </button>
+                </li>
+            </ul>
+    
+            <!-- Tab Content -->
+            <div class="tab-content d-none appointment_view" id="appointmentTabContent">
+                <!-- Book Appointment Tab -->
+                <div
+                    class="tab-pane fade show active form___video"
+                    id="book"
+                    role="tabpanel"
+                    aria-labelledby="book-tab"
+                >
+                
+                    <h3>Book Video Consultation</h3>
+                    <button class="logout____btn">Logout</button>
+                    <p>Fill out the form below to book your appointment.</p>
+                    <form id="appointment-form" class="row">
+                        <div class="col-md-4">
+                            <input type="text" name="name" required placeholder="Full Name">
+                        </div>
+                        <div class="col-md-4">
+                            <input type="email" name="email" required placeholder="Email">
+                        </div>
+                        <div class="col-md-4">
+                            <input type="tel" name="phone_number" required id="phon___numb___er" placeholder="Phone Number">
+                        </div>
+                        <div class="col-md-4">
+                            <select id="gender" name="gender" required>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" name="disease" placeholder="Disease">
+                        </div>
+
+                        <div class="col-md-4">
+                            <select id="department" name="department" required>                                
+                                {% for x in departments %}
+                                    <option value="{{x.id}}">{{x.title}}</option>
+                                {% endfor %}
+                                    
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <select id="selected_doctor" name="selected_doctor" required>
+                                <!-- Options will be populated dynamically -->
+                            </select>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="input-group w-100">
+                                <div class="ui calendar w-100" id="date-picker">
+                                    <div class="ui input left icon w-100">
+                                        <i class="calendar icon"></i>
+                                        <input type="text" id="selected-date" name="" class="w-100" placeholder="Select a Date" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Hidden input to display the selected date in date format -->
+                            <input type="date" id="hidden-date-input" name="date" hidden>
+    
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" name="amount" value="" id="feee_doctor" placeholder="Amount" disabled>
+                        </div>
+
+                        <div class="timings" id="timing-options">
+                            <!-- Timing options will be populated dynamically -->
+                        </div>
+                        <p id="no-timings-message" class="text-danger text-center" style="display: none;">No available timings found for this date.</p>
+
+                        <input type="hidden" id="selectedTime" name="schedule_id">
+                        <input type="hidden" id="selectedTimeFormatted" name="selected_time_formatted">
+
+
+                        <div class="col-md-12">
+                            <textarea name="message" id="description" placeholder="Message"></textarea>
+                        </div>
+                        <div class="checkbox_view mt-1">
+                            <div class="inp__ut">
+                                <input class="mb-0" type="checkbox" name="registration_fee" id="registration_fee">
+                                <h6>Pay ₹270 for Initial Registration (Only Once)</h6>
+                            </div>
+                            <p class="mt-2"><span>Terms and Conditions:</span> An additional charge of Rs. 270/- is applicable for patients registering for the first time. If a patient chooses not to register online for the first time, the Rs. 270/- fee will be collected at the hospital.</p>
+                        </div>
+                        <div class="col-md-12">
+                            <button type="submit" class="submit____btn">Book Now</button>
+                        </div>
+                    </form>
+                </div>
+    
+                <!-- View My Appointments Tab -->
+                <div
+                    class="tab-pane fade form___video"
+                    id="view"
+                    role="tabpanel"
+                    aria-labelledby="view-tab"
+                >
+                    <h3>View My Appointments</h3>
+                    <p>Your upcoming and past appointments will be listed here.</p>
+                    <button class="logout____btn">Logout</button>
+
+                    <div class="row">
+                        
+                        {% for detail in my_appointments %}                            
+                            <div class="col-md-4">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+                                <div class="b_____ox">                                                                                                                                                                                                                                                                                                                                                                
+                                    <div class="app___box">
+                                        <div class="img_box">                                                      
+                                            <img src="{{ detail.appointment.selected_doctor.photo.url }}" alt="" class="img-fluid">
+                                        </div>                                                                                                                                                                                                                                                                                                                                                      
+                                        <div class="txt">
+                                            <h6>Dr. {{ detail.appointment.selected_doctor.name }}</h6>
+                                            <p>{{ detail.appointment.selected_doctor.department.title }}</p>
+                                            <p>On {{ detail.appointment.date }} </p>
+                                            <p>
+                                                {% if detail.related_object != 'Timing deleted' %}
+                                                    {{ detail.related_object.start_time|date:"h:i A" }} - {{ detail.related_object.end_time|date:"h:i A" }}
+                                                {% else %}
+                                                    Timing deleted
+                                                {% endif %}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <a href="{% url 'open_video_call' detail.appointment.id %}">
+                                        <button>Join Meeting</button>
+                                    </a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content -->
+            <div class="tab-content login_____form" id="appointmentTabContent">
+                <!-- Book Appointment Tab -->
+                <div
+                    class="tab-pane fade show active login___form form___video"
+                    id="book"
+                    role="tabpanel"
+                    aria-labelledby="book-tab"
+                >
+                    <h3>Login to Book Online Consultation</h3>
+                    <p>Login with OTP</p>
+                    <form id="login-form" class="row">
+                        {% csrf_token %}
+                        <div class="col-md-12">
+                            <input type="tel" name="phone_number" id="phone___number" placeholder="Phone Number">
+                        </div>
+                        <div class="col-md-12">
+                            <input type="number" name="otp" id="otp___number" placeholder="Enter OTP">
+                        </div>
+                        <div class="col-md-12">
+                            <div class="otp-container">
+                                <button class="resend-btn resend__otp d-none" id="resendBtn" onclick="resendOtp()" disabled>Resend OTP <span class="timer" id="timer">45</span></button>
+                                
+                            </div>
+                            <button type="button" class="buttt____on" id="send__otp">Send OTP</button>
+                            <button type="button" class="d-none buttt____on" id="verify__otp">Verify OTP</button>
+                        </div>
+                    </form>
+                    <div id="response"></div>
+                    
+
+                </div>
+    
+            </div>
+
+        </div>
+
+
+    </div>
+</div>    
+{% endblock content %}
+    
+
+
+{% block script %}
+<script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+
+
+<script>
+    function clearLocalStorage() {
+        // Remove the phone and uuid from localStorage
+        localStorage.removeItem("phone");
+        localStorage.removeItem("uuid");
+
+        // Optionally, you can log the removal for debugging
+        console.log("Phone and UUID have been removed from localStorage");
+
+        // You can also add additional actions if needed, like redirecting the user
+        // For example, redirect to the login page or show a message
+        document.querySelector('.login_____form').classList.remove('d-none')
+        document.querySelector('.appointment_view').classList.add('d-none')
+    }
+    document.querySelectorAll('.logout____btn').forEach((item)=>{
+        item.addEventListener('click', clearLocalStorage)
+    })
+
+    let timeLeft = 45;
+    const timerElement = document.getElementById('timer');
+    const resendBtn = document.getElementById('resendBtn');
+    
+    function startTimer() {
+        const countdown = setInterval(() => {
+            timeLeft--;
+            timerElement.textContent = timeLeft;
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                resendBtn.disabled = false; // Enable the resend OTP button
+                resendBtn.textContent = "Resend OTP";
+            }
+        }, 1000);
+    }
+    
+    function resendOtp() {
+        document.querySelector('.resend__otp').classList.remove('d-none')
+        resendBtn.disabled = true; // Disable the resend OTP button
+        timeLeft = 45; // Reset the timer
+        startTimer();
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        // Check if phone and uuid are stored in localStorage
+        const storedPhone = localStorage.getItem("phone");
+        const storedUuid = localStorage.getItem("uuid");
+
+        if (storedPhone && storedUuid) {
+            // If both phone and uuid are found in localStorage, proceed
+            console.log("Phone and UUID found in localStorage:", { phone: storedPhone, uuid: storedUuid });
+            
+            // You can perform actions like skipping OTP verification or auto-filling form fields
+            // For example, you can pre-fill the phone number field or show a confirmation message
+            document.querySelector('.appointment_view').classList.remove('d-none')
+            document.querySelector('.login_____form').classList.add('d-none')
+            document.getElementById('phon___numb___er').value = storedPhone
+            document.getElementById('phon___numb___er').setAttribute('disabled', 'disabled')
+
+            // Optionally, show a message that the user is already verified
+            toastr.info("You are already verified.");
+        } else {
+            // If no phone and uuid are found, show a message or let the user proceed with OTP verification
+            document.querySelector('.login_____form').classList.remove('d-none')
+            document.querySelector('.appointment_view').classList.add('d-none')
+            console.log("No phone or UUID found in localStorage. Please verify your phone.");
+        }
+    });
+
+    // Resend OTP Logic
+    document.querySelector(".resend__otp").addEventListener("click", async function (event) {
+        event.preventDefault();
+
+        const phone = document.getElementById("phone___number").value;
+        const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+        try {
+            const response = await fetch("/send-otp/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": csrfToken,
+                },
+                body: JSON.stringify({
+                    phone: phone,
+                }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                toastr.success(`OTP Resent Successfully`);
+                resendOtp()
+            } else {
+                toastr.error(`Error: ${data.error || "Unknown error"}`);
+            }
+        } catch (error) {
+            toastr.error(`Error: ${error.message}`);
+        }
+    });
+
+    document.getElementById("send__otp").addEventListener("click", async function (event) {
+        event.preventDefault();
+    
+        const phone = document.getElementById("phone___number").value;
+        const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    
+        try {
+            const response = await fetch("/send-otp/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": csrfToken,
+                },
+                body: JSON.stringify({ phone: phone }),
+            });
+    
+            const data = await response.json();
+    
+            if (response.ok) {
+                toastr.success(`OTP Sent Successfully`);
+                document.getElementById("send__otp").classList.add("d-none");
+                document.getElementById("verify__otp").classList.remove("d-none");
+                resendOtp()
+            } else {
+                toastr.error(`Error: ${data.error || "Unknown error"}`);
+            }
+        } catch (error) {
+            toastr.error(`Error: ${error.message}`);
+        }
+    });
+    
+    document.getElementById("verify__otp").addEventListener("click", async function (event) {
+        event.preventDefault();
+
+        const phone = document.getElementById("phone___number").value;
+        const otp = document.getElementById("otp___number").value;
+        const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+        try {
+            const response = await fetch("/verify-otp/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": csrfToken,
+                },
+                body: JSON.stringify({ phone: phone, otp: otp }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                // Display success message
+                toastr.success("OTP Verified Successfully");
+
+                // Store phone and uuid in local storage
+                localStorage.setItem("phone", phone);
+                localStorage.setItem("uuid", data.uuid);
+
+                // Optionally log for debugging
+                console.log("Stored in local storage:", {
+                    phone: localStorage.getItem("phone"),
+                    uuid: localStorage.getItem("uuid"),
+                });
+
+                document.querySelector('.login_____form').classList.add('d-none')
+                document.querySelector('.appointment_view').classList.remove('d-none')
+
+                location.reload()
+                // Optional: Redirect or perform next action
+                // window.location.href = "/next-page/";
+            } else {
+                toastr.error(`Error: ${data.error || "Invalid OTP"}`);
+            }
+        } catch (error) {
+            toastr.error(`Error: ${error.message}`);
+        }
+    });
+    
+
+    
+    // Form submission and payment handling
+    document.getElementById('appointment-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        let doctorFee = document.getElementById('feee_doctor').value
+        let checkoutButton = document.querySelector('.submit____btn')
+        const registrationFee = document.getElementById('registration_fee');
+        const initialRegistrationFee = 270;
+        const phoneNumber = localStorage.getItem("phone");
+        const uu_id = localStorage.getItem("uuid");
+
+        const formData = new FormData(this);
+        const data = Object.fromEntries(formData.entries());
+
+        const selectedDate = document.getElementById('selected-date').value;
+        const selectedTime = document.getElementById('selectedTime').value;
+
+
+        if (!selectedDate) {
+            toastr.error("Please select a date");
+            return;
+        }
+
+        if (!selectedTime) {
+            toastr.error("Please select a time");
+            return;
+        }
+
+        // Add total amount to data
+        const totalAmount = doctorFee + (registrationFee.checked ? initialRegistrationFee : 0);
+        data.total_amount = totalAmount;
+        data.phone_number = phoneNumber
+        data.uu_id = uu_id;
+
+        // Disable the checkout button and show a loading spinner
+        checkoutButton.disabled = true;
+        checkoutButton.innerHTML = ' Processing... <span class="spinner-border"></span>';
+
+
+        console.log(data)
+
+
+        
+        fetch('/api/video/create-appointment/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}',
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            console.log("Full Response:", response);  // Log the full response for debugging
+
+            if (!response.ok) {
+                console.log("Response not OK");
+                return response.text().then(errorMessage => {
+                    console.error("Error message:", errorMessage);
+                    throw new Error(errorMessage);
+                });
+            }
+
+            const contentType = response.headers.get("content-type");
+            console.log("Content-Type:", contentType);
+
+            if (contentType && contentType.includes("application/json")) {
+                return response.json();  // Parse response as JSON
+            } else {
+                return response.text().then(text => {
+                    if (!text) {
+                        throw new Error("Empty response body");
+                    }
+                    console.warn("Non-JSON response:", text);  // Log non-JSON responses
+                    throw new Error("Expected JSON, received non-JSON response");
+                });
+            }
+        })
+        .then(order => {
+            console.log("Parsed Order:", order);  // Log the parsed JSON order
+
+            if (!order.hdfc_payment_url) {
+                throw new Error('Invalid response from server: No payment URL received');
+            }
+
+            // Redirect the user to the HDFC payment page
+            window.location.href = order.hdfc_payment_url;
+        })
+        .catch(error => {
+            console.error('Error:', error.message);
+
+            Swal.fire({
+                title: "Error",
+                text: error.message,
+                icon: "error",
+                confirmButtonText: "OK"
+            });
+        });
+       
+    });
+    </script>
+
+
+
+<script>
+    // Function to format the date to YYYY-MM-DD
+    function formatDateToYYYYMMDD(date) {
+        const d = new Date(date);
+        let month = '' + (d.getMonth() + 1);
+        let day = '' + d.getDate();
+        const year = d.getFullYear();
+
+        if (month.length < 2) month = '0' + month;
+        if (day.length < 2) day = '0' + day;
+
+        return [year, month, day].join('-');
+    }
+
+    // Function to format time
+    const formatTime = time => {
+        let [hour, minute] = time.split(':');
+        hour = parseInt(hour, 10);
+        const ampm = hour >= 12 ? 'PM' : 'AM';
+        hour = hour % 12 || 12;
+        minute = minute.padStart(2, '0'); // Ensure minute is two digits
+        return `${hour}:${minute} ${ampm}`;
+    };
+
+    // Initialize Flatpickr
+    flatpickr("#date-picker input", {
+        dateFormat: "Y-m-d",
+        minDate: "today",  // Disable dates before today
+        onChange: function(selectedDates, dateStr) {
+            document.getElementById('selected-date').value = dateStr;
+            document.getElementById('selectedTime').value = ''; // Clear selected time if date changes
+            document.getElementById('selectedTimeFormatted').value = ''; // Clear formatted time
+            document.getElementById('hidden-date-input').value = dateStr;
+            fetchTimings();
+        }
+    });
+</script>
+
+<script>
+
+        // Function to fetch doctors by department
+        function fetchDoctorsByDepartment(departmentId) {
+            fetch(`/api/doctors/department/?department_id=${departmentId}`)
+                .then(response => response.json())
+                .then(data => {
+                    const doctorSelect = document.getElementById('selected_doctor');
+                    doctorSelect.innerHTML = '';
+                    data.forEach(doctor => {
+                        const option = document.createElement('option');
+                        option.value = doctor.id;
+                        option.textContent = doctor.name;
+                        option.dataset.fee = doctor.fee; // Store the doctor's fee in a data attribute
+                        document.getElementById('feee_doctor').value = doctor.fee; 
+                        doctorSelect.appendChild(option);
+                    });
+                    fetchTimings()
+                    // Reattach event listener after updating doctor options
+                })
+                .catch(error => console.error('Error fetching doctors:', error));
+        }
+
+
+        
+    // Function to fetch available timings
+    function fetchTimings() {
+        console.log("Coming Here")
+        const date = document.getElementById('hidden-date-input').value
+        const doctorId = document.getElementById('selected_doctor').value;
+        const url = `/api/check-timings/${doctorId}/${date}/`;
+
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                
+                const timingOptionsContainer = document.getElementById('timing-options');
+                timingOptionsContainer.innerHTML = '';  // Clear previous options
+                const noTimingsMessage = document.getElementById('no-timings-message');
+                noTimingsMessage.style.display = 'none';
+                
+                if(data.error){
+                    noTimingsMessage.style.display = 'block';
+                    noTimingsMessage.innerText = data.error
+                }
+                // Process monthly timings
+                if (data.timings.monthly_timings.length > 0) {
+                    data.timings.monthly_timings.forEach(timing => {
+                        const div = document.createElement('div');
+                        div.className = 'timing-option';
+                        div.dataset.value = timing.uuid;
+                        div.dataset.time = `${formatTime(timing.start_time)} to ${formatTime(timing.end_time)}`;
+                        div.innerText = div.dataset.time;
+                        div.addEventListener('click', () => selectTiming(div));
+                        timingOptionsContainer.appendChild(div);
+                    });
+                }
+
+                // Process weekly timings
+                if (data.timings.weekly_timings.length > 0) {
+                    data.timings.weekly_timings.forEach(timing => {
+                        const div = document.createElement('div');
+                        div.className = 'timing-option';
+                        div.dataset.value = timing.uuid;
+                        div.dataset.time = `${formatTime(timing.start_time)} to ${formatTime(timing.end_time)}`;
+                        div.innerText = div.dataset.time;
+                        div.addEventListener('click', () => selectTiming(div));
+                        timingOptionsContainer.appendChild(div);
+                    });
+                }
+
+                if (data.timings.monthly_timings.length === 0 && data.timings.weekly_timings.length === 0) {
+                    noTimingsMessage.style.display = 'block';
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching timings:', error);
+                const timingOptionsContainer = document.getElementById('timing-options');
+                timingOptionsContainer.innerHTML = '';
+            });
+    }
+
+
+            // Event listener for department select change
+        document.getElementById('department').addEventListener('change', function() {
+            const departmentId = this.value;
+            fetchDoctorsByDepartment(departmentId);
+        });
+        // Event listener for department select change
+        document.getElementById('selected_doctor').addEventListener('change', function() {
+            fetchTimings()
+        });
+
+        // Initial fetch of doctors for the selected department
+        fetchDoctorsByDepartment(document.getElementById('department').value);
+
+
+
+    // Function to select timing
+    function selectTiming(element) {
+        const timingOptions = document.querySelectorAll('.timing-option');
+        const selectedTimeInput = document.getElementById('selectedTime');
+        const selectedTimeFormattedInput = document.getElementById('selectedTimeFormatted');
+
+        timingOptions.forEach(option => option.classList.remove('active'));
+        element.classList.add('active');
+        selectedTimeInput.value = element.dataset.value; // Store UUID
+        selectedTimeFormattedInput.value = element.dataset.time; // Store formatted time for display
+    }
+
+</script>
+{% endblock script %}
+    

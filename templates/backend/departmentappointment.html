@@ -1,0 +1,140 @@
+{% extends 'backend/base.html' %}
+{% load static %}
+
+
+{% block title %}
+    Campaign Appointments | AH Hospital
+{% endblock title %}
+    
+
+{% block content %}
+<div class="content">
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard </a></li>
+                    <li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
+                    <li class="breadcrumb-item active">Campaign Appointments</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card card-table show-entire">
+                <div class="card-body">
+                    <div class="page-table-header mb-2">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <div class="doctor-table-blk">
+                                    <h3>Campaign Appointments</h3>
+                                    <div class="doctor-search-blk">
+                                        <div class="top-nav-search table-search-blk">
+                                            <form>
+                                                <input id="search-input" type="text" class="form-control" placeholder="Search here" />
+                                                <a class="btn"><img src="{% static 'img/icons/search.png' %}" style="width: 15px" alt /></a>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table id="banners-table" class="table border-0 custom-table comman-table datatable mb-0">
+                            <thead>
+                                <tr>
+                                    <th>SI NO</th>
+                                    <th>Full Name</th>
+                                    <th>Mobile</th>
+                                    <th>Department</th>
+                                    <th>Date</th>
+                                    <th>View</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for x in appointments %}
+                                    <tr>
+                                        <td><span>{{forloop.counter}}</span></td>
+                                        <td>{{ x.name}}</td>
+                                        <td>{{ x.number}}</td>
+                                        <td>{{ x.department}}</td>
+                                        <td>{{x.created_at}}</td>
+                                        <td>
+                                            <a href="{% url 'campaign_appointments_view' x.id %}">
+                                                <i class="fa-regular fa-eye"></i> View Details
+                                            </a>
+                                        </td>
+
+                                        
+                                        
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="empty-view" class="empty_view d-none">
+                        <img src="{% static 'img/empty.jpg' %}" alt="">
+                        <h4>No Appointments Found</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+    
+
+
+
+
+
+{% block script %}
+<script>
+    document.querySelector('.campaign_sidebar').classList.add('active')
+</script>
+
+
+
+
+
+    <script>
+        function updateEmptyView() {
+            const rows = document.querySelectorAll('#banners-table tbody tr');
+            const emptyView = document.getElementById('empty-view');
+            const anyVisible = Array.from(rows).some(row => row.style.display !== 'none');
+            if (anyVisible) {
+                emptyView.classList.add('d-none');
+            } else {
+                emptyView.classList.remove('d-none');
+            }
+        }
+
+        document.getElementById('search-input').addEventListener('input', function () {
+            const filter = this.value.toLowerCase();
+            const rows = document.querySelectorAll('#banners-table tbody tr');
+            rows.forEach(row => {
+                const heading = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+                const description = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
+                const buttonText = row.querySelector('td:nth-child(4)').textContent.toLowerCase();
+                if (heading.includes(filter) || description.includes(filter) || buttonText.includes(filter)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+            updateEmptyView();
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            updateEmptyView();
+        });
+    </script>
+{% endblock script %}
+    

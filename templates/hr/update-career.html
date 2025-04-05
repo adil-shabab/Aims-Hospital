@@ -1,0 +1,156 @@
+{% extends 'hr/base.html' %}
+
+{% load static %}
+
+
+{% block title %}
+    Update Career | AH Hospital
+{% endblock title %}
+    
+
+
+{% block content %}
+<div class="content">
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'hr_careers' %}">Careers </a></li>
+                    <li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
+                    <li class="breadcrumb-item active">Update Career Post</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-heading">
+                                    <h4>Add Career Details</h4>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-block local-forms">
+                                    <label>Job Title <span class="login-danger">*</span></label>
+                                    {{ form.job_title }}
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <div class="input-block local-forms">
+                                    <label>Department <span class="login-danger">*</span></label>
+                                    {{ form.department }}
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="input-block local-forms">
+                                    <label>Experience in Years<span class="login-danger">*</span></label>
+                                    {{ form.experience }}
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="input-block local-forms">
+                                    <label>Salary in LPA <span class="login-danger">*</span></label>
+                                    {{ form.salary }}
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="input-block local-forms">
+                                    <label>Qualifications <span class="login-danger">*</span></label>
+                                    {{ form.qualifications }}
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-12">
+                                <label class="label__banner">Job Summary <span class="login-danger">*</span></label>
+                                <div>
+                                    {{form.job_summary}}
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-12 mt-4">
+                                <label class="label__banner">Skills Required <span class="login-danger">*</span></label>
+                                <div>
+                                    {{form.skills}}
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 mt-4">
+                                <label class="label__banner">Responsibilities <span class="login-danger">*</span></label>
+                                <div>
+                                    {{form.responsibilities}}
+                                </div>
+                            </div>
+                           
+
+                            <div class="form-group col-12 col-md-6 col-xl-6 mt-3">
+                                <div class="input-block select-gender">
+                                    <label class="gen-label">Status <span class="login-danger">*</span></label>
+                                    <div class="form-check form-check-inline">
+                                        <label class="form-check-label">
+                                            <input type="radio" name="status" id="id_status" required value="True" class="form-check-input mt-0"
+                                                {% if form.status.value == 'True' %}checked{% endif %}/> Active
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <label class="form-check-label">
+                                            <input type="radio" name="status" id="id_status" required value="False" class="form-check-input mt-0"
+                                                {% if form.status.value == 'False' %}checked{% endif %}/> Inactive
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="doctor-submit text-end">
+                                    <button type="submit" class="btn btn-primary submit-form me-2">Submit</button>
+                                    <a href="{% url 'hr_careers' %}" class="btn btn-secondary cancel-form">Cancel</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+    
+
+
+{% block script %}
+    <script>
+        document.querySelector('.hr_career_sidebar').classList.add('active')
+        document.querySelector('.hr_add_career_txt').classList.add('active')
+    </script>
+
+    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var textareas = document.querySelectorAll('textarea');
+            for (var i = 0; i < textareas.length; ++i) {
+                CKEDITOR.replace(textareas[i].id);
+            }
+
+
+            document.querySelector('#cke_notifications_area_id_job_summary').classList.add('d-none')
+            document.querySelector('#cke_notifications_area_id_responsibilities').classList.add('d-none')
+            document.querySelector('#cke_notifications_area_id_skills').classList.add('d-none')
+        });
+
+
+
+    </script>
+
+    
+
+    
+
+{% endblock script %}

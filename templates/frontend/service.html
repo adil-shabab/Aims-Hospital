@@ -1,0 +1,306 @@
+{% extends 'frontend/inner-base.html' %}
+
+{% load static %}
+{% load custom_filters %}
+
+
+
+{% block title %}
+    {% if doctor.meta_title %}
+    <title>{{doctor.meta_title}}</title>
+    {% else %}
+    <title>Department | AH Hospital</title>
+    {% endif %}
+    {% if doctor.meta_description %}
+    <meta name="description" content="{{doctor.meta_description}}">   
+    {% endif %}
+    {% if doctor.meta_keyword %}
+    <meta name="keywords" content="{{doctor.meta_keyword}}">
+    {% endif %}
+{% endblock title %}
+
+
+{% block head %}
+<style>
+    .subpage-header{
+        position: relative;
+    }
+    .subpage-header::after{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-color: rgba(0, 0, 0, 0.432); 
+    }
+    .subpage-header-box ol{
+        justify-content: flex-start !important;
+    }
+    .subpage-header-box {
+        max-width: unset !important;
+        margin: unset !important;
+        text-align: unset !important;
+    }
+</style>
+{% endblock head %}
+    
+
+
+{% block content %}
+    
+
+
+    <!-- Subpage Header Start -->
+    <div class="subpage-header" 
+    style="background: 
+           {% if department.breadcamp and not department.breadcamp.url|endswith:'default.png' %}
+               url({{ department.breadcamp.url }})
+           {% else %}
+           #164e92d0
+           {% endif %}; 
+           padding: 70px 0px; 
+           background-size: cover; 
+           background-position: center; 
+           background-repeat: no-repeat;">
+
+       <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Sub page Header start -->
+                    <div class="subpage-header-box">
+                        <h1 class="text-anime-style-1">{{department.title}}</h1>
+                        <ol class="breadcrumb wow fadeInUp">
+                            <li><a href="{% url 'homepage' %}">Home</a></li>
+                            <li>Services</li>
+                        </ol>
+                    </div>
+                    <!-- Sub page Header End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Subpage Header End -->
+
+
+
+
+
+        <!-- service details area start -->
+    <div class="service-details rts-section-gap">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9 pr--40 pr_md--10 pr_sm--15">
+                    <div class="service-details-left-wrapper">
+                        <div class="thumbnail-large-service">
+                            <img src="{{department.banner.url}}" alt="service">
+                        </div>
+                        <h3 class="title mt--35">{{department.title}}</h3>
+                        <div class="content_view">
+                            {{department.description | safe}}
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="col-lg-3">
+
+                    <div class="single-rightsidebar-single">
+                        <div class="doctor-title-table">
+                            <div class="top">
+                                <h5 class="title">Doctor TimeTable</h5>
+                                <p class="disc">
+                                    doctor's timetable, or schedule, is an organized plan detailing when a physician
+                                    will be available.
+                                </p>
+                                <a href="{% url 'about' %}" class="rts-btn btn-primary btn-border">About Us</a>
+                                <img class="move-down" src="{% static 'frontend/assets/images/service/icon/11.png' %}" alt="">
+                            </div>
+                            <div class="bottom">
+                                <h5 class="title">
+                                    Doctor TimeTable
+                                </h5>
+                                <div class="single-table pt--0">
+                                    <span>Monday - Friday</span>
+                                    <span>8:00 - 4:00</span>
+                                </div>
+                                <div class="single-table">
+                                    <span>Monday - Friday</span>
+                                    <span>8:00 - 4:00</span>
+                                </div>
+                                <div class="single-table">
+                                    <span>Monday - Friday</span>
+                                    <span>8:00 - 4:00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="single-rightsidebar-single">
+                        <div class="thumbnail-image-right-cardio">
+                            <img src="{% static 'frontend/assets/images/service/14.png' %}" alt="service">
+
+                            <div class="inner">
+                                <h3 class="title">
+                                    Trust Your Heart to the Experts
+                                </h3>
+                                <a href="#" class="rts-btn btn-primary btn-white">Call Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-5 mt--30 meet-doctor-area-sd">
+                <div class="col-lg-12">
+                    <h4 class="title" style="font-size: 36px;">Meet Our Doctors</h4>
+                </div>
+                {% for doctor in doctors %}
+                <div class="col-lg-3 col-md-4 col-sm-6 col-12 wow fadeInUp" data-wow-delay=".2s" data-wow-duration=".8s">
+                    <div class="single-team-area-start">
+                        <a href="{% url 'single_doctor' doctor.slug %}" class="thumbnail">
+                            <img src="{{doctor.photo.url}}" alt="team">
+                        </a>
+                        <div class="bottom">
+                            <a href="{% url 'single_doctor' doctor.slug %}">
+                                <h6 class="title">Dr. {{doctor.name}}</h6>
+                            </a>
+                            <p>{{doctor.department.title}}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+    <!-- service details area end -->
+
+
+    
+    {% include 'frontend/include/cta-two.html' %}
+
+    {% include 'frontend/include/blogs.html' %}
+
+
+    
+{% endblock content %}
+    
+
+
+{% block script %}
+
+    <script>
+        document.querySelector('.services').classList.add('active')
+    </script>
+
+    <style>
+        .team-body{
+            padding: 32px 30px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin-top: -15px;
+            border: 1px solid #dadada57;
+        }
+        .team-body button{
+            width: 100%;
+            border: none;
+            outline: none;
+            background-color: #e6e7e6;
+            color: black;
+            font-family: 'DM Sans', sans-serif;
+            padding: 9px;
+            border-radius: 5px;
+            transition: 0.5s ease;
+        }
+        .team-body button:hover{
+            color: white;
+            background-color: #00a6c8;
+        }
+        
+    </style>
+{% endblock script %}
+    
+
+
+
+{% block secondscript %}
+<script>
+    if(document.querySelector('#diet___plan') !== null){
+            $('#diet___plan').slick({
+                margin:10,
+                dots: true,
+                infinite: true,
+                // autoplay:true,
+                autoPlayTimeout:2000,
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                arrows: false,
+                responsive: [
+                    {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                        infinite: true,
+                        dots: true
+                    }
+                    },
+                    {
+                    breakpoint: 900,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1
+                    }
+                    },
+                    {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                    }
+                ]
+            });
+            }
+
+
+    if(document.querySelector('#recipes____section') !== null){
+            $('#recipes____section').slick({
+                margin:10,
+                dots: true,
+                infinite: true,
+                // autoplay:true,
+                autoPlayTimeout:2000,
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                arrows: false,
+                responsive: [
+                    {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2,
+                        infinite: true,
+                        dots: true
+                    }
+                    },
+                    {
+                    breakpoint: 900,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                    },
+                    {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                    }
+                ]
+            });
+            }
+
+</script>
+{% endblock secondscript %}
+    

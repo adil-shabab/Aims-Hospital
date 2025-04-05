@@ -1,0 +1,117 @@
+{% extends 'doctor/base.html' %}
+{% load static %}
+
+{% block title %}
+    {{ detailed_appointment.appointment.selected_doctor.name }}'s Appointment | AH Hospital
+{% endblock title %}
+
+{% block content %}
+<div class="content">
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'doctor__appointments' %}">Appointment</a></li>
+                    <li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
+                    <li class="breadcrumb-item active">View {{ detailed_appointment.appointment.patient.name }}'s Appointment</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <form id="appointment-form" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-heading">
+                                    <h4>Appointment Details</h4>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-xl-6">
+                                <div class="input-block local-forms">
+                                    <label>Patient Name</label>
+                                    <input class="form-control" type="text" id="name" name="name" value="{{ detailed_appointment.appointment.patient.name }}" readonly>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-xl-6">
+                                <div class="input-block local-forms">
+                                    <label>Disease</label>
+                                    <input class="form-control" type="text" id="disease" name="disease" value="{{ detailed_appointment.appointment.patient.disease }}" readonly>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-xl-6">
+                                <div class="input-block local-forms">
+                                    <label>Phone Number</label>
+                                    <input class="form-control" type="text" id="phone_number" name="phone_number" value="{{ detailed_appointment.appointment.patient.phone_number }}" readonly>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-xl-6">
+                                <div class="input-block local-forms">
+                                    <label>Email</label>
+                                    <input class="form-control" type="email" id="email" name="email" value="{{ detailed_appointment.appointment.patient.email }}" readonly>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-xl-4">
+                                <div class="input-block local-forms">
+                                    <label>Date</label>
+                                    <input class="form-control" type="text" id="date" name="date" value="{{ detailed_appointment.formatted_date }}" readonly>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-xl-4">
+                                <div class="input-block local-forms">
+                                    <label>Department</label>
+                                    <input class="form-control" type="text" id="department" name="department" value="{{ detailed_appointment.appointment.selected_doctor.department.title }}" readonly>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-xl-4">
+                                <div class="input-block local-forms">
+                                    <label>Doctor</label>
+                                    <input class="form-control" type="text" id="selected_doctor" name="selected_doctor" value="{{ detailed_appointment.appointment.selected_doctor.name }}" readonly>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-12 col-xlg-12">
+                                <div class="input-block local-forms">
+                                    <label>Message</label>
+                                    <textarea style="height: 150px;" class="form-control" id="message" name="message" readonly>{{ detailed_appointment.appointment.message }}</textarea>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4 col-xl-4">
+                                <div class="input-block local-forms">
+                                    <label>Gender</label>
+                                    <input class="form-control" type="text" id="gender" name="gender" value="{{ detailed_appointment.appointment.patient.gender }}" readonly>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4 col-xl-4">
+                                <div class="input-block local-forms">
+                                    <label>Time</label>
+                                    <input class="form-control" type="text" id="time" name="time" value="{{ detailed_appointment.timing_details }}" readonly>
+                                </div>
+                            </div>
+                            
+                            
+                            {% if detailed_appointment.appointment.is_video %}
+                            <div class="col-12 col-md-4 col-xl-4">
+                                <a href="{% url 'doctor__online_consultation' detailed_appointment.appointment.id %}" class="input-block local-forms">
+                                    <button style="background: #00a6c8; color: white; padding: 8px 15px; border-radius: 3px; border: none;">Open Meet</button>
+                                </a>
+                            </div>
+                            {% endif %}
+                                
+                            
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block script %}
+<script>
+    document.querySelector('.doctor_appointment_sidebar').classList.add('active')
+</script>
+{% endblock script %}

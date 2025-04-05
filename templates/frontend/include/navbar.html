@@ -1,0 +1,290 @@
+{% load static %}
+
+
+    <!-- header area start -->
+    <!-- header area start -->
+    <header class="d-md-block d-none header-one  header--sticky">
+        <div class="header-top-area">
+            <div class="container-full-header">
+                <div class="col-lg-12">
+                    <div class="header-top">
+                        <div class="left">
+                            <div class="map-area">
+                                <i class="fa-sharp fa-regular fa-location-dot"></i>
+                                <a href="#">Nagamangala Taluk, Dist, B.G Nagara, Karnataka 571448</a>
+                            </div>
+                            <!-- <div class="map-area">
+                                <i class="fa-light fa-clock"></i>
+                                <a href="#">24*7 will be open</a>
+                            </div> -->
+                        </div>
+                        <div class="right">
+                            <div class="map-area">
+                                <i class="fa-regular fa-phone"></i>
+                                <a href="tel://+919945558579">Emergency Line: +91 9945558579</a>
+                            </div>
+                            <div class="social-area-tranaparent">
+                                <span>Follow Us-</span>
+                                <ul>
+                                    <li><a href="https://www.facebook.com/profile.php?id=100089936178792"><i class="fa-brands fa-facebook-f"></i></a></li>
+                                    <li><a href="https://www.linkedin.com/company/105876151/admin/dashboard/"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                                    <li><a href="https://www.youtube.com/?sttick=0"><i class="fa-brands fa-youtube"></i></a></li>
+                                    <li><a href="https://www.instagram.com/adichunchanagiri_hospital/"><i class="fa-brands fa-instagram"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-full-header">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="header-wrapper-1">
+                        <div class="logo-area-start">
+                            <a href="{% url 'homepage' %}" class="logo">
+                                <img src="{% static 'img/logo.png' %}" class="logo_area_logo" alt="logo_area">
+                            </a>
+                            <div class="nav-area">
+                                <ul class="">
+                                    <li class="main-nav">
+                                        <a href="{% url 'homepage' %}">Home</a>
+                                    </li>
+                                    <li class="main-nav">
+                                        <a href="{% url 'about' %}">About Us</a>
+                                    </li>
+                                    <li class="main-nav">
+                                        <a href="{% url 'services' %}">Services</a>
+                                    </li>
+
+
+                                    
+                                    <!-- <li class="main-nav has-dropdown mega-menu">
+                                        <a href="#">Service</a>
+                                        <div class="rts-mega-menu with-add">
+                                            <div class="wrapper">
+                                                <div class="row g-0">
+                                                    <div class="col-lg-9">
+                                                        <div class="menu-add-top-area">
+                                                            <h5 class="title">Our Treatments</h5>
+                                                        </div>
+                                                        <div class="row pl--30 pt--30">
+                                                            <div class="col-lg-3">
+                                                                <ul class="mega-menu-item">
+                                                                    <li>
+                                                                        <a href="#">
+                                                                            <img src="{% static 'frontend/assets/images/service/09.svg' %}" alt="service">Cardiology</a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#">
+                                                                            <img src="{% static 'frontend/assets/images/service/11.svg' %}" alt="service">Dental Care</a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#">
+                                                                            <img src="{% static 'frontend/assets/images/service/10.svg' %}" alt="service">Neurology</a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#">
+                                                                            <img src="{% static 'frontend/assets/images/service/12.svg' %}" alt="service">Mental Health</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <ul class="mega-menu-item">
+                                                                    <li>
+                                                                        <a href="#">
+                                                                            <img src="{% static 'frontend/assets/images/service/14.svg' %}" alt="service">Orthopedics</a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#">
+                                                                            <img src="{% static 'frontend/assets/images/service/13.svg' %}" alt="service">Medicine</a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#">
+                                                                            <img src="{% static 'frontend/assets/images/service/15.svg' %}" alt="service">Comprehensive</a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#">
+                                                                            <img src="{% static 'frontend/assets/images/service/16.svg' %}" alt="service">Gynecology</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <ul class="mega-menu-item">
+                                                                    <li>
+                                                                        <a href="#">
+                                                                            <img src="{% static 'frontend/assets/images/service/24.svg' %}" alt="service">Kidney
+                                                                            Transplant</a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#">
+                                                                            <img src="{% static 'frontend/assets/images/service/25.svg' %}" alt="service">Medicine</a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#">
+                                                                            <img src="{% static 'frontend/assets/images/service/26.svg' %}" alt="service">Cancer Care</a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#">
+                                                                            <img src="{% static 'frontend/assets/images/service/27.svg' %}" alt="service">Radiology</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <ul class="mega-menu-item">
+                                                                    <li>
+                                                                        <a href="service.html">
+                                                                            <img src="{% static 'frontend/assets/images/service/10.svg' %}" alt="service">Service</a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#">
+                                                                            <img src="{% static 'frontend/assets/images/service/10.svg' %}" alt="service">Service
+                                                                            Details</a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="service-details-2.html">
+                                                                            <img src="{% static 'frontend/assets/images/service/10.svg' %}" alt="service">Service
+                                                                            Details v2</a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="service-details-3.html">
+                                                                            <img src="{% static 'frontend/assets/images/service/10.svg' %}" alt="service">Service
+                                                                            Details v3</a>
+                                                                    </li>
+
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <div class="menu-right-add">
+                                                            <img src="assets/images/menu/01.webp" alt="">
+                                                            <div class="absolute-image">
+                                                                <img src="assets/images/menu/02.webp" alt="">
+                                                                <div class="inner-content">
+                                                                    <h3 class="title">
+                                                                        Trust Your Heart to <br> The Experts
+                                                                    </h3>
+                                                                    <a href="appoinment.html" class="rts-btn btn-primary">Appointment</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li> -->
+
+                                    <li class="main-nav">
+                                        <a href="{% url 'frontend_doctors' %}">Doctors</a>
+                                    </li>
+                                    <li class="main-nav">
+                                        <a href="{% url 'frontend_blogs' %}">Blogs</a>
+                                    </li>
+
+
+                                    <li class="main-nav"><a href="{% url 'contact' %}">Contact</a></li>
+
+                                    <li class="has-dropdown main-nav">
+                                        <a href="#">More</a>
+                                        <ul class="submenu parent-nav">
+                                            <li><a href="{% url 'gallery_frontend' %}">Gallery</a></li>
+                                            <li><a href="{% url 'frontend_health_checkups' %}">Health Checkups</a></li>
+                                            <li><a href="{% url 'frontend_careers' %}">Careers</a></li>
+                                            <li><a href="{% url 'facilities' %}">Special Services</a></li>
+                                            <li><a href="{% url 'insurance' %}">AH Schemes, Insurance & TPA Details</a></li>
+                                            <li><a href="{% url 'patient' %}">Patient Rights & Responsibilities</a></li>
+                                            <li><a href="{% url 'patient_feedback' %}">Patient Feedback system</a></li>
+                                            <li><a target="_blank" href="https://ah.bgsaims.edu.in/Chet/login">HIMS</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="header-right">
+
+                            <!-- <div class="cart-button">
+                            <i class="fa-light fa-cart-shopping"></i>
+                        </div> -->
+                            <a href="{% url 'frontend_doctors' %}" class="rts-btn btn-primary">Appointment <img src="assets/images/banner/icons/arrow--up-right.svg" alt=""></a>
+                            <div class="menu-btn" id="menu-btn">
+                                <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect y="14" width="20" height="2" fill="#1F1F25"></rect>
+                                    <rect y="7" width="20" height="2" fill="#1F1F25"></rect>
+                                    <rect width="20" height="2" fill="#1F1F25"></rect>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header area end -->
+    <!-- header area end -->
+
+
+
+
+
+
+<header class="d-md-none d-block">
+    <div class="navbar__mobile">
+        <div class="container">
+            <div class="navbar_logo">
+                <a href="{% url 'homepage' %}">
+                    <img class="logo" src="{% static 'images/logo.png' %}" alt="">
+                </a>
+                <img type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" class="icon" src="{% static 'img/menu.png' %}" alt="">
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div class="offcanvas mobile__offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+      <img src="{% static 'img/logo.png' %}" alt="" class="logo">
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body navbar__mobile_links">
+        <a href="{% url 'homepage' %}" class="link home">Home</a>
+        <a href="{% url 'about' %}" class="link about">About</a>
+        <a href="{% url 'services' %}" class="link about">Services</a>
+        <a href="{% url 'frontend_doctors' %}" class="link doctors">Doctors</a>
+
+        
+        <a href="{% url 'facilities' %}" class="link facilities" id="international_patient">Our Super Sevices</a>
+        <a href="{% url 'frontend_blogs' %}" class="link blogs">Blogs</a>
+        <a href="{% url 'gallery_frontend' %}" class="link" id="gallery">Gallery</a>
+        <a href="{% url 'frontend_careers' %}" class="link" id="careers">Careers</a>
+        <a href="{% url 'frontend_health_checkups' %}" class="link" id="careers">Health Checkups</a>
+        <a href="{% url 'insurance' %}" class="link" id="careers">AH Schemes, Insurance & TPA Details</a>
+        <a href="{% url 'patient' %}" class="link" id="careers">Patient Rights & Responsibilities</a>
+        <a href="{% url 'patient_feedback' %}" class="link" id="careers">Patient Feedback system</a>
+        <a href="https://ah.bgsaims.edu.in/Chet/login" class="link" target="_blank" id="careers">HIMS</a>
+        <a href="{% url 'contact' %}" class="link contact">Contact</a>
+
+
+        <div class="emergency">
+            <dotlottie-player src="https://lottie.host/1c0a4bcf-aae9-4ffd-a234-68b47fb27736/zAmCkbm0nH.json" background="transparent" speed="3" class="lottie_icon" loop autoplay></dotlottie-player>
+            <div>
+                <span class="bold">Emergency : +91 9945558579</span>
+                <span>AH Lifeline : +91 9900758946</span>
+            </div>
+        </div>
+
+    </div>
+  </div>
+
+
+
+
+  <script>
+
+
+    document.querySelector('.drop_icon').addEventListener('click', function(){
+        document.querySelector('.services__mobile').classList.toggle('d-none')
+    })
+
+</script>

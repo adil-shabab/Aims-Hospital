@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
+        <link rel="icon" href="{% static 'images/favicon.png' %}">
+        <title>
+            
+            {% block title %}
+                
+            {% endblock title %}
+                
+        </title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" />
+
+        <link rel="stylesheet" href="{% static 'plugins/fontawesome/css/fontawesome.min.css' %}" />
+        <link rel="stylesheet" href="{% static 'plugins/fontawesome/css/all.min.css' %}" />
+
+        <link rel="stylesheet" type="text/css" href="{% static 'css/select2.min.css' %}" />
+
+        <link rel="stylesheet" href="{% static 'plugins/datatables/datatables.min.css' %}" />
+
+        <link rel="stylesheet" href="{% static 'css/feather.css' %}" />
+
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+
+        
+        {% block head %}
+            
+        {% endblock head %}
+            
+    </head>
+    <body>
+        <div class="main-wrapper">
+            <div class="header">
+                <div class="header-left">
+                    <a href="{% url 'media_dashboard' %}" class="logo"> <img src="{% static 'img/logo.png' %}" style="width: 180px" class="img-fluid" alt /> </a>
+                </div>
+                <a id="toggle_btn" href="javascript:void(0);"><img src="{% static 'img/icons/menu.png' %}" style="width: 30px;" alt /></a>
+                <a id="mobile_btn" class="mobile_btn float-start" href="#sidebar"><img src="{% static 'img/icons/menu.png' %}" style="width: 30px;" alt /></a>
+                <div class="top-nav-search mob-view">
+                    <form>
+                        <input type="text" class="form-control" placeholder="Search here" />
+                        <a class="btn"><img src="{% static 'img/icons/search.png' %}" style="width: 15px;" alt /></a>
+                    </form>
+                </div>
+                <ul class="nav user-menu float-end">
+                    <li class="nav-item dropdown d-none d-md-block">
+                        <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+                            <img src="{% static 'img/icons/email.png' %}" style="width: 22px;" alt />
+                            <span class="pulse"></span>
+                            
+                        </a>
+                        <div class="dropdown-menu notifications">
+                            <div class="topnav-dropdown-header">
+                                <span>Notifications</span>
+                            </div>
+                            <div class="drop-scroll">
+                                <ul class="notification-list" id="notification-list">
+                                    <!-- Notifications will be appended here by JavaScript -->
+                                </ul>
+                            </div>
+                            <div class="topnav-dropdown-footer">
+                                <a href="#" id="mark-all-read">Mark as Read All</a>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li class="nav-item dropdown has-arrow user-profile-list">
+                        <a href="#" class="dropdown-toggle nav-link user-link" data-bs-toggle="dropdown">
+                            <div class="user-names">
+                                <h5 style="text-transform: capitalize;">{{request.user.username}}</h5>
+                                <span>Media Team</span>
+                            </div>
+                            <span class="user-img">
+                                <img src="{% static 'img/user.jpg' %}" alt="Admin" />
+                            </span>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="{% url 'logout_user' %}">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+                <div class="dropdown mobile-user-menu float-end">
+                    <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical"></i></a>
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <a class="dropdown-item" href="{% url 'logout_user' %}">Logout</a>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar" id="sidebar">
+                <div class="sidebar-inner slimscroll">
+                    <div id="sidebar-menu" class="sidebar-menu">
+                        <ul class="main">
+                            <div class="sidebar__box dashboard_sidebar">
+                                <a href="{% url 'media_dashboard' %}">
+                                    <span class="menu-side"><img src="{% static 'img/icons/dashboard.png' %}" style="width: 18px;" alt /></span> <span> Dashboard </span>
+                                </a>
+                            </div>
+
+                            
+                            <div class="sidebar__box messages_sidebar">
+                                <a href="{% url 'media_messages' %}">
+                                    <span class="menu-side"><img src="{% static 'img/icons/message.png' %}" style="width: 18px;" alt /></span> <span> Messages </span>
+                                </a>
+                            </div>
+
+
+                            <li class="submenu health_checkup_sidebar">
+                                <a href="#">
+                                    <span class="menu-side"><img src="{% static 'img/icons/department.png' %}" style="width: 18px;" alt /></span> <span> Health Checkup </span> <span class="menu-arrow"></span>
+                                </a>
+                                <ul style="display: none;">
+                                    <li><a class="health_checkup_txt" href="{% url 'media_health_checkup_plans' %}">Checkup Plans</a></li>
+                                    <li><a class="add_health_checkup_txt" href="{% url 'media_create_health_checkup_plans' %}">Add Plan</a></li>
+                                </ul>
+                            </li>
+
+                            
+                           
+
+                            <li class="submenu banner_sidebar">
+                                <a href="#">
+                                    <span class="menu-side"><img src="{% static 'img/icons/banner.png' %}" style="width: 18px;" alt /></span> <span> Banners </span> <span class="menu-arrow"></span>
+                                </a>
+                                <ul style="display: none;">
+                                    <li><a class="banner_txt" href="{% url 'media_banners' %}">banners</a></li>
+                                    <li><a class="add_banner_txt" href="{% url 'media_create_banner' %}">Add Banner</a></li>
+                                </ul>
+                            </li>
+                            
+                            <li class="submenu adbanner_sidebar">
+                                <a href="#">
+                                    <span class="menu-side"><img src="{% static 'img/icons/banner.png' %}" style="width: 18px;" alt /></span> <span>Ad Banners </span> <span class="menu-arrow"></span>
+                                </a>
+                                <ul style="display: none;">
+                                    <li><a class="adbanner_txt" href="{% url 'media_ad_banners' %}">Ad Banners</a></li>
+                                    <li><a class="add_adbanner_txt" href="{% url 'media_create_adbanner' %}">Create Ad Banner</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="submenu doctor_sidebar">
+                                <a href="#">
+                                    <span class="menu-side"><img src="{% static 'img/icons/doctor.png' %}" style="width: 18px;" alt /></span> <span> Doctors </span> <span class="menu-arrow"></span>
+                                </a>
+                                <ul style="display: none;">
+                                    <li><a class="doctor_txt" href="{% url 'media_doctors' %}">Doctors</a></li>
+                                    <li><a class="add_doctor_txt" href="{% url 'media_create_doctor' %}">Add Doctor</a></li>
+                                </ul>
+                            </li>
+
+
+                            
+                            <li class="submenu department_sidebar">
+                                <a href="#">
+                                    <span class="menu-side"><img src="{% static 'img/icons/department.png' %}" style="width: 18px;" alt /></span> <span> Departments </span> <span class="menu-arrow"></span>
+                                </a>
+                                <ul style="display: none;">
+                                    <li><a class="department_txt" href="{% url 'media_departments' %}">Departments</a></li>
+                                    <li><a class="add_department_txt" href="{% url 'media_create_department' %}">Add Department</a></li>
+                                </ul>
+                            </li>
+
+
+
+
+                            <li class="submenu gallery_sidebar">
+                                <a href="#">
+                                    <span class="menu-side"><img src="{% static 'img/icons/gallery.png' %}" style="width: 18px;" alt /></span> <span> Gallery</span> <span class="menu-arrow"></span>
+                                </a>
+                                <ul style="display: none;">
+                                    <li><a class="gallery_txt" href="{% url 'media_gallery_list' %}">Gallery</a></li> <!-- Updated URL -->
+                                    <li><a class="add_gallery_txt" href="{% url 'media_create_gallery' %}">Add Gallery</a></li> <!-- Updated URL -->
+                                </ul>
+                            </li>
+                            
+                            
+
+
+                            <li class="submenu blogs_sidebar">
+                                <a href="#">
+                                    <span class="menu-side"><img src="{% static 'img/icons/blog.png' %}" style="width: 18px;" alt /></span> <span> Blog</span> <span class="menu-arrow"></span>
+                                </a>
+                                <ul style="display: none;">
+                                    <li><a class="blog_txt" href="{% url 'media_blogs' %}">Blogs</a></li>
+                                    <li><a class="add_blog_txt" href="{% url 'media_create_blog' %}">Add Blog</a></li>
+                                </ul>
+                            </li>
+
+                            
+                            <div class="logout-btn">
+                                <a href="#">
+                                    <span class="menu-side"><img src="{% static 'img/icons/logout.png' %}" style="width: 18px;" alt /></span> <span>Logout</span>
+                                </a>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <audio class="d-none" id="alarm-sound" src="{% static 'sounds/alarm.mp3' %}" preload="auto"></audio>
+
+            <div class="page-wrapper">
+
+                
+                {% block content %}
+                    
+                {% endblock content %}
+                    
+
+            </div>
+        </div>
+        <div class="sidebar-overlay" data-reff></div>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+        {% block script %}
+            
+        {% endblock script %}
+
+
+
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const notificationList = document.getElementById('notification-list');
+                const markAllReadButton = document.getElementById('mark-all-read');
+                const notificationsDropdown = document.querySelector('.nav-item.dropdown');
+                const pulseIcon = document.querySelector('.nav-item.dropdown .pulse');
+
+                async function fetchUnreadNotifications() {
+                    try {
+                        const response = await fetch('/api/notifications/media/unread/', {
+                            method: 'GET',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            }
+                        });
+                        const notifications = await response.json();
+                        renderNotifications(notifications);
+                    } catch (error) {
+                        console.error('Error fetching notifications:', error);
+                    }
+                }
+
+
+                setInterval(fetchUnreadNotifications, 20000);
+
+
+                function renderNotifications(notifications) {
+                    notificationList.innerHTML = ''; // Clear the current list
+                    if (notifications.length === 0) {
+                        notificationsDropdown.classList.add('d-none');
+                        pulseIcon.style.display = 'none'; // Hide the pulse icon if no notifications
+                        notificationList.innerHTML = `
+                            <li class="notification-message">
+                                <div class="media">
+                                    <div class="media-body" style="width: 100%">
+                                        <p class="noti-details" style="text-align: center; width: 100%; margin-top: 15px;">No notifications found.</p>
+                                    </div>
+                                </div>
+                            </li>
+                        `;
+                        markAllReadButton.style.display = 'none';
+                    } else {
+                        notificationsDropdown.classList.remove('d-none');
+                        pulseIcon.style.display = 'inline-block'; // Show the pulse icon if there are notifications
+                        notifications.forEach(notification => {
+                            const listItem = document.createElement('li');
+                            listItem.className = 'notification-message';
+                            listItem.innerHTML = `
+                                <a href="${notification.redirection_url}" class="notification-link">
+                                    <div class="media">
+                                        <div class="media-body">
+                                            <p class="noti-details">
+                                                <span class="noti-title">${notification.message}</span>
+                                            </p>
+                                            <p class="noti-time">
+                                                <span class="notification-time">${notification.created_at}</span>
+                                            </p>
+                                            <button class="mark-read-btn" data-id="${notification.id}">Mark as Read</button>
+                                        </div>
+                                    </div>
+                                </a>
+                            `;
+                            notificationList.appendChild(listItem);
+                        });
+
+                        // Add click event listeners for each "Mark as Read" button
+                        const markReadButtons = document.querySelectorAll('.mark-read-btn');
+                        markReadButtons.forEach(button => {
+                            button.addEventListener('click', async function (event) {
+                                event.preventDefault(); // Prevent the default action of the anchor tag
+                                event.stopPropagation(); // Stop the click event from propagating to the parent elements
+                                const notificationId = this.getAttribute('data-id');
+                                await markAsRead(notificationId);
+                                fetchUnreadNotifications();
+                            });
+                        });
+
+                        markAllReadButton.style.display = 'block';
+                    }
+                }
+
+                async function markAsRead(notificationId) {
+                    try {
+                        await fetch(`/api/notifications/media/mark-read/${notificationId}/`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRFToken': getCookie('csrftoken') // Ensure CSRF token is included
+                            }
+                        });
+                    } catch (error) {
+                        console.error('Error marking notification as read:', error);
+                    }
+                }
+
+                markAllReadButton.addEventListener('click', async function (event) {
+                    event.preventDefault();
+                    try {
+                        await fetch(`/api/notifications/media/mark-all-read/`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRFToken': getCookie('csrftoken') // Ensure CSRF token is included
+                            }
+                        });
+                        fetchUnreadNotifications();
+                    } catch (error) {
+                        console.error('Error marking all notifications as read:', error);
+                    }
+                });
+
+                function getCookie(name) {
+                    let cookieValue = null;
+                    if (document.cookie && document.cookie !== '') {
+                        const cookies = document.cookie.split(';');
+                        for (let i = 0; i < cookies.length; i++) {
+                            const cookie = cookies[i].trim();
+                            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                                break;
+                            }
+                        }
+                    }
+                    return cookieValue;
+                }
+
+                fetchUnreadNotifications();
+            });
+
+        </script>
+
+        <!-- Include the SweetAlert script -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                {% if messages %}
+                    {% for message in messages %}
+                        Swal.fire({
+                            title: "{{ message.tags|capfirst }}",
+                            text: "{{ message }}",
+                            icon: "{{ message.tags }}",
+                            confirmButtonText: "OK"
+                        });
+                    {% endfor %}
+                {% endif %}
+            });
+        </script>
+
+
+        <script src="{% static 'js/app.js' %}" type="0809f830a9a7270f0d91c883-text/javascript"></script>
+
+        <script src="{% static 'js/jquery-3.7.1.min.js' %}" type="0809f830a9a7270f0d91c883-text/javascript"></script>
+
+        <script src="{% static 'js/bootstrap.bundle.min.js' %}" type="0809f830a9a7270f0d91c883-text/javascript"></script>
+
+        <script src="{% static 'js/feather.min.js' %}" type="0809f830a9a7270f0d91c883-text/javascript"></script>
+
+        <script src="{% static 'js/jquery.slimscroll.js' %}" type="0809f830a9a7270f0d91c883-text/javascript"></script>
+
+        <script src="{% static 'js/select2.min.js' %}" type="0809f830a9a7270f0d91c883-text/javascript"></script>
+
+        <script src="{% static 'plugins/datatables/jquery.dataTables.min.js' %}" type="0809f830a9a7270f0d91c883-text/javascript"></script>
+        <script src="{% static 'plugins/datatables/datatables.min.js' %}" type="0809f830a9a7270f0d91c883-text/javascript"></script>
+
+        <script src="{% static 'js/jquery.waypoints.js' %}" type="0809f830a9a7270f0d91c883-text/javascript"></script>
+        <script src="{% static 'js/jquery.counterup.min.js' %}" type="0809f830a9a7270f0d91c883-text/javascript"></script>
+
+        <script src="{% static 'plugins/apexchart/apexcharts.min.js' %}" type="0809f830a9a7270f0d91c883-text/javascript"></script>
+        <script src="{% static 'plugins/apexchart/chart-data.js' %}" type="0809f830a9a7270f0d91c883-text/javascript"></script>
+
+
+        <script src="{% static 'cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js' %}" data-cf-settings="0809f830a9a7270f0d91c883-|49" defer></script></body>
+
+        
+
+        <script>
+            const checkNewAppointmentsUrl = "{% url 'check_new_appointments' %}";
+            const updateAlarmStatusUrl = "{% url 'update_alarm_status' %}";  // URL to update alarm status
+        
+            // Function to play beep sound four times sequentially
+            function playBeep() {
+                return new Promise((resolve) => {
+                    const audio = new Audio("{% static 'sound/alarm.mp3' %}");
+        
+                    // Recursive function to play the sound multiple times
+                    function playSound(times) {
+                        if (times > 0) {
+                            audio.play();
+                            audio.onended = () => {
+                                setTimeout(() => playSound(times - 1), 500);  // Wait 500ms before the next beep
+                            };
+                        } else {
+                            resolve();  // Resolve the promise after the last beep
+                        }
+                    }
+        
+                    playSound(3);  // Start playing the sound four times
+                });
+            }
+        
+            // Function to update the alarm status
+            function updateAlarmStatus(notificationIds) {
+                fetch(updateAlarmStatusUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}'  // Django's CSRF protection
+                    },
+                    body: JSON.stringify({ 'notification_ids': notificationIds })
+                }).catch(error => console.error('Error updating alarm status:', error));
+            }
+        
+            // Function to check for new appointments
+            function checkNewAppointments() {
+                fetch(checkNewAppointmentsUrl)
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data)
+                        if (data.new_appointments > 0) {
+                            playBeep().then(() => {
+                                // After beeping, update the alarm status of these notifications
+                                updateAlarmStatus(data.notification_ids);
+                            });
+                        }
+                    })
+                    .catch(error => console.error('Error checking new appointments:', error));
+            }
+        
+            // Check for new appointments every 10 seconds
+            setInterval(checkNewAppointments, 10000);
+        
+            // Initial check
+            checkNewAppointments();
+        </script>
+        
+
+
+
+            
+    </body>
+
+</html>

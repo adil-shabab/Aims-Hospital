@@ -1,0 +1,203 @@
+{% extends 'frontend/inner-base.html' %}
+
+{% load static %}
+
+
+{% block title %}
+    <title>International Patient | AH Hospital</title>
+{% endblock title %}
+    
+{% block head %}
+    <style>
+        .subpage-header{
+            position: relative;
+        }
+        .subpage-header::after{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            content: ''; 
+            left: 0;
+            top: 0;
+            background-color: rgba(0, 0, 0, 0.432); 
+        }
+        .subpage-header-box ol{
+            justify-content: flex-start !important;
+        }
+        .subpage-header-box {
+            max-width: unset !important;
+            margin: unset !important;
+            text-align: unset !important;
+        }
+    </style>
+    
+{% endblock head %}
+
+
+{% block content %}
+    
+
+
+        <!-- Subpage Header Start -->
+        <div class="subpage-header" 
+        style="background: url('../../static/frontend/images/appointment-banner.jpg'); 
+               padding: 85px 0px; 
+               background-size: cover; 
+               background-position: center; 
+               background-repeat: no-repeat;">
+    
+           <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Sub page Header start -->
+                        <div class="subpage-header-box d-flex justify-content-center align-items-center flex-column">
+                            <h1 class="text-anime-style-1 text-center">Assistance On Accommodation</h1>
+                            <ol class="breadcrumb wow fadeInUp mt-3">
+                                <li><a href="{% url 'homepage' %}">Home</a></li>
+                                <li>International Patient</li>
+                            </ol>
+                        </div>
+                        <!-- Sub page Header End -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Subpage Header End -->
+
+
+
+
+    <div class="privacy_policy">
+        <div class="container">
+            <h4 class="text-anime-style-1">Assistance On Accommodation: Comfortable Stays for International Patients</h4>
+        
+
+
+                <h6 class="text-anime-style-3">Your Home Away from Home</h6>
+                <p>At VSH Hospital, we understand that comfort and convenience are essential when seeking medical treatment abroad. That’s why our International Patient Services team is dedicated to providing comprehensive assistance on accommodation, ensuring that your stay is as comfortable and stress-free as possible.</p>
+
+                <h6 class="text-anime-style-3">Why Choose VSH Hospital?</h6>
+
+                <h6 class="text-anime-style-3">Personalized Recommendations</h6>
+                <p>Our team understands that every patient has unique accommodation preferences. Whether you prefer a hotel, serviced apartment, or guesthouse, we’ll provide personalized recommendations tailored to your needs and budget, ensuring that you have a comfortable and convenient place to stay during your treatment.</p>
+
+                <h6 class="text-anime-style-3">Convenient Booking</h6>
+                <p>Booking accommodation in a foreign country can be daunting, especially when you’re dealing with health concerns. Our team will handle all the logistics for you, from researching and booking accommodation options to coordinating transportation, allowing you to focus on your health and well-being.</p>
+
+                <h6 class="text-anime-style-3">Specialized Facilities</h6>
+                <p>We partner with a network of trusted accommodation providers located near VSH Hospital, ensuring that you have easy access to medical facilities and amenities during your stay. From fully equipped apartments to boutique hotels, we’ll help you find the perfect accommodation that meets your requirements.</p>
+
+                <h6 class="text-anime-style-3">Ongoing Support</h6>
+                <p>Our assistance doesn’t end once you’ve booked your accommodation. Our team is available to provide ongoing support throughout your stay, whether you need assistance with transportation, translation services, or any other logistical concerns. We’re here to ensure that your experience with us is seamless from start to finish.</p>
+
+                <h6 class="text-anime-style-3">Your Comfort Is Our Priority</h6>
+                <p>Experience peace of mind knowing that your accommodation needs are taken care of by the experts at VSH Hospital. Contact our International Patient Services team today to learn more about how we can assist you in finding comfortable accommodation during your medical journey.</p>
+
+                <p>Experience Comfort. Experience VSH Hospital.</p>
+                <p>Contact our International Patient Services team today to start your journey to better health.</p>
+
+        </div>
+    </div>
+
+    <div class="career_application">
+        <div class="container">
+            <form id="applicationForm" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row">
+                    <h5>Fill the details for further assistance</h5>
+                    <div class="col-md-12">
+                        <input type="text" name="name" placeholder="Full Name" required>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="email" name="email" placeholder="Email" required>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="tel" name="number" placeholder="Phone Number including country code" required>
+                    </div>
+                    <div class="col-md-12">
+                        <textarea name="message" placeholder="Message (Optional)"></textarea>
+                    </div>
+                    <div class="col-md-12">
+                        <span>Passport</span>
+                        <input type="file" name="passport" id="resume" required>
+                    </div>
+                    <div class="col-md-12">
+                        <span>Visa (Optional)</span>
+                        <input type="file" name="visa" id="visa">
+                    </div>
+                    <div class="col-md-12">
+                        <span>Medical Documents (Optional)</span>
+                        <input type="file" name="medical_documents" id="medical-documents">
+                    </div>
+                    <div class="col-md-12">
+                        <button type="submit">Submit Application</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    {% include 'frontend/include/cta.html' %}
+
+    {% include 'frontend/include/blogs.html' %}
+
+
+    
+{% endblock content %}
+    
+
+
+{% block script %}
+<script>
+    document.getElementById('international_patient').classList.add('active')
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<script>
+    document.getElementById('applicationForm').addEventListener('submit', function(event) {
+        event.preventDefault();  // Prevent the default form submission
+        
+        // Prepare form data
+        let formData = new FormData(this);
+        
+        // Send AJAX request
+        fetch("{% url 'api_create_message' %}", {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        })
+        .then(response => {
+            if (!response.ok) throw response;
+            return response.json();
+        })
+        .then(data => {
+            if (data.message) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success!',
+                    text: data.message
+                }).then(() => {
+                    document.getElementById('applicationForm').reset();  // Clear the form
+                });
+            }
+        })
+        .catch(async (errorResponse) => {
+            let errorText = "An error occurred. Please check your inputs.";
+            if (errorResponse.status === 400) {
+                const errorData = await errorResponse.json();
+                errorText = Object.values(errorData).flat().join("\n");
+            }
+            Swal.fire({
+                icon: 'error',
+                title: 'Error!',
+                text: errorText
+            });
+        });
+    });
+</script>
+{% endblock script %}
+    

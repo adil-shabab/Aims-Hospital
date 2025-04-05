@@ -1,0 +1,299 @@
+{% extends 'frontend/inner-base.html' %}
+
+{% load static %}
+{% load custom_filters %}
+
+
+{% block title %}
+    {% if doctor.meta_title %}
+    <title>{{doctor.meta_title}}</title>
+    {% else %}
+    <title>Doctors | AH Hospital</title>
+    {% endif %}
+    {% if doctor.meta_description %}
+    <meta name="description" content="{{doctor.meta_description}}">   
+    {% endif %}
+    {% if doctor.meta_keyword %}
+    <meta name="keywords" content="{{doctor.meta_keyword}}">
+    {% endif %}
+{% endblock title %}
+
+{% block head %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+<style>
+        /* Style for the loading spinner */
+        .subpage-header{
+        position: relative;
+    }
+    .subpage-header::after{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        content: '';
+        left: 0;
+        top: 0;
+        background-color: rgba(0, 0, 0, 0.432);
+    }
+    .subpage-header-box ol{
+        justify-content: flex-start !important;
+    }
+    .subpage-header-box {
+        max-width: unset !important;
+        margin: unset !important;
+        text-align: unset !important;
+    }
+    /* Style for the loading spinner */
+    .spinner-border {
+        display: inline-block;
+        width: 1rem;
+        height: 1rem;
+        vertical-align: text-bottom;
+        border: 0.15em solid currentColor;
+        border-right-color: transparent;
+        border-radius: 50%;
+        animation: spinner-border 0.75s linear infinite;
+    }
+
+    @keyframes spinner-border {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .nav-link{
+        color: #a8a8a8 !important;
+    }
+    .nav-link.active{
+        color: black !important;
+    }
+</style>
+{% endblock head %}
+
+{% block content %}
+<!-- Subpage Header Start -->
+<div class="subpage-header" style="background: url(../../static/images/breadcamb.jpg); padding: 90px 0px ;background-size: cover; background-position: center;  background-repeat: no-repeat;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Sub page Header start -->
+                <div class="subpage-header-box">
+                    <h1 class="text-anime-style-1">{{ doctor.name|format_doctor_name }}</h1>
+                    <ol class="breadcrumb wow fadeInUp">
+                        <li><a href="{% url 'homepage' %}">Home</a></li>
+                        <li>Doctors</li>
+                    </ol>
+                </div>
+                <!-- Sub page Header End -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Subpage Header End -->
+
+
+
+    <!-- rts doctors details area start -->
+    <div class="rts-doctors-details-area rts-section-gap">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-4">
+                    <div class="large-doctor-details-area-left">
+                        <div class="large-team-details-thumbnail">
+                            <img src="{{doctor.photo.url}}" alt="team">
+                        </div>
+                        <div class="bottom-doctor-details">
+                            <div class="inner flipInY wow">
+                                <h5 class="title">Doctor Details</h5>
+                                <div class="single-shedule">
+                                    <p>Designation</p>
+                                    <span class="ps-md-4">{{doctor.designation}}</span>
+                                </div>
+                                <div class="single-shedule">
+                                    <p>Education</p>
+                                    <span class="ps-md-4">{{doctor.education}}</span>
+                                </div>
+                                <div class="single-shedule">
+                                    <p>Experience</p>
+                                    <span class="ps-md-4">{{doctor.experience_years}} + Years</span>
+                                </div>
+                                <div class="single-shedule">
+                                    <p>Department</p>
+                                    <span class="ps-md-4">{{doctor.department.title}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8 pl--40 pl_md--10 pl_sm--15">
+                    <div class="doctor-all-details-area">
+                        <span class="pre-title">About Doctors</span>
+                        <h3 class="name wow move-right">Dr. {{doctor.name}}</h3>
+                    </div>
+
+                    <div class="content_view">
+                        {{ doctor.description | safe }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- rts doctors details area end -->
+
+
+
+    
+
+    <!-- book your consulting -->
+    <div class="book-your-consulting mb-0 pb-0">
+        <div class="container">
+            <div class="row g-0">
+                <div class="col-lg-6">
+                    <div class="appoinment-area-main bg_image">
+                        <h2 class="title">Book your Free Consulting</h2>
+                        <form id="appointment-form" class="row">
+                                <div class="half-input-wrapper col-md-12">
+                                <input type="text" id="name" name="name" required placeholder="Patient name">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" id="phone_number" name="phone_number" required placeholder="Phone Number">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="email" id="email" name="email" required placeholder="Patient Email">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" id="disease" name="disease" required placeholder="Health Concern">
+                                </div>
+                                <div class="col-md-6">
+                                    <select class="form-control" id="gender" name="gender" required>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <select disabled class="" id="department" name="department" required>
+                                        <option selected value="{{doctor.department.id}}">{{doctor.department.title}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <select disabled class="" id="selected_doctor" name="selected_doctor" required>
+                                        <option selected value="{{doctor.id}}">{{doctor.name}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-">
+                                    <textarea placeholder="Message" style="height: 150px;" class="form-control" id="message" name="message"></textarea>
+                                </div>
+
+                            
+                            <button type="submit" class="rts-btn btn-primary">Appoinment <img src="assets/images/banner/icons/arrow--up-right.svg" alt=""></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="thumbnail-appoinment wow move-right">
+                        <img src="{% static 'frontend/assets/images/appoinment/01.webp' %}" alt="appoinment">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- book your consulting end -->
+
+
+
+
+  
+    {% include 'frontend/include/blogs.html' %}
+{% endblock content %}
+
+{% block script %}
+
+    <script>
+
+        // Function to fetch doctors by department
+        function fetchDoctorsByDepartment(departmentId) {
+            fetch(`/api/doctors/department/?department_id=${departmentId}`)
+                .then(response => response.json()) // Parse JSON once
+                .then(data => {
+                    const doctorSelect = document.getElementById('selected_doctor');
+                    doctorSelect.innerHTML = ''; // Clear previous options
+                    data.forEach(doctor => {
+                        const option = document.createElement('option');
+                        option.value = doctor.id;
+                        option.textContent = doctor.name;
+                        option.dataset.fee = doctor.fee; // Store doctor's fee
+                        doctorSelect.appendChild(option);
+                    });
+                })
+                .catch(error => console.error('Error fetching doctors:', error));
+        }
+
+        // Event listener for department select change
+        document.getElementById('department').addEventListener('change', function() {
+            console.log("Hello I am coming Here")
+            const departmentId = this.value;
+            fetchDoctorsByDepartment(departmentId);
+        });
+
+        // Initial fetch of doctors for the selected department
+        fetchDoctorsByDepartment(document.getElementById('department').value);
+
+
+
+        document.getElementById('appointment-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+
+            // Phone number validation (must be 10 digits)
+            const phoneNumber = data['phone_number']; // Assuming the name attribute of the phone number field is 'phone_number'
+            const phoneRegex = /^[0-9]{10}$/; // 10 digit validation
+
+            if (!phoneRegex.test(phoneNumber)) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Invalid Phone Number',
+                    text: 'Please enter a valid 10-digit phone number.',
+                });
+                return; // Stop form submission if validation fails
+            }
+
+
+
+                // Directly create appointment with status 'COMPLETED'
+                fetch('/api/create-appointment/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}',
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => response.json())
+                .then(result => {
+                    if (result.error) {
+                        throw new Error(result.error);
+                    }
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: 'Appointment Booked Successfully',
+                    });
+                })
+                .catch(error => {
+                    console.error('Error:', error.message);
+                    
+                });
+        });
+    
+    </script>
+
+
+{% endblock script %}
+
+
+
+
+  

@@ -1,0 +1,210 @@
+{% extends 'backend/base.html' %}
+
+{% load static %}
+
+
+{% block title %}
+    Heart Day Offers | AH Hospital
+{% endblock title %}
+    
+
+
+{% block content %}
+<div class="content">
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard </a></li>
+                    <li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
+                    <li class="breadcrumb-item active">World Heart Day Offers</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card card-table show-entire">
+                <div class="card-body">
+                    <div class="page-table-header mb-2">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <div class="doctor-table-blk">
+                                    <h3>Heart Day Offer List</h3>
+                                    <div class="doctor-search-blk">
+                                        <div class="top-nav-search table-search-blk">
+                                            <form>
+                                                <input id="search-input" type="text" class="form-control" placeholder="Search here" />
+                                                <a class="btn"><img src="{% static 'img/icons/search.png' %}" style="width: 15px" alt /></a>
+                                            </form>
+                                        </div>
+                                        <div class="add-group">
+                                            <a href="{% url 'heart_day_create_health_checkup_plans' %}" class="btn btn-primary add-pluss ms-2"><img style="width: 18px" src="{% static 'img/icons/plus.png' %}" alt /></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table id="banners-table" class="table border-0 custom-table comman-table datatable mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Plan Title</th>
+                                    <th>View Bookings</th>
+                                    <th>MRP Price</th>
+                                    <th>Discounted Price</th>
+                                    <th>Upload Date</th>
+                                    <th class="text-end"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for plan in plans %}
+                                    <tr>
+                                        <td>{{plan.title}}</td>
+                                        <td>
+                                            <a href="{% url 'heart_day_health_checkup_appointments' plan.slug %}">View Bookings</a>
+                                        </td>
+                                        <td>
+                                            ₹{{plan.price}}
+                                        </td>
+                                        <td>
+                                            ₹{{plan.original_price}}
+                                        </td>
+                                        <td>{{ plan.created_at|date:"F j, Y" }}</td>
+                                        <td>
+                                        <td class="text-end">
+                                            <div class="dropdown dropdown-action">
+                                                <a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                                                <div class="dropdown-menu dropdown-menu-end">
+                                                    <a class="dropdown-item" href="{% url 'heart_day_update_health_checkup_plans' plan.id %}"><i class="fa-solid fa-pen-to-square m-r-5"></i> Edit</a>
+                                                    <a class="dropdown-item" href="#" onclick="deletePlan('{{ plan.id }}')"><i class="fa fa-trash-alt m-r-5"></i> Delete</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="empty-view" class="empty_view d-none">
+                        <img src="{% static 'img/empty.jpg' %}" alt="">
+                        <h4>No Heart Day Offers Found</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+    
+
+
+{% block script %}
+
+
+    <script>
+
+                    
+        document.addEventListener('DOMContentLoaded', function () {
+            async function fetchUserProfile() {
+                try {
+                    const response = await fetch('/api/profile/', {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        }
+                    });
+
+                    if (response.ok) {
+                        const profile = await response.json();
+                        if (profile.role === 'admin') {
+                            // Show admin-specific sidebar items
+                            document.querySelectorAll('.text-end').forEach((item)=>{
+                                
+                            })
+                        } else {
+                            document.querySelectorAll('.text-end').forEach((item)=>{
+                                item.classList.add('d-none');
+                            })
+                        }
+                    } else {
+                        console.error('Failed to fetch profile:', response.statusText);
+                    }
+                } catch (error) {
+                    console.error('Error fetching profile:', error);
+                }
+            }
+
+            // Fetch user profile and adjust the sidebar
+            fetchUserProfile();
+        });
+
+    </script>
+
+
+    <script>
+        document.querySelector('.offer_sidebar').classList.add('active')
+        document.querySelector('.offer_txt').classList.add('active')
+    </script>
+
+
+
+
+    <script>
+        function deletePlan(id) {
+            const deleteUrlTemplate = "{% url 'heart_day_delete_health_checkup_plan' 0 %}";
+            const deleteUrl = deleteUrlTemplate.replace('0', id);
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = `${deleteUrl}`;
+                }
+            });
+        }
+
+        function updateEmptyView() {
+            const rows = document.querySelectorAll('#banners-table tbody tr');
+            const emptyView = document.getElementById('empty-view');
+            const anyVisible = Array.from(rows).some(row => row.style.display !== 'none');
+            if (anyVisible) {
+                emptyView.classList.add('d-none');
+            } else {
+                emptyView.classList.remove('d-none');
+            }
+        }
+
+        document.getElementById('search-input').addEventListener('input', function () {
+            const filter = this.value.toLowerCase();
+            const rows = document.querySelectorAll('#banners-table tbody tr');
+            rows.forEach(row => {
+                const heading = row.querySelector('td:nth-child(1)').textContent.toLowerCase();
+                const description = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+                const buttonText = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
+                if (heading.includes(filter) || description.includes(filter) || buttonText.includes(filter)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+            updateEmptyView();
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            updateEmptyView();
+        });
+    </script>
+
+
+{% endblock script %}

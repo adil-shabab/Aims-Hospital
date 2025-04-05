@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
+        <link rel="icon" href="{% static 'images/favicon.png' %}">
+        <title>
+            
+            {% block title %}
+                
+            {% endblock title %}
+                
+        </title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" />
+
+        <link rel="stylesheet" href="{% static 'plugins/fontawesome/css/fontawesome.min.css' %}" />
+        <link rel="stylesheet" href="{% static 'plugins/fontawesome/css/all.min.css' %}" />
+
+        <link rel="stylesheet" type="text/css" href="{% static 'css/select2.min.css' %}" />
+
+        <link rel="stylesheet" href="{% static 'plugins/datatables/datatables.min.css' %}" />
+
+        <link rel="stylesheet" href="{% static 'css/feather.css' %}" />
+
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+
+        
+        {% block head %}
+            
+        {% endblock head %}
+            
+    </head>
+    <body>
+        <div class="main-wrapper">
+            <div class="header">
+                <div class="header-left">
+                    <a href="{% url 'doctor_dashboard' %}" class="logo"> <img src="{% static 'img/logo.png' %}" style="width: 180px" class="img-fluid" alt /> </a>
+                </div>
+                <a id="toggle_btn" href="javascript:void(0);"><img src="{% static 'img/icons/menu.png' %}" style="width: 30px;" alt /></a>
+                <a id="mobile_btn" class="mobile_btn float-start" href="#sidebar"><img src="{% static 'img/icons/menu.png' %}" style="width: 30px;" alt /></a>
+                <div class="top-nav-search mob-view">
+                    
+                    {% block breadcamp %}
+                        
+                    {% endblock breadcamp %}
+                        
+                </div>
+                <ul class="nav user-menu float-end">
+                    <li class="nav-item dropdown d-none d-md-block">
+                        <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+                            <img src="{% static 'img/icons/email.png' %}" style="width: 22px;" alt />
+                            <span class="pulse"></span>
+                            
+                        </a>
+                        <div class="dropdown-menu notifications">
+                            <div class="topnav-dropdown-header">
+                                <span>Notifications</span>
+                            </div>
+                            <div class="drop-scroll">
+                                <ul class="notification-list" id="notification-list">
+                                    <!-- Notifications will be appended here by JavaScript -->
+                                </ul>
+                            </div>
+                            <div class="topnav-dropdown-footer">
+                                <a href="#" id="mark-all-read">Mark as Read All</a>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li class="nav-item dropdown has-arrow user-profile-list">
+                        <a href="#" class="dropdown-toggle nav-link user-link" data-bs-toggle="dropdown">
+                            <div class="user-names">
+                                <h5 style="text-transform: capitalize;">{{doctor.name}}</h5>
+                                <span>Doctor</span>
+                            </div>
+                            <span class="user-img">
+                                <img src="{% static 'img/user.jpg' %}" alt="Admin" />
+                            </span>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="{% url 'doctor_logout' %}">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+                <div class="dropdown mobile-user-menu float-end">
+                    <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical"></i></a>
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <a class="dropdown-item" href="{% url 'doctor_logout' %}">Logout</a>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar" id="sidebar">
+                <div class="sidebar-inner slimscroll">
+                    <div id="sidebar-menu" class="sidebar-menu">
+                        <ul class="main">
+                            <div class="sidebar__box dashboard_doctor_sidebar">
+                                <a href="{% url 'doctor_dashboard' %}">
+                                    <span class="menu-side"><img src="{% static 'img/icons/dashboard.png' %}" style="width: 18px;" alt /></span> <span> Dashboard </span>
+                                </a>
+                            </div>
+                            <div class="sidebar__box doctor_appointment_sidebar">
+                                <a href="{% url 'doctor__appointments' %}">
+                                    <span class="menu-side"><img src="{% static 'img/icons/appointment.png' %}" style="width: 18px;" alt /></span> <span> Appointments </span>
+                                </a>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <audio class="d-none" id="alarm-sound" src="{% static 'sounds/alarm.mp3' %}" preload="auto"></audio>
+
+            <div class="page-wrapper">
+
+                
+                {% block content %}
+                    
+                {% endblock content %}
+                    
+
+            </div>
+        </div>
+        <div class="sidebar-overlay" data-reff></div>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+        {% block script %}
+            
+        {% endblock script %}
+
+
+
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const notificationList = document.getElementById('notification-list');
+                const markAllReadButton = document.getElementById('mark-all-read');
+                const notificationsDropdown = document.querySelector('.nav-item.dropdown');
+                const pulseIcon = document.querySelector('.nav-item.dropdown .pulse');
+
+                async function fetchUnreadNotifications() {
+                    try {
+                        const response = await fetch('/api/notifications/doctors/unread/', {
+                            method: 'GET',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            }
+                        });
+                        const notifications = await response.json();
+                        renderNotifications(notifications);
+                    } catch (error) {
+                        console.error('Error fetching notifications:', error);
+                    }
+                }
+
+
+                setInterval(fetchUnreadNotifications, 20000);
+
+
+                function renderNotifications(notifications) {
+                    notificationList.innerHTML = ''; // Clear the current list
+                    if (notifications.length === 0) {
+                        notificationsDropdown.classList.add('d-none');
+                        pulseIcon.style.display = 'none'; // Hide the pulse icon if no notifications
+                        notificationList.innerHTML = `
+                            <li class="notification-message">
+                                <div class="media">
+                                    <div class="media-body" style="width: 100%">
+                                        <p class="noti-details" style="text-align: center; width: 100%; margin-top: 15px;">No notifications found.</p>
+                                    </div>
+                                </div>
+                            </li>
+                        `;
+                        markAllReadButton.style.display = 'none';
+                    } else {
+                        notificationsDropdown.classList.remove('d-none');
+                        pulseIcon.style.display = 'inline-block'; // Show the pulse icon if there are notifications
+                        notifications.forEach(notification => {
+                            const listItem = document.createElement('li');
+                            listItem.className = 'notification-message';
+                            listItem.innerHTML = `
+                                <a href="${notification.redirection_url}" class="notification-link">
+                                    <div class="media">
+                                        <div class="media-body">
+                                            <p class="noti-details">
+                                                <span class="noti-title">${notification.message}</span>
+                                            </p>
+                                            <p class="noti-time">
+                                                <span class="notification-time">${notification.created_at}</span>
+                                            </p>
+                                            <button class="mark-read-btn" data-id="${notification.id}">Mark as Read</button>
+                                        </div>
+                                    </div>
+                                </a>
+                            `;
+                            notificationList.appendChild(listItem);
+                        });
+
+                        // Add click event listeners for each "Mark as Read" button
+                        const markReadButtons = document.querySelectorAll('.mark-read-btn');
+                        markReadButtons.forEach(button => {
+                            button.addEventListener('click', async function (event) {
+                                event.preventDefault(); // Prevent the default action of the anchor tag
+                                event.stopPropagation(); // Stop the click event from propagating to the parent elements
+                                const notificationId = this.getAttribute('data-id');
+                                await markAsRead(notificationId);
+                                fetchUnreadNotifications();
+                            });
+                        });
+
+                        markAllReadButton.style.display = 'block';
+                    }
+                }
+
+                async function markAsRead(notificationId) {
+                    try {
+                        const response = await fetch(`/api/notifications/doctors/mark-read/${notificationId}/`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRFToken': getCookie('csrftoken') // Ensure CSRF token is included
+                            }
+                        });
+
+                        const contentType = response.headers.get('Content-Type');
+
+                        if (contentType && contentType.includes('application/json')) {
+                            const data = await response.json();
+                            console.log('Response:', data); // Log the JSON response
+                        } else {
+                            const text = await response.text();
+                            console.log('Unexpected response (likely an error):', text); // Log the HTML or plain text response
+                        }
+                    } catch (error) {
+                        console.error('Error marking notification as read:', error);
+                    }
+                }
+
+                markAllReadButton.addEventListener('click', async function (event) {
+                    event.preventDefault();
+                    try {
+                        await fetch(`/api/notifications/doctors/mark-all-read/`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRFToken': getCookie('csrftoken') // Ensure CSRF token is included
+                            }
+                        });
+                        fetchUnreadNotifications();
+                    } catch (error) {
+                        console.error('Error marking all notifications as read:', error);
+                    }
+                });
+
+                function getCookie(name) {
+                    let cookieValue = null;
+                    if (document.cookie && document.cookie !== '') {
+                        const cookies = document.cookie.split(';');
+                        for (let i = 0; i < cookies.length; i++) {
+                            const cookie = cookies[i].trim();
+                            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                                break;
+                            }
+                        }
+                    }
+                    return cookieValue;
+                }
+
+                fetchUnreadNotifications();
+            });
+
+        </script>
+
+        <!-- Include the SweetAlert script -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                {% if messages %}
+                    {% for message in messages %}
+                        Swal.fire({
+                            title: "{{ message.tags|capfirst }}",
+                            text: "{{ message }}",
+                            icon: "{{ message.tags }}",
+                            confirmButtonText: "OK"
+                        });
+                    {% endfor %}
+                {% endif %}
+            });
+        </script>
+
+
+        <script src="{% static 'js/app.js' %}" type="0809f830a9a7270f0d91c883-text/javascript"></script>
+
+        <script src="{% static 'js/jquery-3.7.1.min.js' %}" type="0809f830a9a7270f0d91c883-text/javascript"></script>
+
+        <script src="{% static 'js/bootstrap.bundle.min.js' %}" type="0809f830a9a7270f0d91c883-text/javascript"></script>
+
+        <script src="{% static 'js/feather.min.js' %}" type="0809f830a9a7270f0d91c883-text/javascript"></script>
+
+        <script src="{% static 'js/jquery.slimscroll.js' %}" type="0809f830a9a7270f0d91c883-text/javascript"></script>
+
+        <script src="{% static 'js/select2.min.js' %}" type="0809f830a9a7270f0d91c883-text/javascript"></script>
+
+        <script src="{% static 'plugins/datatables/jquery.dataTables.min.js' %}" type="0809f830a9a7270f0d91c883-text/javascript"></script>
+        <script src="{% static 'plugins/datatables/datatables.min.js' %}" type="0809f830a9a7270f0d91c883-text/javascript"></script>
+
+        <script src="{% static 'js/jquery.waypoints.js' %}" type="0809f830a9a7270f0d91c883-text/javascript"></script>
+        <script src="{% static 'js/jquery.counterup.min.js' %}" type="0809f830a9a7270f0d91c883-text/javascript"></script>
+
+        <script src="{% static 'plugins/apexchart/apexcharts.min.js' %}" type="0809f830a9a7270f0d91c883-text/javascript"></script>
+        <script src="{% static 'plugins/apexchart/chart-data.js' %}" type="0809f830a9a7270f0d91c883-text/javascript"></script>
+
+
+        <script src="{% static 'cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js' %}" data-cf-settings="0809f830a9a7270f0d91c883-|49" defer></script></body>
+
+        
+
+
+            
+    </body>
+
+</html>

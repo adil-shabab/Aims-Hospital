@@ -1,0 +1,207 @@
+{% extends 'frontend/inner-base.html' %}
+
+{% load static %}
+
+
+{% block title %}
+    <title>International Patient | AH Hospital</title>
+{% endblock title %}
+    
+
+
+{% block head %}
+    <style>
+        .subpage-header{
+            position: relative;
+        }
+        .subpage-header::after{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            content: ''; 
+            left: 0;
+            top: 0;
+            background-color: rgba(0, 0, 0, 0.432); 
+        }
+        .subpage-header-box ol{
+            justify-content: flex-start !important;
+        }
+        .subpage-header-box {
+            max-width: unset !important;
+            margin: unset !important;
+            text-align: unset !important;
+        }
+    </style>
+    
+{% endblock head %}
+
+
+{% block content %}
+    
+
+
+
+        <!-- Subpage Header Start -->
+        <div class="subpage-header" 
+        style="background: url('../../static/frontend/images/appointment-banner.jpg'); 
+               padding: 85px 0px; 
+               background-size: cover; 
+               background-position: center; 
+               background-repeat: no-repeat;">
+    
+           <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Sub page Header start -->
+                        <div class="subpage-header-box d-flex justify-content-center align-items-center flex-column">
+                            <h1 class="text-anime-style-1 text-center">Complimentary Airport Pickup & Drop Facility for Patient Coming to VSH</h1>
+                            <ol class="breadcrumb wow fadeInUp mt-3">
+                                <li><a href="{% url 'homepage' %}">Home</a></li>
+                                <li>International Patient</li>
+                            </ol>
+                        </div>
+                        <!-- Sub page Header End -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Subpage Header End -->
+    
+
+
+    <div class="privacy_policy">
+        <div class="container">
+            <h4 class="text-anime-style-1">Complimentary Airport Pickup & Drop Facility: Hassle-Free Arrival and Departure for Patients at VSH</h4>
+
+
+
+            <h6 class="text-anime-style-3">Seamless Transportation Solutions</h6>
+            <p>Arriving in a new city for medical treatment can be daunting, but at VSH Hospital, we’re here to make your journey as smooth as possible. Our International Patient Services team offers complimentary airport pickup and drop-off services, ensuring that you arrive and depart from VSH Hospital with ease and convenience.</p>
+
+            <h6 class="text-anime-style-3">Why Choose VSH Hospital?</h6>
+
+            <h6 class="text-anime-style-3">Stress-Free Arrival</h6>
+            <p>Upon your arrival at the airport, our dedicated staff will be there to greet you with a warm welcome and assist with your luggage. We’ll ensure that you’re comfortably transported from the airport to VSH Hospital, allowing you to relax and focus on your upcoming medical care without the stress of navigating unfamiliar surroundings.</p>
+
+            <h6 class="text-anime-style-3">Timely Departure</h6>
+            <p>When it’s time for you to return home, our team will coordinate your departure from VSH Hospital to the airport. We’ll ensure that you arrive at the airport with plenty of time to spare, allowing you to check in for your flight and complete any necessary procedures with ease. Our goal is to make your departure from VSH Hospital as smooth and stress-free as possible.</p>
+
+            <h6 class="text-anime-style-3">Safe and Reliable Transportation</h6>
+            <p>Your safety and comfort are our top priorities. That’s why we provide transportation in well-maintained vehicles driven by experienced and professional drivers. Whether you’re traveling alone or with family members, you can trust that you’ll be in good hands throughout your journey to and from VSH Hospital.</p>
+
+            <h6 class="text-anime-style-3">Personalized Assistance</h6>
+            <p>Our International Patient Services team is here to provide personalized assistance and support throughout your transportation experience. Whether you have special requests or require additional assistance, we’ll go above and beyond to ensure that your transportation needs are met with the highest level of care and attention to detail.</p>
+
+            <h6 class="text-anime-style-3">Your Comfort Is Our Priority</h6>
+            <p>Experience the convenience and peace of mind that comes with complimentary airport pickup and drop-off services at VSH Hospital. Contact our International Patient Services team today to learn more about how we can assist you in arranging transportation for your medical journey.</p>
+
+
+        </div>
+    </div>
+    
+
+    
+    <div class="career_application">
+        <div class="container">
+            <form id="applicationForm" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row">
+                    <h5>Fill the details for further assistance</h5>
+                    <div class="col-md-12">
+                        <input type="text" name="name" placeholder="Full Name" required>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="email" name="email" placeholder="Email" required>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="tel" name="number" placeholder="Phone Number including country code" required>
+                    </div>
+                    <div class="col-md-12">
+                        <textarea name="message" placeholder="Message (Optional)"></textarea>
+                    </div>
+                    <div class="col-md-12">
+                        <span>Passport</span>
+                        <input type="file" name="passport" id="resume" required>
+                    </div>
+                    <div class="col-md-12">
+                        <span>Visa (Optional)</span>
+                        <input type="file" name="visa" id="visa">
+                    </div>
+                    <div class="col-md-12">
+                        <span>Medical Documents (Optional)</span>
+                        <input type="file" name="medical_documents" id="medical-documents">
+                    </div>
+                    <div class="col-md-12">
+                        <button type="submit">Submit Application</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    
+    {% include 'frontend/include/cta.html' %}
+
+    {% include 'frontend/include/blogs.html' %}
+
+
+    
+{% endblock content %}
+    
+
+
+{% block script %}
+<script>
+    document.getElementById('international_patient').classList.add('active')
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<script>
+    document.getElementById('applicationForm').addEventListener('submit', function(event) {
+        event.preventDefault();  // Prevent the default form submission
+        
+        // Prepare form data
+        let formData = new FormData(this);
+        
+        // Send AJAX request
+        fetch("{% url 'api_create_message' %}", {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        })
+        .then(response => {
+            if (!response.ok) throw response;
+            return response.json();
+        })
+        .then(data => {
+            if (data.message) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success!',
+                    text: data.message
+                }).then(() => {
+                    document.getElementById('applicationForm').reset();  // Clear the form
+                });
+            }
+        })
+        .catch(async (errorResponse) => {
+            let errorText = "An error occurred. Please check your inputs.";
+            if (errorResponse.status === 400) {
+                const errorData = await errorResponse.json();
+                errorText = Object.values(errorData).flat().join("\n");
+            }
+            Swal.fire({
+                icon: 'error',
+                title: 'Error!',
+                text: errorText
+            });
+        });
+    });
+</script>
+{% endblock script %}
+    

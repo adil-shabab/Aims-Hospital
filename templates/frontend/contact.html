@@ -1,0 +1,253 @@
+{% extends 'frontend/inner-base.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>Contact Us for Expert Care | AH Hospital Hospital</title>
+{% endblock title %}
+
+{% block head %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+
+
+
+	<meta name="keywords" content="Contact information, Hospital address, Phone numbers, Email addresses, Online inquiry form, Appointment booking, Visiting hours, Location map, Directions, Patient support  " />
+	<meta name="description" content="Contact Us for Expert Care at VSH Hospital. Find contact information, appointments, visiting hours, directions &amp; more. We&#039;re here for you." />
+	<link rel="canonical" href="https://vshhospital.com/contact" />
+
+    <style>
+        .subpage-header{
+            position: relative;
+        }
+        .subpage-header::after{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            content: ''; 
+            left: 0;
+            top: 0;
+            background-color: rgba(0, 0, 0, 0.432); 
+        }
+        .subpage-header-box ol{
+            justify-content: flex-start !important;
+        }
+        .subpage-header-box {
+            max-width: unset !important;
+            margin: unset !important;
+            text-align: unset !important;
+        }
+    </style>
+    
+{% endblock head %}
+
+{% block content %}
+
+
+
+    <!-- Subpage Header Start -->
+    <div class="subpage-header" 
+    style="background: url('../../static/frontend/images/contact-banner.jpg'); 
+           padding: 100px 0px; 
+           background-size: cover; 
+           background-position: center; 
+           background-repeat: no-repeat;">
+
+       <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Sub page Header start -->
+                    <div class="subpage-header-box">
+                        <h1 class="text-anime-style-1">Contact Us</h1>
+                        <ol class="breadcrumb wow fadeInUp">
+                            <li><a href="{% url 'homepage' %}">Home</a></li>
+                            <li>Contact</li>
+                        </ol>
+                    </div>
+                    <!-- Sub page Header End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Subpage Header End -->
+
+
+
+
+    <!-- contact us area start -->
+    <div class="rts-contact-top-wrapper rts-section-gap">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-12">
+                    <h2 class="title text-center move-right wow">Contact Us</h2>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                    <div class="single-contact-information-card">
+                        <div class="icon">
+                            <img src="{% static 'frontend/assets/images/contact/01.png' %}" alt="icons">
+                        </div>
+                        <a href="#">
+                            NH75, aims, Karnataka  <br>
+                            571448
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                    <div class="single-contact-information-card">
+                        <div class="icon">
+                            <img src="{% static 'frontend/assets/images/contact/02.png' %}" alt="icons">
+                        </div>
+                        <a href="#">
+                            087625 57576
+                        </a>
+                        <a href="#">
+                            ahrc@acu.edu.in 
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                    <div class="single-contact-information-card">
+                        <div class="icon">
+                            <img src="{% static 'frontend/assets/images/contact/03.png' %}" alt="icons">
+                        </div>
+                        <a href="#">
+                            Monday - Sunday <br/>
+                            9:00 AM - 5:00 PM
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- contact us area end -->
+
+    
+    <!-- contact us area start -->
+    <div class="contact-form-area-start rts-section-gapBottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="appoinment-area-main contact-page appoinment-page bg_image">
+                        <form id="contact-form" class="row" method="POST">
+                            {% csrf_token %}
+                            <div class="half-input-wrapper">
+                                <input required id="name" name="name" type="text" placeholder="Patient name">
+                                <input required id="phone" name="phone" type="tel"  placeholder="Phone Number">
+                            </div>
+                            
+                            <div>
+                                <input required id="email" name="email" type="email" placeholder="Your Email">
+                                <textarea class="mb--15" required name="message"  id="textarea message" placeholder="text message"></textarea>
+                            </div>
+                            <button type="submit" id="submit-button" class="rts-btn btn-primary">Contact Us</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- contact us area end -->
+
+
+
+
+
+
+
+
+
+    {% include 'frontend/include/cta-two.html' %}
+    {% include 'frontend/include/blogs.html' %}
+{% endblock content %}
+
+{% block script %}
+    <script>
+        document.querySelector('.contact').classList.add('active');
+    </script>
+
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(this);
+            const name = formData.get('name').trim();
+            const email = formData.get('email').trim();
+            const phone = formData.get('phone').trim();
+            const message = formData.get('message').trim();
+
+            // Simple validation for required fields
+            if (!name) {
+                swal('Error', 'Name is required.', 'error');
+                return;
+            }
+
+            if (!email) {
+                swal('Error', 'Email is required.', 'error');
+                return;
+            }
+
+            if (!phone) {
+                swal('Error', 'Phone number is required.', 'error');
+                return;
+            }
+
+            if (!message) {
+                swal('Error', 'Message is required.', 'error');
+                return;
+            }
+
+            // Validate phone number (10 digits or with country code)
+            const phoneRegex = /^(\+91|91)?[6-9]\d{9}$/;
+            if (!phoneRegex.test(phone)) {
+                swal('Error', 'Invalid phone number. It should be 10 digits or include a country code.', 'error');
+                return;
+            }
+
+            // Validate email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                swal('Error', 'Invalid email address.', 'error');
+                return;
+            }
+
+            // Set button to loading state
+            const submitButton = document.getElementById('submit-button');
+            submitButton.textContent = 'Sending...';
+            submitButton.disabled = true;
+
+            const data = {
+                name: name,
+                email: email,
+                phone_number: phone,
+                content: message
+            };
+
+            fetch('{% url "contact" %}', {  // Use the correct URL name if different
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+                },
+                body: JSON.stringify(data),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    swal('Success', 'Message sent successfully!', 'success');
+                    this.reset();
+                } else {
+                    console.error('Error data:', data.errors);
+                    swal('Error', 'An error occurred. Please check your input and try again.', 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                swal('Error', 'An unexpected error occurred. Please try again later.', 'error');
+            })
+            .finally(() => {
+                submitButton.textContent = 'Submit';
+                submitButton.disabled = false;
+            });
+        });
+    </script>
+{% endblock script %}

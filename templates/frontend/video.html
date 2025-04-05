@@ -1,0 +1,252 @@
+{% extends 'frontend/inner-base.html' %}
+
+{% load static %}
+
+
+{% block title %}
+    <title>Video Consultation | AH Hospital</title>
+{% endblock title %}
+    
+
+{% block head %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+
+<style>
+    .main__view{
+        border-top: 1px solid #d4d4d45c;
+        padding: 30px 0px;
+        position: relative;
+    }
+    .main__view #root{
+        padding: 10px 0px;
+    }
+    .main__view #timer{
+        width: fit-content;
+        background: #00a6c8;
+        color: white;
+        position: absolute;
+        right: 100px;
+        top: 45px;
+        padding: 10px 35px;
+        z-index: 11111;
+        border-radius: 5px;
+    }
+    .main__view .sCsSbKP9yxvw4LQAeaTz{
+        margin: auto;
+        width: 75%;
+        min-height: 65vh;
+    }
+    .main__view .sCsSbKP9yxvw4LQAeaTz{
+        padding: 15px;
+        background: #f2f2f2;
+        border-radius: 30px;
+    }
+    .main__view .ji5jASszKFf2CGCmbxEh{
+        background: #f2f2f2;
+    }
+    .main__view .C7PnSkxqD6bOXhZlRlcc{
+        background: #f2f2f2 !important;
+    }
+    .main__view .piwpNHLgAQThdyRytpRH{
+        gap: 20px;
+        background: #f2f2f2 !important;
+    }
+    .main__view .MoYxgFm0R7wfd5xpwIir{
+        background: #f2f2f2 !important;
+    }
+    .main__view .eyH2dlfzTaA7rH_j9fZk{
+        background: #f2f2f2 !important;
+    }
+    .main__view .t7CkP1l2e1KLqty5_18v .VBFLF66Sk4Ayxwv7gHcR{
+        background: #f2f2f2 !important;
+        object-fit: cover !important;
+    }
+    .main__view .lRNsiz_pTf7YmA5QMh4z{
+        background: #f2f2f2 !important;
+    }
+    .main__view .pVo6XoSfywa4eLk9ef2S{
+        background: #f2f2f2;
+        object-fit: cover;
+    }
+    
+    
+    @media screen and (max-width: 500px) {
+        .jF_DhwXwBFswm5nphXHX .VdaXgamc4uLcVqxdjRnv{
+            width: 100%   !important;
+        }
+        .main__view #timer {
+            right: 15px;
+            top: 18px;
+        }
+        .main__view{
+            padding: 75px 0px;
+        }
+        .jF_DhwXwBFswm5nphXHX .gxxR6ODqyJjd8U9gRbae .AmKXNJUm0SmWgO90daLW input {
+            width: 62.666667vmin !important;
+        }
+        .jF_DhwXwBFswm5nphXHX .gxxR6ODqyJjd8U9gRbae .AmKXNJUm0SmWgO90daLW button{
+            padding: 10px 30px !important;
+        }
+        .jF_DhwXwBFswm5nphXHX .gxxR6ODqyJjd8U9gRbae .AmKXNJUm0SmWgO90daLW{
+            padding: 0px !important;
+        }
+        .jF_DhwXwBFswm5nphXHX .gxxR6ODqyJjd8U9gRbae .nL8WyhhEeNnQ5CaeQTPo {
+            margin: 0px !important;
+            width: 100% !important;
+        }
+        .kdokPV9jgsyFtd2e8Ek2 .sKtK1LFA_jOcb1MuqFNo{
+            position: absolute !important;
+        }
+        .main__view .piwpNHLgAQThdyRytpRH{
+            padding-bottom: 78px !important;
+        }
+        .main__view .t7CkP1l2e1KLqty5_18v:nth-of-type(2) {
+            width: 150px !important;
+            height: 150px !important;;
+            position: absolute !important;;
+            top: 30px !important;
+            right: 20px !important;
+        }
+        .main__view .t7CkP1l2e1KLqty5_18v:nth-of-type(1) {
+            min-height: 55vh !important;
+            height: 55vh !important;
+        }
+
+    }
+</style>
+    
+{% endblock head %}
+
+
+{% block content %}
+
+<div class="main__view">
+    <div class="container">
+        <div id="root"></div>
+    </div>
+    <div id="timer"></div>
+</div>
+
+    
+{% endblock content %}
+    
+
+
+{% block script %}
+<script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+
+<script src="https://unpkg.com/@zegocloud/zego-uikit-prebuilt/zego-uikit-prebuilt.js"></script>
+
+<script>
+    document.querySelector('.fixedRightSideBar').classList.add('d-none')
+</script>
+<script>
+window.onload = function () {
+    function getUrlParams(url) {
+        let urlStr = url.split('?')[1];
+        const urlSearchParams = new URLSearchParams(urlStr);
+        const result = Object.fromEntries(urlSearchParams.entries());
+        return result;
+    }
+
+    const roomID = "{{ room_id }}"; 
+    const userID = Math.floor(Math.random() * 10000) + "";
+    const userName = `{{appointment.patient.name}}`; 
+    const appID = 770866260;
+    const serverSecret = "098d0eb177ccee863a5a23bee2667aa8";
+    const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(appID, serverSecret, roomID, userID, userName);
+
+    
+        const zp = ZegoUIKitPrebuilt.create(kitToken);
+        zp.joinRoom({
+            container: document.querySelector("#root"),
+            sharedLinks: [{
+                name: 'VSH Video Consultation',
+                url: window.location.protocol + '//' + window.location.host  + window.location.pathname + '?roomID=' + roomID,
+            }],
+            scenario: {
+                mode: ZegoUIKitPrebuilt.VideoConference,
+            },
+                
+            turnOnMicrophoneWhenJoining: true,
+           	turnOnCameraWhenJoining: true,
+           	showMyCameraToggleButton: true,
+           	showMyMicrophoneToggleButton: true,
+           	showAudioVideoSettingsButton: true,
+           	showScreenSharingButton: true,
+           	showTextChat: true,
+           	showUserList: true,
+           	maxUsers: 3,
+           	layout: "Grid",
+           	showLayoutButton: true,
+
+            });
+}
+</script>
+
+
+<script>
+    // Get the meeting close time passed from Django to JavaScript
+    var meetingCloseTime = new Date("{{ meeting_close_time }}");
+
+    // Function to calculate and update the countdown
+    function updateCountdown() {
+        console.log("Coming")
+        var currentTime = new Date();
+        var timeRemaining = meetingCloseTime - currentTime;
+
+        // Calculate minutes and seconds
+        var minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+
+        // Show reminder 1 minute before the meeting ends
+        if (timeRemaining <= 60000 && timeRemaining > 59000) {
+            toastr.info(`Reminder: Your meeting will end in less than 1 minute!`);
+        } else {
+            // Clear reminder if not within 1 minute
+        }
+
+        // If the meeting time has ended
+        if (timeRemaining <= 0) {
+            toastr.error("The meeting time has ended. The meeting will now close.");
+            window.location.reload()
+        }
+    }
+
+    // Check the meeting time every second (1000 ms)
+    setInterval(updateCountdown, 1000);
+
+    // Initial check when the page loads
+    updateCountdown();
+</script>
+
+<script>
+    function updateTimer() {
+        const currentTime = new Date().getTime();
+        const timeLeft = meetingCloseTime - currentTime;
+
+        if (timeLeft <= 0) {
+            document.getElementById("timer").innerHTML = "Meeting has ended.";
+            clearInterval(timerInterval); // Stop the timer once the meeting is over
+        } else {
+            // Calculate minutes and seconds
+            const minutes = Math.floor(timeLeft / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            
+            // Display the remaining time
+            document.getElementById("timer").innerHTML = `${minutes}m ${seconds}s`;
+        }
+    }
+
+    // Update the timer every second
+    const timerInterval = setInterval(updateTimer, 1000);
+</script>
+
+
+{% endblock script %}
+    
+

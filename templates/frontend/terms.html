@@ -1,0 +1,136 @@
+{% extends 'frontend/inner-base.html' %}
+
+{% load static %}
+
+
+{% block title %}
+    <title>Terms & Condition | AH Hospital</title>
+{% endblock title %}
+    
+
+
+{% block head %}
+    <style>
+        .subpage-header{
+            position: relative;
+        }
+        .subpage-header::after{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            content: ''; 
+            left: 0;
+            top: 0;
+            background-color: rgba(0, 0, 0, 0.432); 
+        }
+        .subpage-header-box ol{
+            justify-content: flex-start !important;
+        }
+        .subpage-header-box {
+            max-width: unset !important;
+            margin: unset !important;
+            text-align: unset !important;
+        }
+    </style>
+    
+{% endblock head %}
+
+
+{% block content %}
+    
+
+    <!-- Subpage Header Start -->
+    <div class="subpage-header" 
+    style="background: url('../../static/frontend/images/appointment-banner.jpg'); 
+           padding: 100px 0px; 
+           background-size: cover; 
+           background-position: center; 
+           background-repeat: no-repeat;">
+
+       <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Sub page Header start -->
+                    <div class="subpage-header-box d-flex justify-content-center align-items-center flex-column">
+                        <h1 class="text-anime-style-1">Terms & Condition</h1>
+                        <ol class="breadcrumb wow fadeInUp">
+                            <li><a href="{% url 'homepage' %}">Home</a></li>
+                            <li>Terms & Condition</li>
+                        </ol>
+                    </div>
+                    <!-- Sub page Header End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Subpage Header End -->
+
+
+
+
+
+    <div class="privacy_policy">
+        <div class="container">
+            <h4 class="text-anime-style-1">Terms & Condition</h4>
+
+            <h6 class="text-anime-style-3">Introduction</h6>
+            <p>Welcome to the official website of Adichunchanagiri Hospital. By accessing or using this website, you agree to be bound by these Terms & Conditions. If you do not agree, please do not use this website.</p>
+
+            <h6 class="text-anime-style-3">Use of Website</h6>
+            <p>This website is intended to provide general information about Adichunchanagiri Hospital, its services, and healthcare-related content. It is not a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of a qualified healthcare provider for any medical concerns.</p>
+
+            <h6 class="text-anime-style-3">Scope Of Terms Of Use</h6>
+            <p>These terms of use govern your use of the VSH website and all applications, software, and services (collectively known as “services”) available via the website, except to the extent that such services are the subject of a separate agreement. Specific terms or agreements may apply to the use of certain services and other items provided to you via the website (“service agreement(s)”). Any such service agreements will accompany the applicable services or are listed in association therewith or via a hyperlink associated therewith.</p>
+
+            <h6 class="text-anime-style-3">Intellectual Property Rights</h6>
+            <p>All content on this website, including text, graphics, logos, images, videos, and software, is the property of Adichunchanagiri Hospital or its licensors and is protected by copyright and other intellectual property laws. Unauthorized use, reproduction, or distribution of any content is strictly prohibited.</p>
+
+            <h6 class="text-anime-style-3">Website Availability & Accuracy</h6>
+            <p>While we strive to ensure the accuracy of the information on this website, we do not guarantee its completeness, reliability, or timeliness. The hospital reserves the right to modify, update, or discontinue any aspect of the website at any time without prior notice.</p>
+
+            <h6 class="text-anime-style-3">Third-Party Links</h6>
+            <p>This website may contain links to third-party websites for additional information. These links are provided for convenience, and Adichunchanagiri Hospital does not endorse or assume responsibility for the content or privacy practices of any third-party websites.</p>
+
+
+            <h6 class="text-anime-style-3">Limitation of Liability</h6>
+            <p>Adichunchanagiri Hospital, its employees, or affiliates shall not be liable for any direct, indirect, incidental, or consequential damages arising from the use or inability to use this website, including but not limited to inaccuracies in content or service disruptions.</p>
+
+            <h6 class="text-anime-style-3">Privacy & Data Security</h6>
+            <p>We are committed to protecting user privacy. Any personal data collected through this website is subject to our Privacy Policy. However, we cannot guarantee the absolute security of any information transmitted online.</p>
+
+
+            <h6 class="text-anime-style-3">User Conduct</h6>
+            <p>Users agree not to :</p>
+            <ul>
+                <li>Engage in unlawful, harmful, or offensive activities on the website.</li>
+                <li>Transmit viruses, malware, or any harmful code.</li>
+                <li>Attempt to gain unauthorized access to restricted areas</li>
+            </ul>
+
+            <h6 class="text-anime-style-3">Changes to Terms & Conditions</h6>
+            <p>We reserve the right to modify these Terms & Conditions at any time. Continued use of the website after changes constitutes acceptance of the revised terms. </p>
+
+            <h6 class="text-anime-style-3">Governing Law & Jurisdiction</h6>
+            <p>These Terms & Conditions are governed by the laws of India. Any disputes shall be subject to the exclusive jurisdiction of the courts in Karnataka</p>
+
+            <h6 class="text-anime-style-3">Contact Information</h6>
+            <p>For any queries related to these Terms & Conditions, please contact us at :</p>
+
+            <p>Adichunchanagiri Hospital <br> NH75, aims, Karnataka 571448 <br> 087625 57576 </p>
+        </div>
+    </div>
+    
+    {% include 'frontend/include/cta-two.html' %}
+
+    {% include 'frontend/include/blogs.html' %}
+
+
+    
+{% endblock content %}
+    
+
+
+{% block script %}
+
+{% endblock script %}
+    

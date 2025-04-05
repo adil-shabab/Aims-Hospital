@@ -1,0 +1,145 @@
+{% extends 'frontend/inner-base.html' %}
+
+{% load static %}
+
+
+{% block title %}
+    <title>Services | AH Hospital</title>
+{% endblock title %}
+    
+{% block head %}
+<style>
+    .subpage-header{
+        position: relative;
+    }
+    .subpage-header::after{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        content: ''; 
+        left: 0;
+        top: 0;
+        background-color: rgba(0, 0, 0, 0.402); 
+    }
+    .subpage-header-box ol{
+        justify-content: flex-start !important;
+    }
+    .subpage-header-box {
+        max-width: unset !important;
+        margin: unset !important;
+        text-align: unset !important;
+    }
+</style>
+{% endblock head %}
+    
+
+
+{% block content %}
+    
+    <!-- Subpage Header Start -->
+    <div class="subpage-header" 
+    style="background: url('/../../static/frontend/images/service-banner.jpg'); 
+           padding: 100px 0px; 
+           background-size: cover; 
+           background-position: center; 
+           background-repeat: no-repeat;">
+
+       <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Sub page Header start -->
+                    <div class="subpage-header-box">
+                        <h1 class="text-anime-style-1">Our Services</h1>
+                        <ol class="breadcrumb wow fadeInUp">
+                            <li><a href="{% url 'homepage' %}">Home</a></li>
+                            <li>Services</li>
+                        </ol>
+                    </div>
+                    <!-- Sub page Header End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Subpage Header End -->
+
+
+
+
+
+    
+
+    <div class="department__section">
+        <div class="container">
+
+            <h3 data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="900" class="heading">
+                Our Services
+            </h3>
+            <p data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="1000" class="description">
+                We offer a comprehensive range of medical services to ensure that every condition is accurately diagnosed and every patient receives the care they need.
+            </p>
+
+            <!-- Tabs Navigation -->
+            <ul class="nav nav-tabs nav____tabs" id="departmentTabs" role="tablist">
+                {% for key, _ in speciality_dict.items %}
+                <li class="nav-item" role="presentation">
+                    <a class="nav_____link nav-link {% if forloop.first %}active{% endif %}" id="tab-{{ key|slugify }}-link" data-toggle="tab" href="#tab-{{ key|slugify }}" role="tab" aria-controls="tab-{{ key|slugify }}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}">
+                        {{ key }}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+
+            <!-- Tabs Content -->
+            <div class="tab-content" id="departmentTabsContent">
+                {% for key, departments in speciality_dict.items %}
+                <div id="tab-{{ key|slugify }}" class="tab-pane fade {% if forloop.first %}show active{% endif %}" role="tabpanel" aria-labelledby="tab-{{ key|slugify }}-link">
+                    <div class="row">
+                        {% for x in departments %}
+                        <div data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-delay="200" data-aos-duration="1500" class="box col-md-4 col-sm-6 col-12">
+                            <div class="img_box">
+                                <img src="{% if x.banner %}{{ x.banner.url }}{% else %}{% static 'path/to/default/image.jpg' %}{% endif %}" class="img-fluid" alt="{{ x.title }}">
+                            </div>
+                            <h5>{{ x.title }}</h5>
+                            <div class="dep_desc">
+                                <p>{{ x.description | safe }}</p>
+                            </div>  
+                            <a href="{% url 'single_service' x.slug %}">View More</a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+    {% include 'frontend/include/cta-two.html' %}
+
+    {% include 'frontend/include/blogs.html' %}
+
+
+    
+{% endblock content %}
+    
+
+
+{% block script %}
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#departmentTabs a').on('click', function (e) {
+                e.preventDefault();
+                $(this).tab('show');
+            });
+        });
+    </script>
+
+    <!-- <script>
+        document.querySelector('.services').classList.add('active')
+    </script> -->
+
+{% endblock script %}
+    

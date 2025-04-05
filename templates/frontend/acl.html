@@ -1,0 +1,1086 @@
+
+
+
+<!DOCTYPE html>
+{% load static %}
+{% load humanize %}
+{% load custom_filters %}
+
+
+<html lang="zxx">
+<head>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Advanced ACL Surgery | Say Goodbye to Knee Pain – VSH Hospital Bangalore  
+    </title>
+    <meta name="title" content="Advanced ACL Surgery | Say Goodbye to Knee Pain – VSH Hospital Bangalore" />
+    <!-- Favicon Icon -->
+    <link rel="icon" href="{% static 'images/favicon.png' %}">
+
+    <!-- Main custom Css -->
+    <link href="{% static 'frontend/css/hello.css' %}" rel="stylesheet" media="screen">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+        crossorigin="anonymous"
+    />
+    
+    <!-- slick css  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            
+
+    <link rel="canonical" href="{{ request.build_absolute_uri }}" />
+
+    <!-- Meta Tag Manager -->
+
+    <!-- / Meta Tag Manager -->
+    <meta name="description" content=" Get advanced ACL surgery from experienced orthopedic specialists at VSH Hospital Banglore.Book your consultation today and take the first step towards pain-free movement!" />
+
+
+    <style>
+        .fixedRightSideBar{
+            display: none !important;
+        }
+        /* Keyframes for blinking */
+        @keyframes blink {
+            0% {
+                opacity: 1;
+                scale: 1;
+            }
+            50% {
+                opacity: 0.3;
+                scale: 1.2;
+            }
+            100% {
+                opacity: 1;
+                scale: 1;
+            }
+        }
+        select{
+            border: 0.5px solid #80808059;
+            width: 100%;
+            padding: 10px 15px;
+            font-size: 15px;
+            font-family: 'DM Sans', sans-serif;
+            margin-bottom: 15px;
+            outline: none;
+            border-radius: 5px;
+        }
+        footer{
+            padding: 0px 0px 14px 0px;
+            border-top: 2px solid #0066a1;
+        }
+        footer::after{
+            content: unset;
+        }
+        footer .container .copy_right span{
+            color: black;
+            font-weight: 600;
+        }
+        footer .container .copy_right{
+            margin-top: 0px;
+        }
+        footer .container .copy_right span{
+            color: black;
+            font-weight: 600;
+        }
+        footer .container .copy_right span a{
+            color: black;
+            font-weight: 600;
+        }
+        .head___desc__txt{
+            background: #00a6c8;
+            color: white;
+            padding: 7px 10px;
+            font-size: 12px;
+            border-radius: 3px;
+        }
+    </style>
+        
+
+    
+</head>
+
+
+<body class="tt-magic-cursor">
+    <!-- Your content here -->
+
+
+
+
+
+
+    <header class="d-md-block d-none">
+        <div class="top_header" style="border: 1px solid #e2e2e2; padding: 14px 0px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <a href="{% url 'homepage' %}" class="logo">
+                            <img src="{% static 'images/logo.png' %}" alt="" class="navbar_logo">
+                        </a>
+                    </div>
+                    <div class="col-md-8 d-md-flex justify-content-md-end align-items-md-center">
+                        <div class="links">
+                            <div class="emergency">
+                                <dotlottie-player src="https://lottie.host/56b7136f-fb78-42dd-aac0-cadb6f365260/VlytNQsU59.json" background="transparent" speed="3" class="lottie_icon" loop autoplay></dotlottie-player>
+                                <div>
+                                    <a href="tel:18003091001">
+                                        <span class="bold">Emergency : 18003091001</span>
+                                    </a>
+                                    <a href="tel:08068697999">
+                                        <span>VSH Lifeline : 080-68697999</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+
+
+
+    <header class="d-md-none d-block">
+        <div class="navbar__mobile">
+            <div class="container">
+                <div class="navbar_logo">
+                    <a href="{% url 'homepage' %}">
+                        <img class="logo" src="{% static 'images/logo.png' %}" alt="">
+                    </a>
+                    
+                    <a href="tel:18003091001">
+                        <span class="head___desc__txt">Emergency</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+
+
+    <div class="main__banner___section" id="book___now">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1>Regain Stability and Confidence with Our Expert ACL Treatment</h1>
+                    <p>Knee instability causes pain and affects mobility. Our expert team offers advanced surgical solutions to restore stability and help you regain confidence in your movement.</p>
+                    <form id="appointmentForm" action="">
+                        <span>Meet our Expert Today!</span>
+                        <input class="first" type="text" id="name" name="name" placeholder="Enter your Full Name" required>
+                        <input type="tel" id="phone_number" name="phone_number" placeholder="Enter Phone Number" required>
+                        <textarea id="message" name="message" placeholder="Enter your Message"></textarea>
+                        <input type="hidden" value="ACL (Orthopedic)" id="department" name="department">
+                        <button type="submit">Book Appointment</button>
+                    </form>
+                    
+                </div>
+                <div class="col-md-6">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="our___packages">
+        <div class="container">
+            <h4 class="heading">Choose Your Recovery Plan</h4>
+            <p class="description">Our expert orthopedic treatments focus on stabilizing joints and enhancing mobility, helping you get back to your active lifestyle with confidence</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="box">
+                        <h5>Expert Care for ACL Injuries – Regain Stability</h5>
+                        <p>Specialized treatment for ACL injuries to restore knee stability and function, ensuring a quick and effective recovery under expert orthopedic care.</p>
+                        <div class="free__offer">
+                            <div>
+                                <span>FREE</span>
+                                <p>Consultation and limited period offer on surgery's</p>
+                            </div>
+                            <div class="price">
+                                ₹1,50,000
+                            </div>
+                        </div>
+                        <div class="doctor___section">
+                            <img src="{% static 'images/sharath.jpg' %}" alt="Dr Sharath Kumar Sheety">
+                            <div class="doctor____details">
+                                <h6>Dr. Sharath Kumar Shetty</h6>
+                                <span>MS Orthopedic</span>
+                                <span>Sr Consultant Joint Replacement & Arthroscopic Surgeon</span>
+                                <span>20 + Years of Experience</span>
+                            </div>
+                        </div>
+                        <a href="#book___now">
+                            <button>Book Now</button>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="box">
+                        <h5>Advanced Total Bilateral Knee Replacement – Move Pain Free</h5>
+                        <p>Restore mobility and eliminate pain with our minimally invasive bilateral knee replacement, performed by experienced surgeons for long-lasting results.</p>
+                        <div class="free__offer">
+                            <div>
+                                <span>FREE</span>
+                                <p>Consultation and limited period offer on Advanced Surgery</p>
+                            </div>
+                            <div class="price_off">
+                                <span class="old___price">
+                                    ₹8,00,000
+                                </span>
+                                <span class="off___price">
+                                    ₹4,10,000
+                                </span>
+                            </div>
+                        </div>
+                        <div class="doctor___section">
+                            <img src="{% static 'images/sharath.jpg' %}" alt="Dr Sharath Kumar Sheety">
+                            <div class="doctor____details">
+                                <h6>Dr. Sharath Kumar Shetty</h6>
+                                <span>MS Orthopedic</span>
+                                <span>Sr Consultant Joint Replacement & Arthroscopic Surgeon</span>
+                                <span>20 + Years of Experience</span>
+                            </div>
+                        </div>
+                        <a href="#book___now">
+                            <button>Book Now</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <div class="counter_section">
+        <div class="container">
+            <div class="parent_icon_counter">
+                <div class="box_counter">
+                    <img src="{% static 'images/icons/heart-rate.png' %}" alt="">
+                    <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                        <h5 class="counter wow fadeInUp">{{ 30000|intcomma }}+</h5>
+                        <p class="wow fadeInUp">Happy Patients</p>
+                    </div>
+                </div>
+                
+
+                <div class="box_counter">
+                    <img src="{% static 'images/icons/doctor.png' %}" alt="">
+                    <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                        <h5 class="counter wow fadeInUp">70 +</h5>
+                        <p class="wow fadeInUp">Qualified Doctors</p>
+                    </div>
+                </div>
+                <div class="box_counter">
+                    <img src="{% static 'images/icons/hospital-bed.png' %}" alt="">
+                    <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                        <h5 class="counter wow fadeInUp">250 +</h5>
+                        <p class="wow fadeInUp">Bed Capacity</p>
+                    </div>
+                </div>
+                <div class="box_counter">
+                    <img src="{% static 'images/icons/department.png' %}" alt="">
+                    <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                        <h5 class="counter wow fadeInUp">30 +</h5>
+                        <p class="wow fadeInUp">Department</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+
+  
+
+
+
+    <div class="testimonial_section">
+        <div class="container">
+          <h3 data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-delay="300" class="heading text-anime-style-3">What our Patients Say</h3>
+          <p data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-delay="400" class="description wow fadeInUp">Our patients commend our compassionate care, advanced facilities, and professional staff, reflected in glowing reviews.</p>
+          <div class="testimonial_carousel">
+
+            
+            <div data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-delay="200" class="box">
+              <img src="{% static 'images/icons/quote.png' %}" alt="" class="quote img-fluid">
+              <div class="top_box">
+                <div class="img_box">
+                  <img src="{% static 'images/icons/user.png' %}" alt="">
+                </div>
+                <div class="txt_box">
+                  <h4 class="name">Haran Gh</h4>
+                  <h6 class="designation">{{ "14-10-2024"|time_since_string }} ago</h6>
+                </div>
+              </div>
+              <div class="rating">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <p class="review">
+                Excellent and polite doctor is Dr Varun manjunath sir. He made a detailed examination and took time to take history . Extremely knowledgeable and explained all possibility . He was able to conclude with few more tests which was not possible by neurologists at other cities like Delhi and Kolkata where I had been. He started on treatment and very happy with results as well. This is my third follow up and very very satisfied with results . Recommend him for neurology issues . True gentleman !!
+              </p>
+            </div>
+            <div data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-delay="200" class="box">
+              <img src="{% static 'images/icons/quote.png' %}" alt="" class="quote img-fluid">
+              <div class="top_box">
+                <div class="img_box">
+                  <img src="{% static 'images/icons/user.png' %}" alt="">
+                </div>
+                <div class="txt_box">
+                  <h4 class="name">Shreya Gurikar</h4>
+                  <h6 class="designation">{{ "14-09-2024"|time_since_string }} ago</h6>
+                </div>
+              </div>
+              <div class="rating">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <p class="review">
+                I consulted  Nutritionist Dr. Pragna.She was amazing very friendly and approachable.Her diet plan is highly sustainable.It helped me in my weight loss journey.Overall had a friendly staff and good service .
+              </p>
+            </div>
+            <div data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-delay="200" class="box">
+              <img src="{% static 'images/icons/quote.png' %}" alt="" class="quote img-fluid">
+              <div class="top_box">
+                <div class="img_box">
+                  <img src="{% static 'images/icons/user.png' %}" alt="">
+                </div>
+                <div class="txt_box">
+                  <h4 class="name">Ursula Fosberry</h4>
+                  <h6 class="designation">{{ "14-08-2024"|time_since_string }} ago</h6>
+                </div>
+              </div>
+              <div class="rating">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <p class="review">
+                had brought my husband Adrian Fosberry to VHS hospital on the 8th of August ,since he was having some discomfort. We were first given an assurance by Mrs Lata that he would be given the right treatment ,since this was our first visit to this hospital. We were then given the first enquiries about Adrian background history of Adrian cardio problem by Dr Parmesh ,who was very patient in listening and noting our ailments. We then met Dr V K Srinivas ,who is well renowned for his expertise in Cardiology ,both far and wide. Under Dr Srinivas advise,we had an angiogran  done ,and which was followed by a Stent procedure. Dr Srinivas s timely treatment ,has been a turning point in Adrian's health to improve and to enjoy better health. I thank the wonderful team right from Mrs Lata Shetty ,Dr Parmesh and Dr V K Srinivas on behalf of my husband Mr Adrian Fosberry for the efficient and capable handling of Adrian in your speciality hospital. The nursing staff in the ICU ,along with the attendants were so cooperative and helpful,as also the nursing staff in the General ward. This hospital is surely in comparison to the best hospital world wide. My sincere thanks to all the hospital staff we have encountered. Yours sincerely,
+              </p>
+            </div>
+            <div data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-delay="200" class="box">
+              <img src="{% static 'images/icons/quote.png' %}" alt="" class="quote img-fluid">
+              <div class="top_box">
+                <div class="img_box">
+                  <img src="{% static 'images/icons/user.png' %}" alt="">
+                </div>
+                <div class="txt_box">
+                  <h4 class="name">Nipun Mouli</h4>
+                  <h6 class="designation">{{ "14-08-2024"|time_since_string }} ago</h6>
+                </div>
+              </div>
+              <div class="rating">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <p class="review">
+                Very good and prompt service in the best location in Bangalore. Most importantly 90% of staff across all departments are smiling and polite and patient when they speak to you.
+
+                This makes a difference for the patient.
+
+                Latha Shetty was the manager for the the Cardio department Cathlab and gave us personal care and advice.
+
+                Goutham from billing department was also very polite.
+
+                Our Primary doctor VKS is very patient and methodical and most important is kind and competent and runs the best Cathlab in Bangalore.
+
+                The overall experience helps a patient and attenders deal with the medical emergency a lot better and I would 100% recommend VSH Vaidehi hospital ( FKA Mallya Hospital) to all.
+              </p>
+            </div>
+
+            <div data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-delay="200" class="box">
+              <img src="{% static 'images/icons/quote.png' %}" alt="" class="quote img-fluid">
+              <div class="top_box">
+                <div class="img_box">
+                  <img src="{% static 'images/icons/user.png' %}" alt="">
+                </div>
+                <div class="txt_box">
+                  <h4 class="name">Susan Boye</h4>
+                  <h6 class="designation">{{ "14-08-2024"|time_since_string }} ago</h6>
+                </div>
+              </div>
+              <div class="rating">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <p class="review">
+                Thanks to Dr Paramesh and Dr Srinivas for their timely help and support during my Angioplasty. Excellent doctors I would recommend anyone and everyone having heart issues to get the best treatment from Dr Srinivas and Dr Paramesh. Excellent nursing care. The hospital is so clean and well maintained. Thank you so much for making my hospital stay so comfortable.
+              </p>
+            </div>
+            <div data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-delay="200" class="box">
+              <img src="{% static 'images/icons/quote.png' %}" alt="" class="quote img-fluid">
+              <div class="top_box">
+                <div class="img_box">
+                  <img src="{% static 'images/icons/user.png' %}" alt="">
+                </div>
+                <div class="txt_box">
+                  <h4 class="name">Chetan Venugopal</h4>
+                  <!-- <h6 class="designation">Web Developer</h6> -->
+                </div>
+              </div>
+              <div class="rating">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <p class="review">
+                This is CA Chetan Venugopal. At the outset I would like to extend my sincere thanks and appreciation for the excellent support and medical services extended to me during my stay at Vydehi Medical Hospital between 11th and 13th July for my Angioplasty procedure . I’m deeply indebted to Dr VK Srinivas, Dr Parmeshwar , Ms Latha Shetty  and the entire nursing staff at the CCU and at the ward section for wonderful care and attention extended to us. Thank you Best wishes Chetan Venugopal
+              </p>
+            </div>
+
+
+            
+            <div data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-delay="200" class="box">
+              <img src="{% static 'images/icons/quote.png' %}" alt="" class="quote img-fluid">
+              <div class="top_box">
+                <div class="img_box">
+                  <img src="{% static 'images/icons/user.png' %}" alt="">
+                </div>
+                <div class="txt_box">
+                  <h4 class="name">priya sah</h4>
+                  <!-- <h6 class="designation">Web Developer</h6> -->
+                </div>
+              </div>
+              <div class="rating">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <p class="review">
+                Hi, one of my doctors recommended VSH hospital, I entered the hospital on 16th Aug, I had my cholecystectomy surgery scheduled here. The whole procedure was so smooth and relaxing. I got my surgery done and the post surgery care was just awesome and fabulous. All the doctors, nurses, housekeeping staffs were really good and helping. Even the insurance procedure was hassle free and I got discharged happily. I would like to specially thanks the nurses and staffs who were even very much active during the night shifts. I had been to many hospitals but this one is the best one. I would definitely recommend VSH to my family and known ones. Thank you so much everyone for your help and support.
+              </p>
+            </div>
+            <div data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-delay="300" class="box">
+              <img src="{% static 'images/icons/quote.png' %}" alt="" class="quote img-fluid">
+              <div class="top_box">
+                <div class="img_box">
+                  <img src="{% static 'images/icons/user.png' %}" alt="">
+                </div>
+                <div class="txt_box">
+                  <h4 class="name">Rukmini RakeshKumar</h4>
+                  <h6 class="designation">{{ "14-8-2024"|time_since_string }} ago</h6>
+                </div>
+              </div>
+              <div class="rating">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <p class="review">From the moment I stepped into the hospital, I was impressed by the clean and welcoming atmosphere. However, what truly elevated my experience was the exceptional care provided by Sruthi Kanesh from Client department. She patiently explained procedures, addressed my concerns with empathy, ensured my comfort throughout the stay. Her dedication to patient care is commendable.</p>
+            </div>
+            <div data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-delay="400" class="box">
+              <img src="{% static 'images/icons/quote.png' %}" alt="" class="quote img-fluid">
+              <div class="top_box">
+                <div class="img_box">
+                  <img src="{% static 'images/icons/user.png' %}" alt="">
+                </div>
+                <div class="txt_box">
+                  <h4 class="name">Liza Chen</h4>
+                  <h6 class="designation">{{ "14-10-2023"|time_since_string }} ago</h6>
+                </div>
+              </div>
+              <div class="rating">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <p class="review">Thank you for taking care of my mother in law, it was the best experience by the Dr. V.Devendran. And all the nurses in the ward of level 2, expecially LIKHITHA ,AND the night shift who takes care with a sleepless night we are so grateful for the service 🙏 God bless you all. THANK YOU 😊 🙏</p>
+            </div>                    
+            <div data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-delay="500" class="box">
+              <img src="{% static 'images/icons/quote.png' %}" alt="" class="quote img-fluid">
+              <div class="top_box">
+                <div class="img_box">
+                    <img src="{% static 'images/icons/user.png' %}" alt="">
+                </div>
+                <div class="txt_box">
+                  <h4 class="name">Taufiq Rehmain</h4>
+                  <h6 class="designation">{{ "14-9-2024"|time_since_string }} ago</h6>
+                </div>
+              </div>
+              <div class="rating">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <p class="review">My mother was admitted in Vsh hospital and we are regular patient of Dr.huliraj the treatment was given very good and will we suggest others .will recommend to our family and friends. Thank you.</p>
+            </div>
+            <div data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-delay="600" class="box">
+              <img src="{% static 'images/icons/quote.png' %}" alt="" class="quote img-fluid">
+              <div class="top_box">
+                <div class="img_box">
+                  <img src="{% static 'images/icons/user.png' %}" alt="">
+                </div>
+                <div class="txt_box">
+                  
+                  <h4 class="name">Susan Boye</h4>
+                  <h6 class="designation">{{ "14-8-2024"|time_since_string }} ago</h6>
+                </div>
+              </div>
+              <div class="rating">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <p class="review">Thanks to Dr Paramesh and Dr Srinivas for their timely help and support during my Angioplasty. Excellent doctors I would recommend anyone and everyone having heart issues to get the best treatment from Dr Srinivas and Dr Paramesh. Excellent nursing care. The hospital is so clean and well maintained. Thank you so much for making my hospital stay so comfortable.</p>
+            </div>
+
+            <div data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-delay="700" class="box">
+              <img src="{% static 'images/icons/quote.png' %}" alt="" class="quote img-fluid">
+              <div class="top_box">
+                <div class="img_box">
+                  <img src="{% static 'images/icons/user.png' %}" alt="">
+                </div>
+                <div class="txt_box">
+                  <h4 class="name">Mukti Jain</h4>
+                  <h6 class="designation">{{ "14-8-2024"|time_since_string }} ago</h6>
+                </div>
+              </div>
+              <div class="rating">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <p class="review">Very good and fast service. Mr Sukesh helped me with the whole process assisting me to ER and pharmacy. And overall the whole process from registration to treatment was quick and smooth.</p>
+            </div>
+            
+            <div data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-delay="700" class="box">
+              <img src="{% static 'images/icons/quote.png' %}" alt="" class="quote img-fluid">
+              <div class="top_box">
+                <div class="img_box">
+                  <img src="{% static 'images/icons/user.png' %}" alt="">
+                </div>
+                <div class="txt_box">
+                  <h4 class="name">Ravi Prakash</h4>
+                  <h6 class="designation">{{ "14-6-2024"|time_since_string }} ago</h6>
+                </div>
+              </div>
+              <div class="rating">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <p class="review">Dr A K Jelani is one of the best Ortho Surgeons in this country. He operated me in 2020, my uncle in 2001, my maternal uncle was hailing with Osteoporosis, he cured without any surgery, and my mother for her lower back slip disc.</p>
+            </div>
+
+            <div data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-delay="700" class="box">
+              <img src="{% static 'images/icons/quote.png' %}" alt="" class="quote img-fluid">
+              <div class="top_box">
+                <div class="img_box">
+                  <img src="{% static 'images/icons/user.png' %}" alt="">
+                </div>
+                <div class="txt_box">
+                  <h4 class="name">Vishal Khannah</h4>
+                  <h6 class="designation">{{ "14-7-2024"|time_since_string }} ago</h6>
+                </div>
+              </div>
+              <div class="rating">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <p class="review">Where You Do Not Find Anywhere Else You will Find in This Hospital, that's Relief, Smiling Staff Members, Doctors, Nurses, Comfort that Everything will be All Right and Smooth Communication without EGOs of Doctors and Sr. Doctors. I Highly recommend Dr. V K Srinivas and his entire Team</p>
+            </div>
+            
+            <div data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-delay="700" class="box">
+              <img src="{% static 'images/icons/quote.png' %}" alt="" class="quote img-fluid">
+              <div class="top_box">
+                <div class="img_box">
+                  <img src="{% static 'images/icons/user.png' %}" alt="">
+                </div>
+                <div class="txt_box">
+                  <h4 class="name">Satish S</h4>
+                  <h6 class="designation">{{ "14-6-2024"|time_since_string }} ago</h6>
+                </div>
+              </div>
+              <div class="rating">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <p class="review">My mother was diagnosed with Breast Cancer 5 months back. Whole family was in stressful situation. Physician near my home suggested to meet Dr Shashidhar Karpurmath @ VSH. Dr Shashidhar is a Experienced and Best Oncologist Dr in Bangalore. He is soft spoken. He explained the dieases, diagnosis process and gave lot of confidence to my mother and whole family. He started the treatment in Jan and he was with us throughout treatment process in the last 5 months. Any query or symptoms Dr used to respond immediately. Also Dr Hafeez was with us supporting Mom and giving lot of confidence.
+                VSH is a Best hospital in City center. Which is maintained well and having very good support staff. Billing and insurance staffs are very helpful and give quick response.
+                After surgery, my mother is fully recovered now. She is leading a normal life.
+                Thanks to Dr Shashidhar, Dr Hafeez, Dr Giridhar and Dr Ganesh for being kind and helping us to combat this disease. 🙏🙏
+                Thank you VSH for supporting us🙏.</p>
+            </div>
+            
+            <div data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-delay="700" class="box">
+              <img src="{% static 'images/icons/quote.png' %}" alt="" class="quote img-fluid">
+              <div class="top_box">
+                <div class="img_box">
+                  <img src="{% static 'images/icons/user.png' %}" alt="">
+                </div>
+                <div class="txt_box">
+                  <h4 class="name">Iyad Ibrahim</h4>
+                  <h6 class="designation">{{ "14-10-2023"|time_since_string }} ago</h6>
+                </div>
+              </div>
+              <div class="rating">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <p class="review">This is one of the best hospital for foreign expats visiting for medical care in Bangalore. It was swift and easy with all appointments. Especially thank you Maria and Dr. Bhuvana. Dr. Bhuvana was the most excellent Doctor I met I have been to other hospital like Fortis but she was the best. Dr Shanthos Kumar was also a great Dr as well and Dr Surbhi from neurology was Excellent. Excellent and great hospital.</p>
+            </div>
+            
+            <div data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-delay="700" class="box">
+              <img src="{% static 'images/icons/quote.png' %}" alt="" class="quote img-fluid">
+              <div class="top_box">
+                <div class="img_box">
+                  <img src="{% static 'images/icons/user.png' %}" alt="">
+                </div>
+                <div class="txt_box">
+                  <h4 class="name">Prathi Rajan D</h4>
+                  <h6 class="designation">{{ "14-06-2024"|time_since_string }} ago</h6>
+                </div>
+              </div>
+              <div class="rating">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <p class="review">Consulted Dr.Varun Manjunath Neurology doctor is very good and cooperative. We can approach the doctor very experienced and well mannered doctor. OPD staff are also well cooperative and well mannered especially Mrs.Yashodha. very kind and helpfull. We recommend this Hospital to my friends and family. Thank you</p>
+            </div>
+
+            
+            <div data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-delay="700" class="box">
+              <img src="{% static 'images/icons/quote.png' %}" alt="" class="quote img-fluid">
+              <div class="top_box">
+                <div class="img_box">
+                  <img src="{% static 'images/icons/user.png' %}" alt="">
+                </div>
+                <div class="txt_box">
+                  <h4 class="name">Sadika Parveen</h4>
+                  <h6 class="designation">{{ "14-06-2024"|time_since_string }} ago</h6>
+                </div>
+              </div>
+              <div class="rating">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <p class="review">They take care the patient very well and Mrs. Yashodha and Arun also have done well good job and we are also satisfied with the Dr.Varun Manjunath. Hospital environment is very nice and clean . maintained very well.</p>
+            </div>
+            
+            <div data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-delay="700" class="box">
+              <img src="{% static 'images/icons/quote.png' %}" alt="" class="quote img-fluid">
+              <div class="top_box">
+                <div class="img_box">
+                  <img src="{% static 'images/icons/user.png' %}" alt="">
+                </div>
+                <div class="txt_box">
+                  <h4 class="name">Karun Gowda</h4>
+                  <h6 class="designation">{{ "14-04-2024"|time_since_string }} ago</h6>
+                </div>
+              </div>
+              <div class="rating">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <p class="review">My father was admitted to the Vydehi Super Speciality Hospital (Formerly Mallya Hospital) for a Prostrate gland surgery. The treatment provided by Dr. Srinivas VK (Cardiologist) and Dr. Mahendra Jain (Urologist) was of high quality. The surgery went well and my father is recovering. The coordination we received from Mrs. Latha Shetty, really thankfully for her guidance and support throughout our stay in the hospital.
+
+                The hospital is maintained extremely clean with good quality. Extremely thankful to the ward boys and nurses who took care of my dad. They were really good with the service. Was overall satisfied with the care and support from all the hospital staff. Thanks to VSH.😊</p>
+            </div>
+            
+            <div data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-delay="700" class="box">
+              <img src="{% static 'images/icons/quote.png' %}" alt="" class="quote img-fluid">
+              <div class="top_box">
+                <div class="img_box">
+                  <img src="{% static 'images/icons/user.png' %}" alt="">
+                </div>
+                <div class="txt_box">
+                  <h4 class="name">Suresh Ramu</h4>
+                  <h6 class="designation">{{ "14-03-2024"|time_since_string }} ago</h6>
+                </div>
+              </div>
+              <div class="rating">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <p class="review">The hospital has excellent ambience, wonderful service, quiet atmosphere with variety of packages. Here I compliment Dr. V k Srinivas for his excellent diagnosis and prompt advise to the patient. My spouse was very happy under his treatment. The consultant Latha Shetty was very kind and helpful. She gave valuable tips to my wife which gave her confidence. Dr Paramesh gave us good advise as well. Overall the hospital is rated number one in Bangalore.</p>
+            </div>
+            
+            <div data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-delay="700" class="box">
+              <img src="{% static 'images/icons/quote.png' %}" alt="" class="quote img-fluid">
+              <div class="top_box">
+                <div class="img_box">
+                  <img src="{% static 'images/icons/user.png' %}" alt="">
+                </div>
+                <div class="txt_box">
+                  <h4 class="name">Professor Fairydust</h4>
+                  <h6 class="designation">{{ "14-02-2024"|time_since_string }} ago</h6>
+                </div>
+              </div>
+              <div class="rating">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <p class="review">I had the most wonderful experience at the VSH Hospital when I was admitted through emergency with pneumonia. The care and treatment was exemplary all round and I have been looked after so brilliantly. They cured my serious respiratory illness in two days with such efficiency. Nothing was too much trouble. I am English and I wish we had hospitals like this back home!</p>
+            </div>
+            
+            <div data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-delay="700" class="box">
+              <img src="{% static 'images/icons/quote.png' %}" alt="" class="quote img-fluid">
+              <div class="top_box">
+                <div class="img_box">
+                  <img src="{% static 'images/icons/user.png' %}" alt="">
+                </div>
+                <div class="txt_box">
+                  <h4 class="name">Vijay Kashyap SR</h4>
+                  <h6 class="designation">{{ "14-05-2024"|time_since_string }} ago</h6>
+                </div>
+              </div>
+              <div class="rating">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <p class="review">Recently visited the hospital. Excellent service with multi-specialty doctors such as neuro, ENT, gastroenterology, pulmonologist, cardiologist orthopaedic, etc., with a pleasant atmosphere and infrastructure, as well as kind and friendly staff members who assisted me with adequate procedural advice. Thanks for the staff Amrutha for guiding</p>
+            </div>
+
+            
+            <div data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-delay="700" class="box">
+              <img src="{% static 'images/icons/quote.png' %}" alt="" class="quote img-fluid">
+              <div class="top_box">
+                <div class="img_box">
+                  <img src="{% static 'images/icons/user.png' %}" alt="">
+                </div>
+                <div class="txt_box">
+                  <h4 class="name">Vandana Advertising</h4>
+                  <h6 class="designation">{{ "14-04-2024"|time_since_string }} ago</h6>
+                </div>
+              </div>
+              <div class="rating">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <p class="review">Since more than 10 years of belief Dr v k srinivas , more than a doctor he is like a family friend, anytime easily approachable, not only for heart , other illness also his diagnosis issues well and put us into right doctors.we feel very safe and secure with his guidance , thanks to Dr. Vksrinivas, dr. Paramesh, ms . Shetty, and team.
+                May god bless & team
+                Wish him all the best for his future endeavours.</p>
+            </div>
+
+
+
+
+          </div>
+        </div>
+    </div>
+
+
+  
+
+
+
+    
+    <!-- Cta Section Start -->
+    <div class="cta-box">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <!-- Cta Item Start -->
+                    <div class="cta-item">
+                        <!-- Icon Box Start -->
+                        <div class="icon-box">
+                            <img src="{% static 'frontend/images/icon-appointment.svg' %}" alt="">
+                        </div>
+                        <!-- Icon Box End -->
+
+                        <!-- Cta Content Start -->
+                        <div class="cta-content">
+                            <h3 class="text-anime-style-3">Get Back to Doing What You Love – Pain-Free and Confident!</h3>
+                        </div>
+                        <!-- Cta Content End -->
+                    </div>
+                    <!-- Cta Item End -->
+                </div>
+                <div class="col-lg-4">
+                    <!-- Cta Btn Start -->
+                    <div class="cta-btn">
+                        <a style="text-decoration: none;" href="#book___now" class="appointment-btn wow fadeInUp">
+                            Book Checkup Now <i class="fa-solid fa-calendar-days"></i>
+                        </a>
+                        
+
+                        
+                    </div>
+                    <!-- Cta Btn End -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications Container -->       
+    <ul class="notifications"></ul>
+
+
+    {% load static %}
+
+    <footer style="background: unset;">
+        <div class="container">
+            <div class="copy_right">
+                <span>&#169; 2025 VSH Hospital. All Rights Reserved</span>
+                <span> <a target="_blank" href="https://thinkb.agency">Designed & Developed by thinkB</a></span>
+            </div>
+        </div>
+    </footer>
+
+
+    <script
+    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"
+    ></script>
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- slick cdn  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+    <script>
+        // about page testimonial carousel 
+        if(document.querySelector('.testimonial_carousel') !== null){
+        $('.testimonial_carousel').slick({
+        dots: false,
+        infinite: true,
+        // autoplay:true,
+        autoPlayTimeout:2000,
+        slidesToShow: 3,
+        slidesToScroll: 2,
+        arrows: true,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                infinite: true,
+                dots: true
+                }
+            },
+            {
+                breakpoint: 900,
+                settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+                }
+            }
+            ]
+        });
+        }
+    </script>
+
+
+
+
+
+        <!-- Include your toast notification JS -->
+        <script>
+            const notifications = document.querySelector(".notifications");
+
+            // Toast message details for different types
+            const toastDetails = {
+                timer: 5000,
+                success: {
+                    icon: "fa-circle-check",
+                    text: "Success: This is a success toast."
+                },
+                error: {
+                    icon: "fa-circle-xmark",
+                    text: "Error: This is an error toast."
+                },
+                warning: {
+                    icon: "fa-circle-exclamation",
+                    text: "Warning: This is a warning toast."
+                },
+                info: {
+                    icon: "fa-circle-info",
+                    text: "Info: This is an information toast."
+                }
+            };
+
+            // Function to remove a toast
+            const removeToast = (toast) => {
+                toast.classList.add("hide");
+                if (toast.timeoutId) clearTimeout(toast.timeoutId);
+                setTimeout(() => toast.remove(), 500);
+            };
+
+            // Function to create a toast notification
+            const createToast = (type, message) => {
+                const { icon } = toastDetails[type];
+                const toast = document.createElement("li"); // Create a new 'li' element
+                toast.className = `toast ${type}`; // Set classes for the toast
+                toast.innerHTML = `<div class="column">
+                                        <i class="fa-solid ${icon}"></i>
+                                        <span>${message}</span>
+                                    </div>
+                                    <i class="fa-solid fa-xmark" onclick="removeToast(this.parentElement)"></i>`;
+                notifications.appendChild(toast); // Append the toast to the notifications container
+                toast.timeoutId = setTimeout(() => removeToast(toast), 5000); // Remove after 5 seconds
+            };
+
+            // Loop through Django messages and create toasts
+            {% if messages %}
+                {% for message in messages %}
+                    let messageType = "{{ message.tags }}";  // Django message tag (success, error, etc.)
+                    let messageText = "{{ message }}";  // The actual message
+                    createToast(messageType, messageText);
+                {% endfor %}
+            {% endif %}
+
+        </script>
+    
+    <script>
+    document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+        e.preventDefault(); // Prevent the default form submission
+    
+        const name = document.getElementById('name').value;
+        const phoneNumber = document.getElementById('phone_number').value;
+        const message = document.getElementById('message').value;
+        const department = document.getElementById('department').value;
+    
+        // Validate phone number (exactly 10 digits)
+        if (!/^\d{10}$/.test(phoneNumber)) {
+            createToast('error', 'Please enter a valid 10-digit phone number.');
+            return;
+        }
+    
+        // Send data to server
+        fetch('/acl-surgery-treatment-bangalore/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken'), // Ensure CSRF token is sent in the request
+            },
+            body: JSON.stringify({
+                name: name,
+                phone_number: phoneNumber,
+                message: message,
+                department: department
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            if (data.success) {
+              document.getElementById('appointmentForm').reset();
+              window.location.href = "{% url 'acl_payment_success' %}";  // Redirect to the success URL
+            } else {
+              createToast('error', 'Failed to book appointment.');
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    });
+    
+    // Function to get CSRF token from cookies
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    </script>
+    
+</body>
+</html>
+
+
+
+

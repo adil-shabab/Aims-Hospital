@@ -1,0 +1,202 @@
+{% extends 'backend/base.html' %}
+
+{% load static %}
+
+{% block title %}
+    Create Appointment | AH Hospital
+{% endblock title %}
+
+{% block content %}
+<div class="content">
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'appointments' %}">Appointment </a></li>
+                    <li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
+                    <li class="breadcrumb-item active">Create Appointment for {{patient.name}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <form id="appointment-form" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-heading">
+                                    <h4>Add Appointment Details</h4>
+                                </div>
+                            </div>
+                            <div class="d-none col-12 col-md-6 col-xl-4">
+                                <div class="input-block local-forms">
+                                    <label>Patient Name <span class="login-danger">*</span></label>
+                                    <input class="form-control" type="hidden" value="{{patient.name}}" id="name" name="name" required>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-xl-4">
+                                <div class="input-block local-forms">
+                                    <label>Disease <span class="login-danger">*</span></label>
+                                    <input class="form-control" type="text" id="disease" name="disease" required>
+                                </div>
+                            </div>
+                            <div class="d-none col-12 col-md-6 col-xl-4">
+                                <div class="input-block local-forms">
+                                    <label>Phone Number <span class="login-danger">*</span></label>
+                                    <input class="form-control" type="hidden" value="{{patient.phone_number}}" id="phone_number" name="phone_number" required>
+                                </div>
+                            </div>
+                            <div class="d-none  col-12 col-md-6 col-xl-4">
+                                <div class="input-block local-forms">
+                                    <label>Email <span class="login-danger">*</span></label>
+                                    <input class="form-control" value="{{patient.email}}" type="hidden" id="email" name="email" required>
+                                </div>
+                            </div>
+
+
+                            <div class="col-12 col-md-6 col-xl-4">
+                                <div class="input-block local-forms">
+                                    <label>Select Department <span class="login-danger">*</span></label>
+                                    <select class="form-control" id="department" name="department" required>
+                                        {% for x in departments %}
+                                            <option value="{{x.id}}">{{x.title}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-6 col-xl-4">
+                                <div class="input-block local-forms">
+                                    <label>Select Doctor <span class="login-danger">*</span></label>
+                                    <select class="form-control" id="selected_doctor" name="selected_doctor" required>
+                                        <!-- Options will be populated dynamically -->
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-12 col-xlg-12">
+                                <div class="input-block local-forms">
+                                    <label>Message <span class="login-danger">*</span></label>
+                                    <textarea style="height: 150px;" class="form-control" id="message" name="message"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4 col-xl-4">
+                                <div class="input-block local-forms">
+                                    <label>Gender <span class="login-danger">*</span></label>
+                                    <select class="form-control" id="gender" name="gender" required>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        
+
+                            <div class="col-12">
+                                <div class="doctor-submit text-end">
+                                    <button type="submit" class="btn btn-primary submit-form me-2">Submit</button>
+                                    <a href="{% url 'appointments' %}" class="btn btn-secondary cancel-form">Cancel</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block script %}
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        document.querySelector('.appointment_sidebar').classList.add('active')
+        document.querySelector('.add_appointment_txt').classList.add('active')
+
+        let doctorFee = 0;
+
+        // Function to fetch doctors by department
+        function fetchDoctorsByDepartment(departmentId) {
+            fetch(`/api/doctors/department/?department_id=${departmentId}`)
+                .then(response => response.json()) // Parse JSON once
+                .then(data => {
+                    const doctorSelect = document.getElementById('selected_doctor');
+                    doctorSelect.innerHTML = ''; // Clear previous options
+                    data.forEach(doctor => {
+                        const option = document.createElement('option');
+                        option.value = doctor.id;
+                        option.textContent = doctor.name;
+                        option.dataset.fee = doctor.fee; // Store doctor's fee
+                        doctorSelect.appendChild(option);
+                    });
+                })
+                .catch(error => console.error('Error fetching doctors:', error));
+        }
+
+        // Event listener for department select change
+        document.getElementById('department').addEventListener('change', function() {
+            const departmentId = this.value;
+            fetchDoctorsByDepartment(departmentId);
+        });
+
+        // Initial fetch of doctors for the selected department
+        fetchDoctorsByDepartment(document.getElementById('department').value);
+
+
+
+        document.getElementById('appointment-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+
+            // Phone number validation (must be 10 digits)
+            const phoneNumber = data['phone_number']; // Assuming the name attribute of the phone number field is 'phone_number'
+            const phoneRegex = /^[0-9]{10}$/; // 10 digit validation
+
+            if (!phoneRegex.test(phoneNumber)) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Invalid Phone Number',
+                    text: 'Please enter a valid 10-digit phone number.',
+                });
+                return; // Stop form submission if validation fails
+            }
+
+
+
+                // Directly create appointment with status 'COMPLETED'
+                fetch('/api/create-appointment/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}',
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => response.json())
+                .then(result => {
+                    if (result.error) {
+                        throw new Error(result.error);
+                    }
+                    window.location.href = "{% url 'appointments' %}";
+                })
+                .catch(error => {
+                    console.error('Error:', error.message);
+                    
+                });
+        });
+    
+
+    </script>
+{% endblock script %}
+
+
+
+
+

@@ -1,0 +1,77 @@
+
+
+{% extends 'doctor/base.html' %}
+
+{% load static %}
+
+{% block title %}
+    Video Consultation | AH Hospital
+{% endblock title %}
+
+{% block content %}
+<div class="content">
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="">Dashboard </a></li>
+                    <li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
+                    <li class="breadcrumb-item active">Video Consultation</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="error__section">
+        <p>{{ error }}</p>
+        <a href="{% url 'doctor__appointments' %}">
+            <button>Back to Appointments</button>
+        </a>
+    </div>
+
+
+</div>
+{% endblock content %}
+
+{% block script %}
+<style>
+    .error__section{
+        min-height: 50vh;
+        display: flex;
+        justify-content: center;
+        border-top: 1px solid rgb(223, 223, 223);
+        align-items: center;
+        flex-direction: column;
+    }
+    .error__section img{
+        width: 200px;
+    }
+    .error__section h1{
+        font-size: 35px;
+        font-family: 'DM Sans', Arial, Helvetica, sans-serif;
+        margin-bottom: 15px;
+    }
+    .error__section p{
+        font-size: 18px;
+    }
+    .error__section button{
+        padding: 10px 30px;
+        background-color: #00a6c8;
+        border: none;
+        color: white;
+        margin-top: 20px;
+        border-radius: 5px;
+    }
+</style>
+{% endblock script %}
+
+
+
+
+
+
+
+
+
+
+

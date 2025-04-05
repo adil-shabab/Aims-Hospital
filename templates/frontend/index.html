@@ -1,0 +1,775 @@
+{% extends 'frontend/base.html' %}
+{% load static %}
+{% load humanize %}
+{% load custom_filters %}
+
+
+{% block title %}
+  <title>Best Emergency Superspeciality Hospital in Bangalore India | AH Hospital</title>
+{% endblock title %}
+
+
+
+{% block head %}
+    <link rel="canonical" href="{{ request.build_absolute_uri }}" />
+
+    <!-- Meta Tag Manager -->
+    <meta name="keywords" content="Superspeciality hospital in bangalore india, best hospital in bangalore, Best hospital near me, Best Healthcare Bangalore, Multispecialty Hospital in Bangalore, Best Trauma and Accident hospital, Best Emergency Hospital Bangalore, Specialist doctors Bangalore, Trauma care center bangalore, Vydehi Superspeciality hospital" />
+    <!-- / Meta Tag Manager -->
+    <meta name="description" content="VSH is the best Emergency Superspeciality Hospital in Bangalore, India with the best healthcare facilities, specialist doctors &amp; the best trauma care center." />
+    <link rel="canonical" href="{{ request.build_absolute_uri }}" />
+
+
+
+    <!-- slick css  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <meta name="google-site-verification" content="T2ul-abvQUoRcxLuWnMH7i2bibpLTrRduRcJ3jAzPtw" />
+    
+    <style>
+          
+      body {
+          padding: 0px;
+          margin: 0px;
+          overflow-x: hidden;
+      }
+
+      /* Keyframes for blinking */
+      @keyframes blink {
+          0% {
+              opacity: 1;
+              scale: 1;
+          }
+          50% {
+              opacity: 0.3;
+              scale: 1.2;
+          }
+          100% {
+              opacity: 1;
+              scale: 1;
+          }
+      }
+    </style>
+{% endblock head %}
+  
+    
+
+
+{% block content %}
+
+    <!-- banner area start -->
+    <div class="rts-banner-area-two d-md-block d-none">
+      <div class="swiper mySwiper-banner-2 home_page_banner_desktop">
+          <div class="swiper-wrapper">
+              <!-- single swiper -->
+              
+              {% for x in banners %}
+                <div class="swiper-slide">
+                    <div class="banner-wrapper-bg bg_image ptb--180 ptb_sm--100" style="background: url('{{ x.image_for_desktop.url }}'); background-size: cover; background-position: top; background-repeat: no-repeat;">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="banner-content-area style-two pl--0">
+                                        <div class="pre-title float-right-1">
+                                            <img src="{% static 'frontend/assets/images/banner/icons/01.png' %}" alt="icons">
+                                            <span style="color: {% if x.color == 'white' %}white{% else %}black{% endif %};">Best Multip Speciality Hospital in Manya</span>
+                                        </div>
+                                        <h1 style="color: {% if x.color == 'white' %}white{% else %}black{% endif %};" class="title float-right">{{x.heading}}</h1>
+                                        <p style="color: {% if x.color == 'white' %}white{% else %}black{% endif %};" class="disc float-bottom">
+                                            {{x.description}}
+                                        </p>
+                                        <a href="{{ x.button_url }}" class="rts-btn btn-primary float-bottom-2">{{x.button_text}}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              {% endfor %}
+
+
+                
+
+          </div>
+          <div class="swiper-button-next"><i class="fa-regular fa-chevron-right"></i></div>
+          <div class="swiper-button-prev"><i class="fa-regular fa-chevron-left"></i></div>
+      </div>
+  </div>
+  <!-- banner area end -->
+
+
+    <!-- banner area start -->
+    <div class="rts-banner-area-two d-md-none d-block">
+      <div class="swiper mySwiper-banner-2 home_page_banner_mobile">
+          <div class="swiper-wrapper">
+              <!-- single swiper -->
+              
+              {% for x in banners %}
+                <div class="swiper-slide ">
+                    <div class="banner-wrapper-bg bg_image ptb--180 ptb_sm--100" style="background: url('{{ x.image_for_mobile.url }}'); background-size: cover; background-position: top; background-repeat: no-repeat;">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="banner-content-area style-two pl--0">
+                                        <div class="pre-title float-right-1">
+                                            <img src="{% static 'frontend/assets/images/banner/icons/01.png' %}" alt="icons">
+                                            <span style="color: {% if x.color == 'white' %}white{% else %}black{% endif %};">Best Multip Speciality Hospital in Manya</span>
+                                        </div>
+                                        <h1 style="color: {% if x.color == 'white' %}white{% else %}black{% endif %};" class="title float-right">{{x.heading}}</h1>
+                                        <p style="color: {% if x.color == 'white' %}white{% else %}black{% endif %};" class="disc float-bottom">
+                                            {{x.description}}
+                                        </p>
+                                        <a href="{{ x.button_url }}" class="rts-btn btn-primary float-bottom-2">{{x.button_text}}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              {% endfor %}
+                
+
+          </div>
+          <div class="swiper-button-next"><i class="fa-regular fa-chevron-right"></i></div>
+          <div class="swiper-button-prev"><i class="fa-regular fa-chevron-left"></i></div>
+      </div>
+  </div>
+  <!-- banner area end -->
+
+  <!-- short service -->
+  <div class="short-service-area rts-section-gap">
+      <div class="container">
+          <div class="row g-5">
+              <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 wow fadeInRight" data-wow-delay=".2s" data-wow-duration=".8s">
+                  <a href="#" class="single-short-service">
+                      <div class="icon">
+                          <img src="{% static 'frontend/assets/images/service/01.svg' %}" alt="service">
+                      </div>
+                      <h5 class="title">
+                          Request <br> Appointment
+                      </h5>
+                  </a>
+              </div>
+              <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 wow fadeInRight" data-wow-delay=".4s" data-wow-duration=".8s">
+                  <a href="#" class="single-short-service">
+                      <div class="icon">
+                          <img src="{% static 'frontend/assets/images/service/02.svg' %}" alt="service">
+                      </div>
+                      <h5 class="title">
+                          Find <br>
+                          Doctors
+                      </h5>
+                  </a>
+              </div>
+              <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 wow fadeInRight" data-wow-delay=".6s" data-wow-duration=".8s">
+                  <a href="tel:+4733378901" class="single-short-service">
+                      <div class="icon">
+                          <img src="{% static 'frontend/assets/images/service/03.svg' %}" alt="service">
+                      </div>
+                      <h5 class="title">
+                          Emergency <br>
+                          Call
+                      </h5>
+                  </a>
+              </div>
+              <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 wow fadeInRight" data-wow-delay=".8s" data-wow-duration=".8s">
+                  <a href="#" class="single-short-service">
+                      <div class="icon">
+                          <img src="{% static 'frontend/assets/images/service/04.svg' %}" alt="service">
+                      </div>
+                      <h5 class="title">
+                          24/7 <br>
+                          Support
+                      </h5>
+                  </a>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- short service end -->
+
+  <!-- rs about area start -->
+  <div class="rts-about-area rts-section-gapBottom">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-5">
+                  <div class="about-image-left-wrapper two">
+                      <div class="thumbnail-main move-right wow">
+                          <img src="{% static 'frontend/assets/images/about/03.jpg' %}" alt="about">
+                      </div>
+                      <div class="patient-number">
+                          <div class="top">
+                              <h3 class="title">35 +</h3>
+                              <span>Years of Experience</span>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-lg-6 offset-lg-1 mt_md--100 mt_sm--100">
+                  <div class="about-content-wrapper-right">
+                      <div class="title-wrapper-left">
+                          <h2 class="title mb--10 wow fadeInUp" data-wow-delay=".2s" data-wow-duration=".8s">
+                              Dedicated to Your <br>  Health & Well-Being
+                          </h2>
+                      </div>
+                      <p class="disc mb--15 wow fadeInUp" data-wow-delay=".4s" data-wow-duration=".8s">
+                        Adichunchanagiri Hospital is a well-equipped hospital attached to AIMS (Adichunchanagiri Institute of Medical Sciences) that caters to the healthcare needs of the rural population in that region.
+                      </p>
+
+                      <div class="single-check-wrapper-main-about wow fadeInUp" data-wow-delay=".6s" data-wow-duration=".8s">
+                          <div class="half">
+                              <div class="single">
+                                  <img src="{% static 'frontend/assets/images/about/check.png' %}" alt="cehck">
+                                  <span>Comprehensive Medical Care</span>
+                              </div>
+                              <div class="single">
+                                  <img src="{% static 'frontend/assets/images/about/check.png' %}" alt="cehck">
+                                  <span>Expert & Skilled Doctors</span>
+                              </div>
+                              <div class="single">
+                                  <img src="{% static 'frontend/assets/images/about/check.png' %}" alt="cehck">
+                                  <span>State-of-the-Art Technology</span>
+                              </div>
+
+                          </div>
+                          <div class="half">
+                              <div class="single">
+                                  <img src="{% static 'frontend/assets/images/about/check.png' %}" alt="cehck">
+                                  <span>Round-the-Clock Emergency Care</span>
+                              </div>
+                              <div class="single">
+                                  <img src="{% static 'frontend/assets/images/about/check.png' %}" alt="cehck">
+                                  <span>Affordable Healthcare Services</span>
+                              </div>
+                              <div class="single">
+                                  <img src="{% static 'frontend/assets/images/about/check.png' %}" alt="cehck">
+                                  <span>Leading Teaching Hospital</span>
+                              </div>
+
+                          </div>
+                      </div>
+
+
+                      <div class="button-wrapper mt--25 wow fadeInUp" data-wow-delay=".8s" data-wow-duration=".8s">
+                          <a href="{% url 'about' %}" class="rts-btn btn-primary">About Us <img src="{% static 'frontend/assets/images/banner/icons/arrow--up-right.svg' %}" alt=""></a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- rs about area end -->
+
+
+
+  
+
+  <div class="department__section">
+    <div class="container">
+      <h3 data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="900" class="heading">Our Services</h3>
+      <p data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="1000" class="description">Adichunchanagiri Hospital, one of the best hospitals in Karnataka offers a wide range of services & facilities to meet the healthcare needs of the poor & needy.</p>
+      <div class="dep_carousel">
+        
+        
+        {% for x in departments %}
+        <div data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-delay="200" data-aos-duration="1500" class="box">
+          <div class="img_box">
+            <img src="{{x.banner.url}}" class="img-fluid" alt="">
+          </div>
+          <h5>{{x.title}}</h5>
+          <div class="dep_desc">
+            <p>{{x.description | safe}}</p>
+          </div>  
+          <a href="{% url 'single_service' x.slug %}">View More</a>
+        </div>
+        {% endfor %}
+          
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="team-area-start">
+    <div class="container-80">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="team-style-wrapper bg-light  rts-section-gap ">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="title-between-area">
+                                    <div class="title-wrapper-left">
+                                        <span class="pre wow fadeInUp" data-wow-delay=".2s"
+                                            data-wow-duration=".8s">Our Doctors</span>
+                                        <h2 class="title wow fadeInUp" data-wow-delay=".4s" data-wow-duration=".8s">
+                                            Meet Our Expert  <br> Medical Staff
+                                        </h2>
+                                    </div>
+                                    <p class="disc wow fadeInUp" data-wow-delay=".6s" data-wow-duration=".8s">
+                                        Our team of skilled doctors is dedicated to providing complete care to every patient. Their experience and expertise shine through in the quality treatment they deliver to each individual at the hospital.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-5 mt--20">
+                            <div class="col-lg-12">
+                                <div class="team-swiper-wrapper-1">
+                                    <div class="swiper team-swiper-container-h1">
+                                        <div class="swiper-wrapper">
+
+                                            
+                                            {% for doctor in doctors %}
+                                              <div class="swiper-slide">
+                                                  <div class="single-team-area-start">
+                                                      <a href="{% url 'single_doctor' doctor.slug %}" class="thumbnail">
+                                                          <img src="{{doctor.photo.url}}" alt="team">
+                                                      </a>
+                                                      <div class="bottom">
+                                                          <a href="{% url 'single_doctor' doctor.slug %}">
+                                                              <h6 class="title">Dr. {{doctor.name}}</h6>
+                                                          </a>
+                                                          <p>{{doctor.department.title}}</p>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                            {% endfor %}
+                                              
+                                        </div>
+                                        <div class="swiper-pagination"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  
+
+
+
+
+
+    <!-- rts testimonials area start -->
+    <div class="rts-testimonials-area rts-section-gap">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-12">
+                  <div class="title-area-center">
+                      <span class="pre">Patient Testimonials</span>
+                      <h2 class="title text-center">Words from Our <br> Patients</h2>
+                  </div>
+              </div>
+          </div>
+          <div class="row mt--0 g-5">
+              <div class="col-lg-12">
+                  <div class="swiper swiper-container-h1">
+                      <div class="swiper-wrapper">
+
+                          <div class="swiper-slide">
+                              <div class="single-testimonials-style">
+                                  <div class="quots">
+                                      <img src="{% static 'frontend/assets/images/testimonials/quotes.png' %}" alt="testimonails">
+                                  </div>
+                                  <p class="disc">
+                                      Dr. Robert Thompson is an exceptional cardiologist. His ability to explain with
+                                      complex medical issues in a way that's easy to understand is truly impressive.
+                                  </p>
+                                  <div class="author-area">
+                                      <a href="#" class="img">
+                                          <img src="{% static 'img/user.jpg' %}" alt="testiminials">
+                                      </a>
+                                      <div class="info">
+                                          <h6 class="name">Mr Patel</h6>
+                                          <div class="stars-area">
+                                              <i class="fa-sharp fa-solid fa-star"></i>
+                                              <i class="fa-sharp fa-solid fa-star"></i>
+                                              <i class="fa-sharp fa-solid fa-star"></i>
+                                              <i class="fa-sharp fa-solid fa-star"></i>
+                                              <i class="fa-sharp fa-solid fa-star"></i>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="shape">
+                                      <img src="{% static 'frontend/assets/images/testimonials/02.png' %}" alt="service">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="swiper-slide">
+                              <div class="single-testimonials-style">
+                                  <div class="quots">
+                                      <img src="{% static 'frontend/assets/images/testimonials/quotes.png' %}" alt="testimonails">
+                                  </div>
+                                  <p class="disc">
+                                      Dr. Robert Thompson is an exceptional cardiologist. His ability to explain with
+                                      complex medical issues in a way that's easy to understand is truly impressive.
+                                  </p>
+                                  <div class="author-area">
+                                      <a href="#" class="img">
+                                          <img src="{% static 'img/user.jpg' %}" alt="testiminials">
+                                      </a>
+                                      <div class="info">
+                                          <h6 class="name">Sabit Patel</h6>
+                                          <div class="stars-area">
+                                              <i class="fa-sharp fa-solid fa-star"></i>
+                                              <i class="fa-sharp fa-solid fa-star"></i>
+                                              <i class="fa-sharp fa-solid fa-star"></i>
+                                              <i class="fa-sharp fa-solid fa-star"></i>
+                                              <i class="fa-sharp fa-solid fa-star"></i>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="shape">
+                                      <img src="{% static 'frontend/assets/images/testimonials/02.png' %}" alt="service">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="swiper-slide">
+                              <div class="single-testimonials-style">
+                                  <div class="quots">
+                                      <img src="{% static 'frontend/assets/images/testimonials/quotes.png' %}" alt="testimonails">
+                                  </div>
+                                  <p class="disc">
+                                      Dr. Robert Thompson is an exceptional cardiologist. His ability to explain with
+                                      complex medical issues in a way that's easy to understand is truly impressive.
+                                  </p>
+                                  <div class="author-area">
+                                      <a href="#" class="img">
+                                          <img src="{% static 'img/user.jpg' %}" alt="testiminials">
+                                      </a>
+                                      <div class="info">
+                                          <h6 class="name">David Patel</h6>
+                                          <div class="stars-area">
+                                              <i class="fa-sharp fa-solid fa-star"></i>
+                                              <i class="fa-sharp fa-solid fa-star"></i>
+                                              <i class="fa-sharp fa-solid fa-star"></i>
+                                              <i class="fa-sharp fa-solid fa-star"></i>
+                                              <i class="fa-sharp fa-solid fa-star"></i>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="shape">
+                                      <img src="{% static 'frontend/assets/images/testimonials/02.png' %}" alt="service">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="swiper-slide">
+                              <div class="single-testimonials-style">
+                                  <div class="quots">
+                                      <img src="{% static 'frontend/assets/images/testimonials/quotes.png' %}" alt="testimonails">
+                                  </div>
+                                  <p class="disc">
+                                      Dr. Robert Thompson is an exceptional cardiologist. His ability to explain with
+                                      complex medical issues in a way that's easy to understand is truly impressive.
+                                  </p>
+                                  <div class="author-area">
+                                      <a href="#" class="img">
+                                          <img src="{% static 'img/user.jpg' %}" alt="testiminials">
+                                      </a>
+                                      <div class="info">
+                                          <h6 class="name">Morn Patel</h6>
+                                          <div class="stars-area">
+                                              <i class="fa-sharp fa-solid fa-star"></i>
+                                              <i class="fa-sharp fa-solid fa-star"></i>
+                                              <i class="fa-sharp fa-solid fa-star"></i>
+                                              <i class="fa-sharp fa-solid fa-star"></i>
+                                              <i class="fa-sharp fa-solid fa-star"></i>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="shape">
+                                      <img src="{% static 'frontend/assets/images/testimonials/02.png' %}" alt="service">
+                                  </div>
+                              </div>
+                          </div>
+
+                      </div>
+                      <div class="swiper-pagination"></div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- rts testimonials area end -->
+
+
+
+
+  <!-- request appoinment area start -->
+  <div class="request-appoinment-area">
+      <div class="container-full">
+          <div class="row">
+              <div class="col-lg-12">
+                  <div class="request-appoinemnt-area-main-wrapper radious-0 bg_image rts-section-gap">
+                      <span class="pre">Book Appointment</span>
+                      <h2 class="title">
+                          Request Your Appointment
+                      </h2>
+                      <a href="{% url 'frontend_doctors' %}" class="rts-btn btn-primary">Get Appointment</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- request appoinment area end -->
+
+
+  <!-- rts blog area start -->
+  <div class="rts-blog-area rts-section-gap">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-12">
+                  <div class="title-between-area">
+                      <div class="title-wrapper-left">
+                          <h2 class="title">
+                              Health Insights and Tips
+                          </h2>
+                      </div>
+
+                  </div>
+              </div>
+          </div>
+          <div class="row g-5 mt--20">
+
+            
+            {% for x in blogs %}                
+                <div class="col-lg-4 col-md-6 col-sm-12 col-12 wow fadeInUp" data-wow-delay=".2s" data-wow-duration=".8s">
+                    <!-- single blog areas start -->
+                    <div class="rts-single-blog">
+                        <a href="#" class="thumbnail">
+                            <img src="{{x.image.url}}" alt="blog-image">
+                        </a>
+                        <div class="inner-content">
+                            <div class="author-area">
+                                <span class="name">{{x.category}}</span>
+                                <span>{{ x.createdAt|date:"d F Y" }}</span>
+                            </div>
+                            <a class="button-wrapper" href="#">
+                                <h5 class="title">
+                                    {{x.heading}}
+                                </h5>
+                            </a>
+                            <a href="{% url 'single_blog' x.slug %}" class="rts-btn btn-primary border bg-transparent">Read More <img src="assets/images/banner/icons/arrow--up-right.svg" alt=""></a>
+                        </div>
+                    </div>
+                    <!-- single blog areas end -->
+                </div>
+            {% endfor %}
+                
+
+          </div>
+      </div>
+  </div>
+  <!-- rts blog area end -->
+
+
+
+  <!-- book your consulting -->
+  <div class="book-your-consulting rts-section-gapBottom">
+      <div class="container">
+          <div class="row g-0">
+              <div class="col-lg-6">
+                  <div class="appoinment-area-main bg_image">
+                      <h2 class="title">Enquiry Form</h2>
+                      <form id="appointment-form" class="row">
+                            <div class="half-input-wrapper col-md-12">
+                              <input type="text" id="name" name="name" required placeholder="Patient name">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" id="phone_number" name="phone_number" required placeholder="Phone Number">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="email" id="email" name="email" required placeholder="Patient Email">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" id="disease" name="disease" required placeholder="Health Concern">
+                            </div>
+                            <div class="col-md-6">
+                                <select class="form-control" id="gender" name="gender" required>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <select class="" id="department" name="department" required>
+                                    <option data-display="Select Department" value="">Select Department</option>
+                                    {% for x in departments %}
+                                        <option value="{{x.id}}">{{x.title}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <select class="" id="selected_doctor" name="selected_doctor" required>
+                                    
+                                </select>
+                            </div>
+                            <div class="col-md-">
+                                <textarea placeholder="Message" style="height: 150px;" class="form-control" id="message" name="message"></textarea>
+                            </div>
+
+                          
+                          <button type="submit" class="rts-btn btn-primary">Appoinment <img src="assets/images/banner/icons/arrow--up-right.svg" alt=""></button>
+                      </form>
+                  </div>
+              </div>
+              <div class="col-lg-6">
+                  <div class="thumbnail-appoinment wow move-right">
+                      <img src="{% static 'frontend/assets/images/appoinment/01.webp' %}" alt="appoinment">
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- book your consulting end -->
+
+
+
+{% endblock content %}
+    
+
+
+
+{% block script %}
+
+    <script>
+        document.querySelector('.home').classList.add('active')
+    </script>
+
+
+
+    <script>
+
+        // Function to fetch doctors by department
+        function fetchDoctorsByDepartment(departmentId) {
+            fetch(`/api/doctors/department/?department_id=${departmentId}`)
+                .then(response => response.json()) // Parse JSON once
+                .then(data => {
+                    const doctorSelect = document.getElementById('selected_doctor');
+                    doctorSelect.innerHTML = ''; // Clear previous options
+                    data.forEach(doctor => {
+                        const option = document.createElement('option');
+                        option.value = doctor.id;
+                        option.textContent = doctor.name;
+                        option.dataset.fee = doctor.fee; // Store doctor's fee
+                        doctorSelect.appendChild(option);
+                    });
+                })
+                .catch(error => console.error('Error fetching doctors:', error));
+        }
+
+        // Event listener for department select change
+        document.getElementById('department').addEventListener('change', function() {
+            console.log("Hello I am coming Here")
+            const departmentId = this.value;
+            fetchDoctorsByDepartment(departmentId);
+        });
+
+        // Initial fetch of doctors for the selected department
+        fetchDoctorsByDepartment(document.getElementById('department').value);
+
+
+
+        document.getElementById('appointment-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+
+            // Phone number validation (must be 10 digits)
+            const phoneNumber = data['phone_number']; // Assuming the name attribute of the phone number field is 'phone_number'
+            const phoneRegex = /^[0-9]{10}$/; // 10 digit validation
+
+            if (!phoneRegex.test(phoneNumber)) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Invalid Phone Number',
+                    text: 'Please enter a valid 10-digit phone number.',
+                });
+                return; // Stop form submission if validation fails
+            }
+
+
+
+                // Directly create appointment with status 'COMPLETED'
+                fetch('/api/create-appointment/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}',
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => response.json())
+                .then(result => {
+                    if (result.error) {
+                        throw new Error(result.error);
+                    }
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: 'Appointment Booked Successfully',
+                    });
+                })
+                .catch(error => {
+                    console.error('Error:', error.message);
+                    
+                });
+        });
+    
+    </script>
+
+
+
+    <script>
+            
+      // department carousel 
+      if(document.querySelector('.dep_carousel') !== null){
+        $('.dep_carousel').slick({
+          margin:10,
+          dots: true,
+          infinite: true,
+          // autoplay:true,
+          autoPlayTimeout:2000,
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          arrows: false,
+          responsive: [
+              {
+                breakpoint: 1024,
+                settings: {
+                  slidesToShow: 1,
+                  slidesToScroll: 1,
+                  infinite: true,
+                  dots: true
+                }
+              },
+              {
+                breakpoint: 900,
+                settings: {
+                  slidesToShow: 2,
+                  slidesToScroll: 1
+                }
+              },
+              {
+                breakpoint: 480,
+                settings: {
+                  slidesToShow: 1,
+                  slidesToScroll: 1
+                }
+              }
+            ]
+        });
+      }
+
+
+    </script>
+
+
+
+{% endblock script %}
+    

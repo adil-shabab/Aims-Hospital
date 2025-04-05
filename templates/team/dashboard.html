@@ -1,0 +1,195 @@
+{% extends 'team/base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+
+{% block title %}
+    Dashboard | AH Hospital
+{% endblock title %}
+    
+{% block content %}
+<div class="content">
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="media_dashboard">Dashboard </a></li>
+                    <li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
+                    <li class="breadcrumb-item active">Admin Dashboard</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    
+
+
+
+    <div class="good-morning-blk">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="morning-user">
+                    <h2> <span id="greeting"></span><span style="text-transform: capitalize;">{{request.user.username}}</span></h2>
+                    <p>Have a nice day at work</p>
+                </div>
+            </div>
+            <div class="col-md-6 position-blk">
+                <div class="morning-img">
+                    <img src="{% static 'img/morning-img-01.png' %}" alt />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+            <div class="dash-widget">
+                <div class="dash-boxs comman-flex-center">
+                    <img class="icon_s" src="{% static 'img/icons/department.png' %}" alt />
+                </div>
+                <div class="dash-content dash-count">
+                    <h4>Total Departments</h4>
+                    <h2><span class="counter-up">{{total_departments}}</span></h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+            <div class="dash-widget">
+                <div class="dash-boxs comman-flex-center">
+                    <img class="icon_s" src="{% static 'img/icons/doctor.png' %}" alt />
+                </div>
+                <div class="dash-content dash-count">
+                    <h4>Total Doctors</h4>
+                    <h2><span class="counter-up">{{total_doctors}}</span></h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+            <div class="dash-widget">
+                <div class="dash-boxs comman-flex-center">
+                    <img class="icon_s" src="{% static 'img/icons/blog.png' %}" alt />
+                </div>
+                <div class="dash-content dash-count">
+                    <h4>Total Blogs</h4>
+                    <h2><span class="counter-up">{{total_blogs}}</span></h2>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+
+</div>
+{% endblock content %}
+    
+
+
+
+{% block script %}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+    <script>
+        document.querySelector('.dashboard_sidebar').classList.add('active')
+        const amounts = document.querySelectorAll('.amount_convert')
+
+        amounts.forEach((item) => {
+            const paiseAmount = parseInt(item.textContent, 10);
+            const rupees = paiseAmount / 100;
+            item.textContent = `₹ ${rupees.toFixed(2)}`;
+        });
+    </script>
+
+
+
+
+    <script>
+        // Parse the department data passed from the view
+        const departmentData = JSON.parse('{{ department_data_json|escapejs }}');
+
+        if (departmentData.length > 0) {
+            var categories = departmentData.map(item => item['department']);
+            var data = departmentData.map(item => item['count']);
+            var donutChart = {
+                chart: { type: 'donut', height: 230 },
+                series: data,
+                labels: categories,
+                colors: ['#2E37A4', '#00D3C7', '#FEB019', '#FF4560', '#775DD0', '#2B908F', '#F9A3A4', '#90EE7E'],
+                legend: { position: 'bottom' },
+                dataLabels: { enabled: false }
+            };
+            var chart = new ApexCharts(document.querySelector("#department-chart"), donutChart);
+            chart.render();
+        } else {
+            document.getElementById("department-chart").innerHTML = "<p>No department data available</p>";
+        }
+
+    </script>
+
+
+    <script>
+    
+    if ($("#appointments-chart").length > 0) {
+        var options = {
+          series: [{
+            name: "Appointments",
+            data: {{ monthly_appointments_data|safe }}
+          }],
+          chart: {
+            height: 230,
+            type: 'line',
+            zoom: {
+              enabled: false
+            }
+          },
+          colors: ['#FF4560'], // Custom color for the line
+          dataLabels: {
+            enabled: false
+          },
+          stroke: {
+            curve: 'straight'
+          },
+          grid: {
+            row: {
+              colors: ['transparent', 'transparent'], // takes an array which will be repeated on columns
+              opacity: 0.5
+            },
+          },
+          xaxis: {
+            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+          },
+          yaxis: {
+            min: 1,
+            forceNiceScale: true,
+            labels: {
+              formatter: function(val) {
+                return Math.round(val);
+              }
+            }
+          }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#appointments-chart"), options);
+        chart.render();
+    }
+    </script>
+
+    <script>
+        // Get the current time
+        var now = new Date();
+        var currentHour = now.getHours();
+
+        // Determine the greeting message
+        var greeting;
+        if (5 <= currentHour && currentHour < 12) {
+            greeting = "Good Morning ";
+        } else if (12 <= currentHour && currentHour < 18) {
+            greeting = "Good Afternoon ";
+        } else {
+            greeting = "Good Evening ";
+        }
+
+        // Find the span tag with id "greeting" and set its innerHTML
+        document.getElementById("greeting").innerHTML = greeting;
+    </script>
+{% endblock script %}

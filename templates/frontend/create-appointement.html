@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Appointment</title>
+</head>
+<body>
+    <h1>Create Appointment</h1>
+    <form id="appointment-form">
+        <label for="name">Name:</label>
+        <input value="adil" type="text" id="name" name="name" required><br><br>
+
+        <label for="email">Email:</label>
+        <input value="adil@gmail.com" type="email" id="email" name="email" required><br><br>
+
+        <label for="phone_number">Phone Number:</label>
+        <input value="70120425652" type="text" id="phone_number" name="phone_number" required><br><br>
+
+        <label for="disease">Disease:</label>
+        <input value="general" type="text" id="disease" name="disease" required><br><br>
+
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required><br><br>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" required></textarea><br><br>
+
+        <label for="department">Department:</label>
+        <select id="department" name="department" required>
+            <!-- Options will be populated dynamically -->
+        </select><br><br>
+
+        <label for="department">Gender:</label>
+        <select id="gender" name="gender" required>
+            <option value="male">Male</option>
+            <option value="femail">Female</option>
+            <option value="other">Other</option>
+        </select><br><br>
+
+        <label for="selected_doctor">Doctor:</label>
+        <select id="selected_doctor" name="selected_doctor" required>
+            <!-- Options will be populated dynamically -->
+        </select><br><br>
+
+        <label for="schedule_id">Schedule:</label>
+        <select id="schedule_id" name="schedule_id" required>
+            <!-- Schedule options will be populated dynamically -->
+        </select><br><br>
+
+
+
+        <button type="submit">Create Appointment</button>
+    </form>
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('/api/create-appointment/')
+                .then(response => response.json())
+                .then(data => {
+                    const departmentSelect = document.getElementById('department');
+                    const doctorSelect = document.getElementById('selected_doctor');
+
+                    data.departments.forEach(department => {
+                        const option = document.createElement('option');
+                        option.value = department.id;
+                        option.textContent = department.title;
+                        departmentSelect.appendChild(option);
+                    });
+
+                    data.doctors.forEach(doctor => {
+                        const option = document.createElement('option');
+                        option.value = doctor.id;
+                        option.textContent = doctor.name;
+                        doctorSelect.appendChild(option);
+                    });
+                })
+                .catch(error => console.error('Error fetching initial data:', error));
+
+            document.getElementById('selected_doctor').addEventListener('change', updateSchedules);
+            document.getElementById('date').addEventListener('change', updateSchedules);
+
+            function updateSchedules() {
+                const doctorId = document.getElementById('selected_doctor').value;
+                const date = document.getElementById('date').value;
+
+                if (!doctorId || !date) {
+                    return;
+                }
+
+                const url = `/api/check-timings/${doctorId}/${date}/`;
+
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        const scheduleSelect = document.getElementById('schedule_id');
+                        scheduleSelect.innerHTML = '';  // Clear previous options
+
+                        if (data.error) {
+                            alert(data.error);
+                        } else {
+                            // Process monthly timings
+                            if (data.timings.monthly_timings.length > 0) {
+                                data.timings.monthly_timings.forEach(timing => {
+                                    const option = document.createElement('option');
+                                    option.value = timing.uuid;
+                                    option.text = `Monthly: ${timing.start_time} to ${timing.end_time}`;
+                                    scheduleSelect.appendChild(option);
+                                });
+                            }
+
+                            // Process weekly timings
+                            if (data.timings.weekly_timings.length > 0) {
+                                data.timings.weekly_timings.forEach(timing => {
+                                    const option = document.createElement('option');
+                                    option.value = timing.uuid;
+                                    option.text = `Weekly: ${timing.start_time} to ${timing.end_time}`;
+                                    scheduleSelect.appendChild(option);
+                                });
+                            }
+
+                            if (data.timings.monthly_timings.length === 0 && data.timings.weekly_timings.length === 0) {
+                                alert('No available timings found for this date.');
+                            }
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching schedules:', error);
+                        alert(`An error occurred while fetching schedules: ${error.message}`);
+                    });
+            }
+
+
+
+
+            document.getElementById('appointment-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const formData = new FormData(this);
+                const data = Object.fromEntries(formData.entries());
+
+                fetch('/api/create-appointment/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}',
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        return response.json().then(error => {
+                            throw new Error(error.error);
+                        });
+                    }
+                    return response.json();
+                })
+                .then(order => {
+                    if (!order.razorpay_key_id) {
+                        throw new Error('Invalid response from server');
+                    }
+                    const options = {
+                        "key": order.razorpay_key_id,
+                        "amount": order.amount,
+                        "currency": order.currency,
+                        "name": order.name,
+                        "description": order.description,
+                        "order_id": order.razorpay_order_id,
+                        'callback_url': order.callback_url, // Ensure this matches your server-side endpoint
+                        'redirect': true,
+                        "prefill": {
+                            "name": order.name,
+                            "email": order.email,
+                            "contact": order.phone_number
+                        },
+                        "notes": {
+                            "address": "Appointment Booking"
+                        },
+                        "theme": {
+                            "color": "#3399cc"
+                        }
+                    };
+                    var rzp1 = new Razorpay(options);
+                    rzp1.on('payment.failed', function (response){
+                        alert('Payment failed');
+                        console.log('Payment failed', response);
+                        fetch('/handle-payment/', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded',
+                                'X-CSRFToken': '{{ csrf_token }}',
+                            },
+                            body: new URLSearchParams({
+                                razorpay_payment_id: response.error.metadata.payment_id,
+                                razorpay_order_id: response.error.metadata.order_id,
+                                razorpay_signature: response.error.metadata.signature
+                            })
+                        });
+                    });
+                    rzp1.open();
+                })
+                .catch(error => {
+                    console.error('Error:', error.message);
+                    alert('An error occurred while creating the appointment. Please try again.');
+                });
+            });
+
+
+
+
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+{% extends 'team/base.html' %}
+
+{% load static %}
+
+
+{% block title %}
+    Create Department | AH Hospital
+{% endblock title %}
+    
+
+
+{% block content %}
+<div class="content">
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'media_departments' %}">Departments </a></li>
+                    <li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
+                    <li class="breadcrumb-item active">Add Department</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-heading">
+                                    <h4>Add Department Details</h4>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-block local-forms">
+                                    <label>Department Title <span class="login-danger">*</span></label>
+                                    {{ form.title }}
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <div class="input-block local-forms">
+                                    <label>Speciality Type <span class="login-danger">*</span></label>
+                                    {{ form.speciality_type }}
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="input-block local-forms">
+                                    <label>Opening Hours <span class="login-danger">*</span></label>
+                                    {{ form.opening_hours }}
+                                </div>
+                            </div>
+
+                            <div class="col-md-6"></div>
+
+                            <div class="col-md-6 mb-3 col-12">
+                                <label class="label__banner">Image <span class="login-danger">*</span></label>
+                                <img class="img__preview" id="img-preview" src="{% static 'img/icons/upload.png' %}"/>
+                                <div>
+                                    {{form.banner}}
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3 col-12">
+                                <label class="label__banner">Icon Image<span class="login-danger">*</span></label>
+                                <div class="img__preview d-flex justify-content-center align-items-center">
+                                    <img class="img-fluid w-50" id="img-preview-3" src="{% static 'img/icons/upload.png' %}"/>
+                                </div>
+                                <div>
+                                    {{form.icon}}
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3 col-12">
+                                <label class="label__banner">Banner Image<span class="login-danger">*</span></label>
+                                <img class="img__preview" id="img-preview-2" src="{% static 'img/icons/upload.png' %}"/>
+                                <div>
+                                    {{form.breadcamp}}
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-12 col-xl-12 mt-2">
+                                <div class="input-block local-forms">
+                                    {{form.show_on_homepage}}
+                                    <span style="font-size: 12px; margin-left: 5px;">Show On Home Page</span>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-12">
+                                <label class="label__banner">Department Description <span class="login-danger">*</span></label>
+                                <div>
+                                    {{form.description}}
+                                </div>
+                            </div>
+                           
+
+                            <div class="form-group col-12 col-md-6 col-xl-6 mt-3">
+                                <div class="input-block select-gender">
+                                    <label class="gen-label">Status <span class="login-danger">*</span></label>
+                                    <div class="form-check form-check-inline">
+                                        <label class="form-check-label">
+                                            <input type="radio" name="status" id="id_status" required value="True" class="form-check-input mt-0"
+                                                {% if form.status.value == 'True' %}checked{% endif %}/> Active
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <label class="form-check-label">
+                                            <input type="radio" name="status" id="id_status" required value="False" class="form-check-input mt-0"
+                                                {% if form.status.value == 'False' %}checked{% endif %}/> Inactive
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="doctor-submit text-end">
+                                    <button type="submit" class="btn btn-primary submit-form me-2">Submit</button>
+                                    <a href="{% url 'media_departments' %}" class="btn btn-secondary cancel-form">Cancel</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+    
+
+
+{% block script %}
+    <script>
+        document.querySelector('.department_sidebar').classList.add('active')
+        document.querySelector('.add_department_txt').classList.add('active')
+    </script>
+
+    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var textareas = document.querySelectorAll('textarea');
+            for (var i = 0; i < textareas.length; ++i) {
+                CKEDITOR.replace(textareas[i].id);
+                document.querySelector('#cke_notifications_area_id_description').classList.add('d-none')
+            }
+        });
+    </script>
+
+
+    <script>
+
+        function readURL2(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                $("#img-preview-2").attr("src", e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                $("#img-preview-2").attr("src", noimage);
+            }
+        }
+
+    </script>
+
+
+    <script>
+
+        function readURL3(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $("#img-preview-3").attr("src", e.target.result);
+                    $("#img-preview-3").attr("class", 'w-25');
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                $("#img-preview-3").attr("src", noimage);
+            }
+        }
+
+    </script>
+
+    <script>
+        //Change this to your no-image file
+        let noimage =
+        "{% static 'img/icons/upload.png' %}";
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                $("#img-preview").attr("src", e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+
+
+            } else {
+                $("#img-preview").attr("src", noimage);
+            }
+        }
+
+        var imgElement = document.getElementById('img-preview');
+        imgElement.classList.add('object-contain');
+
+
+
+    </script>
+
+
+    
+
+{% endblock script %}

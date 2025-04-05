@@ -1,0 +1,615 @@
+{% extends 'frontend/inner-base.html' %}
+
+{% load static %}
+
+
+{% block title %}
+<title>VSH Hospital: Excellence in Healthcare</title>
+{% endblock title %}
+    
+
+
+{% block head %}
+    <style>
+        .subpage-header{
+            position: relative;
+        }
+        .subpage-header::after{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            content: '';
+            left: 0;
+            top: 0;
+            background-color: rgba(0, 0, 0, 0.432);
+        }
+    </style>
+
+	<meta name="keywords" content="Hospital overview, Mission and vision, Leadership team, Awards and recognition, Accreditation, Quality standards  Facilities," />
+	<!-- / Meta Tag Manager -->
+
+	<meta name="description" content="Visit VSH Hospital Bangalore for Excellence in Healthcare. Learn more about award-winning care, renowned specialists, &amp; advanced technology." />
+	<link rel="canonical" href="https://vshhospital.com/about" />
+{% endblock head %}
+    
+
+
+  
+
+{% block content %}
+    
+
+
+    <!-- Subpage Header Start -->
+    <div class="subpage-header" style="background: url(../../static/images/about.jpg); padding: 130px 0px ;background-size: cover; background-position: center;  background-repeat: no-repeat;">        
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Sub page Header start -->
+                    <div class="subpage-header-box">
+                        <h1 class="text-anime-style-3">About Us</h1>
+                        <ol class="breadcrumb wow fadeInUp">
+                            <li><a href="{% url 'homepage' %}">Home</a></li>
+                            <li>About Us</li>
+                        </ol>
+                    </div>
+                    <!-- Sub page Header End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Subpage Header End -->
+
+
+    
+    <!-- rs about area start -->
+    <div class="rts-about-area mt--100 mb--50">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5">
+                    <div class="about-image-left-wrapper two">
+                        <div class="thumbnail-main move-right wow">
+                            <img src="{% static 'frontend/assets/images/about/03.jpg' %}" alt="about">
+                        </div>
+                        <div class="patient-number">
+                            <div class="top">
+                                <h3 class="title">35 +</h3>
+                                <span>Years of Experience</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 offset-lg-1 mt_md--100 mt_sm--100">
+                    <div class="about-content-wrapper-right">
+                        <div class="title-wrapper-left">
+                            <h2 class="title mb--10 wow fadeInUp" data-wow-delay=".2s" data-wow-duration=".8s">
+                                Dedicated to Your <br> Good Health & Well-Being
+                            </h2>
+                        </div>
+                        <p class="disc mb--15 wow fadeInUp" data-wow-delay=".4s" data-wow-duration=".8s">
+                            Adichunchanagiri Hospital is a well-equipped hospital attached to AIMS (Adichunchanagiri Institute of Medical Sciences) that caters to the healthcare needs of the rural population in that region.
+                        </p>
+
+                        <div class="single-check-wrapper-main-about wow fadeInUp" data-wow-delay=".6s" data-wow-duration=".8s">
+                            <div class="half">
+                                <div class="single">
+                                    <img src="{% static 'frontend/assets/images/about/check.png' %}" alt="cehck">
+                                    <span>Comprehensive Medical Care</span>
+                                </div>
+                                <div class="single">
+                                    <img src="{% static 'frontend/assets/images/about/check.png' %}" alt="cehck">
+                                    <span>Expert & Skilled Doctors</span>
+                                </div>
+                                <div class="single">
+                                    <img src="{% static 'frontend/assets/images/about/check.png' %}" alt="cehck">
+                                    <span>State-of-the-Art Technology</span>
+                                </div>
+
+                            </div>
+                            <div class="half">
+                                <div class="single">
+                                    <img src="{% static 'frontend/assets/images/about/check.png' %}" alt="cehck">
+                                    <span>Round-the-Clock Emergency Care</span>
+                                </div>
+                                <div class="single">
+                                    <img src="{% static 'frontend/assets/images/about/check.png' %}" alt="cehck">
+                                    <span>Affordable Healthcare Services</span>
+                                </div>
+                                <div class="single">
+                                    <img src="{% static 'frontend/assets/images/about/check.png' %}" alt="cehck">
+                                    <span>Leading Teaching Hospital</span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- rs about area end -->
+
+
+
+
+    <div class="health-services">
+        <div class="container">
+            <div class="row section-row">
+
+                <div class="col-md-12">
+                    <!-- Section Title Start -->
+                    <div class="section-title">
+                        <!-- First two paragraphs are visible by default -->
+                        <p class="desc__txt text_justify">
+                            Adichunchanagiri Hospital & Research Centre (AH & RC), located in Mandya, Karnataka, is a leading healthcare facility dedicated to serving the rural population with quality medical care. The hospital was founded with the vision of His Holiness Padmabhushana Sri Sri Sri Dr. Balagangadharanatha Maha Swamiji, who aimed to establish a high-tech institution attached to the Adichunchanagiri Institute of Medical Sciences (AIMS).
+                        </p>
+                        <p class="desc__txt text_justify">
+                            Since its inception in 1990, AH & RC has been committed to providing preventive, curative, and rehabilitative medical services. The hospital focuses on ensuring affordable healthcare for the underprivileged. The hospital is staffed with highly qualified medical professionals and equipped with advanced technology to offer specialised treatments in Neurosurgery, Urology, Cardiology, Oncology, Nephrology, and Plastic Surgery.
+                        </p>
+                        <p class="desc__txt text_justify">
+                            Among the key facilities at AH & RC is its well-equipped Blood Bank, managed by an experienced Blood Bank Officer who ensures blood donation, storage, and delivery systems are monitored to meet the needs of patients.
+                        </p>
+                        <p class="desc__txt text_justify">
+                            The hospital also provides free medical aid, including medicines, to those in need. Its Forensic Department is equipped with a modern cold storage facility for storing cadavers that require post-mortem examinations.
+                        </p>
+                        <p class="desc__txt text_justify">
+                            The hospital operates with OPD hours from 9:00 AM to 5:00 PM, while emergency services, pharmacy, and laboratory are available 24/7.
+                        </p>
+
+                        <div class="counter__section">
+                            <div class="bx_counter">
+                                <i class="fa-solid fa-bed-pulse"></i>
+                                <span class="ct_counter"><span class="counter">1151</span> +</span>
+                                <p>No of Beds</p>
+                            </div>
+                            <div class="bx_counter">
+                                <i class="fa-solid fa-user-doctor"></i>
+                                <span class="ct_counter"><span class="counter">45</span>K +</span>
+                                <p>Treated Patients</p>
+                            </div>
+                            <div class="bx_counter">
+                                <i class="fa-solid fa-microscope"></i>
+                                <span class="ct_counter"><span class="counter">45</span> +</span>
+                                <p>No of Services</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Section Title End -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- Top Services Section Start -->
+    <div class="top-services">
+        <div class="container">
+            <div class="row section-row">
+                <div class="col-lg-5 col-md-12">
+                    <!-- Section Title Start -->
+                    <div class="section-title">
+                        <h3 class="wow fadeInUp">Our Purpose</h3>
+                        <h2 class="text-anime-style-3">Our Vision & Mission</h2>
+                    </div>
+                    <!-- Section Title End -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-12">
+                    <!-- Services Item Start -->
+                    <div class="services-item wow fadeInUp">
+                        <div class="services-img">
+                            <img src="{% static 'img/icons/vis.png' %}" alt="">
+                            <img class="services-icon-white" src="{% static 'img/icons/vis-white.png' %}" alt="">
+                        </div>
+                        <div class="services-content">
+                            <h3>Our Vision</h3>
+                            <p class="text_justify">
+                                To educate and train students in understanding diseases, while providing quality, compassionate care to patients, & building strong doctor-patient relationships. We aim to establish Adichunchanagiri Hospital as the go-to referral centre for those in need.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Services Item End -->
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <!-- Services Item Start -->
+                    <div class="services-item wow fadeInUp" data-wow-delay="0.25s">
+                        <div class="services-img">
+                            <img src="{% static 'img/icons/mission.png' %}" alt="">
+                            <img class="services-icon-white" src="{% static 'img/icons/mission-white.png' %}" alt="">
+                        </div>
+                        <div class="services-content">
+                            <h3>Our Mission</h3>
+                            <p class="text_justify">
+                                To offer primary and secondary healthcare services at affordable prices to those in need. We strive to provide tertiary care at reasonable costs for rural populations and promote health awareness through community-driven health programmes.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Services Item End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Top Services Section End -->
+
+
+
+
+
+    <!-- We Improving Section Start -->
+    <div class="we-improving">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <!-- Improving Image Start -->
+                        <div class="improving-img">
+                            <figure class="image-anime reveal">
+                                <img src="https://community.softr.io/uploads/db9110/original/2X/7/74e6e7e382d0ff5d7773ca9a87e6f6f8817a68a6.jpeg" alt="">
+                            </figure>
+                        </div>
+                        <!-- Improving Image End -->
+                    </div>
+                    <div class="col-lg-6">
+                        <!-- Improving Content Start -->
+                        <div class="improving-content">
+    
+                            <!-- Improving Body Start -->
+                            <div class="improving-body">
+                                <div class="section-title">
+                                    <h3 class="text-anime-style-3">Chief of Hospital- Dr K.M. Shivakumar</h3>
+                                </div>
+                            
+                                <!-- First two paragraphs visible by default -->
+                                <p class="wow fadeInUp text_justify mb-2">
+                                    Dr. K.M. Shivakumar is a highly respected figure in Indian medicine, with over 30 years of experience in clinical practice and medical education. Currently serving as the Chief of Hospitals at Adichunchanagiri Hospital & Research Center in Bellur, Karnataka, Dr. Shivakumar is committed to providing excellent patient care and leading the hospital with expertise. He completed his MBBS from Mysore University in 1984 and went on to earn his MD in General Medicine in 1988. Furthering his education, he pursued specialized training in non-interventional cardiology at the renowned ESCORTS Heart Institute in New Delhi. 
+                                </p>
+                                <p class="wow fadeInUp text_justify mb-0">
+                                    Dr. Shivakumar has been a passionate educator for 33 years, holding key positions such as Professor and Head of the Department of General Medicine at Mandya Institute of Medical Sciences (MIMS). He also served as Chairman of the Board of Studies for PG clinical programs at Rajiv Gandhi University of Health Sciences (RGUHS) from 2019 to 2022 and has contributed to academic bodies such as Adichunchanagiri University and the University of Mysore. His leadership in healthcare extends to administrative roles, including Medical Superintendent and Principal at MIMS. 
+                                </p>
+                            
+                                <!-- Hidden content initially -->
+                                <div id="hiddenContentChairperson" style="display: none;">
+                                    <p class=" text_justify">
+                                        Dr. Shivakumar has led important research studies in Sepsis-induced Coagulopathy, COVID-19 treatments, and vaccine trials, making significant strides in medical research. He is an active member of the Indian Medical Association (IMA) and the Association of Physicians of India (API). His dedication has earned him awards such as the Karnataka State IMA Doctors' Day Award and the Vaidya Ratna Award. Dr. Shivakumar’s contributions continue to shape the future of healthcare in India, making him an exceptional leader and healthcare professional.
+                                    </p>
+                                    
+                                </div>
+                            
+                                <!-- Read more button -->
+                                 <div style="margin-top: 5px; margin-bottom: 10px;">
+                                     <a id="readMoreChairperson" style="cursor: pointer; color: white; font-size: 15px;">Read more</a>
+                                 </div>
+                            </div>
+                            <!-- Improving Body End -->
+                        </div>
+                        <!-- Improving Content End -->
+                    </div>
+                </div>
+            </div>
+    </div>
+    <!-- We Improving Section End -->
+    
+
+
+
+    
+    <!-- rts testimonials area start -->
+    <div class="rts-testimonials-area rts-section-gap">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="title-area-center">
+                        <span class="pre">Client Feedback</span>
+                        <h2 class="title text-center">Patient Testimonials</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt--0 g-5">
+                <div class="col-lg-12">
+                    <div class="swiper swiper-container-h1">
+                        <div class="swiper-wrapper">
+  
+                            <div class="swiper-slide">
+                                <div class="single-testimonials-style">
+                                    <div class="quots">
+                                        <img src="{% static 'frontend/assets/images/testimonials/quotes.png' %}" alt="testimonails">
+                                    </div>
+                                    <p class="disc">
+                                        Dr. Robert Thompson is an exceptional cardiologist. His ability to explain with
+                                        complex medical issues in a way that's easy to understand is truly impressive.
+                                    </p>
+                                    <div class="author-area">
+                                        <a href="#" class="img">
+                                            <img src="{% static 'img/user.jpg' %}" alt="testiminials">
+                                        </a>
+                                        <div class="info">
+                                            <h6 class="name">Mr Patel</h6>
+                                            <div class="stars-area">
+                                                <i class="fa-sharp fa-solid fa-star"></i>
+                                                <i class="fa-sharp fa-solid fa-star"></i>
+                                                <i class="fa-sharp fa-solid fa-star"></i>
+                                                <i class="fa-sharp fa-solid fa-star"></i>
+                                                <i class="fa-sharp fa-solid fa-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="shape">
+                                        <img src="{% static 'frontend/assets/images/testimonials/02.png' %}" alt="service">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="single-testimonials-style">
+                                    <div class="quots">
+                                        <img src="{% static 'frontend/assets/images/testimonials/quotes.png' %}" alt="testimonails">
+                                    </div>
+                                    <p class="disc">
+                                        Dr. Robert Thompson is an exceptional cardiologist. His ability to explain with
+                                        complex medical issues in a way that's easy to understand is truly impressive.
+                                    </p>
+                                    <div class="author-area">
+                                        <a href="#" class="img">
+                                            <img src="{% static 'img/user.jpg' %}" alt="testiminials">
+                                        </a>
+                                        <div class="info">
+                                            <h6 class="name">Sabit Patel</h6>
+                                            <div class="stars-area">
+                                                <i class="fa-sharp fa-solid fa-star"></i>
+                                                <i class="fa-sharp fa-solid fa-star"></i>
+                                                <i class="fa-sharp fa-solid fa-star"></i>
+                                                <i class="fa-sharp fa-solid fa-star"></i>
+                                                <i class="fa-sharp fa-solid fa-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="shape">
+                                        <img src="{% static 'frontend/assets/images/testimonials/02.png' %}" alt="service">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="single-testimonials-style">
+                                    <div class="quots">
+                                        <img src="{% static 'frontend/assets/images/testimonials/quotes.png' %}" alt="testimonails">
+                                    </div>
+                                    <p class="disc">
+                                        Dr. Robert Thompson is an exceptional cardiologist. His ability to explain with
+                                        complex medical issues in a way that's easy to understand is truly impressive.
+                                    </p>
+                                    <div class="author-area">
+                                        <a href="#" class="img">
+                                            <img src="{% static 'img/user.jpg' %}" alt="testiminials">
+                                        </a>
+                                        <div class="info">
+                                            <h6 class="name">David Patel</h6>
+                                            <div class="stars-area">
+                                                <i class="fa-sharp fa-solid fa-star"></i>
+                                                <i class="fa-sharp fa-solid fa-star"></i>
+                                                <i class="fa-sharp fa-solid fa-star"></i>
+                                                <i class="fa-sharp fa-solid fa-star"></i>
+                                                <i class="fa-sharp fa-solid fa-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="shape">
+                                        <img src="{% static 'frontend/assets/images/testimonials/02.png' %}" alt="service">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="single-testimonials-style">
+                                    <div class="quots">
+                                        <img src="{% static 'frontend/assets/images/testimonials/quotes.png' %}" alt="testimonails">
+                                    </div>
+                                    <p class="disc">
+                                        Dr. Robert Thompson is an exceptional cardiologist. His ability to explain with
+                                        complex medical issues in a way that's easy to understand is truly impressive.
+                                    </p>
+                                    <div class="author-area">
+                                        <a href="#" class="img">
+                                            <img src="{% static 'img/user.jpg' %}" alt="testiminials">
+                                        </a>
+                                        <div class="info">
+                                            <h6 class="name">Morn Patel</h6>
+                                            <div class="stars-area">
+                                                <i class="fa-sharp fa-solid fa-star"></i>
+                                                <i class="fa-sharp fa-solid fa-star"></i>
+                                                <i class="fa-sharp fa-solid fa-star"></i>
+                                                <i class="fa-sharp fa-solid fa-star"></i>
+                                                <i class="fa-sharp fa-solid fa-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="shape">
+                                        <img src="{% static 'frontend/assets/images/testimonials/02.png' %}" alt="service">
+                                    </div>
+                                </div>
+                            </div>
+  
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- rts testimonials area end -->
+  
+
+
+        <!-- why choose us section start -->
+        <div class="why-choose-area-wrapper bg-light  rts-section-gap ">
+            <div class="container">
+                <div class="row align-items-end">
+                    <div class="col-lg-12">
+                        <div class="title-between-area mb_sm--30">
+                            <div class="title-wrapper-left">
+                                <h2 class="title wow fadeInUp" data-wow-delay=".4s" data-wow-duration=".8s">
+                                    Key Facilities at  <br> Adichunchanagiri Hospital
+                                </h2>
+                            </div>
+                            <p class="disc wow fadeInUp" data-wow-delay=".6s" data-wow-duration=".8s">
+                                At Adichunchanagiri Hospital & Research Centre (AH & RC), we offer a range of essential facilities that make us one of the top healthcare providers in Karnataka. Our hospital is equipped with the following services to ensure comprehensive care for all patients:
+                            </p>
+                        </div>
+                    </div>
+    
+                    <div class="col-lg-6">
+                        <div class="right-whychoose-us wow move-right">
+                            <img src="{% static 'frontend/assets/images/portfolio/03.jpg' %}" alt="service">
+                        </div>
+                    </div>
+                    <div class=" offset-lg-1 col-lg-5">
+                        <div class="why-choose-us-area-wrapper-main">
+    
+                            <div class="why-choose-us-main-wrapper">
+                                <div class="single-choose-us wow fadeInRight" data-wow-delay=".2s" data-wow-duration=".8s">
+                                    <div class="icon">
+                                        <img src="{% static 'frontend/assets/images/service/icon/04.svg' %}" alt="service">
+                                    </div>
+                                    <div class="info">
+                                        <h6 class="title">24/7 Emergency Services</h6>
+                                        <p>Available round-the-clock for immediate medical attention</p>
+                                    </div>
+                                </div>
+                                <div class="single-choose-us wow fadeInRight" data-wow-delay=".2s" data-wow-duration=".8s">
+                                    <div class="icon">
+                                        <img src="{% static 'frontend/assets/images/service/icon/02.svg' %}" alt="service">
+                                    </div>
+                                    <div class="info">
+                                        <h6 class="title">Pharmacy Open 24/7</h6>
+                                        <p>Providing essential medications at any time</p>
+                                    </div>
+                                </div>
+                                <div class="single-choose-us wow fadeInRight" data-wow-delay=".2s" data-wow-duration=".8s">
+                                    <div class="icon">
+                                        <img src="{% static 'frontend/assets/images/service/icon/03.svg' %}" alt="service">
+                                    </div>
+                                    <div class="info">
+                                        <h6 class="title">Laboratory Services Available 24/7</h6>
+                                        <p>Offering diagnostic tests and results without delay.</p>
+                                    </div>
+                                </div>
+                                <div class="single-choose-us wow fadeInRight" data-wow-delay=".2s" data-wow-duration=".8s">
+                                    <div class="icon">
+                                        <img src="{% static 'frontend/assets/images/service/icon/02.svg' %}" alt="service">
+                                    </div>
+                                    <div class="info">
+                                        <h6 class="title">Blood Bank</h6>
+                                        <p>Fully equipped for blood donation, storage, and delivery.</p>
+                                    </div>
+                                </div>
+                                <div class="single-choose-us wow fadeInRight" data-wow-delay=".2s" data-wow-duration=".8s">
+                                    <div class="icon">
+                                        <img src="{% static 'frontend/assets/images/service/icon/02.svg' %}" alt="service">
+                                    </div>
+                                    <div class="info">
+                                        <h6 class="title">Free Medical Aid for Needy Patient</h6>
+                                        <p>Ensuring healthcare is accessible to those in need.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- why choose us section end -->
+    
+    
+    
+        
+
+    {% include 'frontend/include/blogs.html' %}
+    
+
+    
+{% endblock content %}
+    
+
+
+{% block script %}
+    <script>
+        document.querySelector('.about').classList.add('active')
+    </script>
+
+    <!-- JavaScript to handle "Read more" functionality -->
+    <script>
+        document.getElementById('readMoreBtn').addEventListener('click', function() {
+            var moreContent = document.getElementById('moreContent');
+            var btn = document.getElementById('readMoreBtn');
+
+            if (moreContent.style.display === "none") {
+                moreContent.style.display = "block";
+                btn.innerHTML = "Read less";
+            } else {
+                moreContent.style.display = "none";
+                btn.innerHTML = "Read more";
+            }
+        });
+    </script>
+
+    <script>
+        function showMoreContentFounder() {
+            var hiddenContent = document.getElementById('hiddenContentFounder');
+            var btn = document.getElementById('readMoreFounder');
+
+            if (hiddenContent.style.display === "none") {
+                hiddenContent.style.display = "block";
+                btn.innerHTML = "Read less";
+            } else {
+                hiddenContent.style.display = "none";
+                btn.innerHTML = "Read more";
+            }
+        }
+
+        // Add event listener to the button
+        document.getElementById('readMoreFounder').addEventListener('click', showMoreContentFounder);
+    </script>
+
+
+    <!-- JavaScript for the unique "Read more" functionality -->
+    <script>
+        function showMoreContentChairperson() {
+            var hiddenContent = document.getElementById('hiddenContentChairperson');
+            var btn = document.getElementById('readMoreChairperson');
+
+            if (hiddenContent.style.display === "none") {
+                hiddenContent.style.display = "block";
+                btn.innerHTML = "Read less";
+            } else {
+                hiddenContent.style.display = "none";
+                btn.innerHTML = "Read more";
+            }
+        }
+
+        // Add event listener to the button
+        document.getElementById('readMoreChairperson').addEventListener('click', showMoreContentChairperson);
+    </script>
+
+
+
+    <!-- JavaScript for the unique "Read more" functionality -->
+    <script>
+        function showMoreContentPresident() {
+            var hiddenContent = document.getElementById('hiddenContentPresident');
+            var btn = document.getElementById('readMorePresident');
+
+            if (hiddenContent.style.display === "none") {
+                hiddenContent.style.display = "block";
+                btn.innerHTML = "Read less";
+            } else {
+                hiddenContent.style.display = "none";
+                btn.innerHTML = "Read more";
+            }
+        }
+
+        // Add event listener to the button
+        document.getElementById('readMorePresident').addEventListener('click', showMoreContentPresident);
+    </script>
+{% endblock script %}
+    

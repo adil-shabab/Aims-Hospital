@@ -1,0 +1,180 @@
+{% extends 'frontend/inner-base.html' %}
+
+{% load static %}
+{% load custom_filters %}
+
+
+{% block title %}
+<title>Online Doctor Consult Bangalore | AH Hospital Hospital</title>
+{% endblock title %}
+
+
+
+{% block head %}
+
+	<meta name="keywords" content="online doctor consultation bangalore, India, video consult with doctor in bangalore, video doctor consultation in bangalore, telemedicine bangalore, online healthcare in bangalore, virtual doctor visit in bangalore, Online 	doctor 	consultation gynaecologist, Free online doctor consultation for pregnancy, Online doctor consultation free in India, Practo online doctor consultation, Free online doctor consultation prescription, Online doctor consultation Bangalore, Free online doctor 	consultation India government" />
+	<meta name="description" content="Online Doctor Consult Bangalore at VSH Hospital. See a Doctor from Home in Bangalore! Video Consultations for All Your Needs." />
+	<link rel="canonical" href="https://vshhospital.com/doctors/" />
+
+
+<style>
+    .subpage-header{
+        position: relative;
+    }
+    .subpage-header::after{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        content: '';
+        left: 0;
+        top: 0;
+        background-color: rgba(0, 0, 0, 0.432);
+    }
+    .subpage-header-box ol{
+        justify-content: flex-start !important;
+    }
+    .subpage-header-box {
+        max-width: unset !important;
+        margin: unset !important;
+        text-align: unset !important;
+    }
+</style>
+{% endblock head %}
+    
+
+
+
+{% block content %}
+    <!-- Subpage Header Start -->
+    <div class="subpage-header" style="background: url(../../static/images/breadcamb.jpg); padding: 110px 0px ;background-size: cover; background-position: center;  background-repeat: no-repeat;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Sub page Header start -->
+                    <div class="subpage-header-box">
+                        <h1 class="text-anime-style-1">Doctors</h1>
+                        <ol class="breadcrumb wow fadeInUp">
+                            <li><a href="{% url 'homepage' %}">Home</a></li>
+                            <li>Doctors</li>
+                        </ol>
+                    </div>
+                    <!-- Sub page Header End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Subpage Header End -->
+
+    <form method="get" action="{% url 'frontend_doctors' %}">
+        <div class="search_container">
+            <div class="container">
+                <div class="sort__section">
+                    <div class="first__section">
+                        <span class="sort_txt">Sort By</span>
+                        <a href="?sort_by=&search={{ request.GET.search }}&department={{ request.GET.department }}" class="sort_box {% if not active_sort %}active{% endif %}">All</a>
+                        {% for dep in top_departments %}
+                            <a href="?sort_by={{ dep.title }}&search={{ request.GET.search }}&department={{ request.GET.department }}" class="sort_box {% if active_sort == dep.title %}active{% endif %}">{{ dep.title }}</a>
+                        {% endfor %}
+                    </div>
+
+                </div>
+                
+                <div class="form">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input_group">
+                                <select name="department">
+                                    <option value="">All Departments</option>
+                                    {% for department in departments %}
+                                        <option value="{{ department.title }}" {% if request.GET.department == department.title %}selected{% endif %}>{{ department.title }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="input_group">
+                                <input type="text" name="search" placeholder="Search Doctor" value="{{ request.GET.search }}">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="button">
+                                <button type="submit">Search</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+    <!-- rts doctors area start -->
+    <div class="rts-doctors-area rts-section-gap pt-0 pb-2 mb-5">
+        <div class="container">
+
+            <div class="row g-5 meet-doctor-area-sd">
+
+                
+                {% for x in doctors %}                    
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-12 wow fadeInUp" data-wow-delay=".2s" data-wow-duration=".8s">
+                        <div class="single-team-area-start">
+                            <a href="{% url 'single_doctor' x.slug %}" class="thumbnail">
+                                <img src="{{x.photo.url}}" alt="team">
+                            </a>
+                            <div class="bottom">
+                                <a href="#">
+                                    <h6 class="title">Dr. {{x.name}}</h6>
+                                </a>
+                                <p>{{x.department.title}}</p>
+
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                    
+
+            </div>
+
+        </div>
+    </div>
+    <!-- rts doctors area end -->
+
+
+
+
+    {% include 'frontend/include/cta-two.html' %}
+    {% include 'frontend/include/blogs.html' %}
+{% endblock content %}
+
+{% block script %}
+    <script>
+        document.querySelector('.doctors').classList.add('active')
+    </script>
+        <style>
+            .team-body{
+                padding: 32px 30px 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                margin-top: -15px;
+                border: 1px solid #dadada57;
+            }
+            .team-body button{
+                width: 100%;
+                border: none;
+                outline: none;
+                background-color: #e6e7e6;
+                color: black;
+                font-family: 'DM Sans', sans-serif;
+                padding: 9px;
+                border-radius: 5px;
+                transition: 0.5s ease;
+            }
+            .team-body button:hover{
+                color: white;
+                background-color: #00a6c8;
+            }
+            
+        </style>
+{% endblock script %}

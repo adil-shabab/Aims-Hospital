@@ -1,0 +1,299 @@
+{% extends 'frontend/inner-base.html' %}
+
+{% load static %}
+{% load custom_filters %}
+
+
+
+{% block title %}
+    <title>Autism | AH Hospital</title>
+{% endblock title %}
+
+
+
+{% block head %}
+<style>
+    .subpage-header{
+        position: relative;
+    }
+    .subpage-header::after{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        content: ''; 
+        left: 0;
+        top: 0;
+        background-color: rgba(0, 0, 0, 0.432); 
+    }
+    .subpage-header-box ol{
+        justify-content: flex-start !important;
+    }
+    .subpage-header-box {
+        max-width: unset !important;
+        margin: unset !important;
+        text-align: unset !important;
+    }
+</style>
+{% endblock head %}
+    
+    
+    
+
+
+{% block content %}
+    
+
+    <!-- Subpage Header Start -->
+    <div class="subpage-header" 
+    style="background: url(../../static/images/autism.svg);
+           padding: 67px 0px; 
+           background-size: cover; 
+           background-position: center; 
+           background-repeat: no-repeat;">
+       <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Sub page Header start -->
+                    <div class="subpage-header-box">
+                        <h1 class="text-anime-style-1">Autism</h1>
+                        <ol class="breadcrumb wow fadeInUp">
+                            <li><a href="{% url 'homepage' %}">Home</a></li>
+                            <li>Autism</li>
+                        </ol>
+                    </div>
+                    <!-- Sub page Header End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Subpage Header End -->
+
+
+    <div class="autism_container">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 tab__area">
+                    <div class="ta__b">
+                        <a href="#overview">
+                            <span>Causes</span>
+                        </a>
+                    </div>
+                    <div class="hr__line"></div>
+                    <div class="ta__b">
+                        <a href="#Core Features or Symptoms">
+                            <span>Core Features or Symptoms</span>
+                        </a>
+                    </div>
+                    <div class="hr__line"></div>
+                    <div class="ta__b">
+                        <a href="#Diagnosis">
+                            <span>Diagnosis</span>
+                        </a>
+                    </div>
+                    <div class="hr__line"></div>
+                    <div class="ta__b">
+                        <a href="#The Importance of Early Intervention">
+                            <span>The Importance of Early Intervention</span>
+                        </a>
+                    </div>
+                    <div class="hr__line"></div>
+                    <div class="ta__b">
+                        <a href="#Advanced Facilities and Treatments at VSH Hospital">
+                            <span>Advanced Facilities and Treatments at VSH Hospital</span>
+                        </a>
+                    </div>
+                    <div class="hr__line"></div>
+                    <div class="ta__b">
+                        <a href="#Awareness and Inclusion">
+                            <span>Awareness and Inclusion</span>
+                        </a>
+                    </div>
+                   
+                    
+                    <div class="hr__line"></div>
+                    
+                </div>
+
+                <div class="col-md-9">
+                    <div  class="content__area">
+                        <h5>Understanding Autism: Building Awareness, Acceptance, and Support</h5>
+                        <p>Autism Spectrum Disorder (ASD) is a developmental condition marked by challenges in social interaction, communication, and repetitive or restrictive behaviors. The term "spectrum" reflects the wide range of abilities and challenges individuals with autism may face.</p>
+                    </div>
+
+                    <div class="img_box image-anime reveal w-100">
+                        <img src="{% static 'images/autism-1.svg' %}" alt="">
+                    </div>
+                    
+                    <div class="container">
+                        <div class="row">
+                            <div class="content_view">
+                              
+                               
+                  <hr>
+                <h3><strong id="overview">Causes</strong></h3>
+                
+                <ol>
+                    <li><strong>Genetic Factors</strong>: Autism often runs in families, suggesting a genetic predisposition.</li>
+                    <li><strong>Environmental Factors</strong>: Prenatal exposures, such as certain medications or maternal infections, may contribute.</li>
+                    <li><strong>Brain Development</strong>: Structural and connectivity differences in the brain are commonly observed.</li>
+                </ol>
+                
+                <hr>
+                <h3><strong id="Core Features or Symptoms">Core Features or Symptoms</strong></h3>
+                
+                <ol>
+                    <li>
+                    <p><strong>Social Interaction</strong>:</p>
+                
+                    <ul>
+                        <li>Difficulty understanding social cues or forming relationships.</li>
+                        <li>Limited engagement in typical social behaviors.</li>
+                    </ul>
+                    </li>
+                    <li>
+                    <p><strong>Communication</strong>:</p>
+                
+                    <ul>
+                        <li>Challenges with verbal and nonverbal communication.</li>
+                        <li>Non-speaking individuals or those with advanced language skills but difficulty with social nuances.</li>
+                    </ul>
+                    </li>
+                    <li>
+                    <p><strong>Repetitive Behaviors</strong>:</p>
+                
+                    <ul>
+                        <li>Repeating actions, strict routines, or an intense focus on specific interests.</li>
+                    </ul>
+                    </li>
+                    <li>
+                    <p><strong>Sensory Processing</strong>:</p>
+                
+                    <ul>
+                        <li>Hypersensitivity or reduced sensitivity to stimuli such as sounds, lights, or textures.</li>
+                    </ul>
+                    </li>
+                </ol>
+                
+                <hr>
+                <h3><strong id="Diagnosis">Diagnosis</strong></h3>
+                
+                <p>Autism is typically diagnosed by developmental pediatricians, psychologists, or neurologists through:</p>
+                
+                <ul>
+                    <li>Behavioral observations.</li>
+                    <li>Developmental history from parental reports.</li>
+                    <li>Diagnostic tools such as the <strong>DSM-5</strong> criteria or <strong>ADOS-2 (Autism Diagnostic Observation Schedule)</strong>.</li>
+                </ul>
+                
+                <hr>
+                <h3><strong  id="The Importance of Early Intervention">The Importance of Early Intervention</strong></h3>
+                
+                <p>Early intervention is critical for children with ASD to develop essential skills, reduce challenges, and maximize potential.</p>
+                
+                <p><strong>Why Early Intervention Matters</strong></p>
+                
+                <ol>
+                    <li>
+                    <p><strong>Leverages Brain Plasticity</strong>:</p>
+                
+                    <ul>
+                        <li>Shapes development in areas like language and social interaction.</li>
+                        <li>Establishes adaptive behaviors early.</li>
+                    </ul>
+                    </li>
+                    <li>
+                    <p><strong>Improves Developmental Outcomes</strong>:</p>
+                
+                    <ul>
+                        <li>Enhances communication, social, cognitive, and daily living skills.</li>
+                    </ul>
+                    </li>
+                    <li>
+                    <p><strong>Prevents Secondary Challenges</strong>:</p>
+                
+                    <ul>
+                        <li>Reduces frustration, behavioral issues, and emotional difficulties.</li>
+                    </ul>
+                    </li>
+                    <li>
+                    <p><strong>Supports Family Well-Being</strong>:</p>
+                
+                    <ul>
+                        <li>Empowers parents with strategies and fosters stronger parent-child relationships.</li>
+                    </ul>
+                    </li>
+                    <li>
+                    <p><strong>Enhances Long-Term Independence</strong>:</p>
+                
+                    <ul>
+                        <li>Increases success in education, work, and life skills.</li>
+                    </ul>
+                    </li>
+                    <li>
+                    <p><strong>Cost-Effective Over Time</strong>:</p>
+                
+                    <ul>
+                        <li>Reduces the need for intensive therapies or lifelong support.</li>
+                    </ul>
+                    </li>
+                </ol>
+                
+                <hr>
+                <h3><strong id="Advanced Facilities and Treatments at VSH Hospital">Advanced Facilities and Treatments at VSH Hospital</strong></h3>
+                
+                <p>At VSH, we provide:</p>
+                
+                <ul>
+                    <li><strong>Thorough Assessments</strong>: Comprehensive evaluations to understand each child’s unique needs.</li>
+                    <li><strong>Tailored Therapy Plans</strong>: Customized therapy sessions to address individual goals and challenges.</li>
+                    <li><strong>Qualified Experts</strong>: Skilled therapists specializing in Autism, ADHD, and Sensory Processing Disorders.</li>
+                    <li><strong>State-of-the-Art Facilities</strong>: Designed to support diverse therapy requirements.</li>
+                    <li><strong>Regular Re-Assessments</strong>: Continuous monitoring to adapt and optimize therapy plans.</li>
+                </ul>
+                
+                <p>All Assessments and therapies will be performed by highly skilled and experienced health professionals, including pediatrician, neurologist, gynecologist, physiotherapist, and speech therapist</p>
+                
+                <hr>
+                <h3><strong id="Awareness and Inclusion">Awareness and Inclusion</strong></h3>
+                
+                <p>Raising awareness about autism fosters understanding, acceptance, and support. Key efforts include:</p>
+                
+                <ul>
+                    <li>Promoting early diagnosis and intervention for improved outcomes.</li>
+                    <li>Encouraging inclusion in schools, workplaces, and public spaces.</li>
+                    <li>Sharing stories of individuals with autism to build empathy and understanding.</li>
+                    <li>Collaborative efforts between healthcare providers, educators, and advocacy groups.</li>
+                </ul>
+                
+                <p><strong>Together, we can create a more inclusive, supportive world for individuals on the autism spectrum.</strong></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    
+    {% include 'frontend/include/cta.html' %}
+
+    {% include 'frontend/include/blogs.html' %}
+
+
+    
+{% endblock content %}
+    
+
+
+{% block script %}
+    <script>
+        document.querySelector('.autism').classList.add('active')
+    </script>
+{% endblock script %}
+    

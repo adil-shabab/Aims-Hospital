@@ -1,0 +1,134 @@
+{% extends 'backend/base.html' %}
+{% load static %}
+
+{% block title %}
+    International Application | AH Hospital
+{% endblock title %}
+
+{% block content %}
+<div class="content">
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">App </a></li>
+                    <li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
+                    <li class="breadcrumb-item active">International Application</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div style="max-height: 250px;" class="col-xl-4 d-flex">
+            <div class="card chat-box">
+                <div class="chat-widgets">
+                    <div class="chat-user-group d-flex align-items-center">
+                        <div class="img-users call-user">
+                            <img src="{% static 'img/user.jpg' %}" alt="img" />
+                        </div>
+                        <div class="chat-users user-main">
+                            <div class="user-titles user-head-compse">
+                                <h5>Admin</h5>
+                                <div class="chat-user-time">
+                                    <p>{{now}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="email-menu-blk">
+                        <ul>
+                            <li class="active">
+                                <a href="{% url 'view_international_applications' %}"><img src="{% static 'img/icons/inbox.svg' %}" class="me-2" alt="img" />Application for {{career.job_title}}<span class="comman-flex">{{application_count}}</span></a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-8">
+            <div class="card chat-box">
+                <div class="mailview-content view-content-bottom">
+                    <a href="javascript:window.history.back();">
+                        <i style="position: absolute; top: 38px; left: 25px; font-size: 19px;" class="fa-solid fa-left-long"></i>
+                    </a>
+                    <div class="mailview-header comman-space-flex ms-5">
+                        <div class="sender-info comman-flex">
+                            <div class="sender-img">
+                                <img alt src="{% static 'img/user.jpg' %}" class="rounded-circle me-2" />
+                            </div>
+                            <div class="send-user send-user-name">
+                                <h4>{{application.name}} </h4>
+                                <p>
+                                    <span>From:</span>
+                                    <a href="#">
+                                        {{application.email}}
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="mailview-inner">
+                        <p>{{application.cover_letter}}</p>
+
+                        <!-- Conditional rendering based on file type -->
+                        <div class="resume">
+                           
+                            
+                            {% if application.passport %}
+                            <a href="{{ application.passport.url }}" target="_blank">
+                                <div class="buttons__ mb-5 mt-3">
+                                    <div class="butn mail">View Passport</div>
+                                </div>
+                            </a>
+                            {% endif %}
+                                
+                            
+                            {% if application.visa %} 
+                            <a href="{{ application.visa.url }}" target="_blank">
+                                <div class="buttons__ mb-5 mt-3">
+                                    <div class="butn mail">View Visa</div>
+                                </div>
+                            </a>
+                            {% endif %}
+                                
+                            
+                            {% if application.medical_documents %}
+                            <a href="{{ application.medical_documents.url }}" target="_blank">
+                                <div class="buttons__ mb-5 mt-3">
+                                    <div class="butn mail">View Medical Reports</div>
+                                </div>
+                            </a>
+                            {% endif %}
+                                
+                           
+                        </div>
+
+
+                        <div class="buttons__">
+                            <a href="#">
+                                <div class="butn call"><i class="fa-solid fa-phone"></i>Call ({{application.number}})</div>
+                            </a>
+                            <a href="mailto:{{application.email}}">
+                                <div class="butn mail"><i class="fa-regular fa-envelope"></i>Gmail</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+
+{% block script %}
+    <script>
+        document.querySelector('.international_messages_sidebar').classList.add('active')
+    </script>
+{% endblock script %}

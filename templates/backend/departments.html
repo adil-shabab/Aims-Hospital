@@ -1,0 +1,171 @@
+{% extends 'backend/base.html' %}
+
+{% load static %}
+
+
+{% block title %}
+    Departments | AH Hospital
+{% endblock title %}
+    
+
+
+{% block content %}
+<div class="content">
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard </a></li>
+                    <li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
+                    <li class="breadcrumb-item active">Departments</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card card-table show-entire">
+                <div class="card-body">
+                    <div class="page-table-header mb-2">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <div class="doctor-table-blk">
+                                    <h3>Department List</h3>
+                                    <div class="doctor-search-blk">
+                                        <div class="top-nav-search table-search-blk">
+                                            <form>
+                                                <input id="search-input" type="text" class="form-control" placeholder="Search here" />
+                                                <a class="btn"><img src="{% static 'img/icons/search.png' %}" style="width: 15px" alt /></a>
+                                            </form>
+                                        </div>
+                                        <div class="add-group">
+                                            <a href="{% url 'create_department' %}" class="btn btn-primary add-pluss ms-2"><img style="width: 18px" src="{% static 'img/icons/plus.png' %}" alt /></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table id="banners-table" class="table border-0 custom-table comman-table datatable mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Department Title</th>
+                                    <th>Opening Hours</th>
+                                    <th>Speciality</th>
+                                    <th>Banner Image</th>
+                                    <th>Upload Date</th>
+                                    <th>Status</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for department in departments %}
+                                    <tr>
+                                        <td><span class="show-3">{{department.title}}</span></td>
+                                        <td><span class="show-6">{{department.opening_hours}}</span></td>
+                                        <td>
+                                            {{department.speciality_type}}
+                                        </td>
+                                        <td><img src="{{department.banner.url}}" style="width: 95px" /></td>
+                                        <td>{{ department.created_at|date:"F j, Y" }}</td>
+                                        <td>
+                                        {% if department.status == True %}
+                                            <span class="acti_ve">Active</span>
+                                            {% else %}
+                                            <span class="in_acti_ve">Inactive</span>
+                                        {% endif %}
+                                        </td>
+                                        <td class="text-end">
+                                            <div class="dropdown dropdown-action">
+                                                <a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                                                <div class="dropdown-menu dropdown-menu-end">
+                                                    <a class="dropdown-item" href="{% url 'update_department' department.slug %}"><i class="fa-solid fa-pen-to-square m-r-5"></i> Edit</a>
+                                                    <a class="dropdown-item" href="#" onclick="deleteDepartment('{{ department.slug }}')"><i class="fa fa-trash-alt m-r-5"></i> Delete</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="empty-view" class="empty_view d-none">
+                        <img src="{% static 'img/empty.jpg' %}" alt="">
+                        <h4>No Departments Found</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+    
+
+
+{% block script %}
+    <script>
+        document.querySelector('.department_sidebar').classList.add('active')
+        document.querySelector('.department_txt').classList.add('active')
+    </script>
+
+
+
+
+    <script>
+        function deleteDepartment(slug) {
+            const deleteUrlTemplate = "{% url 'delete_department' 0 %}";
+            const deleteUrl = deleteUrlTemplate.replace('0', slug);
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = `${deleteUrl}`;
+                }
+            });
+        }
+
+        function updateEmptyView() {
+            const rows = document.querySelectorAll('#banners-table tbody tr');
+            const emptyView = document.getElementById('empty-view');
+            const anyVisible = Array.from(rows).some(row => row.style.display !== 'none');
+            if (anyVisible) {
+                emptyView.classList.add('d-none');
+            } else {
+                emptyView.classList.remove('d-none');
+            }
+        }
+
+        document.getElementById('search-input').addEventListener('input', function () {
+            const filter = this.value.toLowerCase();
+            const rows = document.querySelectorAll('#banners-table tbody tr');
+            rows.forEach(row => {
+                const heading = row.querySelector('td:nth-child(1)').textContent.toLowerCase();
+                const description = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+                const buttonText = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
+                if (heading.includes(filter) || description.includes(filter) || buttonText.includes(filter)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+            updateEmptyView();
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            updateEmptyView();
+        });
+    </script>
+
+
+{% endblock script %}

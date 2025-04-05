@@ -1,0 +1,104 @@
+{% extends 'backend/base.html' %}
+
+{% load static %}
+
+{% block title %}
+    Appointments | AH Hospital
+{% endblock title %}
+
+{% block content %}
+<div class="content">
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="">Dashboard </a></li>
+                    <li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
+                    <li class="breadcrumb-item active">Appointments</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card card-table">
+                <div class="card-body" style="min-height: 50vh;">
+
+                    <div class="table-responsive">
+                        <table class="table border-0 custom-table comman-table mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Patient Name</th>
+                                    <th>Mobile</th>
+                                    <th>Email</th>
+                                    <th>Doctor Name</th>
+                                    <th>Appointment Fee</th>
+                                    <th>Date</th>
+                                    <th>Payment Status</th>
+                                    <th>Discount</th>
+                                    <th>Timing</th>
+                                    <th>Actions</th>
+                                    <th>Cancel</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for detail in upcoming_appointments_list %}
+                                    <tr>
+                                        <td>{{ detail.appointment.patient.name }}</td>
+                                        <td>{{ detail.appointment.patient.phone_number }}</td>
+                                        <td class="email">{{ detail.appointment.patient.email }}</td>
+                                        <td>{{ detail.appointment.selected_doctor.name }}</td>
+                                        <td class="amount_convert">{{ detail.payment_details.amount }}</td>
+                                        <td>{{ detail.appointment.date }}</td>
+                                        <td>
+                                            {% if detail.appointment.status == 'COMPLETED' %}
+                                                <span class="acti_ve">Paid</span>
+                                            {% else %}
+                                                <span class="in_acti_ve">Not Paid</span>
+                                            {% endif %}
+                                        </td>
+                                        <td>{{ detail.appointment.discount }} %</td>
+                                        <td>
+                                            <span class="timing">{{ detail.related_object.start_time|date:"h:i A" }} - {{ detail.related_object.end_time|date:"h:i A" }}</span>
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'view_appointment' detail.appointment.id %}">
+                                                <i class="fa-regular fa-eye"></i>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'cancel_appointment' detail.appointment.id %}">
+                                                <span>Cancel</span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    {% if not upcoming_appointments_list %}
+                        <div class="empty_view">
+                            <img src="{% static 'img/empty.jpg' %}" alt="">
+                            <h4>No Appointments Found</h4>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block script %}
+    <script>
+        document.querySelector('.appointment_sidebar').classList.add('active');
+        const amounts = document.querySelectorAll('.amount_convert');
+        amounts.forEach((item) => {
+            const paiseAmount = parseInt(item.textContent, 10);
+            const rupees = paiseAmount / 100;
+            item.textContent = `₹ ${rupees.toFixed(2)}`;
+        });
+    </script>
+{% endblock script %}

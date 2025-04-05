@@ -1,0 +1,366 @@
+{% extends 'doctor/base.html' %}
+
+{% load static %}
+
+{% block title %}
+    Appointments | AH Hospital
+{% endblock title %}
+
+{% block content %}
+<div class="content">
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="">Dashboard </a></li>
+                    <li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
+                    <li class="breadcrumb-item active">Appointments</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab_s">
+        <div class="tab_ upcoming {% if active_tab == 'upcoming' %}active{% endif %}">
+            <a href="?tab=upcoming">Upcoming</a>
+        </div>
+        <div class="tab_ completed {% if active_tab == 'completed' %}active{% endif %}">
+            <a href="?tab=completed">Completed</a>
+        </div>
+        <div class="tab_ cancelled {% if active_tab == 'cancelled' %}active{% endif %}">
+            <a href="?tab=cancelled">Cancelled</a>
+        </div>
+    </div>
+
+    <div id="upcoming__appointment" class="row {% if active_tab != 'upcoming' %}d-none{% endif %}">
+        <div class="col-sm-12">
+            <div class="card card-table show-entire">
+                <div class="card-body" style="min-height: 50vh;">
+                    <div class="page-table-header mb-2">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <div class="doctor-table-blk">
+                                    <h3>Upcoming Appointment List</h3>
+                                    <div class="doctor-search-blk">
+                                        <div class="top-nav-search table-search-blk">
+                                            <form method="GET" action="">
+                                                <input type="hidden" name="tab" value="upcoming">
+                                                <input id="search-upcoming-input" name="search_upcoming" type="text" class="form-control" placeholder="Search here" value="{{ search_upcoming }}" />
+                                                <button type="submit" class="btn"><img src="{% static 'img/icons/search.png' %}" style="width: 15px" alt /></button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table id="upcoming-table" class="table border-0 custom-table comman-table datatable mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Patient Name</th>
+                                    <th>Mobile</th>
+                                    <th>Email</th>
+                                    <th>Video Consultation</th>
+                                    <th>Doctor Name</th>
+                                    <th>Date</th>
+                                    <th>Timing</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for detail in upcoming_appointments %}
+                                    <tr>
+                                        <td>{{ detail.appointment.patient.name }}</td>
+                                        <td>{{ detail.appointment.patient.phone_number }}</td>
+                                        <td class="email">{{ detail.appointment.patient.email }}</td>
+                                        <td>
+                                            
+                                            {% if detail.appointment.is_video %}
+                                                <a href="{% url 'doctor__online_consultation' detail.appointment.id %}">
+                                                    <button style="background: #00a6c8; color: white; padding: 8px 15px; border-radius: 3px; border: none;"">Open Meet</button>
+                                                </a>
+                                            {% else %}
+                                                <span>Walking Appointment</span>
+                                            {% endif %}
+                                                
+                                        </td>
+                                        <td>{{ detail.appointment.selected_doctor.name }}</td>
+                                        <td>{{ detail.appointment.date }}</td>
+
+                                        <td>
+                                            <span class="timing">{{ detail.related_object.start_time|date:"h:i A" }} - {{ detail.related_object.end_time|date:"h:i A" }}</span>
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'view_appointment_doctor' detail.appointment.id %}">
+                                                <i class="fa-regular fa-eye"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    {% if upcoming_appointments.has_other_pages %}
+                        <div class="pagination-wrapper">
+                            <span class="step-links">
+                                {% if upcoming_appointments.has_previous %}
+                                    <a href="?page_upcoming=1&search_upcoming={{ search_upcoming }}&tab=upcoming">&laquo; first</a>
+                                    <a href="?page_upcoming={{ upcoming_appointments.previous_page_number }}&search_upcoming={{ search_upcoming }}&tab=upcoming">previous</a>
+                                {% endif %}
+
+                                <span class="current">
+                                    Page {{ upcoming_appointments.number }} of {{ upcoming_appointments.paginator.num_pages }}.
+                                </span>
+
+                                {% if upcoming_appointments.has_next %}
+                                    <a href="?page_upcoming={{ upcoming_appointments.next_page_number }}&search_upcoming={{ search_upcoming }}&tab=upcoming">next</a>
+                                    <a href="?page_upcoming={{ upcoming_appointments.paginator.num_pages }}&search_upcoming={{ search_upcoming }}&tab=upcoming">last &raquo;</a>
+                                {% endif %}
+                            </span>
+                        </div>
+                    {% endif %}
+
+                    {% if not upcoming_appointments %}
+                        <div id="upcoming-empty-view" class="empty_view">
+                            <img src="{% static 'img/empty.jpg' %}" alt="">
+                            <h4>No Appointments Found</h4>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="completed__appointment" class="row {% if active_tab != 'completed' %}d-none{% endif %}">
+        <div class="col-sm-12">
+            <div class="card card-table show-entire">
+                <div class="card-body" style="min-height: 50vh;">
+                    <div class="page-table-header mb-2">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <div class="doctor-table-blk">
+                                    <h3>Completed Appointment List</h3>
+                                    <div class="doctor-search-blk">
+                                        <div class="top-nav-search table-search-blk">
+                                            <form method="GET" action="">
+                                                <input type="hidden" name="tab" value="completed">
+                                                <input id="search-completed-input" name="search_completed" type="text" class="form-control" placeholder="Search here" value="{{ search_completed }}" />
+                                                <button type="submit" class="btn"><img src="{% static 'img/icons/search.png' %}" style="width: 15px" alt /></button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table id="completed-table" class="table border-0 custom-table comman-table datatable mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Patient Name</th>
+                                    <th>Mobile</th>
+                                    <th>Email</th>
+                                    <th>Video Consultation</th>
+                                    <th>Doctor Name</th>
+                                    <th>Date</th>
+                                    <th>Timing</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for detail in past_appointments %}
+                                    <tr>
+                                        <td>{{ detail.appointment.patient.name }}</td>
+                                        <td>{{ detail.appointment.patient.phone_number }}</td>
+                                        <td class="email">{{ detail.appointment.patient.email }}</td>
+                                        <td>
+                                            
+                                            {% if detail.appointment.is_video %}
+                                                <a href="{% url 'doctor__online_consultation' detail.appointment.id %}">
+                                                    <button style="background: #00a6c8; color: white; padding: 8px 15px; border-radius: 3px; border: none;"">Open Meet</button>
+                                                </a>
+                                            {% else %}
+                                                <span>Walking Appointment</span>
+                                            {% endif %}
+                                                
+                                        </td>
+                                        <td>{{ detail.appointment.selected_doctor.name }}</td>
+                                        <td>{{ detail.appointment.date }}</td>
+
+                                        <td>
+                                            <span class="timing">{{ detail.related_object.start_time|date:"h:i A" }} - {{ detail.related_object.end_time|date:"h:i A" }}</span>
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'view_appointment_doctor' detail.appointment.id %}">
+                                                <i class="fa-regular fa-eye"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    {% if past_appointments.has_other_pages %}
+                        <div class="pagination-wrapper">
+                            <span class="step-links">
+                                {% if past_appointments.has_previous %}
+                                    <a href="?page_past=1&search_completed={{ search_completed }}&tab=completed">&laquo; first</a>
+                                    <a href="?page_past={{ past_appointments.previous_page_number }}&search_completed={{ search_completed }}&tab=completed">previous</a>
+                                {% endif %}
+
+                                <span class="current">
+                                    Page {{ past_appointments.number }} of {{ past_appointments.paginator.num_pages }}.
+                                </span>
+
+                                {% if past_appointments.has_next %}
+                                    <a href="?page_past={{ past_appointments.next_page_number }}&search_completed={{ search_completed }}&tab=completed">next</a>
+                                    <a href="?page_past={{ past_appointments.paginator.num_pages }}&search_completed={{ search_completed }}&tab=completed">last &raquo;</a>
+                                {% endif %}
+                            </span>
+                        </div>
+                    {% endif %}
+
+                    {% if not past_appointments %}
+                        <div id="completed-empty-view" class="empty_view">
+                            <img src="{% static 'img/empty.jpg' %}" alt="">
+                            <h4>No Appointments Found</h4>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="cancelled__appointment" class="row {% if active_tab != 'cancelled' %}d-none{% endif %}">
+        <div class="col-sm-12">
+            <div class="card card-table show-entire">
+                <div class="card-body" style="min-height: 50vh;">
+                    <div class="page-table-header mb-2">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <div class="doctor-table-blk">
+                                    <h3>Cancelled Appointment List</h3>
+                                    <div class="doctor-search-blk">
+                                        <div class="top-nav-search table-search-blk">
+                                            <form method="GET" action="">
+                                                <input type="hidden" name="tab" value="cancelled">
+                                                <input id="search-cancelled-input" name="search_cancelled" type="text" class="form-control" placeholder="Search here" value="{{ search_cancelled }}" />
+                                                <button type="submit" class="btn"><img src="{% static 'img/icons/search.png' %}" style="width: 15px" alt /></button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table id="cancelled-table" class="table border-0 custom-table comman-table datatable mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Patient Name</th>
+                                    <th>Mobile</th>
+                                    <th>Email</th>
+                                    <th>Video Consultation</th>
+                                    <th>Doctor Name</th>
+                                    <th>Date</th>
+                                    <th>Timing</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for detail in cancelled_appointments %}
+                                    <tr>
+                                        <td>{{ detail.appointment.patient.name }}</td>
+                                        <td>{{ detail.appointment.patient.phone_number }}</td>
+                                        <td class="email">{{ detail.appointment.patient.email }}</td>
+                                        <td>
+                                            
+                                            {% if detail.appointment.is_video %}
+                                                <a href="{% url 'doctor__online_consultation' detail.appointment.id %}">
+                                                    <button style="background: #00a6c8; color: white; padding: 8px 15px; border-radius: 3px; border: none;"">Open Meet</button>
+                                                </a>
+                                            {% else %}
+                                                <span>Walking Appointment</span>
+                                            {% endif %}
+                                                
+                                        </td>
+                                        <td>{{ detail.appointment.selected_doctor.name }}</td>
+                                        <td>{{ detail.appointment.date }}</td>
+                                        <td>
+                                            <span class="timing">{{ detail.related_object.start_time|date:"h:i A" }} - {{ detail.related_object.end_time|date:"h:i A" }}</span>
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'view_appointment_doctor' detail.appointment.id %}">
+                                                <i class="fa-regular fa-eye"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    {% if cancelled_appointments.has_other_pages %}
+                        <div class="pagination-wrapper">
+                            <span class="step-links">
+                                {% if cancelled_appointments.has_previous %}
+                                    <a href="?page_cancelled=1&search_cancelled={{ search_cancelled }}&tab=cancelled">&laquo; first</a>
+                                    <a href="?page_cancelled={{ cancelled_appointments.previous_page_number }}&search_cancelled={{ search_cancelled }}&tab=cancelled">previous</a>
+                                {% endif %}
+
+                                <span class="current">
+                                    Page {{ cancelled_appointments.number }} of {{ cancelled_appointments.paginator.num_pages }}.
+                                </span>
+
+                                {% if cancelled_appointments.has_next %}
+                                    <a href="?page_cancelled={{ cancelled_appointments.next_page_number }}&search_cancelled={{ search_cancelled }}&tab=cancelled">next</a>
+                                    <a href="?page_cancelled={{ cancelled_appointments.paginator.num_pages }}&search_cancelled={{ search_cancelled }}&tab=cancelled">last &raquo;</a>
+                                {% endif %}
+                            </span>
+                        </div>
+                    {% endif %}
+
+                    {% if not cancelled_appointments %}
+                        <div id="cancelled-empty-view" class="empty_view">
+                            <img src="{% static 'img/empty.jpg' %}" alt="">
+                            <h4>No Appointments Found</h4>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block script %}
+    <script>
+        document.querySelector('.doctor_appointment_sidebar').classList.add('active')
+    </script>
+
+    <script>
+        const upcoming_btn = document.querySelector('.tab_s .upcoming')
+        const completed_btn = document.querySelector('.tab_s .completed')
+        const cancelled_btn = document.querySelector('.tab_s .cancelled')
+
+        const completed_view = document.getElementById('completed__appointment')
+        const upcoming_view = document.getElementById('upcoming__appointment')
+        const cancelled_view = document.getElementById('cancelled__appointment')
+
+        upcoming_btn.addEventListener('click', function() {
+            window.location.href = '?tab=upcoming';
+        })
+        completed_btn.addEventListener('click', function() {
+            window.location.href = '?tab=completed';
+        })
+        cancelled_btn.addEventListener('click', function() {
+            window.location.href = '?tab=cancelled';
+        })
+    </script>
+{% endblock script %}

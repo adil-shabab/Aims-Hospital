@@ -1,0 +1,117 @@
+{% extends 'backend/base.html' %}
+
+{% load static %}
+
+{% block title %}
+    Appointments | AH Hospital
+{% endblock title %}
+
+{% block content %}
+<div class="content">
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="">Dashboard </a></li>
+                    <li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
+                    <li class="breadcrumb-item active">Appointments</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card card-table show-entire">
+                <div class="card-body" style="min-height: 50vh;">
+                    <div class="page-table-header mb-2">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <div class="doctor-table-blk">
+                                    <h3>Appointment List</h3>
+                                    <div class="doctor-search-blk">
+                                        <div class="top-nav-search table-search-blk">
+                                            <form method="GET" action="">
+                                                <input type="hidden" name="tab" value="upcoming">
+                                                <input id="search-upcoming-input" name="search_upcoming" type="text" class="form-control" placeholder="Search here" value="{{ search_upcoming }}" />
+                                                <button type="submit" class="btn"><img src="{% static 'img/icons/search.png' %}" style="width: 15px" alt /></button>
+                                            </form>
+                                        </div>
+                                        <div class="add-group">
+                                            <a href="{% url 'create_appointment_backend' %}" class="btn btn-primary add-pluss ms-2"><img style="width: 18px" src="{% static 'img/icons/plus.png' %}" alt /></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table id="upcoming-table" class="table border-0 custom-table comman-table datatable mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Patient Name</th>
+                                    <th>Mobile</th>
+                                    <th>Email</th>
+                                    <th>Department</th>
+                                    <th>Doctor Name</th>
+                                    <th>Booked At</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for x in appointments %}
+                                    <tr>
+                                        <td>{{ x.patient.name }}</td>
+                                        <td>{{ x.patient.phone_number }}</td>
+                                        <td class="email">{{ x.patient.email }}</td>
+                                        <td>{{ x.department.title.title }}</td>
+                                        <td>{{ x.selected_doctor.name }}</td>
+                                        <td>{{ x.created_at }}</td>
+                                        <td>
+                                            <a href="{% url 'view_appointment' x.id %}">
+                                                <i class="fa-regular fa-eye"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% empty %}
+                                    <tr>
+                                        <td colspan="7" class="text-center">No Appointments Found</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    {% if appointments.has_other_pages %}
+                        <div class="pagination-wrapper">
+                            <span class="step-links">
+                                {% if appointments.has_previous %}
+                                    <a href="?page=1&search_upcoming={{ search_upcoming }}">&laquo; first</a>
+                                    <a href="?page={{ appointments.previous_page_number }}&search_upcoming={{ search_upcoming }}">previous</a>
+                                {% endif %}
+
+                                <span class="current">
+                                    Page {{ appointments.number }} of {{ appointments.paginator.num_pages }}.
+                                </span>
+
+                                {% if appointments.has_next %}
+                                    <a href="?page={{ appointments.next_page_number }}&search_upcoming={{ search_upcoming }}">next</a>
+                                    <a href="?page={{ appointments.paginator.num_pages }}&search_upcoming={{ search_upcoming }}">last &raquo;</a>
+                                {% endif %}
+                            </span>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block script %}
+    <script>
+        document.querySelector('.appointment_sidebar').classList.add('active')
+        document.querySelector('.appointment_txt').classList.add('active')
+    </script>
+{% endblock script %}

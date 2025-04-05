@@ -1,0 +1,216 @@
+{% extends 'backend/base.html' %}
+{% load static %}
+
+{% block title %}
+    Payments | AH Hospital
+{% endblock title %}
+
+{% block content %}
+<div class="content">
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Accounts</a></li>
+                    <li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
+                    <li class="breadcrumb-item active">Payments</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-sm-12">
+            <div class="card card-table show-entire">
+                <div class="card-body">
+                    <div class="page-table-header mb-2">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <div class="doctor-table-blk mt-3 mb-3 ms-4">
+                                    <h3>Payment List</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="staff-search-table">
+                        <form method="get">
+                            <div class="row">
+                                <div class="col-12 col-md-6 col-xl-3">
+                                    <div class="input-block local-forms">
+                                        <label>Type</label>
+                                        <select class="form-control" name="type">
+                                            <option value="">Select Type</option>
+                                            <option value="appointment" {% if request.GET.type == 'appointment' %}selected{% endif %}>Appointment</option>
+                                            <option value="checkup" {% if request.GET.type == 'checkup' %}selected{% endif %}>Health Checkup</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6 col-xl-3">
+                                    <div class="input-block local-forms cal-icon">
+                                        <label>From </label>
+                                        <input class="form-control" type="date" name="from_date" value="{{ request.GET.from_date }}" />
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6 col-xl-3">
+                                    <div class="input-block local-forms cal-icon">
+                                        <label>To </label>
+                                        <input class="form-control" type="date" name="to_date" value="{{ request.GET.to_date }}" />
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6 col-xl-3">
+                                    <div class="input-block local-forms">
+                                        <label>Payment Method </label>
+                                        <select class="form-control" name="payment_method">
+                                            <option value="">Select Payment Method</option>
+                                            <option value="cash" {% if request.GET.payment_method == 'cash' %}selected{% endif %}>Cash</option>
+                                            <option value="online" {% if request.GET.payment_method == 'online' %}selected{% endif %}>Online</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 total__amount">
+                                    <h2>Total Amount: <span> ₹ {{ total_amount }}</span></h2>
+                                </div>
+                                <div class="col-12 col-md-6 col-xl-4 ms-auto">
+                                    <div class="doctor-submit">
+                                        <button type="submit" class="btn btn-primary submit-list-form me-2">Search</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </form>
+                    </div>
+
+
+                    <div class="table-responsive mt-5">
+                        <table class="table border-0 custom-table comman-table datatable mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Doctor/Plan</th>
+                                    <th>Appointment Date & Time</th>
+                                    <th>Order No</th>
+                                    <th>Disease/Type</th>
+                                    <th>Patient Name</th>
+                                    <th>Paid Date</th>
+                                    <th>Paid Amount</th>
+                                    <th>Payment Method</th>
+                                </tr>
+                            </thead>
+                            
+                            <tbody>
+                                {% for payment in formatted_payments %}
+                                    <tr>
+                                        <td class="profile-image">
+                                            {% if payment.type == 'Appointment' %}
+                                                <a href="#"><img width="28" height="28" src="{{ payment.doctor_photo_url }}" class="rounded-circle m-r-5" alt /> {{ payment.doctor_name }}</a>
+                                            {% elif payment.type == 'Health Checkup' %}
+                                                {{ payment.plan_title }}
+                                            {% elif payment.type == 'Health Checkup (World Heart Day)' %}
+                                                {{ payment.plan_title }}
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            <span class="date_timing">
+                                                {{ payment.appointment_date }}
+                                            </span>
+                                            {% if payment.appointment_start_time and payment.appointment_end_time %}
+                                                <span class="timing">
+                                                    {{ payment.appointment_start_time }} - {{ payment.appointment_end_time }}
+                                                </span>
+                                            {% else %}
+                                                
+                                                {% if payment.type == 'Appointment' %}
+                                                    <span class="timing">Timing deleted</span>
+                                                {% endif %}
+                                                    
+                                            {% endif %}
+                                        
+                                        </td>
+                                        
+                                        {% if payment.payment_method == 'cash' %}
+                                        <td>Payment By Cash</td>
+                                        {% else %}
+                                        
+                                            {% if payment.payment_method == 'PAY_AT_HOSPITAL' %}
+                                                <td>Payment By Cash</td>
+                                                
+                                            {% else %}
+                                                <td>{{payment.order_id}}</td>
+                                            {% endif %}
+                                            
+                                        {% endif %}
+                                            
+                                        <td>
+                                            {% if payment.type == 'Appointment' %}
+                                                {{ payment.disease }}
+                                            {% elif payment.type == 'Health Checkup' %}
+                                                Health Checkup
+                                            {% elif payment.type == 'Health Checkup (World Heart Day)' %}
+                                                Health Checkup (World Heart Day)
+                                            {% endif %}
+                                        </td>
+                                        <td>{{ payment.patient_name }}</td>
+                    
+                                        <td>{{ payment.paid_date }}</td>
+                                        <td>₹{{ payment.paid_amount }}</td>
+                                        <td class="{% if payment.payment_method == 'online' %}bg-online{% elif payment.payment_method == 'cash' %}bg-cash{% elif payment.payment_method == 'PAY_AT_HOSPITAL' %}bg-cash{% elif payment.payment_method == 'PAY_AT_HOSPITAL' %}bg-online{% endif %}"><span>
+                                            
+                                            {% if payment.payment_method == 'PAY_AT_HOSPITAL' %}
+                                                Cash
+                                            {% elif payment.payment_method == 'ONLINE_PAY_NOW' %}
+                                                Online
+                                            {% else %}
+                                                {{ payment.payment_method }}
+                                            {% endif %}
+                                                
+                                        </span></td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    
+                        {% if not formatted_payments %}
+                        <div id="empty-view" class="empty_view">
+                            <img src="{% static 'img/empty.jpg' %}" alt="">
+                            <h4>No Payments Found</h4>
+                        </div>
+                        {% endif %}
+                    </div>
+                    
+                    <!-- Pagination Controls -->
+                    {% if formatted_payments.has_other_pages %}
+                    <div class="pagination-wrapper">
+                        <span class="step-links">
+                            {% if formatted_payments.has_previous %}
+                                <a href="?page=1{% if request.GET.type %}&type={{ request.GET.type }}{% endif %}{% if request.GET.from_date %}&from_date={{ request.GET.from_date }}{% endif %}{% if request.GET.to_date %}&to_date={{ request.GET.to_date }}{% endif %}{% if request.GET.payment_method %}&payment_method={{ request.GET.payment_method }}{% endif %}">&laquo; first</a>
+                                <a href="?page={{ formatted_payments.previous_page_number }}{% if request.GET.type %}&type={{ request.GET.type }}{% endif %}{% if request.GET.from_date %}&from_date={{ request.GET.from_date }}{% endif %}{% if request.GET.to_date %}&to_date={{ request.GET.to_date }}{% endif %}{% if request.GET.payment_method %}&payment_method={{ request.GET.payment_method }}{% endif %}">previous</a>
+                            {% endif %}
+                    
+                            <span class="current">
+                                Page {{ formatted_payments.number }} of {{ formatted_payments.paginator.num_pages }}.
+                            </span>
+                    
+                            {% if formatted_payments.has_next %}
+                                <a href="?page={{ formatted_payments.next_page_number }}{% if request.GET.type %}&type={{ request.GET.type }}{% endif %}{% if request.GET.from_date %}&from_date={{ request.GET.from_date }}{% endif %}{% if request.GET.to_date %}&to_date={{ request.GET.to_date }}{% endif %}{% if request.GET.payment_method %}&payment_method={{ request.GET.payment_method }}{% endif %}">next</a>
+                                <a href="?page={{ formatted_payments.paginator.num_pages }}{% if request.GET.type %}&type={{ request.GET.type }}{% endif %}{% if request.GET.from_date %}&from_date={{ request.GET.from_date }}{% endif %}{% if request.GET.to_date %}&to_date={{ request.GET.to_date }}{% endif %}{% if request.GET.payment_method %}&payment_method={{ request.GET.payment_method }}{% endif %}">last &raquo;</a>
+                            {% endif %}
+                        </span>
+                    </div>
+                    {% endif %}
+                    
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+{% block script %}
+    <script>
+        document.querySelector('.payment_sidebar').classList.add('active')
+    </script>
+{% endblock script %}

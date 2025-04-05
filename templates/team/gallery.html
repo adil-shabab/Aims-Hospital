@@ -1,0 +1,77 @@
+{% extends 'team/base.html' %}
+{% load static %}
+
+{% block title %}
+    Gallery | AH Hospital
+{% endblock title %}
+
+{% block content %}
+<div class="content">
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'media_dashboard' %}">Home </a></li>
+                    <li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
+                    <li class="breadcrumb-item active">Gallery</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        {% for image in gallery %}
+            <div class="col-sm-6 col-md-6 col-xl-4">
+                <div class="blog grid-blog">
+                    <div class="blog-image">
+                        <a href="#"><img class="img-fluid" src="{{image.image.url}}" alt="Gallery Image" /></a>
+                    </div>
+                    <div class="blog-content">
+                        <div class="buttons__ mt-3">
+                            <a style="width: 100%" href="#" onclick="deleteGallery('{{ image.id }}')">
+                                <div class="edit__btn" style="width: 100%"><i class="fa-regular fa-trash-can"></i>Delete</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>     
+        {% endfor %}
+        
+        {% if gallery %}
+            <!-- Gallery items are displayed -->
+        {% else %}
+            <div id="empty-view" class="empty_view">
+                <img src="{% static 'img/empty.png' %}" alt="No Gallery Found">
+                <h4>No Gallery Found</h4>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}
+
+{% block script %}
+
+    <script>
+        document.querySelector('.gallery_sidebar').classList.add('active')
+        document.querySelector('.gallery_txt').classList.add('active')
+    </script>
+
+    <script>
+        function deleteGallery(id) {
+            const deleteUrl = `{% url 'media_delete_gallery' 0 %}`.replace('0', id);
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = `${deleteUrl}`;
+                }
+            });
+        }
+    </script>
+{% endblock script %}

@@ -1,0 +1,119 @@
+{% extends 'backend/base.html' %}
+{% load static %}
+
+{% block title %}
+    Add Leave | AH Hospital
+{% endblock title %}
+
+{% block head %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+{% endblock head %}
+
+{% block content %}
+<div class="content">
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'doctors' %}">Doctors</a></li>
+                    <li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
+                    <li class="breadcrumb-item active">Add Leave</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-heading">
+                                <h4>Leave Taken Date By <span style="color: #00a6c8">{{ doctor.name }}</span></h4>
+                            </div>
+
+                            <div class="d_flex_month">
+                                {% for leave in leaves %}
+                                    <div class="timing_block">
+                                        {{ leave.date|date:"F j, Y" }}
+                                        <a href="#" onclick="deleteLeave('{{ leave.id }}')"><i class="fa-solid fa-xmark ms-2"></i></a>
+                                    </div>
+                                {% endfor %}
+                            </div>                            
+                        </div>
+                    </div>
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row mt-5">
+                            <div class="col-12">
+                                <div class="form-heading">
+                                    <h4>Add New Leave for <span style="color: #00a6c8">{{ doctor.name }}</span></h4>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-block local-forms">
+                                    <label>Start Date (YYYY-MM-DD) <span class="login-danger">*</span></label>
+                                    <input type="date" name="start_date" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-block local-forms">
+                                    <label>End Date (YYYY-MM-DD) <span class="login-danger">*</span></label>
+                                    <input type="date" name="end_date" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="input-block local-forms">
+                                    <label>Reason <span class="login-danger">*</span></label>
+                                    <textarea name="reason" class="form-control" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-12 text-end">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <a href="{% url 'doctors' %}" class="btn btn-secondary">Cancel</a>
+                            </div>
+                        </div>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block script %}
+
+
+<script>
+
+    
+    document.querySelector('.doctor_sidebar').classList.add('active')
+    document.querySelector('.add_doctor_txt').classList.add('active')
+
+
+
+
+    function deleteLeave(id) {
+        const deleteUrl = `{% url 'delete_leave' 0 %}`.replace('0', id);
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = `${deleteUrl}`;
+            }
+        });
+    }
+
+</script>
+
+
+{% endblock script %}

@@ -1,0 +1,86 @@
+{% extends 'backend/base.html' %}
+{% load static %}
+
+
+{% block title %}
+    Upload Gallery Video | AH Hospital
+{% endblock title %}
+    
+
+    
+
+{% block content %}
+<div class="content">
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'gallery_list' %}">GAllery </a></li>
+                    <li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
+                    <li class="breadcrumb-item active">Add Gallery</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-heading">
+                                    <h4>Upload Gallery Videos</h4>
+                                </div>
+                            </div>
+                        
+
+                            <div class="col-md-12 col-lg-12 mb-3 col-12">
+                                <label class="label__banner">Gallery (youtube link) <span class="login-danger">*</span></label>
+                                <div>
+                                    {{form.url}}
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-12 col-lg-12 mb-3 col-12">
+                                <label class="label__banner">Folder<span class="login-danger">*</span></label>
+                                <div>
+                                    {{form.folders}}
+                                </div>
+                            </div>
+
+
+                            
+                            <div class="col-12">
+                                <div class="doctor-submit text-end">
+                                    <button type="submit" class="btn btn-primary submit-form me-2">Upload Video</button>
+                                    <a href="{% url 'gallery_list' %}"><button class="btn btn-primary cancel-form">Cancel</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+    
+{% block script %}
+    <script>
+        document.querySelector('.gallery_sidebar').classList.add('active')
+        document.querySelector('.add_link__txt').classList.add('active')
+    </script>
+
+
+
+
+
+
+{% endblock script %}
+    
+    

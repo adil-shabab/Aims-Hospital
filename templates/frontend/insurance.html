@@ -1,0 +1,230 @@
+{% extends 'frontend/inner-base.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>Master Health Checkups | AH Hospital Hospital Bangalore</title>
+{% endblock title %}
+
+{% block head %}
+
+	<meta name="keywords" content="Best Health Diagnosis Programs Bangalore, Health Screening Programs Bangalore, Preventive Health Checkups Bangalore, Best Medical Tests Bangalore, Best Diagnostic Test Hospital Bangalore, Comprehensive Health Checkups Bangalore" />
+
+	<meta name="description" content="Experience comprehensive Master Health Checkups at VSH Hospital Bangalore. Personalized plans, in-depth diagnosis, exceptional care." />
+	<link rel="canonical" href="https://vshhospital.com/health-checkups/" />
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<style>
+    .subpage-header{
+        position: relative;
+    }
+    .subpage-header::after{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        content: ''; 
+        left: 0;
+        top: 0;
+        background-color: rgb(0 0 0 / 60%); 
+    }
+    .subpage-header-box ol{
+        justify-content: flex-start !important;
+    }
+    .subpage-header-box {
+        max-width: unset !important;
+        margin: unset !important;
+        text-align: unset !important;
+    }
+
+</style>
+
+{% endblock head %}
+
+
+{% block content %}
+
+
+    <!-- Subpage Header Start -->
+    <div class="subpage-header" 
+    style="background: url('../../static/frontend/images/insurance-banner.jpg'); 
+           padding: 100px 0px; 
+           background-size: cover; 
+           background-position: center; 
+           background-repeat: no-repeat;">
+
+       <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Sub page Header start -->
+                    <div class="subpage-header-box d-flex justify-content-center align-items-center flex-column">
+                        <h1 class="text-anime-style-1">AH Schemes, Insurance & TPA Detail</h1>
+                        <ol class="breadcrumb wow fadeInUp">
+                            <li><a href="#">ADICHUNCHANAGIRI HOSPITAL & RESEARCH CENTRE</a></li>
+                        </ol>
+                    </div>
+                    <!-- Sub page Header End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Subpage Header End -->
+
+  
+
+    <!-- rts brand area start -->
+    <div class="rts-brand-area mt--50">
+        <div class="container mb-5">
+            <div class="row">
+                <div class="para___content col-lg-12">
+                    <h3>Our Schemes</h3>
+                    <p class="mb-0">At Adichunchanagiri Hospital, we are proud to support a range of government health schemes to provide affordable healthcare to the community. These schemes ensure that everyone has access to quality medical services, regardless of their financial background.</p>
+                    <div class="my-4 row list______style">
+                        <div class="col-md-12 mb-4">
+                            <span>AYUSHMAN BHARAT – AROGYA KARNATAKA</span>
+                            <span>YESHASVINI SCHEME - KARNATAKA</span>
+                            <span>ESI HEALTH SCHEME</span>
+                            <span>AROGYA BHAGYA YOJANE</span>
+                        </div>
+
+                    </div>
+                    <div class="brand-wrapper-main">
+                        <div class="single-brand wow zoomIn" data-wow-delay=".2s" data-wow-duration=".8s">
+                            <img src="{% static 'frontend/assets/images/brand/1.jpg' %}" alt="webp">
+                        </div>
+                        <div class="single-brand wow zoomIn" data-wow-delay=".2s" data-wow-duration=".8s">
+                            <img src="{% static 'frontend/assets/images/brand/2.jpg' %}" alt="webp">
+                        </div>
+                        <div class="single-brand wow zoomIn" data-wow-delay=".2s" data-wow-duration=".8s">
+                            <img src="{% static 'frontend/assets/images/brand/3.jpg' %}" alt="webp">
+                        </div>
+                        <div class="single-brand wow zoomIn" data-wow-delay=".2s" data-wow-duration=".8s">
+                            <img src="{% static 'frontend/assets/images/brand/4.jpg' %}" alt="webp">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- rts brand area end -->
+
+
+
+    <div class="private__insurance mt--50">
+        <div class="container">
+            <div class="row">
+                <h3>Private Insurance</h3>
+                <p>We also collaborate with leading private insurance companies to provide financial support for treatment, making it easier for patients to manage healthcare costs. Here are some of the private insurance companies we partner with:</p>
+                <div class="col-md-4">
+                    <span>Paramount Health Insurance</span>
+                    <span>SBI General Insurance Co. Ltd</span>
+                    <span>Medi Assist Insurance TPA Pvt Ltd</span>
+                    <span>IFFCO- tokio General Insurance Co. Ltd</span>
+                    <span>Tata AIG General Insurance Co. Ltd</span>
+                    <span>Cholamandalam General Insurance Co. Ltd</span>
+                    <span>Star Health Insurance</span>
+                </div>
+                <div class="col-md-4">
+                    <span>Manipal Cigna Health Insurance Co. Ltd</span>
+                    <span>Raksha TPA</span>
+                    <span>HDFC Ergo General Insurance Co. Ltd</span>
+                    <span>Reliance General Insurance Co. Ltd </span>
+                    <span>Genins India Insurance TPA Ltd</span>
+                    <span>Liberty General Insurance Co. Ltd</span>
+                    <span>Bajaj Allianz General Insurance Co. Ltd</span>
+                </div>
+                <div class="col-md-4">
+                    <span>Niva Bupa Health Insurance</span>
+                    <span>Care Health Insurance</span>
+                    <span>ICICI Lombard General Insurance Co. Ltd</span>
+                    <span>Digit Health Insurance</span>
+                    <span>Acko Health Insurance</span>
+                    <span>Family Health Plan Insurance TPA Ltd</span>
+                    <span>Volo Health Insurance TPA Pvt Ltd</span>
+                    <span>Ericson Insurance TPA Pvt Ltd</span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    
+    <!-- rts brand area start -->
+    <div class="rts-brand-area mb--50 mt--50 ">
+        <div class="container">
+            <div class="row">
+                <div class="para___content col-lg-12">
+                    <h3>Corporate Tie-Up</h3>
+                    <p class="mb-0">Adichunchanagiri Hospital also partners with various corporations to offer healthcare services to their employees and members. Our corporate tie-ups provide convenience and affordable healthcare options to those working in leading companies. Our current corporate partners include:</p>
+                    <div class="my-4 row list______style">
+                        <div class="col-md-3">
+                            <span>Reitzel India Pvt Ltd</span>
+                            <span>Tata Consultancy Services</span>
+                            <span>Agni Raksha</span>
+                        </div>
+                        <div class="col-md-3">
+                            <span>Larsen and Toubro Limited</span>
+                            <span>Karnataka Milk Federation</span>
+                            <span>Tata Coffee</span>
+                        </div>
+                    </div>
+                    <div class="brand-wrapper-main">
+                        <div class="single-brand wow zoomIn" data-wow-delay=".2s" data-wow-duration=".8s">
+                            <img src="{% static 'frontend/assets/images/brand/corporate-1.jpg' %}" alt="webp">
+                        </div>
+                        <div class="single-brand wow zoomIn" data-wow-delay=".2s" data-wow-duration=".8s">
+                            <img src="{% static 'frontend/assets/images/brand/corporate-2.jpg' %}" alt="webp">
+                        </div>
+                        <div class="single-brand wow zoomIn" data-wow-delay=".2s" data-wow-duration=".8s">
+                            <img src="{% static 'frontend/assets/images/brand/corporate-3.jpg' %}" alt="webp">
+                        </div>
+                        <div class="single-brand wow zoomIn" data-wow-delay=".2s" data-wow-duration=".8s">
+                            <img src="{% static 'frontend/assets/images/brand/corporate-4.jpg' %}" alt="webp">
+                        </div>
+                        <div class="single-brand wow zoomIn" data-wow-delay=".2s" data-wow-duration=".8s">
+                            <img src="{% static 'frontend/assets/images/brand/corporate-5.jpg' %}" alt="webp">
+                        </div>
+                        <div class="single-brand wow zoomIn" data-wow-delay=".2s" data-wow-duration=".8s">
+                            <img src="{% static 'frontend/assets/images/brand/corporate-6.jpg' %}" alt="webp">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- rts brand area end -->
+
+
+    {% include 'frontend/include/cta-two.html' %}
+    {% include 'frontend/include/blogs.html' %}
+
+
+{% endblock content %}
+
+{% block script %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+
+
+
+<script>
+    function toggleReadMore(element) {
+        const fullDescription = element.nextElementSibling;
+        const dots = element.previousElementSibling;
+        
+        if (fullDescription.style.display === 'none') {
+            fullDescription.style.display = 'inline';
+            dots.style.display = 'none';
+            element.style.display = 'none';
+        }
+    }
+</script>
+
+{% endblock script %}

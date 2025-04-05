@@ -1,0 +1,278 @@
+
+
+
+
+
+<!DOCTYPE html>
+{% load static %}
+
+
+<html lang="zxx">
+<head>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        {% block title %}
+            
+        {% endblock title %}
+            
+    <!-- Favicon Icon -->
+    <link rel="icon" href="{% static 'images/favicon.png' %}">
+    <link rel="canonical" href="{{ request.build_absolute_uri }}" />
+
+
+
+	<!-- Google Fonts Css-->
+	<link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;display=swap" rel="stylesheet">
+
+
+    <!-- Bootstrap Css -->
+    <link href="{% static 'frontend/css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
+    <!-- SlickNav Css -->
+    <link href="{% static 'frontend/css/slicknav.min.css' %}" rel="stylesheet">
+    <!-- Swiper Css -->
+    <link rel="stylesheet" href="{% static 'frontend/css/swiper-bundle.min.css' %}">
+    <!-- Font Awesome Icon Css-->
+    <link href="{% static 'frontend/css/all.css' %}" rel="stylesheet" media="screen">
+    <!-- Animated Css -->
+    <link href="{% static 'frontend/css/animate.css' %}" rel="stylesheet">
+    <!-- Magnific Popup core CSS file -->
+    <link rel="stylesheet" href="{% static 'frontend/css/magnific-popup.css' %}">
+    <!-- Main custom Css -->
+    <link href="{% static 'frontend/css/custom.css' %}" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="{% static 'css/frontend.css' %}">
+    <link rel="stylesheet" href="{% static 'frontend/css/new.css' %}">
+    <link rel="stylesheet" href="{% static 'css/new.css' %}">
+
+    <!-- google font  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Syne:wght@400..800&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=DM Sans&display=swap" rel="stylesheet">
+    
+    <!-- slick css  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            
+
+    <link rel="stylesheet" href="{% static 'css/frontend.css' %}">
+    <link rel="stylesheet" href="{% static 'frontend/css/new.css' %}">
+    <link rel="stylesheet" href="{% static 'css/new.css' %}">
+
+    <link rel="stylesheet" href="{% static 'frontend/assets/css/plugins/plugins.css' %}">
+    <link rel="stylesheet" href="{% static 'frontend/assets/css/template.css' %}">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
+    
+
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-KKT87T6G');</script>
+        <!-- End Google Tag Manager -->
+
+    
+    {% block head %}
+        
+    {% endblock head %}
+        
+
+
+
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Best Emergency Super Speciality Hospital in Bangalore India | AH Hospital" />
+    <meta property="og:description" content="VSH is the best Emergency Super Speciality Hospital in Bangalore, India with the best healthcare facilities, specialist doctors &amp; the best trauma care centre." />
+    <meta property="og:url" content="https://vshhospital.com/" />
+    <meta property="og:site_name" content="Vydehi Super Speciality hospital" />
+    <meta property="article:publisher" content="https://www.facebook.com/vshhospital" />
+    <meta property="og:image" content="https://vshhospital.com/static/images/favicon.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Best Emergency Super Speciality Hospital in Bangalore India | AH Hospital" />
+    <meta name="twitter:description" content="VSH is the best Emergency Super Speciality Hospital in Bangalore, India with the best healthcare facilities, specialist doctors &amp; the best trauma care centre." />
+    <meta name="twitter:image" content="https://vshhospital.com/static/images/favicon.png" />
+    <meta name="twitter:site" content="@VSH_Hospital" />
+
+    
+</head>
+
+
+<body class="tt-magic-cursor">
+    <!-- Your content here -->
+
+    {% include 'frontend/include/navbar.html' %}
+
+
+    <!-- Preloader Start -->
+    <div class="preloader">
+        <div class="loading-container">
+            <img src="{% static 'images/favicon.png' %}" alt="" class="img-fluid">
+            <div class="loading">
+            </div>
+        </div>
+    </div>
+    <!-- Preloader End -->
+
+    <!-- Magic Cursor Start -->
+    <div id="magic-cursor">
+        <div id="ball"></div>
+    </div>
+    <!-- Magic Cursor End -->
+
+    {% block content %}
+    
+    {% endblock content %}
+
+
+
+    <a href="https://wa.me/+919148972991">
+        <dotlottie-player src="https://lottie.host/163f969b-1665-465c-b295-1ee5ad4367e4/SF6gIJNtd5.json" background="transparent" speed="0.4" class="lottie_whatsapp" loop autoplay></dotlottie-player>
+    </a>
+
+    <div class="fixedRightSideBar active" style="border-radius: 9px;">
+        <div id="headOne" style="margin-top: 26px;">Emergency Contact</div>
+        <div class="sideBarClose" style="top: 29px;" id="rightSideBarClose"><i class="icon fa-solid fa-arrow-right"></i></div>
+        <div class="numbers">
+            <div class="offices">
+                <p class="mb-0"><i class="fa-solid fa-truck-medical px-1"></i></i>24/7 Ambulance</p>
+                <a href="tel:+918068697975"><i class="fa-solid fa-phone px-1"></i>+91 9945558579</a>
+            </div>
+
+            <div class="offices">
+                <p class="mb-0"><i class="fa-solid fa-house px-1"></i>Home Care</p>
+                <a href="tel:+916361075296"><i class="fa-solid fa-phone px-1"></i>+91 9945558579</a>
+            </div>
+            <div class="offices">
+                <p class="mb-0"><i class="fa-solid fa-briefcase-medical px-1"></i></i>Health Checkup</p>
+                <a href="tel:08022277979"><i class="fa-solid fa-phone px-1"></i>+91 9945558579</a>
+            </div>
+           
+        </div>
+    </div>
+
+
+    {% include 'frontend/include/footer.html' %}
+
+
+            
+    {% block script %}
+            
+    {% endblock script %}
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KKT87T6G"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+            <!-- End Google Tag Manager (noscript) -->
+                
+            
+
+    <script>
+        
+        document.addEventListener('DOMContentLoaded', function () {
+            // Select the elements
+            const rightSideBar = document.querySelector('.fixedRightSideBar');
+            const headOne = document.getElementById('headOne');
+            const sideBarClose = document.getElementById('rightSideBarClose');
+
+            // Toggle the sidebar visibility
+            headOne.addEventListener('click', function () {
+                rightSideBar.classList.toggle('active');
+            });
+
+            // Close the sidebar
+            sideBarClose.addEventListener('click', function () {
+                rightSideBar.classList.toggle('active');
+            });
+
+            // Optionally, you can toggle the arrow direction based on the sidebar state
+            const icon = sideBarClose.querySelector('.icon');
+
+            rightSideBar.addEventListener('transitionend', function () {
+                if (rightSideBar.classList.contains('active')) {
+                    icon.classList.add('fa-arrow-right');
+                    icon.classList.remove('fa-arrow-left');
+                } else {
+                    icon.classList.add('fa-arrow-left');
+                    icon.classList.remove('fa-arrow-right');
+                }
+            });
+        });
+
+
+    </script>
+        
+
+    <script src="{% static 'frontend/assets/js/plugins/jquery.js' %}"></script>
+    <script src="{% static 'frontend/assets/js/plugins/jquery-ui.js' %}"></script>
+    <script src="{% static 'frontend/assets/js/vendor/waw.js' %}"></script>
+    <script src="{% static 'frontend/assets/js/plugins/swiper.js' %}"></script>
+    <script src="{% static 'frontend/assets/js/plugins/metismenu.js' %}"></script>
+    <script src="{% static 'frontend/assets/js/plugins/jarallax.js' %}"></script>
+    <script src="{% static 'frontend/assets/js/plugins/smooth-scroll.js' %}"></script>
+    <script src="{% static 'frontend/assets/js/plugins/magnifying-popup.js' %}"></script>
+    <!-- slick cdn  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    
+    <!-- main js here -->
+    <script src="{% static 'frontend/assets/js/main.js' %}"></script>
+    
+
+    <!-- jquery cdn  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+
+    <!-- Bootstrap js file -->
+    <script src="{% static 'frontend/js/bootstrap.min.js' %}"></script>
+    <!-- Validator js file -->
+    <script src="{% static 'frontend/js/validator.min.js' %}"></script>
+    <!-- SlickNav js file -->
+    <script src="{% static 'frontend/js/jquery.slicknav.js' %}"></script>
+    <!-- Swiper js file -->
+    <script src="{% static 'frontend/js/swiper-bundle.min.js' %}"></script>
+    <!-- Counter js file -->
+    <script src="{% static 'frontend/js/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'frontend/js/jquery.counterup.min.js' %}"></script>
+    <!-- Magnific js file -->
+    <script src="{% static 'frontend/js/jquery.magnific-popup.min.js' %}"></script>
+    <!-- SmoothScroll -->
+    <script src="{% static 'frontend/js/SmoothScroll.js' %}"></script>
+    <!-- Parallax js -->
+    <script src="{% static 'frontend/js/parallaxie.js' %}"></script>
+    <!-- MagicCursor js file -->
+    <script src="{% static 'frontend/js/gsap.min.js' %}"></script>
+    <script src="{% static 'frontend/js/magiccursor.js' %}"></script>
+    <!-- Text Effect js file -->
+    <script src="{% static 'frontend/js/SplitText.js' %}"></script>
+    <script src="{% static 'frontend/js/ScrollTrigger.min.js' %}"></script>
+    <!-- Wow js file -->
+    <script src="{% static 'frontend/js/wow.js' %}"></script>
+    <!-- Main Custom js file -->
+    <script src="{% static 'frontend/js/function.js' %}"></script>
+
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+
+    <!-- slick cdn  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="{% static 'js/frontend.js' %}"></script>
+    <script src="{% static 'frontend/js/frontend.js' %}"></script>
+
+    
+
+
+</body>
+</html>

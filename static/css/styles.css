@@ -1,0 +1,118 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+a{
+    text-decoration: none;
+}
+
+
+
+.header{
+    padding: 15px;
+    background-color: #00a6c837;
+}
+.header .head_box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header button{
+    padding: 3px 10px;
+    border: 2px solid #00a6c8;
+    background-color: transparent;
+    font-family: "DM Sans", sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 3px;
+}
+.header span{
+    font-family: "DM Sans", sans-serif;
+    font-size: 14px;
+    margin-right: 25px;
+    font-weight: 600;
+}
+.navbar{
+    padding: 15px 0px;
+    border-bottom: 1.2px solid rgb(214, 214, 214);
+}
+.navbar .navbar-brand img{
+    width: 240px;
+}
+.navbar .nav-item{
+    margin-left: 15px;
+}
+.navbar .nav-item .nav-link{
+    font-family: "DM Sans", sans-serif;
+    font-size: 16px;
+    color: rgb(27, 27, 27);
+    font-weight: 500;
+}
+.navbar .nav-item .nav-link:hover{
+    color: #00a6c8;
+}
+.navbar .nav-item .nav-link.active{
+    color: #00a6c8;
+}
+.navbar button{
+    margin-left: 50px;
+    border: 2px solid #00a6c8;
+    outline: none;
+    background-color: #00a6c8;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;    
+    transition: 0.5s;
+    color: white;
+    font-family: "DM Sans", sans-serif;
+    padding: 8px 35px 8px 18px;
+    border-radius: 3px;
+}
+.navbar button::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0%;
+    height: 100%;
+    background: white;
+    transition: 0.3s linear;
+    z-index: -1;
+}
+.navbar button img{
+    width: 20px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+.navbar button:hover::before{
+    width: 100%;
+    left: 0;
+    color: #00a6c8
+}
+.navbar button:hover{
+    color: #00a6c8;
+}
+
+
+
+.carousel-inner{
+    height: 80vh !important;
+}
+#carouselExampleIndicators .carousel-inner img{
+    height: auto;
+}
+.carousel-indicators [data-bs-target].active{
+    background-color: #00a6c8 !important;
+}
+@media screen and (max-width: 992px) {
+    #carouselExampleIndicators .carousel-inner{
+        height: auto;
+    }
+    #carouselExampleIndicators .carousel-control-next,
+    #carouselExampleIndicators .carousel-control-prev{
+        display: none;
+    }
+}

@@ -1,0 +1,199 @@
+{% extends 'doctor/base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block title %}
+    Dashboard | AH Hospital
+{% endblock title %}
+
+
+
+{% block breadcamp %}
+<ul class="breadcrumb" style="margin-top: 24px;">
+    <li class="breadcrumb-item"><a href="">Dashboard </a></li>
+    <li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
+    <li class="breadcrumb-item active">Doctor Dashboard</li>
+</ul>
+{% endblock breadcamp %}
+    
+    
+{% block content %}
+<div class="content">
+
+
+
+    <div class="doctor__section_details">
+        <div class="row">
+            <div class="col-md-1"></div>
+
+            <div class="col-md-6 gre__ting">
+                <h2> <span id="greeting"></span><span style="text-transform: capitalize;">Dr. {{ doctor.name }}</span></h2>
+                <p>Have a nice day</p>
+                <a href="#today_appointment">
+                    <button>Check Today's Appointment</button>
+                </a>
+            </div>
+
+            <div class="col-md-4 gree__ting_img">
+                <img src="{{ doctor.photo.url }}" alt="" class="doctor_img img-fluid">
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+
+
+
+    
+    
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-lg-4 col-xl-4">
+            <div class="dash-widget d-flex justify-content-between align-items-center">
+                <div class="dash-boxs comman-flex-center">
+                    <img class="icon_s" src="{% static 'img/icons/calendar.png' %}" alt />
+                </div>
+                <div class="dash-content dash-count">
+                    <h4 class="mb-0">Today's Appointments</h4>
+                </div>
+                <div class="dash-content dash-count">
+                    <h2 class="mb-0"><span class="counter-up">{{ appointments_count }}</span></h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-lg-4 col-xl-4">
+            <div class="dash-widget d-flex justify-content-between align-items-center">
+                <div class="dash-boxs comman-flex-center">
+                    <img class="icon_s" src="{% static 'img/icons/calendar.png' %}" alt />
+                </div>
+                <div class="dash-content dash-count">
+                    <h4 class="mb-0">Upcoming Appointments</h4>
+                </div>
+                <div class="dash-content dash-count">
+                    <h2 class="mb-0"><span class="counter-up">{{ upcoming_appointments_count }}</span></h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-lg-4 col-xl-4">
+            <div class="dash-widget d-flex justify-content-between align-items-center">
+                <div class="dash-boxs comman-flex-center">
+                    <img class="icon_s" src="{% static 'img/icons/calendar.png' %}" alt />
+                </div>
+                <div class="dash-content dash-count">
+                    <h4 class="mb-0">Completed Appointments</h4>
+                </div>
+                <div class="dash-content dash-count">
+                    <h2 class="mb-0"><span class="counter-up">{{ completed_appointments_count }}</span></h2>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="row" id="today_appointment">
+        <div class="col-12 col-md-12 col-xl-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title d-inline-block">Today's Appointments</h4>
+                    <a href="{% url 'doctor__appointments' %}" class="patient-views float-end">Show all</a>
+                </div>
+                <div class="card-body p-0 table-dash">
+                    <div class="table-responsive">
+                        <table class="table mb-0 border-0 datatable custom-table">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Patient Name</th>
+                                    <th>Email</th>
+                                    <th>Video Consultation</th>
+                                    <th>Mobile Number</th>
+                                    <th>Doctor Name</th>
+                                    <th>Time</th>
+                                    <th>Disease</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for detail in upcoming_appointments %}
+                                    <tr>
+                                        <td>{{ forloop.counter }}</td>
+                                        <td>{{ detail.appointment.patient.name }}</td>
+                                        <td class="email">{{ detail.appointment.patient.email }}</td>
+                                        <td>
+                                            {% if detail.appointment.is_video %}
+                                                <a href="{% url 'doctor__online_consultation' detail.appointment.id %}">
+                                                    <button style="background: #00a6c8; color: white; padding: 8px 15px; border-radius: 3px; border: none;"">Open Meet</button>
+                                                </a>
+                                            {% else %}
+                                                <span>Walking Appointment</span>
+                                            {% endif %}
+                                        </td>
+                                        <td>{{ detail.appointment.patient.phone_number }}</td>
+                                        <td class="table-image appoint-doctor">
+                                            <img width="28" height="28" class="rounded-circle" src="{{ detail.appointment.selected_doctor.photo.url }}" alt />
+                                            <h2>{{ detail.appointment.selected_doctor.name }}</h2>
+                                        </td>
+                                        <td><span class="timing">{{ detail.related_object.start_time|date:"h:i A" }} - {{ detail.related_object.end_time|date:"h:i A" }}</span></td>
+                                        <td><button class="custom-badge status-green">{{ detail.appointment.patient.disease }}</button></td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% if not upcoming_appointments %}
+                        <div id="empty-view" class="empty_view">
+                            <img src="{% static 'img/empty.jpg' %}" alt="">
+                            <h4>No Appointments Found</h4>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+
+
+
+
+{% block script %}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+    <script>
+        document.querySelector('.dashboard_doctor_sidebar').classList.add('active')
+        const amounts = document.querySelectorAll('.amount_convert')
+
+        amounts.forEach((item) => {
+            const paiseAmount = parseInt(item.textContent, 10);
+            const rupees = paiseAmount / 100;
+            item.textContent = `₹ ${rupees.toFixed(2)}`;
+        });
+    </script>
+
+
+
+
+
+  
+
+    <script>
+        // Get the current time
+        var now = new Date();
+        var currentHour = now.getHours();
+
+        // Determine the greeting message
+        var greeting;
+        if (5 <= currentHour && currentHour < 12) {
+            greeting = "Good Morning ";
+        } else if (12 <= currentHour && currentHour < 18) {
+            greeting = "Good Afternoon ";
+        } else {
+            greeting = "Good Evening ";
+        }
+
+        // Find the span tag with id "greeting" and set its innerHTML
+        document.getElementById("greeting").innerHTML = greeting;
+    </script>
+{% endblock script %}
+
+

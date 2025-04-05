@@ -1,0 +1,116 @@
+{% extends 'frontend/inner-base.html' %}
+
+{% load static %}
+
+
+{% block title %}
+    <title>International Patient | AH Hospital</title>
+{% endblock title %}
+    
+
+
+
+{% block head %}
+    <style>
+        .subpage-header{
+            position: relative;
+        }
+        .subpage-header::after{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            content: ''; 
+            left: 0;
+            top: 0;
+            background-color: rgba(0, 0, 0, 0.432); 
+        }
+        .subpage-header-box ol{
+            justify-content: flex-start !important;
+        }
+        .subpage-header-box {
+            max-width: unset !important;
+            margin: unset !important;
+            text-align: unset !important;
+        }
+    </style>
+    
+{% endblock head %}
+
+{% block content %}
+    
+
+
+
+        <!-- Subpage Header Start -->
+        <div class="subpage-header" 
+        style="background: url('../../static/frontend/images/appointment-banner.jpg'); 
+               padding: 85px 0px; 
+               background-size: cover; 
+               background-position: center; 
+               background-repeat: no-repeat;">
+    
+           <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Sub page Header start -->
+                        <div class="subpage-header-box d-flex justify-content-center align-items-center flex-column">
+                            <h1 class="text-anime-style-1 text-center">Dedicated Patient Coordinators & Patient Assistance</h1>
+                            <ol class="breadcrumb wow fadeInUp mt-3">
+                                <li><a href="{% url 'homepage' %}">Home</a></li>
+                                <li>International Patient</li>
+                            </ol>
+                        </div>
+                        <!-- Sub page Header End -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Subpage Header End -->
+
+
+
+    <div class="privacy_policy">
+        <div class="container">
+            <h4 class="text-anime-style-1">Dedicated Patient Coordinators and Patient Assistance: Your Guides to Seamless Care</h4>
+
+
+
+            <h6 class="text-anime-style-3">Your Personal Healthcare Concierge</h6>
+            <p>At VSH Hospital, we believe that every patient deserves personalized care and attention. That’s why our International Patient Services team is comprised of dedicated patient coordinators who are committed to providing comprehensive assistance and support throughout your medical journey. From initial inquiries to post-treatment follow-up, our patient coordinators are here to ensure that you receive the highest standard of care every step of the way.</p>
+
+            <h6 class="text-anime-style-3">Why Choose VSH Hospital?</h6>
+
+            <h6 class="text-anime-style-3">Individualized Support</h6>
+            <p>Our patient coordinators understand that every patient is unique, with their own set of needs and preferences. That’s why they take the time to listen to your concerns and tailor their support to meet your specific requirements. Whether you need assistance with travel arrangements, accommodation bookings, or language interpretation, our patient coordinators are here to help.</p>
+
+            <h6 class="text-anime-style-3">Seamless Coordination</h6>
+            <p>Navigating the healthcare system can be overwhelming, especially when you’re in an unfamiliar environment. Our patient coordinators act as your dedicated guides, coordinating all aspects of your care to ensure a seamless experience. From scheduling appointments to coordinating consultations with specialists, they’ll handle all the details so that you can focus on your health and well-being.</p>
+
+            <h6 class="text-anime-style-3">Advocacy and Support</h6>
+            <p>At VSH Hospital, we believe in empowering our patients to make informed decisions about their healthcare. Our patient coordinators serve as advocates, ensuring that your voice is heard and your needs are met throughout your medical journey. Whether you have questions about your treatment plan or concerns about your care, our patient coordinators are here to provide the support and guidance you need.</p>
+
+            <h6 class="text-anime-style-3">Compassionate Care</h6>
+            <p>Above all, our patient coordinators are committed to providing compassionate care to every patient they serve. They understand that seeking medical treatment can be a stressful and emotional experience, and they’re here to provide the empathy and support you need to navigate your journey with confidence. From providing emotional support to offering practical assistance, our patient coordinators are dedicated to helping you feel supported and cared for every step of the way.</p>
+
+            <h6 class="text-anime-style-3">Your Partner in Healthcare</h6>
+            <p>Experience the difference that dedicated patient coordinators can make in your medical journey. Contact our International Patient Services team today to learn more about how we can assist you in accessing the care you need at VSH Hospital.</p>
+
+        </div>
+    </div>
+    
+    {% include 'frontend/include/cta.html' %}
+
+    {% include 'frontend/include/blogs.html' %}
+
+
+    
+{% endblock content %}
+    
+
+
+{% block script %}
+<script>
+    document.getElementById('international_patient').classList.add('active')
+</script>
+{% endblock script %}
+    

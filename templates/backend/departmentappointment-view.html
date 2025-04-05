@@ -1,0 +1,86 @@
+{% extends 'backend/base.html' %}
+{% load static %}
+
+{% block title %}
+    {{ appointment.name }}'s Appointment | AH Hospital
+{% endblock title %}
+
+{% block content %}
+<div class="content">
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'health_checkup_plans' %}">Campaign Appointment</a></li>
+                    <li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
+                    <li class="breadcrumb-item active">View {{ appointment.name }}'s Appointment</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <form id="appointment-form" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-heading">
+                                    <h4>Campaign Appointment Details</h4>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-xl-6">
+                                <div class="input-block local-forms">
+                                    <label>Patient Name</label>
+                                    <input class="form-control" type="text" id="name" name="name" value="{{ appointment.name }}" readonly>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-xl-6">
+                                <div class="input-block local-forms">
+                                    <label>Department</label>
+                                    <input class="form-control" type="text" id="name" name="name" value="{{ appointment.department }}" readonly>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-xl-6">
+                                <div class="input-block local-forms">
+                                    <label>Phone Number</label>
+                                    <input class="form-control" type="text" id="phone_number" name="phone_number" value="{{ appointment.number }}" readonly>
+                                </div>
+                            </div>
+                            
+                            <div class="col-12 col-md-6 col-xl-6">
+                                <div class="input-block local-forms">
+                                    <label>Date</label>
+                                    <input class="form-control" type="text" id="date" name="date" value="{{ appointment.created_at }}" readonly>
+                                </div>
+                            </div>
+                            
+                            <div class="col-12 col-md-12 col-xlg-12">
+                                <div class="input-block local-forms">
+                                    <label>Message</label>
+                                    <textarea style="height: 150px;" class="form-control" id="message" name="message" readonly>{{ appointment.message }}</textarea>
+                                </div>
+                            </div>
+
+                            <a href="{{ whatsapp_link }}" class="wt___btn" target="_blank">
+                                Whatsapp Now
+                            </a>
+
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block script %}
+<script>
+    document.querySelector('.campaign_sidebar').classList.add('active')
+</script>
+
+{% endblock script %}
