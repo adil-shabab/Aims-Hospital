@@ -137,137 +137,47 @@
   </div>
   <!-- banner area end -->
 
-  <!-- short service -->
-  <div class="short-service-area rts-section-gap">
-      <div class="container">
-          <div class="row g-5">
-              <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 wow fadeInRight" data-wow-delay=".2s" data-wow-duration=".8s">
-                  <a href="#" class="single-short-service">
-                      <div class="icon">
-                          <img src="{% static 'frontend/assets/images/service/01.svg' %}" alt="service">
-                      </div>
-                      <h5 class="title">
-                          Request <br> Appointment
-                      </h5>
-                  </a>
-              </div>
-              <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 wow fadeInRight" data-wow-delay=".4s" data-wow-duration=".8s">
-                  <a href="#" class="single-short-service">
-                      <div class="icon">
-                          <img src="{% static 'frontend/assets/images/service/02.svg' %}" alt="service">
-                      </div>
-                      <h5 class="title">
-                          Find <br>
-                          Doctors
-                      </h5>
-                  </a>
-              </div>
-              <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 wow fadeInRight" data-wow-delay=".6s" data-wow-duration=".8s">
-                  <a href="tel:+4733378901" class="single-short-service">
-                      <div class="icon">
-                          <img src="{% static 'frontend/assets/images/service/03.svg' %}" alt="service">
-                      </div>
-                      <h5 class="title">
-                          Emergency <br>
-                          Call
-                      </h5>
-                  </a>
-              </div>
-              <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 wow fadeInRight" data-wow-delay=".8s" data-wow-duration=".8s">
-                  <a href="#" class="single-short-service">
-                      <div class="icon">
-                          <img src="{% static 'frontend/assets/images/service/04.svg' %}" alt="service">
-                      </div>
-                      <h5 class="title">
-                          24/7 <br>
-                          Support
-                      </h5>
-                  </a>
-              </div>
-          </div>
-      </div>
+
+
+  <div class="search___bar">
+    <div class="container">
+        <form id="hero_form" action="{% url 'frontend_doctors' %}" method="get" class="bx__search">
+            <div class="row">
+                <div class="col-md-4">
+                    <select name="department" id="department">
+                        <option value="">Select Department</option>
+                        {% for x in nav_deps %}
+                            <option value="{{x.title}}" txt="{{ x.id }}">{{ x.title }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-5">
+                    <select name="doctor" id="doctors">
+                        <option value="">Select Doctors</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <button>Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
   </div>
-  <!-- short service end -->
 
-  <!-- rs about area start -->
-  <div class="rts-about-area rts-section-gapBottom">
-      <div class="container">
-          <div class="row">
-              <div class="col-lg-5">
-                  <div class="about-image-left-wrapper two">
-                      <div class="thumbnail-main move-right wow">
-                          <img src="{% static 'frontend/assets/images/about/03.jpg' %}" alt="about">
-                      </div>
-                      <div class="patient-number">
-                          <div class="top">
-                              <h3 class="title">35 +</h3>
-                              <span>Years of Experience</span>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-lg-6 offset-lg-1 mt_md--100 mt_sm--100">
-                  <div class="about-content-wrapper-right">
-                      <div class="title-wrapper-left">
-                          <h2 class="title mb--10 wow fadeInUp" data-wow-delay=".2s" data-wow-duration=".8s">
-                              Dedicated to Your <br>  Health & Well-Being
-                          </h2>
-                      </div>
-                      <p class="disc mb--15 wow fadeInUp" data-wow-delay=".4s" data-wow-duration=".8s">
-                        Adichunchanagiri Hospital is a well-equipped hospital attached to AIMS (Adichunchanagiri Institute of Medical Sciences) that caters to the healthcare needs of the rural population in that region.
-                      </p>
-
-                      <div class="single-check-wrapper-main-about wow fadeInUp" data-wow-delay=".6s" data-wow-duration=".8s">
-                          <div class="half">
-                              <div class="single">
-                                  <img src="{% static 'frontend/assets/images/about/check.png' %}" alt="cehck">
-                                  <span>Comprehensive Medical Care</span>
-                              </div>
-                              <div class="single">
-                                  <img src="{% static 'frontend/assets/images/about/check.png' %}" alt="cehck">
-                                  <span>Expert & Skilled Doctors</span>
-                              </div>
-                              <div class="single">
-                                  <img src="{% static 'frontend/assets/images/about/check.png' %}" alt="cehck">
-                                  <span>State-of-the-Art Technology</span>
-                              </div>
-
-                          </div>
-                          <div class="half">
-                              <div class="single">
-                                  <img src="{% static 'frontend/assets/images/about/check.png' %}" alt="cehck">
-                                  <span>Round-the-Clock Emergency Care</span>
-                              </div>
-                              <div class="single">
-                                  <img src="{% static 'frontend/assets/images/about/check.png' %}" alt="cehck">
-                                  <span>Affordable Healthcare Services</span>
-                              </div>
-                              <div class="single">
-                                  <img src="{% static 'frontend/assets/images/about/check.png' %}" alt="cehck">
-                                  <span>Leading Teaching Hospital</span>
-                              </div>
-
-                          </div>
-                      </div>
-
-
-                      <div class="button-wrapper mt--25 wow fadeInUp" data-wow-delay=".8s" data-wow-duration=".8s">
-                          <a href="{% url 'about' %}" class="rts-btn btn-primary">About Us <img src="{% static 'frontend/assets/images/banner/icons/arrow--up-right.svg' %}" alt=""></a>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
+  <div class="about___section">
+    <div class="container">
+        <h3>Our Story</h3>
+        <p>Adichunchanagiri Hospital & Research Centre (AH & RC), located in Mandya, Karnataka, is a leading healthcare facility dedicated to serving the rural population with quality medical care. The hospital was founded with the vision of His Holiness Padmabhushana Sri Sri Sri Dr. Balagangadharanatha Maha Swamiji, who aimed to establish a high-tech institution attached to the Adichunchanagiri Institute of Medical Sciences (AIMS).</p>
+        <p>Since its inception in 1990, AH & RC has been committed to providing preventive, curative, and rehabilitative medical services. The hospital focuses on ensuring affordable healthcare for the underprivileged. The hospital is staffed with highly qualified medical professionals and equipped with advanced technology to offer specialised treatments in Neurosurgery, Urology, Cardiology, Oncology, Nephrology, and Plastic Surgery.</p>
+    </div>
   </div>
-  <!-- rs about area end -->
-
 
 
   
 
   <div class="department__section">
     <div class="container">
-      <h3 data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="900" class="heading">Our Services</h3>
+      <h3 data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="900" class="heading">Adichunchanagiri Hospital- Focused on Holistic Care</h3>
       <p data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="1000" class="description">Adichunchanagiri Hospital, one of the best hospitals in Karnataka offers a wide range of services & facilities to meet the healthcare needs of the poor & needy.</p>
       <div class="dep_carousel">
         
@@ -301,15 +211,13 @@
                             <div class="col-lg-12">
                                 <div class="title-between-area">
                                     <div class="title-wrapper-left">
-                                        <span class="pre wow fadeInUp" data-wow-delay=".2s"
-                                            data-wow-duration=".8s">Our Doctors</span>
-                                        <h2 class="title wow fadeInUp" data-wow-delay=".4s" data-wow-duration=".8s">
-                                            Meet Our Expert  <br> Medical Staff
+                                        <h2 class="text-center title wow fadeInUp" data-wow-delay=".4s" data-wow-duration=".8s">
+                                            Our Doctors
                                         </h2>
+                                        <p class="text-center description wow fadeInUp" data-wow-delay=".6s" data-wow-duration=".8s">
+                                            Our team of skilled doctors is dedicated to providing complete care to every patient. Their experience and expertise shine through in the quality treatment they deliver to each individual at the hospital.
+                                        </p>
                                     </div>
-                                    <p class="disc wow fadeInUp" data-wow-delay=".6s" data-wow-duration=".8s">
-                                        Our team of skilled doctors is dedicated to providing complete care to every patient. Their experience and expertise shine through in the quality treatment they deliver to each individual at the hospital.
-                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -330,6 +238,7 @@
                                                           <a href="{% url 'single_doctor' doctor.slug %}">
                                                               <h6 class="title">Dr. {{doctor.name}}</h6>
                                                           </a>
+                                                          <p>{{doctor.designation}}</p>
                                                           <p>{{doctor.department.title}}</p>
                                                       </div>
                                                   </div>
@@ -354,8 +263,8 @@
 
 
 
-    <!-- rts testimonials area start -->
-    <div class="rts-testimonials-area rts-section-gap">
+  <!-- rts testimonials area start -->
+  <div class="rts-testimonials-area rts-section-gap">
       <div class="container">
           <div class="row">
               <div class="col-lg-12">
@@ -372,13 +281,6 @@
 
                           <div class="swiper-slide">
                               <div class="single-testimonials-style">
-                                  <div class="quots">
-                                      <img src="{% static 'frontend/assets/images/testimonials/quotes.png' %}" alt="testimonails">
-                                  </div>
-                                  <p class="disc">
-                                      Dr. Robert Thompson is an exceptional cardiologist. His ability to explain with
-                                      complex medical issues in a way that's easy to understand is truly impressive.
-                                  </p>
                                   <div class="author-area">
                                       <a href="#" class="img">
                                           <img src="{% static 'img/user.jpg' %}" alt="testiminials">
@@ -394,6 +296,10 @@
                                           </div>
                                       </div>
                                   </div>
+                                  <p class="disc mb-0 mt-3">
+                                      Dr. Robert Thompson is an exceptional cardiologist. His ability to explain with
+                                      complex medical issues in a way that's easy to understand is truly impressive.
+                                  </p>
                                   <div class="shape">
                                       <img src="{% static 'frontend/assets/images/testimonials/02.png' %}" alt="service">
                                   </div>
@@ -401,13 +307,6 @@
                           </div>
                           <div class="swiper-slide">
                               <div class="single-testimonials-style">
-                                  <div class="quots">
-                                      <img src="{% static 'frontend/assets/images/testimonials/quotes.png' %}" alt="testimonails">
-                                  </div>
-                                  <p class="disc">
-                                      Dr. Robert Thompson is an exceptional cardiologist. His ability to explain with
-                                      complex medical issues in a way that's easy to understand is truly impressive.
-                                  </p>
                                   <div class="author-area">
                                       <a href="#" class="img">
                                           <img src="{% static 'img/user.jpg' %}" alt="testiminials">
@@ -423,6 +322,10 @@
                                           </div>
                                       </div>
                                   </div>
+                                  <p class="disc mb-0 mt-3">
+                                      Dr. Robert Thompson is an exceptional cardiologist. His ability to explain with
+                                      complex medical issues in a way that's easy to understand is truly impressive.
+                                  </p>
                                   <div class="shape">
                                       <img src="{% static 'frontend/assets/images/testimonials/02.png' %}" alt="service">
                                   </div>
@@ -430,13 +333,6 @@
                           </div>
                           <div class="swiper-slide">
                               <div class="single-testimonials-style">
-                                  <div class="quots">
-                                      <img src="{% static 'frontend/assets/images/testimonials/quotes.png' %}" alt="testimonails">
-                                  </div>
-                                  <p class="disc">
-                                      Dr. Robert Thompson is an exceptional cardiologist. His ability to explain with
-                                      complex medical issues in a way that's easy to understand is truly impressive.
-                                  </p>
                                   <div class="author-area">
                                       <a href="#" class="img">
                                           <img src="{% static 'img/user.jpg' %}" alt="testiminials">
@@ -452,6 +348,10 @@
                                           </div>
                                       </div>
                                   </div>
+                                  <p class="disc mb-0 mt-3">
+                                      Dr. Robert Thompson is an exceptional cardiologist. His ability to explain with
+                                      complex medical issues in a way that's easy to understand is truly impressive.
+                                  </p>
                                   <div class="shape">
                                       <img src="{% static 'frontend/assets/images/testimonials/02.png' %}" alt="service">
                                   </div>
@@ -459,13 +359,6 @@
                           </div>
                           <div class="swiper-slide">
                               <div class="single-testimonials-style">
-                                  <div class="quots">
-                                      <img src="{% static 'frontend/assets/images/testimonials/quotes.png' %}" alt="testimonails">
-                                  </div>
-                                  <p class="disc">
-                                      Dr. Robert Thompson is an exceptional cardiologist. His ability to explain with
-                                      complex medical issues in a way that's easy to understand is truly impressive.
-                                  </p>
                                   <div class="author-area">
                                       <a href="#" class="img">
                                           <img src="{% static 'img/user.jpg' %}" alt="testiminials">
@@ -481,6 +374,10 @@
                                           </div>
                                       </div>
                                   </div>
+                                  <p class="disc mb-0 mt-3">
+                                      Dr. Robert Thompson is an exceptional cardiologist. His ability to explain with
+                                      complex medical issues in a way that's easy to understand is truly impressive.
+                                  </p>
                                   <div class="shape">
                                       <img src="{% static 'frontend/assets/images/testimonials/02.png' %}" alt="service">
                                   </div>
@@ -767,6 +664,54 @@
       }
 
 
+    </script>
+
+
+
+    <script>
+
+        document.getElementById('hero_form').addEventListener('submit', function(e) {
+            const doctor = document.getElementById('doctors').value;
+            console.log(doctor);
+            if (doctor !== '') {
+                // Redirect to the URL if the doctor value is not empty
+                location.replace(`/doctors/${doctor}`);
+                e.preventDefault();  // Prevents the form from submitting normally and allows the redirection
+            }
+            // If the doctor value is empty, the form will submit as usual
+        });
+
+        document.getElementById('department').addEventListener('change', function() {
+            const selectedOption = this.options[this.selectedIndex];  // Get the selected option element
+            const departmentId = selectedOption.getAttribute('txt');  // Extract the 'txt' attribute from the selected option
+
+
+            if (departmentId) {
+                fetchDoctorsByDepartment(departmentId);  // Use the txtValue to fetch doctors based on department ID
+            } else {
+                document.getElementById('doctors').innerHTML = '<option value="">Select Doctors</option>';
+            }
+        });
+
+
+
+        function fetchDoctorsByDepartment(departmentId) {
+            fetch(`/api/doctors/department/?department_id=${departmentId}`)
+                .then(response => response.json())
+                .then(data => {
+                    console.log("Data.",data)
+                    const doctorSelect = document.getElementById('doctors');
+                    doctorSelect.innerHTML = '<option value="">Select Doctors</option>';
+                    data.forEach(doctor => {
+                        const option = document.createElement('option');
+                        option.value = doctor.slug;
+                        option.textContent = `Dr. ${doctor.name}`;
+                        option.dataset.fee = doctor.fee; // Store the doctor's fee in a data attribute
+                        doctorSelect.appendChild(option);
+                    });
+                })
+                .catch(error => console.error('Error fetching doctors:', error));
+        }
     </script>
 
 

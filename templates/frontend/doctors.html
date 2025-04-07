@@ -46,17 +46,14 @@
 
 {% block content %}
     <!-- Subpage Header Start -->
-    <div class="subpage-header" style="background: url(../../static/images/breadcamb.jpg); padding: 110px 0px ;background-size: cover; background-position: center;  background-repeat: no-repeat;">
+    <div class="subpage-header" style="background: url(../../static/frontend/images/doctor-banner-design.png); padding: 110px 0px ;background-size: cover; background-position: center; background-repeat: no-repeat; background-position: top;">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <!-- Sub page Header start -->
                     <div class="subpage-header-box">
-                        <h1 class="text-anime-style-1">Doctors</h1>
-                        <ol class="breadcrumb wow fadeInUp">
-                            <li><a href="{% url 'homepage' %}">Home</a></li>
-                            <li>Doctors</li>
-                        </ol>
+                        <h1 class="text-anime-style-1">Our Doctors</h1>
+                        <p class="p___sm">Doctors at AH Hospital are dedicated healers, treating with compassion and guided by the belief that “serving the suffering is serving God.” Inspired by Sri Sri Sri Dr. Balagangadharanatha Mahaswamiji, they deliver ethical, inclusive care with empathy and skill.</p>
                     </div>
                     <!-- Sub page Header End -->
                 </div>
@@ -122,11 +119,11 @@
                                 <img src="{{x.photo.url}}" alt="team">
                             </a>
                             <div class="bottom">
-                                <a href="#">
+                                <a href="{% url 'single_doctor' x.slug %}">
                                     <h6 class="title">Dr. {{x.name}}</h6>
                                 </a>
+                                <p>{{x.designation}}</p>
                                 <p>{{x.department.title}}</p>
-
                             </div>
                         </div>
                     </div>
