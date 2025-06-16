@@ -1,0 +1,153 @@
+{% extends 'frontend/inner-base.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>Patient Guide | AH Hospital Hospital Bangalore</title>
+{% endblock title %}
+
+{% block head %}
+
+	<meta name="keywords" content="Best Health Diagnosis Programs Bangalore, Health Screening Programs Bangalore, Preventive Health Checkups Bangalore, Best Medical Tests Bangalore, Best Diagnostic Test Hospital Bangalore, Comprehensive Health Checkups Bangalore" />
+
+	<meta name="description" content="Experience comprehensive Master Health Checkups at VSH Hospital Bangalore. Personalized plans, in-depth diagnosis, exceptional care." />
+	<link rel="canonical" href="https://vshhospital.com/health-checkups/" />
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<style>
+    .subpage-header{
+        position: relative;
+    }
+    .subpage-header::after{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        content: ''; 
+        left: 0;
+        top: 0;
+        background-color: rgb(0 0 0 / 60%); 
+    }
+    .subpage-header-box ol{
+        justify-content: flex-start !important;
+    }
+    .subpage-header-box {
+        max-width: unset !important;
+        margin: unset !important;
+        text-align: unset !important;
+    }
+
+</style>
+
+{% endblock head %}
+
+
+{% block content %}
+
+
+    <!-- Subpage Header Start -->
+    <div class="subpage-header" 
+    style="background: url('../../static/frontend/images/patient-banner.jpg'); 
+           padding: 100px 0px; 
+           background-size: cover; 
+           background-position: center; 
+           background-repeat: no-repeat;">
+
+       <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Sub page Header start -->
+                    <div class="subpage-header-box d-flex justify-content-center align-items-center flex-column">
+                        <h1 class="text-anime-style-1">Patient Guide</h1>
+                        <ol class="breadcrumb wow fadeInUp">
+                            <li><a href="#">ADICHUNCHANAGIRI HOSPITAL & RESEARCH CENTRE</a></li>
+                        </ol>
+                    </div>
+                    <!-- Sub page Header End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Subpage Header End -->
+
+  
+
+    <!-- rts procedure area start -->
+    <div class="rts-procedure-area rts-section-gap">
+        <div class="container">
+            <h6 class="title_h6">OPD Hours: 9:00 am to 5:00 pm </h6>
+            <h6 class="title_h6">Emergency Ward, Pharmacy & Laboratory Open 24 X 7</h6>
+            
+            <h4 class="title">Registration Details</h4>
+
+            <p class="mb-1">At Adichunchanagiri Hospital, registration is easy and accessible.</p>
+            <div class="listing_patient row g-5 align-items-center">
+
+                <div class="col-lg-12">
+                    <div class="procedure-single-content-wrapper">
+                        <ul>
+                            <li>We have one main registration counter at the hospital's entrance and 10 other counters across the campus.</li>
+                            <li>These counters are open throughout the day to serve you without delays.</li>
+                            <li>A nominal fee of ₹30 is charged for registration.</li>
+                            <li>You’ll receive an <strong>OPD</strong> card after registration, which is valid for one year.</li>
+                            <li>You can renew your card easily using the same unique ID provided during your first visit.</li>
+                            <li>Please carry your OPD card and any medical reports every time you visit the hospital.</li>
+                           
+                        </ul>
+                        <p>For any help or information, feel free to approach the ‘May I Help You’ desk at the main entrance.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="listing_patient row mt-5">
+                <div class="col-lg-12">
+                    <h4 class="title">Admission Guidelines</h4>
+                    <p class="mb-1">If a doctor advises you to get admitted:</p>
+
+                    <div class="procedure-single-content-wrapper">
+                        <ul>
+                            <li>You’ll be guided to the Admission Counter for further steps, including counselling about your hospital stay and completing formalities.</li>
+                            <li>The hospital has 1151 beds for inpatients, including 120 beds for critical care</li>
+                            <li>We offer a range of ward options to suit your needs: <strong>General Ward, Semi-Special Ward, Private Single Rooms (A/C & None A/C), Deluxe Rooms, Suite Rooms</strong></li>
+                        </ul>
+                        <p>Our team will assist you in choosing the best option based on your preferences and availability.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <!-- rts procedure area end -->
+
+
+
+    {% include 'frontend/include/cta-two.html' %}
+    {% include 'frontend/include/blogs.html' %}
+
+
+{% endblock content %}
+
+{% block script %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+
+
+
+<script>
+    function toggleReadMore(element) {
+        const fullDescription = element.nextElementSibling;
+        const dots = element.previousElementSibling;
+        
+        if (fullDescription.style.display === 'none') {
+            fullDescription.style.display = 'inline';
+            dots.style.display = 'none';
+            element.style.display = 'none';
+        }
+    }
+</script>
+
+{% endblock script %}

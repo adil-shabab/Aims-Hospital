@@ -51,7 +51,7 @@
                                         <a href="{% url 'about' %}">About Us</a>
                                     </li>
                                     <li class="main-nav">
-                                        <a href="{% url 'services' %}">Services</a>
+                                        <a href="{% url 'services' %}">Departments</a>
                                     </li>
 
 
@@ -188,10 +188,12 @@
                                             <li><a href="{% url 'gallery_frontend' %}">Gallery</a></li>
                                             <li><a href="{% url 'frontend_health_checkups' %}">Health Checkups</a></li>
                                             <li><a href="{% url 'frontend_careers' %}">Careers</a></li>
-                                            <li><a href="{% url 'facilities' %}">Special Services</a></li>
-                                            <li><a href="{% url 'insurance' %}">AH Schemes, Insurance & TPA Details</a></li>
+                                            <!-- <li><a href="{% url 'facilities' %}">Special Services</a></li> -->
+                                            <li><a href="{% url 'insurance' %}">AH Schemes, Insurance</a></li>
                                             <li><a href="{% url 'patient' %}">Patient Rights & Responsibilities</a></li>
-                                            <li><a href="{% url 'patient_feedback' %}">Patient Feedback system</a></li>
+                                            <!-- <li><a href="{% url 'patient_feedback' %}">Patient Feedback system</a></li> -->
+                                            <li><a href="{% url 'nmc' %}">NMC-Display of Information</a></li>
+                                            <!-- <li><a href="{% url 'guide' %}">Patient Guides</a></li> -->
                                             <li><a target="_blank" href="https://ah.bgsaims.edu.in/Chet/login">HIMS</a></li>
                                         </ul>
                                     </li>
@@ -247,18 +249,20 @@
     <div class="offcanvas-body navbar__mobile_links">
         <a href="{% url 'homepage' %}" class="link home">Home</a>
         <a href="{% url 'about' %}" class="link about">About</a>
-        <a href="{% url 'services' %}" class="link about">Services</a>
+        <a href="{% url 'services' %}" class="link about">Departments</a>
         <a href="{% url 'frontend_doctors' %}" class="link doctors">Doctors</a>
 
         
-        <a href="{% url 'facilities' %}" class="link facilities" id="international_patient">Our Super Sevices</a>
+        <!-- <a href="{% url 'facilities' %}" class="link facilities" id="international_patient">Our Super Sevices</a> -->
         <a href="{% url 'frontend_blogs' %}" class="link blogs">Blogs</a>
         <a href="{% url 'gallery_frontend' %}" class="link" id="gallery">Gallery</a>
         <a href="{% url 'frontend_careers' %}" class="link" id="careers">Careers</a>
         <a href="{% url 'frontend_health_checkups' %}" class="link" id="careers">Health Checkups</a>
-        <a href="{% url 'insurance' %}" class="link" id="careers">AH Schemes, Insurance & TPA Details</a>
+        <a href="{% url 'insurance' %}" class="link" id="careers">AH Schemes, Insurance</a>
         <a href="{% url 'patient' %}" class="link" id="careers">Patient Rights & Responsibilities</a>
-        <a href="{% url 'patient_feedback' %}" class="link" id="careers">Patient Feedback system</a>
+        <a href="{% url 'nmc' %}" class="link" id="careers">NMC-Display of Information</a>
+        <!-- <a href="{% url 'guide' %}" class="link" id="careers">Patient Guides</a> -->
+        <!-- <a href="{% url 'patient_feedback' %}" class="link" id="careers">Patient Feedback system</a> -->
         <a href="https://ah.bgsaims.edu.in/Chet/login" class="link" target="_blank" id="careers">HIMS</a>
         <a href="{% url 'contact' %}" class="link contact">Contact</a>
 

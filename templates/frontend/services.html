@@ -32,6 +32,48 @@
         margin: unset !important;
         text-align: unset !important;
     }
+        .fac_box .txt__view p{
+        text-align: justify !important;
+    }
+    .facilities__section ul li{
+        padding: 1px 0px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+
+        .feature-list {
+            padding: 0;
+        }
+        .feature-list li {
+            display: none; /* Hide all items initially */
+        }
+        /* Show only the first two items by default */
+        .feature-list li:nth-child(-n+2) {
+            display: list-item;
+        }
+        /* Read More button styling */
+        .read-more-btn {
+            display: none; /* Hide button on desktop */
+            margin-top: 0px;
+            color: #00a6c8;
+            border: none;
+            background: transparent !important;
+            font-size: 15px;
+            cursor: pointer;
+        }
+        /* Show all items on desktop */
+        @media (min-width: 769px) {
+            .feature-list li {
+                display: list-item;
+            }
+        }
+        /* Show Read More button on mobile */
+        @media (max-width: 768px) {
+            .read-more-btn {
+                display: inline-block;
+            }
+        }
 </style>
 {% endblock head %}
     
@@ -95,15 +137,17 @@
                 <div id="tab-{{ key|slugify }}" class="tab-pane fade {% if forloop.first %}show active{% endif %}" role="tabpanel" aria-labelledby="tab-{{ key|slugify }}-link">
                     <div class="row">
                         {% for x in departments %}
-                        <div data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-delay="200" data-aos-duration="1500" class="box col-md-4 col-sm-6 col-12">
-                            <div class="img_box">
-                                <img src="{% if x.banner %}{{ x.banner.url }}{% else %}{% static 'path/to/default/image.jpg' %}{% endif %}" class="img-fluid" alt="{{ x.title }}">
+                        <div data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-delay="200" data-aos-duration="1500" class="mb-3 col-md-4 col-sm-6 col-12">
+                            <div class="box">
+                                <div class="img_box">
+                                    <img src="{% if x.banner %}{{ x.banner.url }}{% else %}{% static 'path/to/default/image.jpg' %}{% endif %}" class="img-fluid" alt="{{ x.title }}">
+                                </div>
+                                <h5>{{ x.title }}</h5>
+                                <div class="dep_desc">
+                                    <p>{{ x.description | safe }}</p>
+                                </div>  
+                                <a href="{% url 'single_service' x.slug %}">View More</a>
                             </div>
-                            <h5>{{ x.title }}</h5>
-                            <div class="dep_desc">
-                                <p>{{ x.description | safe }}</p>
-                            </div>  
-                            <a href="{% url 'single_service' x.slug %}">View More</a>
                         </div>
                         {% endfor %}
                     </div>
@@ -112,6 +156,290 @@
             </div>
         </div>
     </div>
+
+
+        <div class="facilities__section">
+        <div class="container">
+
+            <div class="fac_box">
+                <div class="txt__view">
+                    <h4>
+                        Child Guidance Clinic
+                    </h4>
+                    <ul class="feature-list" style="padding-left: 17px;">
+                        <li>Our Child Guidance Clinic supports children and adolescents under the age of 18.</li>
+                        <li>Children experiencing emotional or behavioural challenges can seek support at our clinic.</li>
+                        <li>The clinic has trained psychiatrists specialising in child care who conduct workshops and sessions with paediatricians, special educators, and counsellors.</li>
+                        <li>We provide comprehensive assessment, treatment, and intervention for children dealing with mood disorders, anxiety, and other emotional conditions that require special attention</li>
+                    </ul>
+                    <button class="read-more-btn" onclick="showMore(this)">Read More</button>
+                    
+                </div>
+                <img src="{% static 'images/services/1.jpg' %}" alt="">
+            </div>
+
+            <div class="border__bottom"></div>
+            
+            
+            
+            <div class="fac_box">
+                <img src="{% static 'images/services/2.jpg' %}" alt="">
+                <div class="txt__view">
+                    <h4>
+                        Centre for Children with Special Needs
+                    </h4>
+                    <ul class="feature-list" style="padding-left: 17px;">
+                        <li>This centre provides holistic care for children with developmental disabilities and disorders.</li>
+                        <li>Our team includes paediatricians, orthopaedic specialists, general physicians, rehabilitation specialists, child psychologists, psychiatrists, ENT specialists, ophthalmologists, dentists, physiotherapists, speech therapists, special educators, and medico-social workers.</li>
+                        <li>A thorough assessment is conducted before recommending any treatment.</li>
+                        <li>Parents are guided and counselled separately to support their child’s needs.</li>
+                    </ul>
+                    <button class="read-more-btn" onclick="showMore(this)">Read More</button>
+                    
+                </div>
+            </div>
+
+            <div class="border__bottom"></div>
+            
+            
+            <div class="fac_box">
+                <div class="txt__view">
+                    <h4>
+                        Community Outreach Services
+                    </h4>
+                    <ul class="feature-list" style="padding-left: 17px;">
+                        <li>Our community outreach services aim to provide accessible and high-quality healthcare.</li>
+                        <li>Our mission is to bridge healthcare gaps, promote wellness, and empower individuals to take charge of their health.</li>
+                        <li>Services include primary care, preventive healthcare, and daycare facilities.</li>
+                        <li>Basic laboratory services are also available</li>
+                    </ul>
+                    <button class="read-more-btn" onclick="showMore(this)">Read More</button>
+                    
+                </div>
+                <img src="{% static 'images/services/3.jpg' %}" alt="">
+            </div>
+
+            <div class="border__bottom"></div>
+            
+
+
+
+            <div class="fac_box">
+                <img src="{% static 'images/services/4.jpg' %}" alt="">
+                <div class="txt__view">
+                    <h4>
+                        Body Donation
+                    </h4>
+                    <ul class="feature-list" style="padding-left: 17px;">
+                        <li>Adichunchanagiri Hospital runs a voluntary body donation scheme in collaboration with the Department of Anatomy at Adichunchanagiri Institute of Medical Sciences.</li>
+                        <li>Under this scheme, individuals can voluntarily pledge to donate their bodies after death.</li>
+                        <li>Donated bodies are used for medical education and research purposes.</li>
+                        <li>This initiative helps medical students gain a better understanding of the human body and various pathological conditions.</li>
+                        <li>The hospital also offers organ and tissue donation services.</li>
+                    </ul>
+                    <button class="read-more-btn" onclick="showMore(this)">Read More</button>
+                </div>
+            </div>
+
+            <div class="border__bottom"></div>
+            
+            
+            <div class="fac_box">
+                <div class="txt__view">
+                    <h4>
+                        Mortuary Services
+                    </h4>
+                    <ul class="feature-list" style="padding-left: 17px;">
+                        <li>Adichunchanagiri Hospital provides mortuary services for the safe preservation of deceased individuals until they are taken for cremation</li>
+                        <li>Bodies are stored in cold room conditions and can be preserved for up to 48 hours.</li>
+                        <li>The hospital also offers embalming services for long-term body preservation</li>
+                    </ul>
+                    <button class="read-more-btn" onclick="showMore(this)">Read More</button>
+
+                </div>
+                <img src="{% static 'images/services/5.jpg' %}" alt="">
+            </div>
+
+
+            <div class="border__bottom"></div>
+
+            
+            
+            <div class="fac_box mb-5">
+                <img src="{% static 'images/services/6.jpg' %}" alt="">
+                <div class="txt__view">
+                    <h4>
+                        Body Embalming Services
+                    </h4>
+                    <ul class="feature-list" style="padding-left: 17px;">
+                        <li>Embalming is the process of disinfecting, sanitising, and preserving a deceased body.</li>
+                        <li>A formaldehyde-based chemical solution is used to slow down decomposition.</li>
+                        <li>Embalming allows for the postponement of cremation in case of delays in funeral arrangements.</li>
+                        <li>In many cases, embalming is legally required for bodies being transported by air.</li>
+                    </ul>
+                    <button class="read-more-btn" onclick="showMore(this)">Read More</button>
+                </div>
+            </div>
+            
+            
+            <div class="fac_box mb-5">
+                <div class="txt__view">
+                    <h4>
+                        Disaster Relief Services
+                    </h4>
+                    <ul class="feature-list" style="padding-left: 17px;">
+                        <li>At Adichunchanagiri Hospital, we understand that disasters can strike at any time. We have a dedicated disaster relief unit ready to respond immediately when needed.</li>
+                        <li>Our disaster relief unit welcomes volunteers to assist in relief efforts.</li>
+                        <li>Volunteers are trained in key protocols, including primary healthcare, food and water hygiene, water disinfection, environmental hygiene (temporary shelters and waste disposal), and psychosocial support.</li>
+                        <li>Our goal is to minimise mortality and morbidity and ensure that affected individuals feel safe and protected.</li>
+                    </ul>
+                    <button class="read-more-btn" onclick="showMore(this)">Read More</button>
+                </div>
+                <img src="{% static 'images/services/7.jpg' %}" alt="">
+            </div>
+            
+            <div class="fac_box mb-5">
+                <img src="{% static 'images/services/8.jpg' %}" alt="">
+                <div class="txt__view">
+                    <h4>
+                        Haematology & Stem Cell Transplant Centre
+                    </h4>
+                    <ul class="feature-list" style="padding-left: 17px;">
+                        <li>Our Haematology Centre provides specialised care for blood cancers and blood-related disorders.</li>
+                        <li>We offer treatments for various conditions, including anaemia, bone marrow aplasia, coagulation disorders, myeloma, lymphoma, and acute and chronic leukaemia.</li>
+                        <li>The centre supports and coordinates all transplant-related activities.</li>
+                        <li>We also have a daycare facility where cancer patients can receive outpatient chemotherapy.</li>
+                        <li>Blood transfusion services and biological and cellular therapy are available.</li>
+                    </ul>
+                    <button class="read-more-btn" onclick="showMore(this)">Read More</button>
+                </div>
+            </div>
+            
+            <div class="fac_box mb-5">
+                <div class="txt__view">
+                    <h4>
+                        Lactation Clinic
+                    </h4>
+                    <ul class="feature-list" style="padding-left: 17px;">
+                        <li>The Lactation Clinic provides counselling and support for breastfeeding mothers.</li>
+                        <li>We assist in lactation management for antenatal and postnatal patients</li>
+                        <li>Breastfeeding sessions are observed and assessed to provide better guidance to nursing mothers</li>
+                        <li>We provide specialised care for underweight and sick newborns</li>
+                        <li>Counselling is available for mothers struggling with low milk supply or breastfeeding difficulties.</li>
+                    </ul>
+                    <button class="read-more-btn" onclick="showMore(this)">Read More</button>
+                </div>
+                <img src="{% static 'images/services/9.jpg' %}" alt="">
+            </div>
+            
+            <div class="fac_box mb-5">
+                <img src="{% static 'images/services/10.jpg' %}" alt="">
+                <div class="txt__view">
+                    <h4>
+                        Natural Family Planning Clinic
+                    </h4>
+                    <ul class="feature-list" style="padding-left: 17px;">
+                        <li>The clinic offers one-on-one counselling sessions to help couples plan pregnancies naturally</li>
+                        <li>We also conduct training programmes on fertility awareness in rural and urban communities.</li>
+                        <li>Value education and fertility awareness sessions are organised for school and college students</li>
+                    </ul>
+                    <button class="read-more-btn" onclick="showMore(this)">Read More</button>
+                </div>
+            </div>
+            
+            <div class="fac_box mb-5">
+                <div class="txt__view">
+                    <h4>
+                        Nutrition Clinic
+                    </h4>
+                    <ul class="feature-list" style="padding-left: 17px;">
+                        <li>The Nutrition Clinic at Adichunchanagiri Hospital provides dietary counselling for both adult and paediatric inpatients and outpatients.</li>
+                        <li>We offer guidance on dietary management for conditions such as obesity, diabetes, cardiovascular disorders, liver diseases, renal disorders, and metabolic conditions.</li>
+                        <li>Specialised tube feeding and parenteral nutrition are provided for hospital inpatients with specific dietary needs.</li>
+                        <li>A complete nutritional assessment is conducted, followed by personalised dietary and lifestyle advice.</li>
+                    </ul>
+                    <button class="read-more-btn" onclick="showMore(this)">Read More</button>
+                </div>
+                <img src="{% static 'images/services/11.jpg' %}" alt="">
+            </div>
+            
+            <div class="fac_box mb-5">
+                <img src="{% static 'images/services/12.jpg' %}" alt="">
+                <div class="txt__view">
+                    <h4>
+                        Dietary Services
+                    </h4>
+                    <ul class="feature-list" style="padding-left: 17px;">
+                        <li>Our Dietary Services unit is led by expert dietitians with extensive experience.</li>
+                        <li>They provide comprehensive diet plans for individuals seeking better health or managing medical conditions.</li>
+                        <li>Regular awareness sessions are held to educate patients on the importance of a balanced diet in disease prevention.</li>
+                        <li>Specialised therapeutic diet plans are also provided based on medical requirements.</li>
+                    </ul>
+                    <button class="read-more-btn" onclick="showMore(this)">Read More</button>
+                </div>
+            </div>
+
+            <div class="fac_box mb-5">
+                <div class="txt__view">
+                    <h4>
+                        Senior Citizen Program
+                    </h4>
+                    <ul class="feature-list" style="padding-left: 17px;">
+                        <li>The Senior Citizen Programme aims to promote, preserve, and maintain the health of older adults in rural and urban areas of Mandya.</li>
+                        <li>Our community service initiatives are led by geriatric medicine experts.</li>
+                        <li>Services include home visits and medical check-ups at subsidised rates</li>
+                        <li>Awareness campaigns are conducted in collaboration with AIMS to highlight geriatric health issues.</li>
+                    </ul>
+                    <button class="read-more-btn" onclick="showMore(this)">Read More</button>
+                </div>
+                <img src="{% static 'images/services/13.jpg' %}" alt="">
+            </div>
+
+            <div class="fac_box mb-5">
+                <img src="{% static 'images/services/14.jpg' %}" alt="">
+                <div class="txt__view">
+                    <h4>
+                        Ambulance
+                    </h4>
+                    <ul class="feature-list" style="padding-left: 17px;">
+                        <li>Adichunchanagiri Hospital provides 24/7 ambulance services.</li>
+                        <li>Our ambulances are well-equipped to handle medical emergencies.</li>
+                        <li>Patients can avail themselves of this service by calling our emergency helpline number.</li>
+                    </ul>
+                    <button class="read-more-btn" onclick="showMore(this)">Read More</button>
+                </div>
+            </div>
+
+            <div class="fac_box mb-5">
+                <div class="txt__view">
+                    <h4>
+                        Orthotics & Prosthetics
+                    </h4>
+                    <p class="mb-0">The Orthotics & Prosthetics Facility at Adichunchanagiri Hospital provides custom-made devices such as:</p>
+                    <ul class="feature-list" style="padding-left: 17px;">
+                        <li>Lower limb orthoses</li>
+                        <li>Spinal orthoses</li>
+                        <li>Upper limb orthoses</li>
+                        <li>Head supports (e.g., cervical collars, four-post collars)</li>
+                    </ul>
+                    <p class="mb-0">We also offer a wide range of prostheses, including:</p>
+                    <ul class="feature-list" style="padding-left: 17px;">
+                        <li>Symes prosthesis</li>
+                        <li>Trans-tibial prosthesis</li>
+                        <li>Trans-femoral prosthesis</li>
+                        <li>Below-elbow prosthesis</li>
+                        <li>Above-elbow prosthesis</li>
+                        <li>Cosmetic prostheses</li>
+                    </ul>
+                    <button class="read-more-btn" onclick="showMore(this)">Read More</button>
+                </div>
+                <img src="{% static 'images/services/15.jpg' %}" alt="">
+            </div>
+
+        </div>
+    </div>
+
+
 
 
     {% include 'frontend/include/cta-two.html' %}

@@ -6,6 +6,11 @@
 
 {% block title %}
   <title>Best Emergency Superspeciality Hospital in Bangalore India | AH Hospital</title>
+  <style>
+    .single-team-area-start img{
+        object-position: top;
+    }
+  </style>
 {% endblock title %}
 
 
@@ -61,19 +66,19 @@
     <!-- banner area start -->
     <div class="rts-banner-area-two d-md-block d-none">
       <div class="swiper mySwiper-banner-2 home_page_banner_desktop">
-          <div class="swiper-wrapper">
+          <div class="swiper-wrapper" style="max-height: 95vh; height: 95vh;">
               <!-- single swiper -->
               
               {% for x in banners %}
                 <div class="swiper-slide">
-                    <div class="banner-wrapper-bg bg_image ptb--180 ptb_sm--100" style="background: url('{{ x.image_for_desktop.url }}'); background-size: cover; background-position: top; background-repeat: no-repeat;">
+                    <div class="banner-wrapper-bg bg_image ptb--150 ptb_sm--100" style="background: url('{{ x.image_for_desktop.url }}'); background-size: cover; background-position: top; background-repeat: no-repeat;">
                         <div class="container">
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="banner-content-area style-two pl--0">
                                         <div class="pre-title float-right-1">
                                             <img src="{% static 'frontend/assets/images/banner/icons/01.png' %}" alt="icons">
-                                            <span style="color: {% if x.color == 'white' %}white{% else %}black{% endif %};">Best Multip Speciality Hospital in Manya</span>
+                                            <span style="color: {% if x.color == 'white' %}white{% else %}black{% endif %};">Best Multi-Speciality Hospital in Mandya</span>
                                         </div>
                                         <h1 style="color: {% if x.color == 'white' %}white{% else %}black{% endif %};" class="title float-right">{{x.heading}}</h1>
                                         <p style="color: {% if x.color == 'white' %}white{% else %}black{% endif %};" class="disc float-bottom">
@@ -493,15 +498,15 @@
                                 </select>
                             </div>
                             <div class="col-md-6">
-                                <select class="" id="department" name="department" required>
+                                <select class="" id="department__input" name="department" required>
                                     <option data-display="Select Department" value="">Select Department</option>
-                                    {% for x in departments %}
+                                    {% for x in nav_deps %}
                                         <option value="{{x.id}}">{{x.title}}</option>
                                     {% endfor %}
                                 </select>
                             </div>
                             <div class="col-md-6">
-                                <select class="" id="selected_doctor" name="selected_doctor" required>
+                                <select class="" id="selected_doctor__input" name="selected_doctor" required>
                                     
                                 </select>
                             </div>
@@ -546,7 +551,8 @@
             fetch(`/api/doctors/department/?department_id=${departmentId}`)
                 .then(response => response.json()) // Parse JSON once
                 .then(data => {
-                    const doctorSelect = document.getElementById('selected_doctor');
+                    console.log(data)
+                    const doctorSelect = document.getElementById('selected_doctor__input');
                     doctorSelect.innerHTML = ''; // Clear previous options
                     data.forEach(doctor => {
                         const option = document.createElement('option');
@@ -560,14 +566,14 @@
         }
 
         // Event listener for department select change
-        document.getElementById('department').addEventListener('change', function() {
+        document.getElementById('department__input').addEventListener('change', function() {
             console.log("Hello I am coming Here")
             const departmentId = this.value;
             fetchDoctorsByDepartment(departmentId);
         });
 
         // Initial fetch of doctors for the selected department
-        fetchDoctorsByDepartment(document.getElementById('department').value);
+        fetchDoctorsByDepartment(document.getElementById('department__input').value);
 
 
 

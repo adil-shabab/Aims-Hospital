@@ -112,10 +112,10 @@ class Department(models.Model):
         ('Other Diagnostic Services', 'Other Diagnostic Services'),
     ]
 
+    h1 = models.CharField(null=True, blank=True, max_length=255)
     title = models.CharField(max_length=200)
     speciality_type = models.CharField(max_length=200, choices=SPECIALITY_CHOICES, null=True, blank=True)
     banner = models.FileField(upload_to='departments', null=True, blank=True)
-    icon = models.FileField(upload_to='dep-icons', default='static/images/default.png')  # Default icon path
     breadcamp = models.FileField(upload_to='dep-banner', default='static/images/default.png')
     opening_hours = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -173,6 +173,7 @@ class Doctor(models.Model):
     ]
 
     name = models.CharField(max_length=100)
+    h1 = models.CharField(null=True, blank=True, max_length=255)
     department = models.ForeignKey(Department, on_delete=models.CASCADE)
     designation = models.CharField(max_length=100)
     experience_years = models.PositiveIntegerField()

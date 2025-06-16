@@ -63,15 +63,7 @@
                                     {{form.banner}}
                                 </div>
                             </div>
-                            <div class="col-md-6 mb-3 col-12">
-                                <label class="label__banner">Icon Image<span class="login-danger">*</span></label>
-                                <div class="img__preview d-flex justify-content-center align-items-center">
-                                    <img class="img-fluid w-50" id="img-preview-3" src="{% static 'img/icons/upload.png' %}"/>
-                                </div>
-                                <div>
-                                    {{form.icon}}
-                                </div>
-                            </div>
+
                             <div class="col-md-12 mb-3 col-12">
                                 <label class="label__banner">Banner Image<span class="login-danger">*</span></label>
                                 <img class="img__preview" id="img-preview-2" src="{% static 'img/icons/upload.png' %}"/>
@@ -116,11 +108,19 @@
 
                             <div class="col-12 col-md-12">
                                 <div class="input-block local-forms">
+                                    <label>H1 Tag <span class="login-danger">*</span></label>
+                                    {{form.h1}}
+                                </div>
+                            </div>
+                            
+                            <div class="col-12 col-md-12">
+                                <div class="input-block local-forms">
                                     <label>Slug <span class="login-danger">*</span></label>
                                     {{form.slug}}
                                 </div>
                             </div>
                             
+
                            
 
                             <div class="form-group col-12 col-md-6 col-xl-6 mt-3">
@@ -197,23 +197,7 @@
     </script>
 
 
-    <script>
 
-        function readURL3(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    $("#img-preview-3").attr("src", e.target.result);
-                    $("#img-preview-3").attr("class", 'w-25');
-                };
-
-                reader.readAsDataURL(input.files[0]);
-            } else {
-                $("#img-preview-3").attr("src", noimage);
-            }
-        }
-
-    </script>
 
     <script>
         //Change this to your no-image file

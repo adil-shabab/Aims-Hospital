@@ -13054,23 +13054,23 @@ header.header-three .sub-dropdown .submenu.third-lvl.base {
   color: #111032;
 }
 .banner-content-area.style-two .title {
-  font-size: 80px;
+  font-size: 65px;
   font-weight: 600;
 }
 @media only screen and (max-width: 1199px) {
   .banner-content-area.style-two .title {
-    font-size: 62px;
+    font-size: 50px;
   }
 }
 @media only screen and (max-width: 991px) {
   .banner-content-area.style-two .title {
-    font-size: 52px;
+    font-size: 40px;
     line-height: 1.1;
   }
 }
 @media only screen and (max-width: 575px) {
   .banner-content-area.style-two .title {
-    font-size: 42px;
+    font-size: 30px;
     line-height: 1.1;
   }
 }
@@ -14877,6 +14877,7 @@ header .rts-btn {
 .meet-doctor-area-sd .single-team-area-start .thumbnail img {
   border: 1px solid rgba(97, 94, 252, 0.2);
   display: block;
+  object-position: top;
   border-radius: 10px;
   
 }
@@ -19469,7 +19470,7 @@ li.has-dropdown:hover .submenu {
   border: 1px solid rgb(238, 238, 238);
   padding: 15px 15px 35px;
   border-radius: 8px;
-  margin: 10px;
+  margin: 0px !important;
 }
 .department__section .box .img_box{
   height: 210px;

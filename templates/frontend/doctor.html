@@ -78,7 +78,13 @@
             <div class="col-md-12">
                 <!-- Sub page Header start -->
                 <div class="subpage-header-box">
+                    
+                    {% if doctor.h1 %}
                     <h1 class="text-anime-style-1">{{ doctor.name|format_doctor_name }}</h1>
+                    {% else %}
+                    <h1 class="text-anime-style-1">{{ doctor.h1 }}</h1>
+                    {% endif %}
+                        
                     <ol class="breadcrumb wow fadeInUp">
                         <li><a href="{% url 'homepage' %}">Home</a></li>
                         <li>Doctors</li>

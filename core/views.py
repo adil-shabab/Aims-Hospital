@@ -4479,6 +4479,13 @@ def about(request):
     return render(request, 'frontend/about.html', context)
 
 
+def nmc(request):
+    return render(request, 'frontend/nmc.html')
+
+def guide(request):
+    return render(request, 'frontend/guide.html')
+
+
 
 def services(request):
     # Fetch published blogs (limit to 3) and active departments

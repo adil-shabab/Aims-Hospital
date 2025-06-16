@@ -1,0 +1,238 @@
+{% extends 'frontend/inner-base.html' %}
+
+{% load static %}
+
+
+{% block title %}
+    <title>Services | AH Hospital</title>
+{% endblock title %}
+    
+{% block head %}
+<style>
+    .subpage-header{
+        position: relative;
+    }
+    .subpage-header::after{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        content: ''; 
+        left: 0;
+        top: 0;
+        background-color: rgba(0, 0, 0, 0.402); 
+    }
+    .subpage-header-box ol{
+        justify-content: flex-start !important;
+    }
+    .subpage-header-box ol{
+        justify-content: flex-start !important;
+    }
+    .subpage-header-box {
+        max-width: unset !important;
+        margin: unset !important;
+        text-align: unset !important;
+    }
+
+
+    section {
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 2rem;
+    }
+
+    .table {
+        margin-top: 1rem;
+    }
+
+    .table th, .table td {
+        vertical-align: middle;
+    }
+
+    .table a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    .table a:hover {
+        color: #0056b3;
+        text-decoration: underline;
+    }
+
+    .sp__head{
+        font-size: 25px;
+        font-weight: 600;
+        margin-top: 35px;
+        margin-bottom: 15px;
+    }
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+
+        section {
+            padding: 1.5rem;
+        }
+        .sp__head{
+            font-size: 20px;
+            font-weight: 600;
+            margin-top: 35px;
+            margin-bottom: 15px;
+        }
+
+        .table {
+            font-size: 1.1rem;
+            line-height: 17px;
+        }
+    }
+</style>
+{% endblock head %}
+    
+
+
+{% block content %}
+    
+    <!-- Subpage Header Start -->
+    <div class="subpage-header" 
+    style="background: url('/../../static/frontend/images/service-banner.jpg'); 
+           padding: 100px 0px; 
+           background-size: cover; 
+           background-position: center; 
+           background-repeat: no-repeat;">
+
+       <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Sub page Header start -->
+                    <div class="subpage-header-box">
+                        <h1 class="text-anime-style-1">National Medical Commission (NMC)</h1>
+                        <p class="p___sm">Information Under MSR Clause B.1.11</p>
+                    </div>
+                    <!-- Sub page Header End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Subpage Header End -->
+
+
+
+
+    <!-- Main Content -->
+    <section class="py-5">
+        <div class="container">
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>SI.NO</th>
+                        <th>Information Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>Name</td><td>Adichunchanagiri Institute of Medical Sciences</td></tr>
+                    <tr><td>2</td><td>Address with pin code</td><td>Balagangadharanatha Nagara-571 448, Nagamangala Taluk, Mandya District, Karnataka</td></tr>
+                    <tr><td>3</td><td>University address with pin code</td><td>Adichunchanagiri University, Balagangadharanatha Nagara-571 448, Nagamangala Taluk, Mandya District, Karnataka</td></tr>
+                    <tr><td>4</td><td>Official website</td><td><a href="#">www.bgsaims.edu.in</a></td></tr>
+                    <tr><td>5</td><td>Dean / Principal / Director</td><td>Dr. M.G. Shivaramu, Principal</td></tr>
+                    <tr><td>6</td><td>Mobile Number</td><td>9663927257</td></tr>
+                    <tr><td>7</td><td>Email ID of Dean</td><td>aims@bgsaims.edu.in / mgshivaramu@gmail.com</td></tr>
+                    <tr><td>8</td><td>Hospital</td><td>Adichunchanagiri Hospital and Research Centre</td></tr>
+                    <tr><td>9</td><td>Date and Year of Registration of the Hospital</td><td>January 1986</td></tr>
+                    <tr><td>10</td><td>Number of Beds</td><td>Teaching beds (1120), Non-teaching beds (600)</td></tr>
+                    <tr><td>11</td><td>Number of Beds for emergency</td><td>30 beds</td></tr>
+                    <tr><td>12</td><td>Date of the First Letter of Permission (LoP) of MBBS & number of seats</td><td>January 1986 (100 students per year), 15.07.2013 (increase of MBBS seats from 100 to 150), 20.09.2022 (increase of MBBS seats from 150 to 250)</td></tr>
+                    <tr><td>13</td><td>Status of Recognition</td><td>Recognized (02.04.2018)</td></tr>
+                    <tr><td>14</td><td>Number of MBBS and PG broad speciality and super specialty students admitted in this session*</td><td>MBBS=250 seats, MD / MS = 104 seats, DM / MCh.= Nil</td></tr>
+                    <tr><td>15</td><td>Inpatients registered and admitted</td><td>2022 = 36390, 2021 = 27825, 2020=22417, 2019=32777</td></tr>
+                    <tr><td>16</td><td>Outpatients registered</td><td>2022 = 652719, 2021 = 422418, 2020= 354003, 2019= 490685</td></tr>
+                    <tr><td>17</td><td>Number of Deaths reported to the Municipality/village register</td><td>2022 = 390, 2021 = 454, 2020= 258, 2019= 307</td></tr>
+                    <tr><td>18</td><td>Address and pin code of the Corporation / Village where the Death records are reported</td><td>Bellur Patna Panchayath, Bellur Town, Nagamangala Taluk, Mandya District, Karnataka</td></tr>
+                    <tr><td>19</td><td>Website link / email ID / hyperlink of the corporation in case Death Records are reported</td><td><a href="#">ejanma.karnataka.frmBirthRegistration.aspx</a></td></tr>
+                    <tr><td>20</td><td>Number of Births reported</td><td>2022 = 2057, 2021 = 1691, 2020= 1957, 2019= 2536</td></tr>
+                    <tr><td>21</td><td>Address and pin code of the Corporation/village where the Birth records are reported</td><td>Bellur Patna Panchayath, Bellur Town, Nagamangala Taluk, Mandya District, Karnataka</td></tr>
+                    <tr><td>22</td><td>Website link / email ID / hyperlink of the corporation in case Birth Records are reported</td><td><a href="#">ejanma.karnataka.frmBirthRegistration.aspx</a></td></tr>
+                    <tr><td>23</td><td>Number of Rooms in Men’s Hostel and students accommodated</td><td>108 x 3 (324 students), 180 x 3 (540 students)</td></tr>
+                    <tr><td>24</td><td>Total Number of Rooms in Women’s Hostel and students accommodated</td><td>192 x 3 (576 students)</td></tr>
+                    <tr><td>25</td><td>Name of the Grievance Redressal Officer (PIO & CPIO)</td><td>Dr. Venkatesha D, Professor & Head.</td></tr>
+                    <tr><td>26</td><td>Address with Pin code</td><td>Adichunchanagiri Institute of Medical Sciences, Professor and HOD Department of Microbiology, New Annex building, B G Nagara-571448.</td></tr>
+                    <tr><td>27</td><td>Telephone Number, Email Id</td><td>9986973580, grc@bgsaims.edu.in</td></tr>
+                    <tr><td>28</td><td>Grievance reported</td><td>2022, 2021, 2020 – 02, 2019</td></tr>
+                </tbody>
+            </table>
+
+            <h3 class="sp__head">29. Details of Post–Graduate Courses offered</h3>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Post-Graduate Courses</th>
+                        <th>Year of Commencement of the Course</th>
+                        <th>Number of Students currently pursuing the course</th>
+                        <th>Number of students admitted in the current session</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>MD Anatomy</td><td>2012</td><td>Nil</td><td>Yet to be admitted for the current session</td></tr>
+                    <tr><td>MD Physiology</td><td>2010</td><td>Nil</td><td>Yet to be admitted for the current session</td></tr>
+                    <tr><td>MD Biochemistry</td><td>1997</td><td>Nil</td><td>Yet to be admitted for the current session</td></tr>
+                    <tr><td>MD Pathology</td><td>2010</td><td>07</td><td>Yet to be admitted for the current session</td></tr>
+                    <tr><td>MD Microbiology</td><td>2011</td><td>Nil</td><td>Yet to be admitted for the current session</td></tr>
+                    <tr><td>MD Pharmacology</td><td>2013</td><td>Nil</td><td>Yet to be admitted for the current session</td></tr>
+                    <tr><td>MD Forensic Medicine</td><td>2019</td><td>Nil</td><td>Yet to be admitted for the current session</td></tr>
+                    <tr><td>MD Community Medicine</td><td>1997</td><td>Nil</td><td>Yet to be admitted for the current session</td></tr>
+                    <tr><td>MD General Medicine</td><td>1997</td><td>24</td><td>Yet to be admitted for the current session</td></tr>
+                    <tr><td>MD Paediatrics</td><td>1997</td><td>18</td><td>Yet to be admitted for the current session</td></tr>
+                    <tr><td>MD Dermatology</td><td>2009</td><td>13</td><td>Yet to be admitted for the current session</td></tr>
+                    <tr><td>MS General Surgery</td><td>1997</td><td>18</td><td>Yet to be admitted for the current session</td></tr>
+                    <tr><td>MS Orthopaedics</td><td>1997</td><td>30</td><td>Yet to be admitted for the current session</td></tr>
+                    <tr><td>MS ENT</td><td>2009</td><td>14</td><td>Yet to be admitted for the current session</td></tr>
+                    <tr><td>MS Ophthalmology</td><td>1997</td><td>14</td><td>Yet to be admitted for the current session</td></tr>
+                    <tr><td>MS OBG</td><td>1997</td><td>27</td><td>Yet to be admitted for the current session</td></tr>
+                    <tr><td>MD Anaesthesiology</td><td>1997</td><td>29</td><td>Yet to be admitted for the current session</td></tr>
+                    <tr><td>MD Radio-Diagnosis</td><td>1997</td><td>12</td><td>Yet to be admitted for the current session</td></tr>
+                    <tr><td>MD Psychiatry</td><td>2022</td><td>03</td><td>Yet to be admitted for the current session</td></tr>
+                </tbody>
+            </table>
+
+
+            <h3  class="sp__head">Additional Information</h3>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Sl.No</th>
+                        <th>Title</th>
+                        <th>Link 1</th>
+                        <th>Link 2</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>31</td><td>Publications by faculty</td><td><a href="https://bgsaims.edu.in/aims-publications/">Click Here</a></td><td></td></tr>
+                    <tr><td>32</td><td>Publications in Vancouver reference style</td><td><a href="https://bgsaims.edu.in/aims-publications/">Click Here</a></td><td></td></tr>
+                    <tr><td>33</td><td>Medical Educator Training/research methodology and dates</td><td><a href="#">Click Here for Anx-03</a></td><td><a href="#">Click Here for Anx-03A</a></td></tr>
+                    <tr><td>34</td><td>UG and PG Stipend Details</td><td><a href="https://bgsaims.edu.in/wp-content/uploads/2024/05/UG-PG-Stipend-Details-April-2024.pdf">April 2024 – Click Here</a></td><td></td></tr>
+                </tbody>
+            </table>
+
+            <p class="mt-3 mb-1">&gt; NMC Display of Information</p>
+
+            <a href="https://bgsaims.edu.in/wp-content/uploads/2022/01/Self-verification-certificate.pdf">
+                <p class="mb-1">&gt; Site Verification Certificate</p>
+            </a>
+        </div>
+    </section>
+
+
+
+
+
+    
+{% endblock content %}
+    
+
+
+{% block script %}
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+
+
+{% endblock script %}
+    

@@ -114,7 +114,7 @@ class DepartmentForm(forms.ModelForm):
     
     class Meta:
         model = Department
-        fields = ['title', 'breadcamp', 'icon', 'show_on_homepage', 'speciality_type', 'banner', 'opening_hours', 'description', 'status', 'meta_description', 'meta_keyword','meta_title', 'slug']
+        fields = ['title', 'h1', 'breadcamp', 'show_on_homepage', 'speciality_type', 'banner', 'opening_hours', 'description', 'status', 'meta_description', 'meta_keyword','meta_title', 'slug']
 
         widgets = {
             'status': forms.RadioSelect(choices=STATUS_CHOICES, attrs={
@@ -147,6 +147,7 @@ class DepartmentForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['title'].widget.attrs['class'] = 'form-control'
+        self.fields['h1'].widget.attrs['class'] = 'form-control'
         self.fields['speciality_type'].widget.attrs['class'] = 'form-control'
         self.fields['opening_hours'].widget.attrs['class'] = 'form-control'
         self.fields['show_on_homepage'].widget.attrs['class'] = 'form-check-input'  # Added this line
@@ -200,7 +201,7 @@ class DoctorForm(forms.ModelForm):
     class Meta:
         model = Doctor
         fields = [
-            'name', 'department', 'priority', 'designation', 'experience_years', 'email', 'number', 'gender',
+            'name', 'h1', 'department', 'priority', 'designation', 'experience_years', 'email', 'number', 'gender',
             'education', 'city', 'photo', 'status', 'show_on_homepage',  'description', 'meta_description', 'meta_keyword', 'meta_title', 'slug'
         ]
         widgets = {
@@ -216,6 +217,7 @@ class DoctorForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['name'].widget.attrs['class'] = 'form-control'
+        self.fields['h1'].widget.attrs['class'] = 'form-control'
         self.fields['department'].widget.attrs['class'] = 'form-control'
         self.fields['designation'].widget.attrs['class'] = 'form-control'
         self.fields['experience_years'].widget.attrs['class'] = 'form-control'

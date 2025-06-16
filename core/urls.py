@@ -34,6 +34,9 @@ urlpatterns = [
     path('autism/', views.autism, name='autism'), 
     path('create_callback/', views.create_callback, name='create_callback'), 
 
+    path('nmc/', views.nmc, name='nmc'), 
+    path('patient-guide/', views.guide, name='guide'), 
+
     path('gallery/', views.gallery_frontend, name='gallery_frontend'), 
     path('insurance/', views.insurance, name='insurance'), 
     path('patient-rights-responsibilities/', views.patient, name='patient'), 
