@@ -381,12 +381,11 @@ body{
 .section-title h3{
 	font-size: 18px;
 	line-height: 26px;
-    font-weight: 500;
-	text-transform: uppercase;
+  font-weight: 500;
 	font-family: 'DM Sans', Arial, Helvetica, sans-serif;
-    letter-spacing: 0.2em;
-    color: black;
-    margin-bottom: 15px;
+  letter-spacing: 3px;
+  color: black;
+  margin-bottom: 15px;
 }
 .name__txt{
 	font-family: 'DM Sans', sans-serif;

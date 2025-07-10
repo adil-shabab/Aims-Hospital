@@ -166,138 +166,210 @@
         </div>
     </div>
     <!-- Top Services Section End -->
+  <div class="we-improving">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <!-- Improving Image Start -->
+                <div class="improving-img">
+                    <figure class="image-anime reveal">
+                        <img src="{% static 'frontend/assets/images/baba.jpg' %}" alt="" />
+                    </figure>
+                </div>
+                <!-- Improving Image End -->
+            </div>
 
-
-
-
-
-    <!-- We Improving Section Start -->
-    <div class="we-improving">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6">
-                        <!-- Improving Image Start -->
-                        <div class="improving-img">
-                            <figure class="image-anime reveal">
-                                <img src="{% static 'frontend/assets/images/baba.jpg' %}" alt="">
-                            </figure>
+            <div class="col-lg-6">
+                <!-- Improving Content Start -->
+                <div class="improving-content">
+                    <div class="improving-body">
+                        <div class="section-title">
+                            <h3 style="font-weight: 800;" class="text-anime-style-3">
+                                Inspiring Vision Message of Sri Sri Sri Dr. Balagangadharanatha Mahaswamiji
+                            </h3>
+                            <p style="font-weight: 500; color: white !important;">A Vision of Compassionate Service</p>
                         </div>
-                        <!-- Improving Image End -->
-                    </div>
-                    <div class="col-lg-6">
-                        <!-- Improving Content Start -->
-                        <div class="improving-content">
-    
-                            <!-- Improving Body Start -->
-                            <div class="improving-body">
-                                <div class="section-title">
-                                    <h3 style="font-weight: 800;" class="text-anime-style-3">A Vision of Compassionate Service- Sri Sri Sri Dr. Balagangadharanatha Mahaswamiji</h3>
-                                </div>
-                            
-                                <!-- First two paragraphs visible by default -->
-                                <p class="wow fadeInUp text_justify mb-2">
-                                    No mother should die in childbirth. No farmer should be denied medical care.” With these powerful words, Sri Sri Sri Dr. Balagangadharanatha Mahaswamiji sparked a healthcare mission rooted in compassion, equity, and spiritual service.
-                                    Moved by the suffering in rural Karnataka, Mahaswamiji envisioned a hospital that served as a temple of healing—offering care without discrimination. In 1990, this vision became reality with the founding of Adichunchanagiri Hospital & Research Centre (AH & RC).
-                                    Dedicated to maternal care, child health, trauma support, and holistic wellness, AH & RC stands as a testament to his belief that true healing goes beyond treatment—it involves outreach, education, and building future healthcare leaders for rural India.
-                                    Even amidst challenges, Mahaswamiji remained unwavering—guided by faith, tradition, and a shared duty to serve. His legacy lives on, lighting the path toward health, dignity, and hope for all
-                                </p>
-                                
-                            </div>
-                            <!-- Improving Body End -->
-                        </div>
-                        <!-- Improving Content End -->
+
+                        <p class="wow fadeInUp text_justify mb-2 about__pera">
+                            In words both inspiring and humble, Sri Sri Sri Dr. Balagangadharanatha Mahaswamiji shared his profound vision for healthcare transformation. He envisioned a future where no mother dies in childbirth, where
+                            farmers receive the medical care they deserve, where preventable diseases no longer claim innocent lives, and where quality healthcare becomes a fundamental right for all—not merely a privilege of the urban
+                            elite.
+                            <br />
+                            The revered Mahaswamiji spoke of the hospital as a sacred temple of healing, dedicated to serving humanity without discrimination based on caste, creed, or economic status, with special focus on rural communities
+                            long denied access to quality healthcare.
+                            <br />
+                            He reflected deeply on the suffering he had witnessed firsthand throughout the villages when he traveled around rural part of Karnataka. The spiritual leader shared how these medical emergencies frequently drove
+                            families into financial ruin, and how their suffering had become his burden, their struggles his constant concern.....
+                            <a href="javascript:void(0);" onclick="toggleReadMore()" id="readMoreBtn" style="font-weight: 400; color: white; font-size: 15px;">Read More</a>
+                        </p>
+
+                        <!-- Read More Button -->
                     </div>
                 </div>
+                <!-- Improving Content End -->
             </div>
+        </div>
+
+        <!-- Full-width Read More Section -->
+        <div id="readMoreSection" class="row mt-4" style="display: none;">
+            <div class="col-12">
+                <div class="full-readmore-content p-3" style="color: #FFFFFF8; border-radius: 10px;">
+                    <p class="text_justify" style="color: #FFFFFF80;">
+                        Sri Sri Sri Dr. Balagangadharanatha Mahaswamiji explained that the establishment of AH & RC in 1990 was rooted in the ancient tradition viewing service to humanity as the highest form of worship. He taught that
+                        caring for the sick fulfills a divine duty and that healing those who suffer allows participation in God's work. The Maha Swamiji reminded that the scriptures teach no religion stands higher than service, no prayer
+                        more powerful than alleviating human suffering.
+                        <br />
+                        <br />
+                        The hospital, he explained, represented their solution to these healthcare challenges. Expectant mothers would safely deliver babies under professional care. Children would receive essential vaccinations and medical
+                        attention for healthy development. Elderly patients would be treated with dignity and respect. Orthopedic specialists would address musculoskeletal problems through preventive approaches, effective treatments, and
+                        workplace health education. The trauma center would provide critical emergency care for accident victims, significantly reducing deaths and permanent injuries from road incidents. Mobile vaccination teams would reach
+                        even the most isolated villages, ensuring timely protection against serious diseases. The institution would also train future healthcare professionals who understand rural populations' specific needs.
+                        <br />
+                        <br />
+                        The Mahaswamiji's vision extended beyond treating illness. He aspired to create a wellness center integrating modern medicine with traditional wisdom. Prevention, education, and community outreach would form the core
+                        of their mission. They would partner with village leaders, Anganwadi workers, and local practitioners to build a holistic healthcare ecosystem.
+                        <br />
+                        <br />
+                        With characteristic humility, Sri Sri Sri Dr. Balagangadharanatha Mahaswamiji acknowledged the many challenges ahead—limited resources, numerous obstacles, and overwhelming needs. However, he drew strength from
+                        spiritual traditions and Lord Kalabhairaveshwara's blessings. With divine grace and collective determination, he believed they would overcome every obstacle. The Mahaswamiji called for proceeding with unwavering
+                        faith and tireless dedication, noting that the light kindled that day would illuminate the path to health and wellbeing for generations. This vision, he emphasized, belonged to all—representing a collective sacred
+                        duty to humanity.
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
+
+<!-- Toggle Script -->
+<script>
+  function toggleReadMore() {
+    var section = document.getElementById("readMoreSection");
+    var btn = document.getElementById("readMoreBtn");
+
+    if (section.style.display === "none") {
+      section.style.display = "block";
+      btn.innerText = "Read Less";
+    } else {
+      section.style.display = "none";
+      btn.innerText = "Read More";
+    }
+  }
+</script>
+
+
+
+
+
+
+
     <!-- We Improving Section End -->
     
     <!-- We Improving Section Start -->
-    <div class="we-improving bg-white">
-        <div class="container">
-            <div class="row align-items-center">
-                
-                <div class="col-lg-6">
-                    <!-- Improving Content Start -->
-                    <div class="improving-content">
+  <div class="we-improving bg-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- Content Section -->
+            <div class="col-lg-6">
+                <div class="improving-content">
+                    <div class="improving-body">
+                        <div class="section-title">
+                            <h3 style="font-weight: 800;" class="text-dark text-anime-style-3">
+                                Inspiring Vision Message of Paramapoojya Jagadguru Sri Sri Sri Dr. Nirmalanandanatha Mahaswamiji
+                            </h3>
+                            <p style="font-weight: 500; color: black !important;">
+                                The Legacy of Compassion: Expanding the Vision of Adichunchanagiri Hospital & Research Centre
+                            </p>
+                        </div>
 
-                        <!-- Improving Body Start -->
-                        <div class="improving-body">
-                            <div class="section-title">
-                                <h3 style="font-weight: 800;" class="text-dark text-anime-style-3">Expanding the Vision of Adichunchanagiri Hospital & Research Centre- Paramapoojya Jagadguru Sri Sri Sri Dr. Nirmalanandanatha Mahaswamiji</h3>
-                            </div>
-                        
-                            <!-- First two paragraphs visible by default -->
+                        <!-- Summary -->
+                        <p class="text-dark wow fadeInUp text_justify mb-2">
+                            Adichunchanagiri Hospital & Research Centre (AH & RC) has been a symbol of hope and healing since its inception in 1990 by my esteemed Guru, Paramapoojya Jagadguru Sri Sri Sri Dr. Balagangadharanatha Mahaswamiji. My Guru often emphasized that genuine spirituality is not found solely in rituals and prayers, but through selfless service to humanity. He would say, <em>"When we serve the suffering, we serve God."</em> This profound belief inspired him to establish this hospital three decades ago, in response to the pressing healthcare needs of our rural communities around Mandya. Today, I am dedicated to not only safeguarding this legacy but also extending its reach and impact to meet the evolving demands of our society.
+                            <br>
                             <p class="text-dark wow fadeInUp text_justify mb-2">
-                                Adichunchanagiri Hospital & Research Centre (AH & RC) was founded in 1990 by Paramapoojya Jagadguru Sri Sri Sri Dr. Balagangadharanatha Mahaswamiji, who believed, “When we serve the suffering, we serve God.” Rooted in this vision, AH & RC was established to meet the pressing healthcare needs of rural communities around Mandya.
-                                What began as a modest initiative has grown into a modern, multi-specialty hospital with 20 advanced operating theatres, a 130-bed ICU, and 24/7 emergency care. Affiliated with Adichunchanagiri Institute of Medical Sciences (AIMS), we serve both rural and urban populations with compassion and inclusivity.
-                                We offer holistic care, combining modern medicine with preventive services, free treatments for the underprivileged, health camps, and community outreach—staying true to our mission of healthcare as a sacred service.
-                                Today, patients from even metro cities like Bangalore trust AH & RC for its expertise, affordability, and spiritual foundation. Guided by our Guru’s teachings and the blessings of Lord Kalabhairaveshwara, we remain committed to a future of healing, dignity, and hope for all.
-                            </p>
-                            
-                        </div>
-                        <!-- Improving Body End -->
+                            The evolution of AH & RC exemplifies the transformative power of compassion driven by vision. What began as a modest healthcare facility has flourished into a comprehensive medical institution affiliated with the Adichunchanagiri Institute of Medical Sciences (AIMS). This expansion is not just physical; it signifies our growing ability to alleviate suffering and provide quality healthcare to those who have long been deprived of this essential right.....<a href="javascript:void(0);" onclick="toggleReadMore2()" id="readMoreBtn2" style="font-weight: 400; color: black; font-size: 15px; font-weight: bold;">Read More</a></p>
+                                    
+                        </p>
                     </div>
-                    <!-- Improving Content End -->
                 </div>
-                <div class="col-lg-6">
-                    <!-- Improving Image Start -->
-                    <div class="improving-img">
-                        <figure class="image-anime reveal">
-                            <img src="{% static 'frontend/assets/images/second.jpg' %}" alt="">
-                        </figure>
-                    </div>
-                    <!-- Improving Image End -->
+            </div>
+
+            <!-- Image Section -->
+            <div class="col-lg-6">
+                <div class="improving-img">
+                    <figure class="image-anime reveal">
+                        <img src="{% static 'frontend/assets/images/second.jpg' %}" alt="">
+                    </figure>
+                </div>
+            </div>
+        </div>
+
+        <!-- Read More Content -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div id="readMoreSection2" class="text-dark text_justify secodn__puriji" style="max-height: 0; overflow: hidden; transition: max-height 0.6s ease;  border-radius: 10px;">
+            <p>
+                Our rural communities encounter distinct challenges – geographic isolation, economic difficulties, and lack of awareness often create formidable barriers to accessing quality healthcare. At the same time, we acknowledge that urban communities also face their own healthcare issues, albeit of a different nature. The pressures of modern life, environmental degradation, and lifestyle diseases require specialized attention. Therefore, our mission extends to both rural and urban populations, customizing our approaches to meet diverse healthcare needs while upholding our core value of compassionate care for everyone.
+            </p>
+            <p>
+                The spiritual teachings of our tradition remind us that the body is a temple of the divine. By healing the body, we lay the groundwork for spiritual and intellectual growth. This holistic perspective on human wellbeing shapes our approach at AH & RC. We don’t just treat diseases; we heal individuals, recognizing their physical, emotional, and spiritual dimensions.
+            </p>
+            <p>
+                I am grateful to see how far we have progressed. Today, AH & RC stands as a center of excellence across various Broad and Super Specialty Services. Our 20 operating theaters, equipped with cutting-edge technology, our 130-bed Intensive Care Unit, and our around-the-clock Emergency Medicine department ensure that critical care is always accessible to those in need.
+            </p>
+            <p>
+                However, advanced medical infrastructure alone does not define our mission. The essence of these facilities lies in our unwavering commitment to accessibility. Our provision of free medical aid and meals for general ward patients reflects our fundamental belief that financial constraints should never hinder access to dignified healthcare.
+            </p>
+            <p>
+                Education and prevention are central to our mission. My Guru always stressed that true healthcare begins with awareness and preventive measures. Through our community outreach programs, health camps, and educational initiatives, we aim to empower communities with knowledge that promotes wellbeing and prevents disease.
+            </p>
+            <p>
+                Research also plays a vital role in our vision. By examining the unique healthcare challenges of our region and developing culturally sensitive interventions, we contribute to the larger field of medicine while addressing local needs. This balanced approach ensures that we remain both globally informed and locally relevant.
+            </p>
+            <p>
+                A remarkable trend has emerged as patients from Bangalore and other metropolitan cities choose to travel to Adichunchanagiri Hospital in BG Nagara for medical treatment. This reverse migration pattern indicates the growing reputation of AH & RC as a provider of quality healthcare at affordable prices.
+            </p>
+            <p>
+                The hospital has become an attractive alternative for urban patients seeking quality care without the premium costs associated with city hospitals. Many metropolitan residents find that the combination of expert medical professionals, advanced technology, and affordable pricing at Adichunchanagiri Hospital offers exceptional value compared to urban healthcare options.
+            </p>
+            <p>
+                The road ahead is fraught with challenges. Healthcare disparities continue, new diseases emerge, and resources remain limited. However, with divine grace, community support, and unwavering determination, we will expand our reach and deepen our impact.
+            </p>
+            <p>
+                Let us advance with the blessings of Lord Kalabhairaveshwara and the guidance of my gurus' vision. Together, we can create a healthcare ecosystem where compassion meets competence, where tradition embraces innovation, and where healing occurs not just for the body but for the entire community.
+            </p>
+            <p>
+                The hospital that began as a seed of compassion in my Guru's heart has blossomed into a mighty tree, providing shelter and healing to thousands. May this tree continue to thrive, extending its branches to reach more souls in need and deepening its roots in the fertile soil of service and sacrifice.
+            </p>
+            <p>
+                With steadfast resolve, let us dedicate ourselves to this noble mission of healing humanity and creating a healthier, more equitable world for all.
+            </p>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+<script>
+  function toggleReadMore2() {
+    var section = document.getElementById("readMoreSection2");
+    var btn = document.getElementById("readMoreBtn2");
+
+    section.classList.toggle("open");
+
+    if (section.classList.contains("open")) {
+      section.style.maxHeight = section.scrollHeight + "px";
+      btn.innerText = "Read Less";
+    } else {
+      section.style.maxHeight = "0";
+      btn.innerText = "Read More";
+    }
+  }
+</script>
+
+
+
     <!-- We Improving Section End -->
-
-
-    
-    <!-- We Improving Section Start -->
-    <div class="we-improving">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <!-- Improving Image Start -->
-                    <div class="improving-img">
-                        <figure class="image-anime reveal">
-                            <img style="object-position: center;" src="{% static 'frontend/assets/images/third.jpg' %}" alt="">
-                        </figure>
-                    </div>
-                    <!-- Improving Image End -->
-                </div>
-                <div class="col-lg-6">
-                    <!-- Improving Content Start -->
-                    <div class="improving-content">
-
-                        <!-- Improving Body Start -->
-                        <div class="improving-body">
-                            <div class="section-title">
-                                <h3 style="font-weight: 800;" class="text-anime-style-3">CHIEF OF HOSPITAL - DR K.M. SHIVAKUMAR</h3>
-                            </div>
-                        
-                            <!-- First two paragraphs visible by default -->
-                            <p class="wow fadeInUp text_justify mb-2">
-                                Dr. K.M. Shivakumar is a highly respected figure in Indian medicine, with over 30 years of experience in clinical practice and medical education. Currently serving as the Chief of Hospitals at Adichunchanagiri Hospital & Research Center in Bellur, Karnataka, Dr. Shivakumar is committed to providing excellent patient care and leading the hospital with expertise. He completed his MBBS from Mysore University in 1984 and went on to earn his MD in General Medicine in 1988. Furthering his education, he pursued specialized training in non-interventional cardiology at the renowned ESCORTS Heart Institute in New Delhi.
-                                Dr. Shivakumar has been a passionate educator for 33 years, holding key positions such as Professor and Head of the Department of General Medicine at Mandya Institute of Medical Sciences (MIMS). He also served as Chairman of the Board of Studies for PG clinical programs at Rajiv Gandhi University of Health Sciences (RGUHS) from 2019 to 2022 and has contributed to academic bodies such as Adichunchanagiri University and the University of Mysore. His leadership in healthcare extends to administrative roles, including Medical Superintendent and Principal at MIMS.
-                            </p>
-                            
-                        </div>
-                        <!-- Improving Body End -->
-                    </div>
-                    <!-- Improving Content End -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- We Improving Section End -->
-
-
-
-
     
     <!-- rts testimonials area start -->
     <div class="rts-testimonials-area rts-section-gap">

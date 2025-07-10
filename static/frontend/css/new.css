@@ -157,7 +157,7 @@ body, html{
     color: white;
     background: #ea556f;
 }
-}
+
 .mobile__offcanvas{
     width: 93%;
 }
@@ -734,6 +734,15 @@ body, html{
     .department__section .heading{
         font-size: 28px;
     }
+    .secodn__puriji{
+        margin-left: 40px;
+    }
+}
+@media (max-width: 768px){
+    .secodn__puriji{
+        margin-left: 40px;
+    }
+
 }
 /* department section css end */
 
@@ -1867,10 +1876,14 @@ footer .container .copy_right span a{
     left: 0px;
     border-bottom-right-radius: 100%;
 }
+.secodn__puriji{
+    margin-left: 40px;
+}
 
 
 .text_justify{
     text-align: justify;
+    color: #FFFFFF80;
 }
 .fixedRightSideBar.active {
     right: -202px;
